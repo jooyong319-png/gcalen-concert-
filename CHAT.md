@@ -29,6 +29,12 @@
 - BE BOYS 팬미팅 BE:GINNING in SEOUL(6/21 개최): 이미 지난 공연이라 "최근 6개월" 조건상 등록 가능하나, 이번 사이클은 향후 임박 공연 검증에 우선순위를 둬 보류
 - 싸이 흠뻑쇼(8/1~2 수원 외), 빅뱅 월드투어(8/21~23 고양), 오피셜히게단디즘 내한(8/8~9): 지난 사이클과 동일하게 이번에도 시간 부족으로 예매처 상세페이지 재검증 미완, 다음 사이클로 이월
 
+## [2026-07-22 00:53] [JA 뉴스]
+뉴스 작성 완료 (일본 국내 공연 뉴스) — NEWS_RESEARCHER_JA.md 최초 실행 검증
+- 신규 기사 2건: BABYMONSTER来日ツアー、一部会場で立見チケット追加販売(BABYMONSTER JAPAN OFFICIAL SITE, 2026-07-21 게시) / RIIZE、3rd日本シングル「Sunburst」予約者対象ラッキードロー開催(RIIZE JAPAN OFFICIAL SITE, 2026-07-21 게시)
+- 콘서트 링크 연결 0건 / 링크 없음 2건 (data/concerts.ja.json에 RIIZE·BABYMONSTER 항목 자체가 없어 링크 대상 없음)
+- 스킵(중복·소스 불충분): The Weeknd 추가공연·SixTONES 스타디움 투어·ULTRA JAPAN 라인업·ROCK IN JAPAN 타임테이블 등은 실제 발표일이 6~7월 초라 48시간 규정 미충족으로 제외. RIIZE JAPAN FANMEETING(7/23~24 고베) 관련은 신규 공지 없어 제외
+
 ## [2026-07-22 00:52] [EN 뉴스]
 뉴스 작성 완료 (영어권/글로벌 시장 공연 뉴스) — NEWS_RESEARCHER_EN.md 최초 실행(검증 목적)
 - 신규 기사 2건:
