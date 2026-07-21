@@ -1,82 +1,90 @@
 import type { MetadataRoute } from 'next';
-import { getAllGames, getLastUpdated, getTranslatedGameIds } from '@/lib/games';
-import { getAllPosts, getTranslatedSlugs } from '@/lib/blog';
-import { getAllNews, getTranslatedNewsSlugs } from '@/lib/news';
-import { LOCALES } from '@/lib/i18nLabels';
+import { getAllGames, getLastUpdated } from '@/lib/games';
+import { getAllPosts, getPostTranslation } from '@/lib/blog';
+import { getAllNews, getNewsTranslation } from '@/lib/news';
+import { LOCALES, type Locale } from '@/lib/i18nLabels';
+
+const BASE = 'https://gcalen.com';
+
+function staticAlternates(path: (lang: Locale) => string): Record<string, string> {
+  const languages: Record<string, string> = {};
+  for (const lang of LOCALES) languages[lang] = `${BASE}${path(lang)}`;
+  return languages;
+}
+
+const STATIC_PAGES: { path: (lang: Locale) => string; changeFrequency: 'daily' | 'monthly' | 'yearly'; priority: number }[] = [
+  { path: lang => `/${lang}`, changeFrequency: 'daily', priority: 0.9 },
+  { path: lang => `/${lang}/news`, changeFrequency: 'daily', priority: 0.7 },
+  { path: lang => `/${lang}/blog`, changeFrequency: 'daily', priority: 0.65 },
+  { path: lang => `/${lang}/guide`, changeFrequency: 'monthly', priority: 0.6 },
+  { path: lang => `/${lang}/about`, changeFrequency: 'monthly', priority: 0.45 },
+  { path: lang => `/${lang}/contact`, changeFrequency: 'monthly', priority: 0.35 },
+  { path: lang => `/${lang}/privacy`, changeFrequency: 'yearly', priority: 0.25 },
+  { path: lang => `/${lang}/terms`, changeFrequency: 'yearly', priority: 0.25 },
+];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const games = await getAllGames();
   const now = new Date();
-  const dataUpdated = new Date(await getLastUpdated());
   const todayStr = now.toISOString().slice(0, 10);
 
-  const staticUrls: MetadataRoute.Sitemap = [
-    { url: 'https://gcalen.com/', lastModified: now, changeFrequency: 'daily', priority: 1 },
-    { url: 'https://gcalen.com/news', lastModified: now, changeFrequency: 'daily', priority: 0.8 },
-    { url: 'https://gcalen.com/blog', lastModified: now, changeFrequency: 'daily', priority: 0.75 },
-    { url: 'https://gcalen.com/guide', lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
-    { url: 'https://gcalen.com/about', lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
-    { url: 'https://gcalen.com/contact', lastModified: now, changeFrequency: 'monthly', priority: 0.4 },
-    { url: 'https://gcalen.com/privacy', lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
-    { url: 'https://gcalen.com/terms', lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
-  ];
-
-  const gameUrls: MetadataRoute.Sitemap = games.map(g => {
-    const upcoming = g.release_date_approx || g.release_date >= todayStr;
-    const priority = g.pre_registration ? 0.85 : upcoming ? 0.75 : 0.6;
-    return {
-      url: `https://gcalen.com/concert/${g.id}`,
-      lastModified: dataUpdated,
-      changeFrequency: (g.pre_registration || upcoming ? 'daily' : 'weekly') as 'daily' | 'weekly',
-      priority,
-    };
-  });
-
-  const posts = await getAllPosts();
-  const blogUrls: MetadataRoute.Sitemap = posts.map(p => ({
-    url: `https://gcalen.com/blog/${p.slug}`,
-    lastModified: new Date(p.date),
-    changeFrequency: 'monthly',
-    priority: 0.75,
-  }));
-
-  const news = await getAllNews();
-  const newsUrls: MetadataRoute.Sitemap = news.map(it => ({
-    url: `https://gcalen.com/news/${it.slug}`,
-    lastModified: new Date(it.date),
-    changeFrequency: 'weekly',
-    priority: 0.7,
-  }));
-
-  // 다국어(/en, /ja) — 콘텐츠(일정/블로그/뉴스)는 번역이 실제로 존재하는 항목만(빈 페이지 방지)
-  const localeUrls: MetadataRoute.Sitemap = [];
-  for (const lang of LOCALES) {
-    const [gameIds, blogSlugs, newsSlugs] = await Promise.all([
-      getTranslatedGameIds(lang),
-      getTranslatedSlugs(lang),
-      getTranslatedNewsSlugs(lang),
-    ]);
-    for (const id of gameIds) {
-      localeUrls.push({ url: `https://gcalen.com/${lang}/concert/${id}`, lastModified: dataUpdated, changeFrequency: 'weekly', priority: 0.6 });
+  // ko/en/ja 완전 대칭 정적 페이지 — 언어별로 항상 존재하므로 hreflang alternate 전부 포함
+  const staticUrls: MetadataRoute.Sitemap = [];
+  for (const page of STATIC_PAGES) {
+    for (const lang of LOCALES) {
+      staticUrls.push({
+        url: `${BASE}${page.path(lang)}`,
+        lastModified: now,
+        changeFrequency: page.changeFrequency,
+        priority: page.priority,
+        alternates: { languages: staticAlternates(page.path) },
+      });
     }
-    for (const slug of blogSlugs) {
-      localeUrls.push({ url: `https://gcalen.com/${lang}/blog/${slug}`, lastModified: now, changeFrequency: 'monthly', priority: 0.65 });
-    }
-    for (const slug of newsSlugs) {
-      localeUrls.push({ url: `https://gcalen.com/${lang}/news/${slug}`, lastModified: now, changeFrequency: 'weekly', priority: 0.6 });
-    }
-    const p = `https://gcalen.com/${lang}`;
-    localeUrls.push(
-      { url: p, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
-      { url: `${p}/news`, lastModified: now, changeFrequency: 'daily', priority: 0.7 },
-      { url: `${p}/blog`, lastModified: now, changeFrequency: 'daily', priority: 0.65 },
-      { url: `${p}/guide`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-      { url: `${p}/about`, lastModified: now, changeFrequency: 'monthly', priority: 0.45 },
-      { url: `${p}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.35 },
-      { url: `${p}/privacy`, lastModified: now, changeFrequency: 'yearly', priority: 0.25 },
-      { url: `${p}/terms`, lastModified: now, changeFrequency: 'yearly', priority: 0.25 }
-    );
   }
 
-  return [...staticUrls, ...blogUrls, ...newsUrls, ...gameUrls, ...localeUrls];
+  // 콘서트/발매 상세 — 로케일별로 완전히 독립된 데이터(id가 서로 다름)라 언어간 hreflang 매핑 없이 등록
+  const gameUrls: MetadataRoute.Sitemap = [];
+  for (const lang of LOCALES) {
+    const [games, dataUpdatedStr] = await Promise.all([getAllGames(lang), getLastUpdated(lang)]);
+    const dataUpdated = new Date(dataUpdatedStr);
+    for (const g of games) {
+      const upcoming = g.release_date_approx || g.release_date >= todayStr;
+      const priority = g.pre_registration ? 0.85 : upcoming ? 0.75 : 0.6;
+      gameUrls.push({
+        url: `${BASE}/${lang}/concert/${g.id}`,
+        lastModified: dataUpdated,
+        changeFrequency: g.pre_registration || upcoming ? 'daily' : 'weekly',
+        priority,
+      });
+    }
+  }
+
+  // 블로그 — ko 원본은 항상 존재, en/ja는 번역 파일(.en.md/.ja.md)이 있는 것만 URL 생성
+  const posts = await getAllPosts();
+  const blogUrls: MetadataRoute.Sitemap = [];
+  for (const p of posts) {
+    const [enT, jaT] = await Promise.all([getPostTranslation(p.slug, 'en'), getPostTranslation(p.slug, 'ja')]);
+    const languages: Record<string, string> = { ko: `${BASE}/ko/blog/${p.slug}` };
+    if (enT) languages.en = `${BASE}/en/blog/${p.slug}`;
+    if (jaT) languages.ja = `${BASE}/ja/blog/${p.slug}`;
+    const lastModified = new Date(p.date);
+    blogUrls.push({ url: `${BASE}/ko/blog/${p.slug}`, lastModified, changeFrequency: 'monthly', priority: 0.75, alternates: { languages } });
+    if (enT) blogUrls.push({ url: `${BASE}/en/blog/${p.slug}`, lastModified, changeFrequency: 'monthly', priority: 0.65, alternates: { languages } });
+    if (jaT) blogUrls.push({ url: `${BASE}/ja/blog/${p.slug}`, lastModified, changeFrequency: 'monthly', priority: 0.65, alternates: { languages } });
+  }
+
+  // 뉴스 — 블로그와 동일한 번역 존재 여부 기반 패턴
+  const news = await getAllNews();
+  const newsUrls: MetadataRoute.Sitemap = [];
+  for (const it of news) {
+    const [enT, jaT] = await Promise.all([getNewsTranslation(it.slug, 'en'), getNewsTranslation(it.slug, 'ja')]);
+    const languages: Record<string, string> = { ko: `${BASE}/ko/news/${it.slug}` };
+    if (enT) languages.en = `${BASE}/en/news/${it.slug}`;
+    if (jaT) languages.ja = `${BASE}/ja/news/${it.slug}`;
+    const lastModified = new Date(it.date);
+    newsUrls.push({ url: `${BASE}/ko/news/${it.slug}`, lastModified, changeFrequency: 'weekly', priority: 0.7, alternates: { languages } });
+    if (enT) newsUrls.push({ url: `${BASE}/en/news/${it.slug}`, lastModified, changeFrequency: 'weekly', priority: 0.6, alternates: { languages } });
+    if (jaT) newsUrls.push({ url: `${BASE}/ja/news/${it.slug}`, lastModified, changeFrequency: 'weekly', priority: 0.6, alternates: { languages } });
+  }
+
+  return [...staticUrls, ...gameUrls, ...blogUrls, ...newsUrls];
 }

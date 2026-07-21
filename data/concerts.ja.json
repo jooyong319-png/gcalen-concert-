@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-07-21",
+  "last_researched_by": "scaffold-placeholder",
+  "categories": {
+    "concert_tour": "コンサート・来日公演",
+    "music_release": "音源発売(カムバック)",
+    "festival": "フェスティバル",
+    "fanmeeting": "ファンミーティング"
+  },
+  "games": [
+    {
+      "id": "sample-ja-concert-tour-20260905",
+      "name": "[サンプル] アーティストA 来日公演 - 東京",
+      "release_date": "2026-09-05",
+      "release_date_approx": false,
+      "category": "concert_tour",
+      "platforms": ["東京ドーム"],
+      "developer": "アーティストA",
+      "publisher": "サンプル企画",
+      "description": "実データに差し替え予定のサンプル項目です。確認済みの公演のみ登録してください。",
+      "genres": ["ポップ", "来日公演"],
+      "image_url": null,
+      "source_url": null,
+      "pre_registration": true,
+      "pre_registration_date": "2026-08-05",
+      "pre_registration_end_date": "2026-08-10",
+      "pre_registration_url": null
+    },
+    {
+      "id": "sample-ja-music-release-20260822",
+      "name": "[サンプル] アーティストB ニューシングル",
+      "release_date": "2026-08-22",
+      "release_date_approx": false,
+      "category": "music_release",
+      "platforms": [],
+      "developer": "アーティストB",
+      "publisher": "サンプルレーベル",
+      "description": "実データに差し替え予定のサンプル項目です。",
+      "genres": ["J-POP"],
+      "image_url": null,
+      "source_url": null
+    },
+    {
+      "id": "sample-ja-festival-20260927",
+      "name": "[サンプル] 2026 サンプルミュージックフェスティバル",
+      "release_date": "2026-09-27",
+      "release_date_approx": false,
+      "category": "festival",
+      "platforms": ["幕張メッセ"],
+      "developer": null,
+      "publisher": "サンプルフェス実行委員会",
+      "description": "実データに差し替え予定のサンプル項目です。公式ラインナップ発表後に登録してください。",
+      "genres": ["フェスティバル", "複数アーティスト"],
+      "image_url": null,
+      "source_url": null,
+      "pre_registration": true,
+      "pre_registration_date": "2026-08-15",
+      "pre_registration_end_date": null,
+      "pre_registration_url": null
+    },
+    {
+      "id": "sample-ja-fanmeeting-20260913",
+      "name": "[サンプル] アーティストC ファンミーティング",
+      "release_date": "2026-09-13",
+      "release_date_approx": false,
+      "category": "fanmeeting",
+      "platforms": ["有明アリーナ"],
+      "developer": "アーティストC",
+      "publisher": "サンプル事務所",
+      "description": "実データに差し替え予定のサンプル項目です。",
+      "genres": ["ファンミーティング"],
+      "image_url": null,
+      "source_url": null
+    }
+  ]
+}

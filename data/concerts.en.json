@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-07-21",
+  "last_researched_by": "scaffold-placeholder",
+  "categories": {
+    "concert_tour": "Concerts & Tours",
+    "music_release": "Music Release (Comeback)",
+    "festival": "Festival",
+    "fanmeeting": "Fan Meeting"
+  },
+  "games": [
+    {
+      "id": "sample-en-concert-tour-20260912",
+      "name": "[Sample] Artist X North America Tour - Los Angeles",
+      "release_date": "2026-09-12",
+      "release_date_approx": false,
+      "category": "concert_tour",
+      "platforms": ["Crypto.com Arena, Los Angeles"],
+      "developer": "Artist X",
+      "publisher": "Sample Touring Co.",
+      "description": "Placeholder entry to be replaced with real data. Only add confirmed shows.",
+      "genres": ["Pop", "World Tour"],
+      "image_url": null,
+      "source_url": null,
+      "pre_registration": true,
+      "pre_registration_date": "2026-08-10",
+      "pre_registration_end_date": "2026-08-14",
+      "pre_registration_url": null
+    },
+    {
+      "id": "sample-en-music-release-20260828",
+      "name": "[Sample] Artist Y New Single",
+      "release_date": "2026-08-28",
+      "release_date_approx": false,
+      "category": "music_release",
+      "platforms": [],
+      "developer": "Artist Y",
+      "publisher": "Sample Records",
+      "description": "Placeholder entry to be replaced with real data.",
+      "genres": ["Pop"],
+      "image_url": null,
+      "source_url": null
+    },
+    {
+      "id": "sample-en-festival-20261003",
+      "name": "[Sample] 2026 Sample Music Festival",
+      "release_date": "2026-10-03",
+      "release_date_approx": false,
+      "category": "festival",
+      "platforms": ["Golden Gate Park, San Francisco"],
+      "developer": null,
+      "publisher": "Sample Festival Org",
+      "description": "Placeholder entry to be replaced with real data. Add once lineup is officially announced.",
+      "genres": ["Festival", "Multi-artist"],
+      "image_url": null,
+      "source_url": null,
+      "pre_registration": true,
+      "pre_registration_date": "2026-08-01",
+      "pre_registration_end_date": null,
+      "pre_registration_url": null
+    },
+    {
+      "id": "sample-en-fanmeeting-20260920",
+      "name": "[Sample] Artist Z Fan Meeting - New York",
+      "release_date": "2026-09-20",
+      "release_date_approx": false,
+      "category": "fanmeeting",
+      "platforms": ["Radio City Music Hall, New York"],
+      "developer": "Artist Z",
+      "publisher": "Sample Agency",
+      "description": "Placeholder entry to be replaced with real data.",
+      "genres": ["Fan Meeting"],
+      "image_url": null,
+      "source_url": null
+    }
+  ]
+}

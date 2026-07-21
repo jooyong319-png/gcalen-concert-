@@ -1,14 +1,14 @@
 import { NextResponse } from 'next/server';
 import webpush from 'web-push';
 import { createClient } from '@supabase/supabase-js';
-import gamesData from '@/data/games.json';
+import gamesData from '@/data/concerts.ko.json';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 interface GameLite {
   id: string;
-  name_ko: string;
+  name: string;
   release_date: string;
   release_date_approx?: boolean;
 }
@@ -103,12 +103,12 @@ export async function GET(req: Request) {
 
       const g = byId.get(t.id)!;
       const payload = JSON.stringify({
-        title: t.kind === 'dday' ? `오늘 출시! ${g.name_ko}` : `내일 출시! ${g.name_ko}`,
+        title: t.kind === 'dday' ? `오늘 출시! ${g.name}` : `내일 출시! ${g.name}`,
         body:
           t.kind === 'dday'
-            ? `${g.name_ko} 오늘 출시돼요. 지금 확인해 보세요.`
-            : `${g.name_ko} 내일 출시 예정이에요.`,
-        url: `/concert/${g.id}`,
+            ? `${g.name} 오늘 출시돼요. 지금 확인해 보세요.`
+            : `${g.name} 내일 출시 예정이에요.`,
+        url: `/ko/concert/${g.id}`,
         tag: `${g.id}-${t.kind}`,
       });
 

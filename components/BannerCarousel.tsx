@@ -137,7 +137,7 @@ export function BannerCarousel({ games = [] }: Props) {
 
   const inner = b.image_url ? (
     <>
-      <img src={b.image_url} alt={b.title ?? (lang ? 'Banner' : '배너')} className={styles.img} />
+      <img src={b.image_url} alt={b.title ?? (lang === 'ko' ? '배너' : 'Banner')} className={styles.img} />
       {(b.title || b.subtitle) && (
         <div className={styles.overlay}>
           {b.subtitle && <span className={styles.subtitle}>{b.subtitle}</span>}
@@ -168,7 +168,7 @@ export function BannerCarousel({ games = [] }: Props) {
   );
 
   return (
-    <section className={styles.banner} aria-label={lang ? (lang === 'en' ? 'Featured banners' : 'おすすめバナー') : '추천 배너'}>
+    <section className={styles.banner} aria-label={lang === 'ko' ? '추천 배너' : lang === 'en' ? 'Featured banners' : 'おすすめバナー'}>
       {/* key로 배너가 바뀔 때마다 크로스페이드 */}
       <div key={`${b.id}-${safeIdx}`} className={styles.slide}>
         {b.link ? (
@@ -180,8 +180,8 @@ export function BannerCarousel({ games = [] }: Props) {
 
       {list.length > 1 && (
         <>
-          <button type="button" className={`${styles.nav} ${styles.navPrev}`} onClick={() => go(-1)} aria-label={lang ? (lang === 'en' ? 'Previous banner' : '前のバナー') : '이전 배너'}>‹</button>
-          <button type="button" className={`${styles.nav} ${styles.navNext}`} onClick={() => go(1)} aria-label={lang ? (lang === 'en' ? 'Next banner' : '次のバナー') : '다음 배너'}>›</button>
+          <button type="button" className={`${styles.nav} ${styles.navPrev}`} onClick={() => go(-1)} aria-label={lang === 'ko' ? '이전 배너' : lang === 'en' ? 'Previous banner' : '前のバナー'}>‹</button>
+          <button type="button" className={`${styles.nav} ${styles.navNext}`} onClick={() => go(1)} aria-label={lang === 'ko' ? '다음 배너' : lang === 'en' ? 'Next banner' : '次のバナー'}>›</button>
           <div className={styles.dots}>
             {list.map((_, i) => (
               <button
@@ -189,7 +189,7 @@ export function BannerCarousel({ games = [] }: Props) {
                 type="button"
                 className={`${styles.dot} ${i === safeIdx ? styles.dotOn : ''}`}
                 onClick={() => setIdx(i)}
-                aria-label={lang ? `Banner ${i + 1}` : `배너 ${i + 1}번`}
+                aria-label={lang === 'ko' ? `배너 ${i + 1}번` : `Banner ${i + 1}`}
                 aria-current={i === safeIdx}
               />
             ))}

@@ -13,8 +13,9 @@ export async function generateStaticParams() {
 }
 
 const META: Record<Locale, Metadata> = {
-  en: { title: 'My Wishlist', description: 'Your saved games and their release schedules, all in one place.', robots: { index: false, follow: true } },
-  ja: { title: 'マイウィッシュリスト', description: '保存したゲームの発売日程を一箇所で確認できます。', robots: { index: false, follow: true } },
+  ko: { title: '내 위시리스트', description: '저장한 공연·발매 일정을 한곳에서 확인하세요.', robots: { index: false, follow: true } },
+  en: { title: 'My Wishlist', description: 'Your saved shows and release schedules, all in one place.', robots: { index: false, follow: true } },
+  ja: { title: 'マイウィッシュリスト', description: '保存した公演・発売日程を一箇所で確認できます。', robots: { index: false, follow: true } },
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -22,18 +23,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return META[params.lang];
 }
 
-const NOTICE: Record<Locale, string> = {
-  en: 'The wishlist view below uses this site’s standard (Korean) interface. Games you save here are also visible from the Korean pages.',
-  ja: '以下のウィッシュリスト画面は本サイトの標準(韓国語)インターフェースです。ここで保存したゲームは韓国語ページからも確認できます。',
-};
-
 export default async function Page({ params }: Props) {
   if (!isLocale(params.lang)) notFound();
   const lang = params.lang;
-  const games = await getAllGames();
+  const games = await getAllGames(lang);
   return (
     <PageShell lang={lang}>
-      <p style={{ padding: '0.8rem 1rem 0', fontSize: '0.85rem', color: 'var(--text-faint)' }}>{NOTICE[lang]}</p>
       <WishlistView games={games} />
     </PageShell>
   );

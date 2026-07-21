@@ -25,7 +25,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: ui.siteDescription,
     alternates: {
       canonical: url,
-      languages: { ko: 'https://gcalen.com/', en: 'https://gcalen.com/en', ja: 'https://gcalen.com/ja' },
+      languages: {
+        ko: 'https://gcalen.com/ko',
+        en: 'https://gcalen.com/en',
+        ja: 'https://gcalen.com/ja',
+        'x-default': 'https://gcalen.com/',
+      },
     },
     openGraph: { title: ui.siteName, description: ui.siteDescription, url, type: 'website' },
   };
@@ -36,8 +41,8 @@ export default async function LocaleHomePage({ params }: Props) {
   const lang = params.lang;
   const ui = UI[lang];
 
-  const games = await getAllGames();
-  const lastUpdated = await getLastUpdated();
+  const games = await getAllGames(lang);
+  const lastUpdated = await getLastUpdated(lang);
   const serverNow = new Date().toISOString();
 
   const websiteJsonLd = {

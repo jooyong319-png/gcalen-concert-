@@ -36,7 +36,7 @@ export function NextByCategory({ games, now }: Props) {
             <Link key={c} href={`/game/${g.id}`} className={styles.row}>
               <span className={styles.dot} style={{ background: CATEGORY_META[c].color }} aria-hidden="true" />
               <span className={styles.cat}>{CATEGORY_META[c].short}</span>
-              <span className={styles.name}>{g.name_ko}</span>
+              <span className={styles.name}>{g.name}</span>
               <span className={styles.dday}>{dd}</span>
             </Link>
           );

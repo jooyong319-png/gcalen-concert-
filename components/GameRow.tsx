@@ -4,7 +4,7 @@ import type { Game } from '@/lib/types';
 import { CATEGORY_META } from '@/lib/types';
 import { calcDayDiff, getKoreanWeekday } from '@/lib/utils';
 import { useLocale } from '@/hooks/useLocale';
-import { UI, CAL, gameName, gameDescription } from '@/lib/i18nLabels';
+import { UI, CAL } from '@/lib/i18nLabels';
 import styles from './GameRow.module.css';
 
 interface Props {
@@ -41,8 +41,8 @@ export function GameRow({ game: g, now, wishlist, onPick, preBadge }: Props) {
   const weekdayName = lang ? t!.weekdays[new Date(g.release_date).getDay()] : getKoreanWeekday(g.release_date);
   const weekday = g.release_date_approx ? '' : `(${weekdayName})`;
   const tags = [...(g.genres ?? []), ...(g.platforms ?? [])].slice(0, 4);
-  const displayName = gameName(g, lang);
-  const displayDesc = gameDescription(g, lang);
+  const displayName = g.name;
+  const displayDesc = g.description;
 
   return (
     <li
@@ -85,11 +85,6 @@ export function GameRow({ game: g, now, wishlist, onPick, preBadge }: Props) {
           <span className={styles.badge} style={{ color: cat.color }}>{cat.short}</span>
           <span className={styles.title}>{displayName}</span>
           {preBadge && <span className={styles.preBadge}>{preBadge}</span>}
-          {lang ? (
-            displayName !== g.name_ko && <span className={styles.nameEn}>{g.name_ko}</span>
-          ) : (
-            g.name_en && g.name_en !== g.name_ko && <span className={styles.nameEn}>{g.name_en}</span>
-          )}
         </div>
         {displayDesc && <p className={styles.desc}>{displayDesc}</p>}
         {tags.length > 0 && (

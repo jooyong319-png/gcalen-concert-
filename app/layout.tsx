@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}try{var m=location.pathname.match(/^\\/(en|ja)(\\/|$)/);if(m)document.documentElement.lang=m[1];}catch(e){}})();",
+              "(function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}try{var m=location.pathname.match(/^\\/(ko|en|ja)(\\/|$)/);if(m)document.documentElement.lang=m[1];}catch(e){}})();",
           }}
         />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />

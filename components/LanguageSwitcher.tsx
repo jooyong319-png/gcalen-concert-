@@ -6,24 +6,20 @@ import styles from './LanguageSwitcher.module.css';
 type PageLang = 'ko' | 'en' | 'ja';
 
 // 언어별 정적 페이지가 실제로 존재하는 최상위 라우트(app/[lang]/<slug>/page.tsx 목록과 동일하게 유지)
-const STATIC_PAGES = new Set([
-  'upcoming-games', 'pre-registration', 'new-servers', 'events',
-  'mobile-games', 'pc-console-games', 'global-games',
-  'about', 'guide', 'contact', 'privacy', 'terms',
-  'wishlist', 'coupons', 'games', 'blog', 'news',
-]);
-// 항목별 상세 페이지(슬러그 하나 더 붙는 형태)가 존재하는 콘텐츠 타입
-const DETAIL_TYPES = new Set(['game', 'blog', 'news']);
+const STATIC_PAGES = new Set(['about', 'guide', 'contact', 'privacy', 'terms', 'wishlist', 'blog', 'news']);
+// 항목별 상세 페이지(슬러그 하나 더 붙는 형태)가 존재하는 콘텐츠 타입 — concert 상세는 로케일별 독립 데이터라
+// id가 언어마다 다르므로 언어 전환 시 상세 유지가 불가능해 여기선 홈으로 보낸다(DETAIL_TYPES에서 제외).
+const DETAIL_TYPES = new Set(['blog', 'news']);
 
 interface Parsed {
   lang: PageLang;
-  // 'home' = /, 'static' = /upcoming-games 류, 'detail' = /game/[id] 류, 'unmapped' = 번역 라우트 없음(쿠폰 상세·게임 허브·admin 등)
+  // 'home' = /ko 류, 'static' = /ko/about 류, 'detail' = /ko/blog/[slug] 류, 'unmapped' = 번역 라우트 없음(콘서트 상세 등)
   kind: 'home' | 'static' | 'detail' | 'unmapped';
-  rel: string; // 언어 접두사 뺀 상대 경로 조각(예: 'upcoming-games', 'game/foo')
+  rel: string; // 언어 접두사 뺀 상대 경로 조각(예: 'about', 'blog/foo')
 }
 
 function parsePath(pathname: string): Parsed {
-  const localeMatch = pathname.match(/^\/(en|ja)(\/.*)?$/);
+  const localeMatch = pathname.match(/^\/(ko|en|ja)(\/.*)?$/);
   const lang: PageLang = localeMatch ? (localeMatch[1] as PageLang) : 'ko';
   const rest = localeMatch ? (localeMatch[2] ?? '/') : pathname;
 
@@ -41,9 +37,9 @@ function parsePath(pathname: string): Parsed {
 
 function buildUrl(target: PageLang, p: Parsed): string {
   if (p.kind === 'home' || p.kind === 'unmapped') {
-    return target === 'ko' ? '/' : `/${target}`;
+    return `/${target}`;
   }
-  return target === 'ko' ? `/${p.rel}` : `/${target}/${p.rel}`;
+  return `/${target}/${p.rel}`;
 }
 
 const LANGS: { key: PageLang; label: string; short: string }[] = [
@@ -58,7 +54,7 @@ interface Props {
   onOpenChange: (open: boolean) => void;
 }
 
-// 모든 페이지 헤더에 노출. 번역 라우트가 없는 페이지(쿠폰 상세·게임 허브·admin 등)에서는
+// 모든 페이지 헤더에 노출. 번역 라우트가 없는 페이지(콘서트 상세 등 로케일별 독립 데이터)에서는
 // 그 언어의 홈으로 안내(대상 페이지가 항상 존재하므로 dead link 없음).
 export function LanguageSwitcher({ open, onOpenChange }: Props) {
   const pathname = usePathname();
@@ -106,7 +102,11 @@ export function LanguageSwitcher({ open, onOpenChange }: Props) {
                 className={`${styles.item} ${parsed.lang === l.key ? styles.itemActive : ''}`}
                 role="option"
                 aria-selected={parsed.lang === l.key}
-                onClick={() => onOpenChange(false)}
+                onClick={() => {
+                  // 수동 선택값을 쿠키에 저장 — middleware.ts가 '/' 진입 시 이 값을 최우선으로 사용.
+                  document.cookie = `NEXT_LOCALE=${l.key}; path=/; max-age=31536000; SameSite=Lax`;
+                  onOpenChange(false);
+                }}
               >
                 {l.label}
               </a>

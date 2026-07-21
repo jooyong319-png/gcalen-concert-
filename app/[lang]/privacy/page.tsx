@@ -11,6 +11,11 @@ export async function generateStaticParams() {
 }
 
 const META: Record<Locale, Metadata> = {
+  ko: {
+    title: '개인정보처리방침',
+    description: '콘서트 캘린더(gcalen.com) 개인정보처리방침 — 수집 항목, 쿠키 및 맞춤 광고(Google AdSense), 제3자 처리 위탁에 대한 안내.',
+    alternates: { canonical: 'https://gcalen.com/ko/privacy' },
+  },
   en: {
     title: 'Privacy Policy',
     description: 'Gcalen (gcalen.com) privacy policy — data we collect, cookies and personalized ads (Google AdSense), and third-party processing.',
@@ -26,6 +31,65 @@ const META: Record<Locale, Metadata> = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!isLocale(params.lang)) return {};
   return META[params.lang];
+}
+
+function KoBody() {
+  return (
+    <>
+      <h1>개인정보처리방침</h1>
+      <p>콘서트 캘린더(gcalen.com, 이하 &ldquo;서비스&rdquo;)는 이용자의 개인정보를 소중히 다루며 관련 법령을 준수합니다. 본 방침은 서비스가 수집하는 정보와 이용 방식을 설명합니다.</p>
+
+      <h2>1. 수집하는 정보</h2>
+      <p>서비스는 회원가입·로그인 없이 이용할 수 있으며, 이름·이메일·전화번호 등 개인 식별정보는 수집하지 않습니다. 다음 정보가 수집·저장될 수 있습니다.</p>
+      <ul>
+        <li><strong>일정/뉴스 댓글 작성 시</strong>: 닉네임, 댓글 내용.</li>
+        <li><strong>조회수</strong>: 페이지 방문 기록(집계 목적으로만 사용되며 개인을 식별하지 않습니다).</li>
+        <li><strong>이용 분석(Google Analytics)</strong>: 이용 통계를 위해 기기 식별자 및 앱/페이지 상호작용 데이터가 수집될 수 있습니다.</li>
+        <li><strong>브라우저 로컬 스토리지</strong>: 위시리스트, 테마 설정, 최근 사용 닉네임, 중복 조회·좋아요 방지 값. 이 데이터는 이용자의 브라우저에만 저장되며 서버로 전송되지 않습니다.</li>
+      </ul>
+
+      <h2>2. 쿠키 및 맞춤 광고</h2>
+      <ul>
+        <li>서비스는 광고 게재를 위해 <strong>Google AdSense</strong> 및 <strong>카카오 AdFit</strong>을 사용할 수 있습니다.</li>
+        <li>제3자 광고 사업자는 쿠키 및 광고 식별자를 사용해 이전 방문 기록에 기반한 맞춤 광고를 제공할 수 있습니다.</li>
+        <li><a href="https://adssettings.google.com" target="_blank" rel="noopener">Google 광고 설정</a>에서 맞춤 광고를 비활성화할 수 있으며, <a href="https://www.aboutads.info" target="_blank" rel="noopener">www.aboutads.info</a>에서 제3자 쿠키를 거부할 수 있습니다.</li>
+        <li>Google 광고 쿠키에 대한 자세한 내용은 <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google 광고 정책</a>을 참고해 주세요.</li>
+      </ul>
+
+      <h2>3. 이용 목적</h2>
+      <ul>
+        <li>댓글, 조회수 등 서비스 기능의 제공 및 운영</li>
+        <li>이용 통계 분석, 광고 게재 및 서비스 개선</li>
+      </ul>
+
+      <h2>4. 제3자 처리 위탁</h2>
+      <p>서비스는 운영을 위해 다음 외부 사업자를 이용하고 있습니다.</p>
+      <ul>
+        <li>Supabase — 댓글·조회수 데이터 저장</li>
+        <li>Vercel — 웹사이트 호스팅</li>
+        <li>Google Analytics — 이용 통계 분석</li>
+        <li>Google AdSense · 카카오 AdFit — 광고 게재</li>
+      </ul>
+      <p>이용자 정보는 위 목적 범위 내에서만 처리되며, 법령에 따른 경우를 제외하고 제3자에게 판매·제공하지 않습니다. 데이터는 전송 구간에서 HTTPS로 암호화됩니다.</p>
+
+      <h2>5. 보유 및 파기</h2>
+      <p>댓글은 운영 방침에 따라 삭제 시까지 보관됩니다.</p>
+
+      <h2>6. 이용자 권리 및 데이터 삭제 요청</h2>
+      <p>콘서트 캘린더(gcalen.com) 이용자는 다음과 같은 방법으로 데이터 삭제를 요청할 수 있습니다.</p>
+      <ul>
+        <li><strong>이메일을 통한 삭제 요청</strong>: 작성한 댓글의 삭제를 원하시면 해당 페이지 링크와 함께 이메일로 요청해 주세요. 확인 후 신속히 삭제해 드립니다.</li>
+        <li><strong>삭제되는 데이터</strong>: 댓글 내용.</li>
+        <li><strong>보관될 수 있는 데이터</strong>: 개인을 식별할 수 없는 집계 형태의 조회수·이용 통계는 서비스 운영을 위해 익명으로 보관될 수 있습니다. Google Analytics 데이터는 Google의 보관 정책(최대 14개월)에 따라 자동 삭제됩니다.</li>
+        <li><strong>로컬 데이터</strong>: 위시리스트, 테마 등 브라우저 저장 데이터는 브라우저 설정에서 직접 삭제할 수 있습니다.</li>
+      </ul>
+
+      <h2>7. 문의</h2>
+      <p>개인정보 및 데이터 삭제 관련 문의: <a href="mailto:devju546@gmail.com">devju546@gmail.com</a></p>
+
+      <p className="legal-updated">시행일: 2026년 6월 16일</p>
+    </>
+  );
 }
 
 function EnBody() {
@@ -151,7 +215,7 @@ export default async function Page({ params }: Props) {
   return (
     <PageShell lang={params.lang}>
       <article className="legal">
-        {params.lang === 'en' ? <EnBody /> : <JaBody />}
+        {params.lang === 'ko' ? <KoBody /> : params.lang === 'en' ? <EnBody /> : <JaBody />}
       </article>
     </PageShell>
   );

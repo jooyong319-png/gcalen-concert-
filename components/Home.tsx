@@ -33,7 +33,7 @@ const FREE_COLOR = '#6f9c7a';
 
 export function Home({ initialGames, lastUpdated, serverNow, initialCalEvents = [] }: HomeProps) {
   const lang = useLocale();
-  const t = lang ? CAL[lang] : null;
+  const t = CAL[lang];
   const [filters, setFilters] = useState<FilterState>({
     category: null,
     platform: null,
@@ -71,8 +71,8 @@ export function Home({ initialGames, lastUpdated, serverNow, initialCalEvents = 
         if (cancelled) return;
         const evs: CalEvent[] = [];
         for (const g of (d.games ?? []) as { title: string; status: string; start?: string; end?: string; url?: string; image?: string }[]) {
-          if (g.status === 'upcoming' && g.start) evs.push({ date: g.start.slice(0, 10), label: t ? t.freeStarts(g.title) : `${g.title} 무료 시작`, color: FREE_COLOR, type: 'free_game', url: g.url, image: g.image ?? null });
-          if (g.end) evs.push({ date: g.end.slice(0, 10), label: t ? t.freeEnds(g.title) : `${g.title} 무료 종료`, color: FREE_COLOR, type: 'free_game', url: g.url, image: g.image ?? null });
+          if (g.status === 'upcoming' && g.start) evs.push({ date: g.start.slice(0, 10), label: t.freeStarts(g.title), color: FREE_COLOR, type: 'free_game', url: g.url, image: g.image ?? null });
+          if (g.end) evs.push({ date: g.end.slice(0, 10), label: t.freeEnds(g.title), color: FREE_COLOR, type: 'free_game', url: g.url, image: g.image ?? null });
         }
         setFreeEvents(evs);
       })
@@ -107,12 +107,12 @@ export function Home({ initialGames, lastUpdated, serverNow, initialCalEvents = 
   const openModal = useCallback((id: string) => {
     setOpenGameId(id);
     try {
-      const desiredPath = `/concert/${id}`;
+      const desiredPath = `/${lang}/concert/${id}`;
       if (window.location.pathname !== desiredPath) {
         window.history.pushState({ modal: id }, '', desiredPath);
       }
     } catch { /* no-op */ }
-  }, []);
+  }, [lang]);
 
   // 모달 닫기 + URL 복귀
   const closeModal = useCallback((skipHistory = false) => {
@@ -129,7 +129,7 @@ export function Home({ initialGames, lastUpdated, serverNow, initialCalEvents = 
   // popstate 처리 (뒤로/앞으로)
   useEffect(() => {
     const onPop = () => {
-      const m = window.location.pathname.match(/^\/concert\/([^/]+)$/);
+      const m = window.location.pathname.match(/^\/(?:ko|en|ja)\/concert\/([^/]+)$/);
       if (m && initialGames.some(g => g.id === m[1])) {
         setOpenGameId(m[1]);
       } else {
@@ -137,7 +137,7 @@ export function Home({ initialGames, lastUpdated, serverNow, initialCalEvents = 
       }
     };
     window.addEventListener('popstate', onPop);
-    // 초기 URL이 /game/[id]면 모달 열기
+    // 초기 URL이 /[lang]/concert/[id]면 모달 열기
     onPop();
     return () => window.removeEventListener('popstate', onPop);
   }, [initialGames]);
@@ -154,7 +154,7 @@ export function Home({ initialGames, lastUpdated, serverNow, initialCalEvents = 
       if (wishlistOnly && !wishlist.has(g.id)) return false;
 
       if (filters.search) {
-        const hay = `${g.name_ko} ${g.name_en ?? ''}`.toLowerCase();
+        const hay = g.name.toLowerCase();
         if (!hay.includes(filters.search.toLowerCase())) return false;
       }
 
@@ -197,22 +197,22 @@ export function Home({ initialGames, lastUpdated, serverNow, initialCalEvents = 
           <div className={styles.topRow}>
             <input
               type="search"
-              placeholder={t ? t.searchPlaceholder : '게임명 검색…'}
+              placeholder={t.searchPlaceholder}
               value={filters.search}
               onChange={e => setFilters({ ...filters, search: e.target.value })}
               className={styles.topSearch}
-              aria-label={t ? t.searchPlaceholder : '게임명 검색'}
+              aria-label={t.searchPlaceholder}
             />
             <button
               type="button"
               className={`${styles.wishToggle} ${wishlistOnly ? styles.wishToggleOn : ''}`}
               onClick={wishFilter.toggle}
               aria-pressed={wishlistOnly}
-              aria-label={t ? t.wishlistOnly : '위시리스트만 보기'}
-              title={t ? t.wishlistOnly : '위시리스트만 보기'}
+              aria-label={t.wishlistOnly}
+              title={t.wishlistOnly}
             >
               <svg className={wishlistOnly ? 'ic ic-fill' : 'ic'} aria-hidden="true"><use href="#ic-star" /></svg>
-              <span className={styles.wishToggleLabel}>{t ? t.wishlist : '위시'}</span>
+              <span className={styles.wishToggleLabel}>{t.wishlist}</span>
             </button>
             <ViewToggle value={view} onChange={setView} />
           </div>
@@ -242,7 +242,7 @@ export function Home({ initialGames, lastUpdated, serverNow, initialCalEvents = 
       )}
 
           <p className={styles.lastUpdated}>
-            {t ? t.lastUpdated : '데이터 마지막 갱신'}: {formatShortDate(lastUpdated.slice(0, 10))}
+            {t.lastUpdated}: {formatShortDate(lastUpdated.slice(0, 10))}
           </p>
         </div>
 
@@ -251,7 +251,7 @@ export function Home({ initialGames, lastUpdated, serverNow, initialCalEvents = 
           <NextByCategory games={initialGames} now={now} />
           <AdFit unit="DAN-OszywWckdPV6qhbX" width={300} height={250} />
           <FreeGames compact />
-          <PopularGames meta={Object.fromEntries(initialGames.map(g => [g.id, { name: g.name_ko, category: g.category }]))} />
+          <PopularGames meta={Object.fromEntries(initialGames.map(g => [g.id, { name: g.name, category: g.category }]))} />
           <CalendarSubscribe />
           <PromoBanner variant="update" />
         </aside>

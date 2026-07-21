@@ -11,29 +11,29 @@
   "games": [
     {
       "id": "sample-concert-tour-20260830",
-      "name_ko": "[샘플] 아티스트 A 단독 콘서트 - 서울",
-      "name_en": "[Sample] Artist A Solo Concert - Seoul",
-      "name_ja": null,
       "release_date": "2026-08-30",
       "release_date_approx": false,
       "category": "concert_tour",
-      "platforms": ["잠실종합운동장 주경기장"],
+      "platforms": [
+        "잠실종합운동장 주경기장"
+      ],
       "developer": "아티스트 A",
       "publisher": "샘플기획",
       "description": "실제 데이터로 교체 예정인 예시 항목입니다. 리서처가 확인한 공연만 등록하세요.",
-      "genres": ["팝", "단독 콘서트"],
+      "genres": [
+        "팝",
+        "단독 콘서트"
+      ],
       "image_url": null,
       "source_url": null,
       "pre_registration": true,
       "pre_registration_date": "2026-08-01",
       "pre_registration_end_date": "2026-08-05",
-      "pre_registration_url": null
+      "pre_registration_url": null,
+      "name": "[샘플] 아티스트 A 단독 콘서트 - 서울"
     },
     {
       "id": "sample-music-release-20260815",
-      "name_ko": "[샘플] 아티스트 B 정규 3집",
-      "name_en": "[Sample] Artist B 3rd Full Album",
-      "name_ja": null,
       "release_date": "2026-08-15",
       "release_date_approx": false,
       "category": "music_release",
@@ -41,45 +41,54 @@
       "developer": "아티스트 B",
       "publisher": "샘플레이블",
       "description": "실제 데이터로 교체 예정인 예시 항목입니다. 발매 공지 확인 후 등록하세요.",
-      "genres": ["K-POP", "컴백"],
+      "genres": [
+        "K-POP",
+        "컴백"
+      ],
       "image_url": null,
-      "source_url": null
+      "source_url": null,
+      "name": "[샘플] 아티스트 B 정규 3집"
     },
     {
       "id": "sample-festival-20260920",
-      "name_ko": "[샘플] 2026 샘플 뮤직 페스티벌",
-      "name_en": "[Sample] 2026 Sample Music Festival",
-      "name_ja": null,
       "release_date": "2026-09-20",
       "release_date_approx": false,
       "category": "festival",
-      "platforms": ["난지한강공원"],
+      "platforms": [
+        "난지한강공원"
+      ],
       "developer": null,
       "publisher": "샘플 페스티벌 조직위",
       "description": "실제 데이터로 교체 예정인 예시 항목입니다. 라인업 공식 발표 후 등록하세요.",
-      "genres": ["페스티벌", "멀티 아티스트"],
+      "genres": [
+        "페스티벌",
+        "멀티 아티스트"
+      ],
       "image_url": null,
       "source_url": null,
       "pre_registration": true,
       "pre_registration_date": "2026-07-25",
       "pre_registration_end_date": null,
-      "pre_registration_url": null
+      "pre_registration_url": null,
+      "name": "[샘플] 2026 샘플 뮤직 페스티벌"
     },
     {
       "id": "sample-fanmeeting-20260905",
-      "name_ko": "[샘플] 아티스트 C 팬미팅",
-      "name_en": "[Sample] Artist C Fan Meeting",
-      "name_ja": null,
       "release_date": "2026-09-05",
       "release_date_approx": false,
       "category": "fanmeeting",
-      "platforms": ["올림픽공원 핸드볼경기장"],
+      "platforms": [
+        "올림픽공원 핸드볼경기장"
+      ],
       "developer": "아티스트 C",
       "publisher": "샘플기획",
       "description": "실제 데이터로 교체 예정인 예시 항목입니다.",
-      "genres": ["팬미팅"],
+      "genres": [
+        "팬미팅"
+      ],
       "image_url": null,
-      "source_url": null
+      "source_url": null,
+      "name": "[샘플] 아티스트 C 팬미팅"
     }
   ]
 }

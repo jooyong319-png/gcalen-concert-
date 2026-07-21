@@ -2,10 +2,10 @@
 import { useMemo, type CSSProperties } from 'react';
 import type { Game } from '@/lib/types';
 import { CATEGORY_META } from '@/lib/types';
-import { calcDayDiff, formatShortDate, getKoreanWeekday } from '@/lib/utils';
+import { calcDayDiff } from '@/lib/utils';
 import { useWishlist } from '@/hooks/useWishlist';
 import { useLocale } from '@/hooks/useLocale';
-import { UI, CAL, gameName } from '@/lib/i18nLabels';
+import { UI, CAL } from '@/lib/i18nLabels';
 import { NotifyToggle } from './NotifyToggle';
 import styles from './WishlistView.module.css';
 
@@ -47,15 +47,14 @@ export function WishlistView({ games }: { games: Game[] }) {
             const dd = g.release_date_approx ? tba : released ? releasedText : diff === 0 ? 'D-DAY' : `D-${diff}`;
             const soon = diff >= 0 && diff <= 7;
             const cat = CATEGORY_META[g.category];
-            const displayName = gameName(g, lang);
+            const displayName = g.name;
+            const intlLocale = lang === 'en' ? 'en-US' : lang === 'ja' ? 'ja-JP' : 'ko-KR';
             const date = g.release_date_approx
               ? (t ? t.releaseDateTba : '출시일 미정')
-              : lang
-                ? `${new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'ja-JP', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(g.release_date))} (${t!.weekdays[new Date(g.release_date).getDay()]})`
-                : `${formatShortDate(g.release_date)} (${getKoreanWeekday(g.release_date)})`;
+              : `${new Intl.DateTimeFormat(intlLocale, { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(g.release_date))} (${t!.weekdays[new Date(g.release_date).getDay()]})`;
             return (
               <li key={g.id} className={styles.row} style={{ '--cat': cat.color } as CSSProperties}>
-                <a className={styles.rowMain} href={`/concert/${g.id}`}>
+                <a className={styles.rowMain} href={`/${lang}/concert/${g.id}`}>
                   <span className={styles.titleRow}>
                     <span className={styles.badge} style={{ color: cat.color }}>{cat.short}</span>
                     <span className={styles.name}>{displayName}</span>
@@ -67,7 +66,7 @@ export function WishlistView({ games }: { games: Game[] }) {
                   type="button"
                   className={styles.remove}
                   onClick={() => wishlist.toggle(g.id)}
-                  aria-label={t ? t.removeFromWishlistAria(displayName) : `${g.name_ko} 즐겨찾기 제거`}
+                  aria-label={t ? t.removeFromWishlistAria(displayName) : `${g.name} 즐겨찾기 제거`}
                 >
                   <svg className="ic ic-fill" aria-hidden="true"><use href="#ic-star" /></svg>
                 </button>

@@ -3,12 +3,12 @@ import { useMemo, useState, useEffect, useRef, type CSSProperties } from 'react'
 import type { Category, Game, CalEvent, FilterKey } from '@/lib/types';
 // (Category는 셀 색에 CATEGORY_META로만 사용)
 import { CATEGORY_META } from '@/lib/types';
-import { calcDayDiff, formatShortDate, getKoreanWeekday } from '@/lib/utils';
+import { calcDayDiff, formatShortDate } from '@/lib/utils';
 import { CategoryFilterBar } from './CategoryFilterBar';
 import { GameRow } from './GameRow';
 import { EventRow } from './EventRow';
 import { useLocale } from '@/hooks/useLocale';
-import { CAL, CATEGORY_LABELS, gameName, type Locale } from '@/lib/i18nLabels';
+import { CAL, CATEGORY_LABELS, type Locale } from '@/lib/i18nLabels';
 import styles from './CalendarView.module.css';
 
 const LEGEND_CATS: Category[] = ['concert_tour', 'music_release', 'festival', 'fanmeeting'];
@@ -99,9 +99,10 @@ export function CalendarView({ cursor, onCursorChange, games, events = [], wishl
     return m;
   }, [events]);
   const cells = useMemo(() => buildCells(cursor, games, now), [cursor, games, now]);
-  const monthLabel = lang
-    ? new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'ja-JP', { year: 'numeric', month: 'long' }).format(cursor)
-    : `${cursor.getFullYear()}년 ${cursor.getMonth() + 1}월`;
+  const monthLabel = new Intl.DateTimeFormat(
+    lang === 'en' ? 'en-US' : lang === 'ja' ? 'ja-JP' : 'ko-KR',
+    { year: 'numeric', month: 'long' }
+  ).format(cursor);
   const [selectedISO, setSelectedISO] = useState<string | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
   // 사용자 클릭 선택에만 패널로 스크롤(진입 자동선택은 점프 안 함)
@@ -181,7 +182,7 @@ export function CalendarView({ cursor, onCursorChange, games, events = [], wishl
       if (g.pre_registration_date === selectedISO) out.push({ game: g, kind: 'prereg' });
       if (g.pre_registration_end_date === selectedISO) out.push({ game: g, kind: 'prereg_end' });
     }
-    return out.sort((a, b) => gameName(a.game, lang).localeCompare(gameName(b.game, lang)));
+    return out.sort((a, b) => a.game.name.localeCompare(b.game.name));
   }, [selectedISO, games]);
 
   return (
@@ -232,7 +233,7 @@ export function CalendarView({ cursor, onCursorChange, games, events = [], wishl
                   onCellClick(cell);
                 }
               }}
-              title={has ? cell.entries.map(e => KIND_TAG[e.kind] ? `${gameName(e.game, lang)} (${KIND_TAG[e.kind]})` : gameName(e.game, lang)).join(', ') : undefined}
+              title={has ? cell.entries.map(e => KIND_TAG[e.kind] ? `${e.game.name} (${KIND_TAG[e.kind]})` : e.game.name).join(', ') : undefined}
             >
               <div className={`${styles.cellDate} ${cell.date.getDay() === 0 ? styles.sun : cell.date.getDay() === 6 ? styles.sat : ''}`.trim()}>
                 {cell.isToday
@@ -242,7 +243,7 @@ export function CalendarView({ cursor, onCursorChange, games, events = [], wishl
 
               {showName && firstGame && (
                 <div className={styles.cellName}>
-                  {gameName(firstGame, lang)}
+                  {firstGame.name}
                   {KIND_TAG[firstEntry.kind] && <span className={styles.cellPreTag}>{KIND_TAG[firstEntry.kind]}</span>}
                   {cell.entries.length > 1 && <span className={styles.cellMore}>+{cell.entries.length - 1}</span>}
                 </div>
@@ -259,7 +260,7 @@ export function CalendarView({ cursor, onCursorChange, games, events = [], wishl
                         style={e.kind === 'release'
                           ? { background: c }
                           : { background: 'transparent', boxShadow: `inset 0 0 0 2px ${c}`, opacity: e.kind === 'prereg_end' ? 0.5 : 1 }} // 사전예약 = 속 빈 링(마감은 흐리게)
-                        title={KIND_TAG[e.kind] ? `${gameName(e.game, lang)} (${KIND_TAG[e.kind]})` : gameName(e.game, lang)}
+                        title={KIND_TAG[e.kind] ? `${e.game.name} (${KIND_TAG[e.kind]})` : e.game.name}
                       />
                     );
                   })}
@@ -309,7 +310,7 @@ export function CalendarView({ cursor, onCursorChange, games, events = [], wishl
         <div ref={panelRef} className={styles.dayPanel}>
           <header className={styles.dayPanelHeader}>
             <h3 className={styles.dayPanelTitle}>
-              {formatShortDate(selectedISO)} ({lang ? t!.weekdays[new Date(selectedISO).getDay()] : getKoreanWeekday(selectedISO)})
+              {formatShortDate(selectedISO)} ({t!.weekdays[new Date(selectedISO).getDay()]})
             </h3>
             <button
               type="button"

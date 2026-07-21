@@ -1,5 +1,6 @@
-// 콘서트/음원 발매 캘린더 데이터 타입 정의 (data/games.json의 스키마)
-// ※ 필드명은 gcalen(게임 캘린더) 스캐폴드를 그대로 재사용 — Game/name_ko 등은 범용 "일정 항목"을 뜻함.
+// 콘서트/음원 발매 캘린더 데이터 타입 정의 (data/concerts.{ko,en,ja}.json의 스키마)
+// ※ ko/en/ja는 서로 번역 관계가 아니라 완전히 독립된 콘텐츠(국가/지역별 실제 공연).
+//   그래서 name_en/name_ja 같은 번역 필드 없이 언어별 파일 각각이 자체 완결형.
 
 export type Category =
   | 'concert_tour'   // 콘서트·내한 공연
@@ -9,18 +10,14 @@ export type Category =
 
 export interface Game {
   id: string;
-  name_ko: string;
-  name_en: string | null;
-  name_ja?: string | null;          // 일본어 표기명 (선택 필드 — 없으면 name_en 또는 name_ko 폴백)
+  name: string;
   release_date: string;             // 'YYYY-MM-DD' — 공연일/발매일
   release_date_approx: boolean;
   category: Category;
   platforms: string[];              // 공연장/지역 등
   developer: string | null;         // 아티스트 / 기획사
   publisher: string | null;         // 주최/유통사
-  description: string | null;       // 한국어 설명 (필수 — 사이트 기본 언어)
-  description_en?: string | null;   // 영어 설명 (선택 필드 — 리서처가 신규 등록 시 함께 채움, 없으면 /en 페이지 미생성)
-  description_ja?: string | null;   // 일본어 설명 (선택 필드 — 위와 동일)
+  description: string | null;
   genres: string[];                 // 장르/태그
   image_url: string | null;
   source_url: string | null;

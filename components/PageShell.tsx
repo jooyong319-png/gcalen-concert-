@@ -21,7 +21,7 @@ interface Props {
 // 서브페이지(출시예정·카테고리·블로그·상세) 공용 2컬럼 셸 — 우측 레일에 카테고리별 카드 나열.
 // 정적 생성이라 빌드 시각(KST) 기준 D-day(데이터 일일 갱신 시 재배포로 신선도 유지).
 export async function PageShell({ children, lang }: Props) {
-  const games = await getAllGames();
+  const games = await getAllGames(lang);
   const now = kstDateOnly(new Date().toISOString());
 
   return (

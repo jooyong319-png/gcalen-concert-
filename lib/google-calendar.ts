@@ -8,17 +8,17 @@ export function buildGoogleCalendarUrl(game: Game): string {
   endDate.setDate(endDate.getDate() + 1);
   const end = endDate.toISOString().slice(0, 10).replace(/-/g, '');
 
-  const title = game.name_ko || game.name_en || '게임 출시';
+  const title = game.name || '일정';
   const cat = CATEGORY_META[game.category]?.label ?? game.category;
 
   const details = [
-    `[${cat}] ${title}${game.name_en && game.name_ko !== game.name_en ? ` (${game.name_en})` : ''}`,
+    `[${cat}] ${title}`,
     game.description ?? '',
-    game.developer ? `개발: ${game.developer}` : '',
-    game.publisher ? `배급: ${game.publisher}` : '',
-    game.platforms?.length ? `플랫폼: ${game.platforms.join(', ')}` : '',
+    game.developer ? `아티스트/기획사: ${game.developer}` : '',
+    game.publisher ? `주최: ${game.publisher}` : '',
+    game.platforms?.length ? `공연장: ${game.platforms.join(', ')}` : '',
     '',
-    `출처: https://gcalen.com/game/${game.id}`
+    `출처: https://gcalen.com/ko/concert/${game.id}`
   ].filter(Boolean).join('\n');
 
   const params = new URLSearchParams({

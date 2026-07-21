@@ -165,7 +165,7 @@ export function AdminDashboard({ nameMap }: { nameMap: Record<string, string> })
                 {items.map(([id, n], i) => {
                   const isBlog = id.startsWith('blog:');
                   const slug = isBlog ? id.slice(5) : id;
-                  const href = isBlog ? `/blog/${slug}` : `/concert/${id}`;
+                  const href = isBlog ? `/ko/blog/${slug}` : `/ko/concert/${id}`;
                   return (
                     <li key={id} className={styles.topRow}>
                       <span className={styles.rank}>{i + 1}</span>
@@ -188,7 +188,7 @@ export function AdminDashboard({ nameMap }: { nameMap: Record<string, string> })
         {stats.topGames.map(([id, n], i) => (
           <li key={id} className={styles.topRow}>
             <span className={styles.rank}>{i + 1}</span>
-            <a className={styles.topName} href={`/concert/${id}`} target="_blank" rel="noopener">{nameMap[id] ?? id}</a>
+            <a className={styles.topName} href={`/ko/concert/${id}`} target="_blank" rel="noopener">{nameMap[id] ?? id}</a>
             <span className={styles.topNum}>{n.toLocaleString()}</span>
           </li>
         ))}
@@ -204,7 +204,7 @@ export function AdminDashboard({ nameMap }: { nameMap: Record<string, string> })
             return (
               <li key={id} className={styles.topRow}>
                 <span className={styles.rank}>{i + 1}</span>
-                <a className={styles.topName} href={`/blog/${slug}`} target="_blank" rel="noopener">{nameMap[id] ?? slug}</a>
+                <a className={styles.topName} href={`/ko/blog/${slug}`} target="_blank" rel="noopener">{nameMap[id] ?? slug}</a>
                 <span className={styles.topNum}>{n.toLocaleString()}</span>
               </li>
             );

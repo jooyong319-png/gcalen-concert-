@@ -4,7 +4,7 @@ import Link from 'next/link';
 import type { Game, Category } from '@/lib/types';
 import { CATEGORY_META } from '@/lib/types';
 import { useLocale } from '@/hooks/useLocale';
-import { CAL, UI, gameName, type Locale } from '@/lib/i18nLabels';
+import { CAL, UI, type Locale } from '@/lib/i18nLabels';
 import styles from './FeaturedCards.module.css';
 
 interface Props { games: Game[]; now: Date; variant?: 'hero' | 'list'; }
@@ -47,14 +47,14 @@ function gameToCard(game: Game, isPreReg: boolean, lang: Locale | null): CardDat
   const tba = lang ? UI[lang].tba : '미정';
   return {
     key: `game-${game.id}`,
-    href: `/concert/${game.id}`,
+    href: `/${lang ?? 'ko'}/concert/${game.id}`,
     external: false,
     imageUrl: game.image_url,
     badge: isPreReg ? (lang ? CAL[lang].preRegTag : '사전예약') : cat.short,
     badgeColor: isPreReg ? 'var(--accent-warm)' : cat.color,
-    name: gameName(game, lang),
+    name: game.name,
     dateText: game.release_date_approx ? tba : shortDate(game.release_date),
-    countdownLabel: lang ? `${lang === 'en' ? 'Time until release' : '発売までの時間'}` : '출시까지 남은 시간',
+    countdownLabel: lang === 'ko' ? '출시까지 남은 시간' : lang === 'en' ? 'Time until release' : '発売までの時間',
     targetMs: game.release_date_approx ? null : new Date(`${game.release_date}T00:00:00+09:00`).getTime(),
     fallbackText: tba,
   };
@@ -69,8 +69,8 @@ function freeToCard(free: FreeGame, lang: Locale | null): CardData {
     badge: lang ? CAL[lang].free : '무료',
     badgeColor: FREE_COLOR,
     name: free.title,
-    dateText: lang ? (lang === 'en' ? 'Free on Epic Games' : 'Epic Games無料配布') : '에픽게임즈 무료 배포',
-    countdownLabel: lang ? (lang === 'en' ? 'Time until free ends' : '無料終了までの時間') : '무료 종료까지 남은 시간',
+    dateText: lang === 'ko' ? '에픽게임즈 무료 배포' : lang === 'en' ? 'Free on Epic Games' : 'Epic Games無料配布',
+    countdownLabel: lang === 'ko' ? '무료 종료까지 남은 시간' : lang === 'en' ? 'Time until free ends' : '無料終了までの時間',
     targetMs: free.end ? new Date(free.end).getTime() : null,
     fallbackText: lang ? CAL[lang].ongoing : '진행 중',
   };

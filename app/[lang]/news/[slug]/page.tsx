@@ -18,7 +18,7 @@ function isLocale(v: string): v is Locale {
 export async function generateStaticParams() {
   const params: { lang: Locale; slug: string }[] = [];
   for (const lang of LOCALES) {
-    const slugs = await getTranslatedNewsSlugs(lang);
+    const slugs = lang === 'ko' ? (await getAllNews()).map(n => n.slug) : await getTranslatedNewsSlugs(lang);
     for (const slug of slugs) params.push({ lang, slug });
   }
   return params;
@@ -26,19 +26,20 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!isLocale(params.lang)) return {};
+  const lang = params.lang;
   const item = await getNewsBySlug(params.slug);
-  if (!item) return { title: UI[params.lang].notFound };
-  const t = await getNewsTranslation(item.slug, params.lang);
-  if (!t) return { title: `${item.title} — ${UI[params.lang].siteName}`, robots: { index: false } };
+  if (!item) return { title: UI[lang].notFound };
+  const t = lang === 'ko' ? { title: item.title, description: item.description, content: item.content } : await getNewsTranslation(item.slug, lang);
+  if (!t) return { title: `${item.title} — ${UI[lang].siteName}`, robots: { index: false } };
 
-  const url = `https://gcalen.com/${params.lang}/news/${item.slug}`;
+  const url = `https://gcalen.com/${lang}/news/${item.slug}`;
   return {
-    title: `${t.title} | ${UI[params.lang].siteName}`,
+    title: `${t.title} | ${UI[lang].siteName}`,
     description: t.description.slice(0, 158),
     alternates: {
       canonical: url,
       languages: {
-        ko: `https://gcalen.com/news/${item.slug}`,
+        ko: `https://gcalen.com/ko/news/${item.slug}`,
         en: `https://gcalen.com/en/news/${item.slug}`,
         ja: `https://gcalen.com/ja/news/${item.slug}`,
       },
@@ -54,8 +55,8 @@ export default async function LocaleNewsPage({ params }: Props) {
 
   const item = await getNewsBySlug(params.slug);
   if (!item) notFound();
-  const t = await getNewsTranslation(item.slug, lang);
-  const koUrl = `https://gcalen.com/news/${item.slug}`;
+  const t = lang === 'ko' ? { title: item.title, description: item.description, content: item.content } : await getNewsTranslation(item.slug, lang);
+  const koUrl = `https://gcalen.com/ko/news/${item.slug}`;
 
   // redirect()는 이 라우트의 정적 캐싱과 충돌해 신뢰할 수 없이 동작해 일반 조건부 렌더로 대체.
   if (!t) {
@@ -92,9 +93,11 @@ export default async function LocaleNewsPage({ params }: Props) {
             <a href={item.sourceUrl} target="_blank" rel="noopener nofollow">{item.sourceUrl}</a>
           </div>
         )}
-        <p>
-          <a href={koUrl} className="detail-link">{ui.viewOriginal}</a>
-        </p>
+        {lang !== 'ko' && (
+          <p>
+            <a href={koUrl} className="detail-link">{ui.viewOriginal}</a>
+          </p>
+        )}
       </article>
     </PageShell>
   );

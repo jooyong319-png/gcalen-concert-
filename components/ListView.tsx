@@ -104,7 +104,7 @@ export function ListView({ games, events = [], wishlist, onPick, now, category, 
       <div className={styles.monthNav}>
         <div className={styles.yearRow}>
           <button type="button" className={styles.yearBtn} onClick={() => shiftYear(-1)} aria-label={t ? t.prevYear : '이전 해'}>‹</button>
-          <span className={styles.yearLabel}>{activeYear}{lang ? '' : '년'}</span>
+          <span className={styles.yearLabel}>{activeYear}{lang === 'ko' ? '년' : ''}</span>
           <button type="button" className={styles.yearBtn} onClick={() => shiftYear(1)} aria-label={t ? t.nextYear : '다음 해'}>›</button>
         </div>
         <div className={styles.tabs} role="tablist" aria-label={t ? t.monthSelect : '월 선택'}>
@@ -142,7 +142,7 @@ export function ListView({ games, events = [], wishlist, onPick, now, category, 
               ? (t ? t.noApproxGames : '출시일 미정 게임이 없어요.')
               : (t
                   ? t.noReleaseThisMonthYear(
-                      new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'ja-JP', { year: 'numeric', month: 'long' }).format(new Date(activeYear, (activeMonth as number) - 1))
+                      new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : lang === 'ja' ? 'ja-JP' : 'ko-KR', { year: 'numeric', month: 'long' }).format(new Date(activeYear, (activeMonth as number) - 1))
                     )
                   : `${activeYear}년 ${activeMonth}월 일정이 없어요.`)}
           </p>

@@ -74,7 +74,7 @@ export async function FloatingMonthStats() {
             {preRegs.map(g => (
               <a key={g.id} href={`/game/${g.id}`} className={styles.preRow}>
                 <span className={styles.preDot} style={{ background: CATEGORY_META[g.category].color }} aria-hidden="true" />
-                <span className={styles.preName}>{g.name_ko}</span>
+                <span className={styles.preName}>{g.name}</span>
               </a>
             ))}
           </div>

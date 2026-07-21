@@ -13,14 +13,11 @@ interface Parts { Days: number; Hours: number; Min: number; Sec: number; }
 
 function pad(n: number): string { return String(n).padStart(2, '0'); }
 
-function startLabel(startDate: string | null | undefined, lang: Locale | null): string | null {
+function startLabel(startDate: string | null | undefined, lang: Locale): string | null {
   if (!startDate) return null;
-  if (lang) {
-    const label = new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'ja-JP', { month: 'long', day: 'numeric' }).format(new Date(startDate));
-    return CAL[lang].startsOn(label);
-  }
-  const [, mo, da] = startDate.split('-');
-  return `${Number(mo)}월 ${Number(da)}일 시작`;
+  const intlLocale = lang === 'en' ? 'en-US' : lang === 'ja' ? 'ja-JP' : 'ko-KR';
+  const label = new Intl.DateTimeFormat(intlLocale, { month: 'long', day: 'numeric' }).format(new Date(startDate));
+  return CAL[lang].startsOn(label);
 }
 
 // 사전예약 안내 — 마감일 있으면 라이브 카운트다운, 없으면 '마감 미정'.

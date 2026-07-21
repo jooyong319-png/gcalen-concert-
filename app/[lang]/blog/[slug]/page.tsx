@@ -17,7 +17,7 @@ function isLocale(v: string): v is Locale {
 export async function generateStaticParams() {
   const params: { lang: Locale; slug: string }[] = [];
   for (const lang of LOCALES) {
-    const slugs = await getTranslatedSlugs(lang);
+    const slugs = lang === 'ko' ? (await getAllPosts()).map(p => p.slug) : await getTranslatedSlugs(lang);
     for (const slug of slugs) params.push({ lang, slug });
   }
   return params;
@@ -25,19 +25,20 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!isLocale(params.lang)) return {};
+  const lang = params.lang;
   const post = await getPostBySlug(params.slug);
-  if (!post) return { title: UI[params.lang].notFound };
-  const t = await getPostTranslation(params.slug, params.lang);
-  if (!t) return { title: `${post.title} — ${UI[params.lang].siteName}`, robots: { index: false } };
+  if (!post) return { title: UI[lang].notFound };
+  const t = lang === 'ko' ? { title: post.title, description: post.description, content: post.content } : await getPostTranslation(params.slug, lang);
+  if (!t) return { title: `${post.title} — ${UI[lang].siteName}`, robots: { index: false } };
 
-  const url = `https://gcalen.com/${params.lang}/blog/${params.slug}`;
+  const url = `https://gcalen.com/${lang}/blog/${params.slug}`;
   return {
-    title: `${t.title} | ${UI[params.lang].siteName}`,
+    title: `${t.title} | ${UI[lang].siteName}`,
     description: t.description.slice(0, 158),
     alternates: {
       canonical: url,
       languages: {
-        ko: `https://gcalen.com/blog/${params.slug}`,
+        ko: `https://gcalen.com/ko/blog/${params.slug}`,
         en: `https://gcalen.com/en/blog/${params.slug}`,
         ja: `https://gcalen.com/ja/blog/${params.slug}`,
       },
@@ -53,8 +54,8 @@ export default async function LocaleBlogPage({ params }: Props) {
 
   const post = await getPostBySlug(params.slug);
   if (!post) notFound();
-  const t = await getPostTranslation(params.slug, lang);
-  const koUrl = `https://gcalen.com/blog/${params.slug}`;
+  const t = lang === 'ko' ? { title: post.title, description: post.description, content: post.content } : await getPostTranslation(params.slug, lang);
+  const koUrl = `https://gcalen.com/ko/blog/${params.slug}`;
 
   // redirect()는 이 라우트의 정적 캐싱과 충돌해 신뢰할 수 없이 동작해 일반 조건부 렌더로 대체.
   if (!t) {
@@ -82,9 +83,11 @@ export default async function LocaleBlogPage({ params }: Props) {
           {t.description && <p className={styles.postLead}>{t.description}</p>}
         </header>
         <div className={styles.postBody} dangerouslySetInnerHTML={{ __html: html }} />
-        <p>
-          <a href={koUrl} className="detail-link">{ui.viewOriginal}</a>
-        </p>
+        {lang !== 'ko' && (
+          <p>
+            <a href={koUrl} className="detail-link">{ui.viewOriginal}</a>
+          </p>
+        )}
       </article>
     </PageShell>
   );

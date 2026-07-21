@@ -15,14 +15,19 @@ export async function generateStaticParams() {
 }
 
 const META: Record<Locale, Metadata> = {
+  ko: {
+    title: '공연 뉴스 | 신규 소식, 업데이트, 발표',
+    description: '국내외 콘서트·페스티벌·발매 관련 신규 소식, 일정 변경, 사전예약, 발표를 매일 정리합니다.',
+    alternates: { canonical: 'https://gcalen.com/ko/news' },
+  },
   en: {
-    title: 'Game News | New Releases, Updates, Launches',
-    description: 'Daily-curated game news from Korea and worldwide — new releases, updates, pre-registration, and launch announcements.',
+    title: 'News | New Announcements, Updates, Ticketing',
+    description: 'Daily-curated concert and release news from Korea and worldwide — announcements, updates, and pre-registration.',
     alternates: { canonical: 'https://gcalen.com/en/news' },
   },
   ja: {
-    title: 'ゲームニュース | 新作・アップデート・発売情報',
-    description: '国内外の新作、アップデート、事前予約、発売情報を毎日整理。Gcalenがキュレーションする最新ゲームニュース。',
+    title: 'ニュース | 新着情報・アップデート・発売情報',
+    description: '国内外のコンサート・フェス・発売関連の新着情報、日程変更、先行予約情報を毎日整理。',
     alternates: { canonical: 'https://gcalen.com/ja/news' },
   },
 };
@@ -32,28 +37,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return META[params.lang];
 }
 
-const H2: Record<Locale, string> = { en: 'Game News', ja: 'ゲームニュース' };
+const H2: Record<Locale, string> = { ko: '공연 뉴스', en: 'News', ja: 'ニュース' };
 const SUBTITLE: Record<Locale, string> = {
-  en: 'New releases, updates, pre-registration, and launch news — curated daily.',
-  ja: '新作・アップデート・事前予約・発売情報を毎日整理。',
+  ko: '신규 소식, 일정 변경, 사전예약, 발표 소식을 매일 정리합니다.',
+  en: 'Announcements, updates, and pre-registration news — curated daily.',
+  ja: '新着情報、日程変更、先行予約情報を毎日整理。',
 };
-const EMPTY: Record<Locale, string> = { en: 'No news yet — check back soon!', ja: 'まだニュースがありません。近日公開予定です!' };
-const UNTRANSLATED_TAG: Record<Locale, string> = { en: '(Korean only)', ja: '(韓国語のみ)' };
+const EMPTY: Record<Locale, string> = { ko: '아직 뉴스가 없습니다. 곧 채워질 예정이에요!', en: 'No news yet — check back soon!', ja: 'まだニュースがありません。近日公開予定です!' };
+const UNTRANSLATED_TAG: Record<Locale, string> = { ko: '', en: '(Korean only)', ja: '(韓国語のみ)' };
 
 export default async function Page({ params }: Props) {
   if (!isLocale(params.lang)) notFound();
   const lang = params.lang;
   const items = await getAllNews();
 
-  // 항목별로 번역이 있으면 그 언어 제목/설명 + /lang/news/slug로, 없으면 한국어 + /news/slug로(폴백).
+  // 항목별로 번역이 있으면 그 언어 제목/설명 + /lang/news/slug로, 없으면 /ko/news/slug로(폴백).
   const rows = await Promise.all(items.map(async it => {
-    const t = await getNewsTranslation(it.slug, lang);
+    const t = lang === 'ko' ? null : await getNewsTranslation(it.slug, lang);
+    const translated = lang === 'ko' || !!t;
     return {
       slug: it.slug,
-      href: t ? `/${lang}/news/${it.slug}` : `/news/${it.slug}`,
+      href: translated ? `/${lang}/news/${it.slug}` : `/ko/news/${it.slug}`,
       title: t ? t.title : it.title,
       description: t ? t.description : it.description,
-      translated: !!t,
+      translated,
       date: it.date,
       source: it.source,
       heroImage: it.heroImage,

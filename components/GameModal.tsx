@@ -2,11 +2,11 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Game } from '@/lib/types';
 import { CATEGORY_META } from '@/lib/types';
-import { calcDayDiff, formatKoreanDate, getKoreanWeekday } from '@/lib/utils';
+import { calcDayDiff } from '@/lib/utils';
 import { ShareButton } from './ShareButton';
 import { PreRegCountdown } from './PreRegCountdown';
 import { useLocale } from '@/hooks/useLocale';
-import { UI, CAL, CATEGORY_LABELS, gameName, gameDescription } from '@/lib/i18nLabels';
+import { UI, CAL, CATEGORY_LABELS } from '@/lib/i18nLabels';
 import styles from './GameModal.module.css';
 
 interface Props {
@@ -42,14 +42,13 @@ export function GameModal({ game, onClose, wishlist }: Props) {
   const dd = game.release_date_approx ? tba : diff < 0 ? releasedText : diff === 0 ? 'D-DAY' : `D-${diff}`;
   const cat = CATEGORY_META[game.category];
   const catLabel = lang ? CATEGORY_LABELS[lang][game.category] : cat.label;
-  const dateStr = lang
-    ? new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'ja-JP', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(game.release_date))
-    : formatKoreanDate(game.release_date);
-  const weekdayName = lang ? t!.weekdays[new Date(game.release_date).getDay()] : getKoreanWeekday(game.release_date);
+  const intlLocale = lang === 'en' ? 'en-US' : lang === 'ja' ? 'ja-JP' : 'ko-KR';
+  const dateStr = new Intl.DateTimeFormat(intlLocale, { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(game.release_date));
+  const weekdayName = t!.weekdays[new Date(game.release_date).getDay()];
   const weekday = game.release_date_approx ? '' : ` (${weekdayName})`;
   const isWished = wishlist.has(game.id);
-  const displayName = gameName(game, lang);
-  const displayDesc = gameDescription(game, lang);
+  const displayName = game.name;
+  const displayDesc = game.description;
 
   return (
     <div className={styles.overlay} onClick={onClose} role="presentation">
@@ -74,11 +73,6 @@ export function GameModal({ game, onClose, wishlist }: Props) {
           <div className={styles.headerInfo}>
             <span className={`category-tag cat-bg-${game.category}`}>{catLabel}</span>
             <h2 id="modal-title" className={styles.title}>{displayName}</h2>
-            {lang ? (
-              displayName !== game.name_ko && <div className={styles.nameEn}>{game.name_ko}</div>
-            ) : (
-              game.name_en && game.name_en !== game.name_ko && <div className={styles.nameEn}>{game.name_en}</div>
-            )}
           </div>
         </div>
 
@@ -122,10 +116,10 @@ export function GameModal({ game, onClose, wishlist }: Props) {
             <svg className={`ic ${isWished ? 'ic-fill' : ''}`} aria-hidden="true"><use href="#ic-star" /></svg>
             {t ? (isWished ? t.favorited : t.favorite) : (isWished ? '즐겨찾기됨' : '즐겨찾기')}
           </button>
-          <a className={styles.detail} href={`/concert/${game.id}`} target="_blank" rel="noopener">
+          <a className={styles.detail} href={`/${lang}/concert/${game.id}`} target="_blank" rel="noopener">
             <svg className="ic" aria-hidden="true"><use href="#ic-file" /></svg> {t ? t.fullPage : '전체 페이지'} <svg className="ic" aria-hidden="true"><use href="#ic-arrow-ur" /></svg>
           </a>
-          <ShareButton url={`/concert/${game.id}`} title={displayName} className={styles.share} />
+          <ShareButton url={`/${lang}/concert/${game.id}`} title={displayName} className={styles.share} />
         </div>
       </div>
     </div>

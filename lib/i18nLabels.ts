@@ -1,59 +1,27 @@
 // 다국어(/en, /ja) 페이지 공용 UI 문구 — 정적 딕셔너리(번역 API 미사용, 직접 작성).
 import type { Category } from './types';
 
-export type Locale = 'en' | 'ja';
-export const LOCALES: Locale[] = ['en', 'ja'];
+export type Locale = 'ko' | 'en' | 'ja';
+export const LOCALES: Locale[] = ['ko', 'en', 'ja'];
 
-// 게임명/설명 — 리서처가 채운 name_en/name_ja, description_en/ja가 있으면 그걸, 없으면 한국어로 폴백.
-// 캘린더·리스트·모달 등 게임 데이터를 보여주는 모든 곳에서 공용으로 사용.
-interface LocalizableGameName { name_ko: string; name_en?: string | null; name_ja?: string | null; }
-interface LocalizableGameDesc { description: string | null; description_en?: string | null; description_ja?: string | null; }
-
-export function gameName(g: LocalizableGameName, lang: Locale | null): string {
-  if (!lang) return g.name_ko;
-  if (lang === 'ja') return g.name_ja || g.name_en || g.name_ko;
-  return g.name_en || g.name_ko;
-}
-
-export function gameDescription(g: LocalizableGameDesc, lang: Locale | null): string | null {
-  if (!lang) return g.description;
-  const d = lang === 'en' ? g.description_en : g.description_ja;
-  return d || g.description;
-}
-
-// 쿠폰/게임 허브(data/coupons.json) 게임명 — name_en/name_ja가 있으면 그걸, 없으면 정리된 한국어 표기로 폴백.
-interface LocalizableCouponName { name: string; name_en?: string | null; name_ja?: string | null; }
-export function couponGameName(v: LocalizableCouponName, lang: Locale | null): string {
-  if (!lang) return v.name;
-  if (lang === 'ja') return v.name_ja || v.name_en || v.name;
-  return v.name_en || v.name;
-}
-
-// 게임쇼/할인/시즌 등 data/events.json 이벤트 제목 — 리서처가 채운 title_en/ja가 있으면 그걸, 없으면 한국어로 폴백.
-interface LocalizableEventTitle { title: string; title_en?: string | null; title_ja?: string | null; }
-export function eventTitle(e: LocalizableEventTitle, lang: Locale | null): string {
-  if (!lang) return e.title;
-  if (lang === 'ja') return e.title_ja || e.title_en || e.title;
-  return e.title_en || e.title;
-}
-
-// coupons.json의 term 필드('쿠폰'|'리딤코드') 표시용 번역 — 데이터 자체는 안 바꾸고 화면 표기만.
-export const TERM_LABELS: Record<Locale, Record<string, string>> = {
-  en: { '쿠폰': 'coupon codes', '리딤코드': 'redeem codes' },
-  ja: { '쿠폰': 'クーポン', '리딤코드': 'リディームコード' },
-};
-export function termLabel(term: string, lang: Locale | null): string {
-  if (!lang) return term;
-  return TERM_LABELS[lang][term] ?? term;
-}
+// ko/en/ja는 서로 번역 관계가 아니라 국가별로 완전히 독립된 콘텐츠(lib/games.ts가
+// locale별 data/concerts.{ko,en,ja}.json을 각각 읽음) — 그래서 게임명/설명에 별도
+// 폴백 헬퍼가 필요 없음. 각 페이지가 자기 locale의 데이터를 그대로 씀.
 
 // events.json 이벤트 타입(game_show/sale/season/free_game) 라벨
 export const EVENT_TYPE_LABELS: Record<Locale, Record<'game_show' | 'sale' | 'season' | 'free_game', string>> = {
+  ko: { game_show: '게임쇼', sale: '할인', season: '새 시즌', free_game: '무료' },
   en: { game_show: 'Game Show', sale: 'Sale', season: 'New Season', free_game: 'Free' },
   ja: { game_show: 'ゲームショー', sale: 'セール', season: '新シーズン', free_game: '無料' },
 };
 
 export const CATEGORY_LABELS: Record<Locale, Record<Category, string>> = {
+  ko: {
+    concert_tour: '콘서트·내한 공연',
+    music_release: '음원 발매(컴백)',
+    festival: '페스티벌',
+    fanmeeting: '팬미팅',
+  },
   en: {
     concert_tour: 'Concerts & Tours',
     music_release: 'Music Release (Comeback)',
@@ -98,6 +66,34 @@ interface UiStrings {
 }
 
 export const UI: Record<Locale, UiStrings> = {
+  ko: {
+    siteName: '콘서트 캘린더 — 내한·컴백·페스티벌',
+    siteNameShort: '콘서트 캘린더',
+    home: '홈',
+    calendar: '캘린더',
+    news: '뉴스',
+    blog: '모아보기',
+    releaseDate: '일정',
+    platforms: '공연장',
+    genres: '태그',
+    developer: '아티스트/기획사',
+    publisher: '주최',
+    tba: '미정',
+    viewOriginal: '원문 보기 →',
+    backToList: '← 목록으로',
+    publishedOn: '게시일',
+    source: '출처',
+    notFound: '페이지를 찾을 수 없어요.',
+    notTranslated: '이 페이지는 아직 준비되지 않았어요.',
+    contact: '문의',
+    about: '소개',
+    contactPage: '문의하기',
+    guide: '이용 가이드',
+    privacy: '개인정보처리방침',
+    terms: '이용약관',
+    footerDisclaimer: '아티스트명·이미지·상표 등은 각 권리자의 자산이며, 본 사이트는 공연·발매 일정 정보 제공을 목적으로 합니다. 권리자의 요청 시 해당 콘텐츠를 수정·삭제합니다.',
+    siteDescription: '콘서트·내한 공연, 음원 발매(컴백), 페스티벌, 팬미팅 일정을 한눈에. 매일 업데이트되는 공연·발매 캘린더.',
+  },
   en: {
     siteName: 'Concert Calendar — Tours, Comebacks & Festivals',
     siteNameShort: 'Concert Calendar',
@@ -157,7 +153,7 @@ export const UI: Record<Locale, UiStrings> = {
 };
 
 // hreflang용 언어 코드(Next Metadata alternates.languages 키)
-export const HREFLANG: Record<Locale, string> = { en: 'en', ja: 'ja' };
+export const HREFLANG: Record<Locale, string> = { ko: 'ko', en: 'en', ja: 'ja' };
 
 // 캘린더/리스트/모달 등 딥 컴포넌트용 UI 문구 (usePathname 자체 감지 컴포넌트에서 사용)
 interface CalUiStrings {
@@ -283,6 +279,124 @@ interface CalUiStrings {
 }
 
 export const CAL: Record<Locale, CalUiStrings> = {
+  ko: {
+    searchPlaceholder: '공연명 검색…',
+    wishlist: '찜',
+    wishlistOnly: '찜한 것만 보기',
+    viewCalendar: '캘린더',
+    viewList: '리스트',
+    today: '오늘',
+    noImage: '이미지 없음',
+    lastUpdated: '데이터 마지막 갱신',
+    noSchedule: '등록된 일정이 없어요.',
+    totalCount: '총',
+    free: '무료',
+    comingSoon: '공개 임박',
+    days: '일', hours: '시간', minutes: '분', seconds: '초',
+    weekdays: ['일', '월', '화', '수', '목', '금', '토'],
+    close: '닫기',
+    official: '공식 출처 →',
+    addToWishlist: '찜하기',
+    removeFromWishlist: '찜 해제',
+    share: '공유',
+    comments: '댓글',
+    commentPlaceholder: '이 일정에 대한 댓글 (최대 500자)',
+    postComment: '등록',
+    nickname: '닉네임',
+    loading: '불러오는 중…',
+    released: '지남',
+    goTo: '바로가기',
+    prevMonth: '이전 달',
+    nextMonth: '다음 달',
+    goToToday: '오늘로',
+    noReleaseThisMonth: '이 달 일정이 없어요.',
+    swipeHint: '좌우로 밀거나 ‹ ›로 다른 달을 살펴보세요.',
+    closePanel: '패널 닫기',
+    noScheduleThisDate: '이 날짜엔 일정이 없어요.',
+    preRegTag: '사전예약',
+    deadlineTag: '마감',
+    preRegStartBadge: '티켓팅 시작',
+    preRegEndBadge: '티켓팅 마감',
+    ongoing: '진행 중',
+    closed: '종료',
+    all: '전체',
+    categoryFilter: '카테고리 필터',
+    prevYear: '이전 해',
+    nextYear: '다음 해',
+    monthSelect: '월 선택',
+    months: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+    noDateSet: '미정',
+    noApproxGames: '일정 미정인 항목이 없어요.',
+    noReleaseThisMonthYear: (label) => `${label} 일정이 없어요.`,
+    pickOtherMonth: '위 탭에서 다른 달을 골라보세요.',
+    viewSource: '출처 보기',
+    goToPreReg: '티켓팅/사전예약 하러 가기',
+    favorited: '즐겨찾기됨',
+    favorite: '즐겨찾기',
+    fullPage: '전체 페이지',
+    copied: '복사됨',
+    preRegLive: '티켓팅/사전예약 진행 중',
+    preRegTimeLeft: '마감까지 남은 시간',
+    preRegClosedText: '사전예약 마감됨',
+    preRegDeadlineTba: '마감일 미정',
+    preRegInfo: '사전예약 안내',
+    startsOn: (label) => `${label} 시작`,
+    totalItems: (count) => `총 ${count}개`,
+    noScheduleRegistered: '아직 등록된 일정이 없어요.',
+    copy: '복사',
+    copiedCheck: '복사됨 ✓',
+    expiredTag: '만료됨',
+    expiredUntil: (label) => `${label} · 만료`,
+    copyAria: (code) => `${code} 복사`,
+    noActiveCoupons: '현재 유효한 코드가 없어요.',
+    officialRedeemPage: (name, term) => `${name} 공식 ${term} 등록 페이지 →`,
+    pastCoupons: (term) => `지난 ${term} (만료)`,
+    couponIntro: (name, term) => `${name} ${term} 안내입니다.`,
+    howToUse: (name, term) => `${name} ${term} 사용법`,
+    faqTitle: (name, term) => `${name} ${term} 자주 묻는 질문`,
+    otherGameCoupons: (term) => `다른 ${term}`,
+    gameHub: (name) => `${name} 허브 →`,
+    releaseInfo: (name) => `${name} 일정 정보 →`,
+    allCoupons: '전체 보기 →',
+    lastUpdatedCouponNote: (dateLabel) => `마지막 업데이트: ${dateLabel}.`,
+    gameCoupons: '쿠폰',
+    scheduleCount: (count) => `${count}건 예정`,
+    scheduleTitle: (name) => `${name} 일정`,
+    upcomingTag: '예정',
+    fullGameList: '전체 목록 보기 →',
+    otherGameCouponsShort: '다른 항목 →',
+    gcalenHome: '콘서트 캘린더 →',
+    noValidCodesShort: '현재 유효한 항목이 없어요.',
+    hubLastUpdatedNote: (dateLabel) => `마지막 업데이트: ${dateLabel}.`,
+    couponFor: (name, term) => `${name} ${term}`,
+    myWishlist: '내 즐겨찾기',
+    myWishlistSub: '관심 있는 공연·발매 일정을 모아봤어요.',
+    wishlistEmptyText: '아직 즐겨찾기한 일정이 없어요.',
+    wishlistEmptyHint: '상세 페이지에서 즐겨찾기 버튼을 눌러 추가하세요.',
+    releaseDateTba: '일정 미정',
+    removeFromWishlistAria: (name) => `${name} 즐겨찾기 제거`,
+    notifyTitle: '일정 알림',
+    notifyToggleAria: '일정 알림 토글',
+    notifyDeniedSub: '브라우저 설정에서 알림을 허용해 주세요.',
+    notifyNormalSub: '찜한 일정 하루 전·당일에 알려드려요.',
+    notifyOnToast: '일정 알림을 켰어요',
+    notifyOffToast: '일정 알림을 껐어요',
+    notifyDeniedToast: '알림 권한이 거부됐어요',
+    notifyFailToast: (reason) => `알림 실패: ${reason}`,
+    notifyUnknownError: '알 수 없음',
+    freeGamesAria: '무료 배포',
+    freeGamesTitle: '지금 무료',
+    freeGamesTag: 'Epic Games',
+    freeDaysLeft: (days) => `무료 · ${days}일 남음`,
+    freeFromDate: (mmdd) => `${mmdd}부터 무료`,
+    appBottomNavAria: '앱 하단 메뉴',
+    switchToLight: '라이트 모드로 전환',
+    switchToDark: '다크 모드로 전환',
+    recommendedSchedule: '추천 일정',
+    eventEnds: (title) => `${title} 종료`,
+    freeStarts: (title) => `${title} 무료 시작`,
+    freeEnds: (title) => `${title} 무료 종료`,
+  },
   en: {
     searchPlaceholder: 'Search games…',
     wishlist: 'Wishlist',

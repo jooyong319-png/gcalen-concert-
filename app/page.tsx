@@ -1,36 +1,12 @@
 import type { Metadata } from 'next';
-import { getAllGames, getLastUpdated } from '@/lib/games';
-import { Home } from '@/components/Home';
+import { redirect } from 'next/navigation';
 
+// 실제 라우팅은 middleware.ts가 Accept-Language/쿠키 기준으로 처리(/ko, /en, /ja로 리다이렉트).
+// 이 페이지는 미들웨어를 우회한 요청(엣지 케이스)에 대한 안전망일 뿐이라 색인 대상이 아님.
 export const metadata: Metadata = {
-  title: '콘서트 캘린더 | 내한·콘서트·음원 발매·페스티벌 일정 한눈에',
-  description: '콘서트·내한 공연, 음원 발매(컴백), 페스티벌, 팬미팅 일정을 한눈에. 매일 업데이트되는 공연·발매 캘린더.',
-  alternates: { canonical: 'https://gcalen.com/' },
-  openGraph: { url: 'https://gcalen.com/', type: 'website' },
+  robots: { index: false, follow: false },
 };
 
-export default async function HomePage() {
-  const games = await getAllGames();
-  const lastUpdated = await getLastUpdated();
-  // 빌드(SSR) 시점의 '현재 시각' 기준값. 클라 첫 렌더도 이 값을 써서 하이드레이션 불일치 제거.
-  const serverNow = new Date().toISOString();
-
-  const websiteJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: '콘서트 캘린더',
-    url: 'https://gcalen.com/',
-    description: '콘서트·내한·음원 발매·페스티벌 일정 캘린더',
-    inLanguage: 'ko-KR',
-  };
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-      />
-      <Home initialGames={games} lastUpdated={lastUpdated} serverNow={serverNow} initialCalEvents={[]} />
-    </>
-  );
+export default function RootPage() {
+  redirect('/ko');
 }

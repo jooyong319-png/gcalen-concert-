@@ -2,17 +2,17 @@
 import { usePathname } from 'next/navigation';
 import { UI, type Locale } from '@/lib/i18nLabels';
 
-function detectLang(pathname: string): Locale | null {
-  const m = pathname.match(/^\/(en|ja)(\/|$)/);
-  return m ? (m[1] as Locale) : null;
+function detectLang(pathname: string): Locale {
+  const m = pathname.match(/^\/(ko|en|ja)(\/|$)/);
+  return m ? (m[1] as Locale) : 'ko';
 }
 
 // 헤더 워드마크 — usePathname으로 언어 자체 감지(레이아웃이 서버 params를 못 받는 라우트 구조라 클라에서 판단).
 export function SiteWordmark() {
   const pathname = usePathname();
   const lang = detectLang(pathname);
-  const home = lang ? `/${lang}` : '/';
-  const label = lang ? UI[lang].siteNameShort : '콘서트 캘린더';
+  const home = `/${lang}`;
+  const label = UI[lang].siteNameShort;
 
   return (
     <h1 className="site-wordmark">
