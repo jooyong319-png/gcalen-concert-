@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "last_updated": "2026-07-21",
-  "last_researched_by": "scaffold-placeholder",
+  "last_researched_by": "en-researcher",
   "categories": {
     "concert_tour": "Concerts & Tours",
     "music_release": "Music Release (Comeback)",
@@ -10,97 +10,120 @@
   },
   "games": [
     {
-      "id": "sample-en-concert-tour-20260912",
-      "name": "[Sample] Artist X North America Tour - Los Angeles",
-      "release_date": "2026-09-12",
+      "id": "en-bts-world-tour-arirang-arlington-20260815",
+      "name": "BTS World Tour 'ARIRANG' - Arlington",
+      "release_date": "2026-08-15",
       "release_time": "20:00",
       "release_date_approx": false,
-      "timezone": "America/Los_Angeles",
+      "timezone": "America/Chicago",
       "category": "concert_tour",
-      "platforms": ["Crypto.com Arena, Los Angeles"],
-      "developer": "Artist X",
-      "publisher": "Sample Touring Co.",
-      "description": "Placeholder entry to be replaced with real data. Only add confirmed shows. This one demonstrates a presale-only ticketing example (no general sale phase yet).",
-      "genres": ["Pop", "World Tour"],
+      "platforms": [
+        "AT&T Stadium, Arlington, TX"
+      ],
+      "developer": "BTS",
+      "publisher": "BIGHIT MUSIC / HYBE",
+      "description": "BTS return to the road with their 'ARIRANG' world tour, the group's first outing with all seven members since their military service. The Arlington run brings two stadium shows to AT&T Stadium on August 15 and 16, 2026, both starting at 8:00 PM. These Texas dates are part of a sprawling 2026-2027 tour of roughly 79 shows across 34 regions. Both nights sold out during the initial January on-sale, so seats are now only available through resale.",
+      "genres": [
+        "K-pop",
+        "Concert",
+        "World Tour"
+      ],
       "image_url": null,
-      "source_url": null,
-      "presale": true,
-      "presale_datetime": "2026-08-10T10:00:00-07:00",
-      "presale_end_datetime": "2026-08-14T23:59:00-07:00",
-      "presale_url": null
+      "source_url": "https://attstadium.com/events/bts-world-tour-2/"
     },
     {
-      "id": "sample-en-concert-tour-seoul-20260830",
-      "name": "[Sample] Artist A Solo Concert - Seoul",
-      "release_date": "2026-08-30",
-      "release_time": "19:00",
+      "id": "en-foo-fighters-take-cover-detroit-20260806",
+      "name": "Foo Fighters: Take Cover Tour - Detroit",
+      "release_date": "2026-08-06",
+      "release_time": null,
       "release_date_approx": false,
-      "timezone": "Asia/Seoul",
+      "timezone": "America/Detroit",
       "category": "concert_tour",
-      "platforms": ["Jamsil Sports Complex Main Stadium, Seoul"],
-      "developer": "Artist A",
-      "publisher": "Sample Entertainment",
-      "description": "Placeholder entry to be replaced with real data. This is the SAME physical concert as concerts.ko.json's sample-concert-tour-20260830 — cross-listed here because it draws international fans. Ticketing runs through Korean platforms; see the official announcement for details rather than duplicating presale/general-sale fields here.",
-      "genres": ["K-pop", "Concert"],
+      "platforms": [
+        "Ford Field, Detroit, MI"
+      ],
+      "developer": "Foo Fighters",
+      "publisher": "Live Nation",
+      "description": "Foo Fighters open their 2026 Take Cover Tour on August 6 at Ford Field in Detroit, kicking off a stadium run that stretches to September 26 at Allegiant Stadium in Las Vegas. Queens of the Stone Age serve as direct support across the trek, which stops at NFL stadiums and ballparks including Soldier Field, Lincoln Financial Field and Nissan Stadium. Tickets for the Detroit opener and other dates are on sale through Ticketmaster.",
+      "genres": [
+        "Rock",
+        "Tour"
+      ],
       "image_url": null,
-      "source_url": null,
-      "related_locale_ids": { "ko": "sample-concert-tour-20260830" }
+      "source_url": "https://www.ticketmaster.com/foo-fighters-tickets/artist/776005",
+      "general_sale": true,
+      "general_sale_datetime": null,
+      "general_sale_url": "https://www.ticketmaster.com/foo-fighters-tickets/artist/776005"
     },
     {
-      "id": "sample-en-music-release-20260828",
-      "name": "[Sample] Artist Y New Single",
-      "release_date": "2026-08-28",
+      "id": "en-mcr-black-parade-2026-new-york-20260809",
+      "name": "My Chemical Romance: The Black Parade 2026 - New York",
+      "release_date": "2026-08-09",
       "release_time": null,
       "release_date_approx": false,
       "timezone": "America/New_York",
-      "category": "music_release",
-      "platforms": [],
-      "developer": "Artist Y",
-      "publisher": "Sample Records",
-      "description": "Placeholder entry to be replaced with real data. A release entry has no ticketing fields.",
-      "genres": ["Pop"],
+      "category": "concert_tour",
+      "platforms": [
+        "Citi Field, New York, NY"
+      ],
+      "developer": "My Chemical Romance",
+      "publisher": "Live Nation",
+      "description": "My Chemical Romance mark the 20th anniversary of their album The Black Parade with an expanded 2026 stadium tour. The North American leg resumes on August 9 at Citi Field in New York and wraps on October 24 with a three-night stand at the Hollywood Bowl in Los Angeles. Rotating support across the dates includes Iggy Pop, Babymetal, Pierce the Veil, The Mars Volta, Franz Ferdinand and Jimmy Eat World. Tickets went on general sale September 26, 2025.",
+      "genres": [
+        "Rock",
+        "Emo",
+        "Tour"
+      ],
       "image_url": null,
-      "source_url": null
-    },
-    {
-      "id": "sample-en-festival-20261003",
-      "name": "[Sample] 2026 Sample Music Festival",
-      "release_date": "2026-10-03",
-      "release_time": "12:00",
-      "release_date_approx": false,
-      "timezone": "America/Los_Angeles",
-      "category": "festival",
-      "platforms": ["Golden Gate Park, San Francisco"],
-      "developer": null,
-      "publisher": "Sample Festival Org",
-      "description": "Placeholder entry to be replaced with real data. Add once lineup is officially announced. Demonstrates day-by-day lineup (festival_days) plus a general-sale-only example.",
-      "genres": ["Festival", "Multi-artist"],
-      "image_url": null,
-      "source_url": null,
+      "source_url": "https://variety.com/2025/music/news/my-chemical-romance-black-parade-2026-tour-dates-1236526059/",
       "general_sale": true,
-      "general_sale_datetime": "2026-08-01T10:00:00-07:00",
-      "general_sale_end_datetime": null,
-      "general_sale_url": null,
-      "festival_days": [
-        { "date": "2026-10-03", "lineup": ["Headliner A", "Headliner B"] },
-        { "date": "2026-10-04", "lineup": ["Headliner C", "Headliner D"] }
-      ]
+      "general_sale_datetime": "2025-09-26T12:00:00-04:00",
+      "general_sale_url": "https://www.ticketmaster.com/my-chemical-romance-tickets/artist/859324"
     },
     {
-      "id": "sample-en-fanmeeting-20260920",
-      "name": "[Sample] Artist Z Fan Meeting - New York",
-      "release_date": "2026-09-20",
-      "release_time": "18:00",
+      "id": "en-ariana-grande-eternal-sunshine-london-20260815",
+      "name": "Ariana Grande: The Eternal Sunshine Tour - London (The O2 Residency)",
+      "release_date": "2026-08-15",
+      "release_time": null,
       "release_date_approx": false,
-      "timezone": "America/New_York",
-      "category": "fanmeeting",
-      "platforms": ["Radio City Music Hall, New York"],
-      "developer": "Artist Z",
-      "publisher": "Sample Agency",
-      "description": "Placeholder entry to be replaced with real data. Ticketing fields left unset here (TBA example).",
-      "genres": ["Fan Meeting"],
+      "timezone": "Europe/London",
+      "category": "concert_tour",
+      "platforms": [
+        "The O2 Arena, London"
+      ],
+      "developer": "Ariana Grande",
+      "publisher": "AEG Presents",
+      "description": "Ariana Grande caps her 2026 Eternal Sunshine Tour with a European-exclusive residency at The O2 in London. The run spans 10 nights between August 15 and September 1, 2026, the longest single-venue stretch of her career and her first UK performances since 2019. The shows support her album Eternal Sunshine and its deluxe follow-up, Brighter Days Ahead. All 10 London dates sold out, leaving resale as the only remaining option.",
+      "genres": [
+        "Pop",
+        "Tour"
+      ],
       "image_url": null,
-      "source_url": null
+      "source_url": "https://www.theo2.co.uk/events/detail/ariana-grande-2026"
+    },
+    {
+      "id": "en-austin-city-limits-festival-20261002",
+      "name": "Austin City Limits Music Festival 2026",
+      "release_date": "2026-10-02",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/Chicago",
+      "category": "festival",
+      "platforms": [
+        "Zilker Park, Austin, TX"
+      ],
+      "developer": null,
+      "publisher": "C3 Presents",
+      "description": "Austin City Limits returns for its 25th anniversary across two weekends, October 2-4 and October 9-11, 2026, at Zilker Park in Austin. The lineup is headlined by Charli XCX, Rufus Du Sol, Twenty One Pilots, Lorde and The XX, with Skrillex topping Weekend 1 and Kings of Leon topping Weekend 2. Other acts include Turnstile, Labrinth, The Chainsmokers, Young Miko and Bleachers. Three-day passes and premium packages are on sale now.",
+      "genres": [
+        "Festival",
+        "Multi-artist"
+      ],
+      "image_url": null,
+      "source_url": "https://www.aclfestival.com/",
+      "general_sale": true,
+      "general_sale_datetime": null,
+      "general_sale_url": "https://www.aclfestival.com/passes"
     }
   ]
 }

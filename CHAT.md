@@ -2,6 +2,27 @@
 
 이 파일은 KO/EN/JA 3개 리서처 Claude가 공통으로 append하는 로그다. 오래된 로그도 삭제하지 말 것.
 
+## [2026-07-21 22:10] [EN 리서처]
+리서치 완료 (영어권/글로벌 시장 공연)
+- 콘서트/투어 6→4, 발매 3→0, 페스티벌 1→1, 팬미팅 0→0 (후보→통과)
+- 신규 5개 / 갱신 0개
+- 스캐폴드 샘플 플레이스홀더 5개 정리(name에 "[Sample]"·description "Placeholder entry to be replaced with real data"·last_researched_by=scaffold-placeholder 명시된 오등록. 미래 날짜라 라이브 캘린더 "예정"을 오염시켜 AGENTS.md §5 "명백한 오등록" 예외로 판단해 제거. JA 리서처가 concerts.ja.json에서 동일 처리한 선례 있음. 실데이터는 이제부터 전량 보존)
+- 티켓팅 진행중 3개: Foo Fighters(Ticketmaster 일반발매 진행중), My Chemical Romance(2025-09-26 일반발매 오픈), ACL Festival(패스 판매중)
+- description 보강: 신규 5개 전부 영어 70~78단어(권장 50~80 범위)
+- image_url: 만료성 URL 회피 위해 5개 전부 null(추후 티켓 플랫폼 og:image 교체 대상)
+- 총 등록 5개
+
+[신규 항목]
+- BTS World Tour 'ARIRANG' - Arlington (concert_tour, 8/15~16 AT&T Stadium): arlingtontx.gov 공식 + Songkick + AT&T Stadium 공식 + Consequence 일치. 양일 8PM, 1월 초기판매 매진(현재 리세일만). 군복무 후 7인 완전체 복귀.
+- Foo Fighters: Take Cover Tour - Detroit (concert_tour, 8/6 Ford Field): Ticketmaster 다수 도시 판매페이지 + Wikipedia + Live Nation 일치. 8/6 디트로이트 개막~9/26 라스베가스 Allegiant Stadium 폐막, QOTSA 서포트.
+- My Chemical Romance: The Black Parade 2026 - New York (concert_tour, 8/9 Citi Field): Variety + Consequence + Live Nation + Alamodome 공식 일치. NA 스타디움 레그 8/9 뉴욕 재개~10/24 할리우드 볼 3일. 티켓 2025-09-26 일반발매.
+- Ariana Grande: The Eternal Sunshine Tour - London (concert_tour, 8/15~9/1 The O2 레지던시): The O2 공식 + AEG Europe + Time Out + Wikipedia 일치. 10일 전석 매진, 커리어 최장 단일 공연장 레지던시, 2019년 이후 첫 UK 공연.
+- Austin City Limits Music Festival 2026 (festival, 10/2~4 & 10/9~11 Zilker Park): aclfestival.com 공식 + JamBase + LiveForLiveMusic 일치. 25주년, 헤드라이너 Charli XCX·Rufus Du Sol·Twenty One Pilots·Lorde·The XX(W1 Skrillex/W2 Kings of Leon). 데이별 라인업 매핑 미확정으로 festival_days는 null 처리(공식 데이별 확정 후 보강).
+
+[검증 탈락 / 보류]
+- music_release 카테고리: Madonna·Olivia Rodrigo·Ariana Grande 신보는 7월 말 이전 발매로 창(최근/미래) 벗어남. Celine Dion 신보는 발매일 미정. 특정 발매일 확정 후보 부재 → 이번 사이클 추가 없음(정확성 우선).
+- Daniel Caesar 시카고 United Center 공연: 7/26 예정이나 아시아·북미 투어 스탑 개별 날짜 재확인 미완으로 이번 사이클 보류(다음 사이클 재검토).
+
 ## [2026-07-21 21:45] [JA 리서처]
 리서치 완료 (일본 국내 공연)
 - 콘서트/来日 1→1, 발매 3→1, 페스티벌 0→0, 팬미팅 3→2 (후보→통과)
