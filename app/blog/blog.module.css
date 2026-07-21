@@ -1,0 +1,185 @@
+.indexSection {
+  margin: 0;
+}
+.header { margin-bottom: 2rem; }
+.title {
+  font-size: var(--fs-title);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.subtitle { color: var(--text-faint); font-size: 0.95rem; }
+.postList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.postCard {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+.postCard:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+.postLink {
+  display: block;
+  padding: 1.2rem 1.4rem;
+  color: inherit;
+  text-decoration: none;
+}
+.postLink:hover { text-decoration: none; }
+.postDate {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.postTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+  line-height: 1.35;
+}
+.postDesc {
+  color: var(--text-faint);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+.postTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.tag {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+}
+.empty { color: var(--text-faint); text-align: center; padding: 3rem 1rem; }
+
+/* Post 상세 */
+.post {
+  margin: 0;
+  padding: 0 0 2rem;
+}
+.backLink { color: var(--text-faint); font-size: 0.9rem; display: inline-block; margin-bottom: 1.5rem; }
+.backLink:hover { color: var(--accent); }
+.postHeader {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+.postH1 {
+  font-size: var(--fs-title);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  line-height: 1.3;
+  margin: 0.5rem 0 0.8rem;
+}
+.postLead {
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.55;
+  margin-bottom: 0.8rem;
+}
+.postBody {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.postBody h2 { font-size: var(--fs-h2); color: var(--text); margin: 1.8rem 0 0.8rem; font-weight: 700; }
+.postBody h3 { font-size: var(--fs-h3); color: var(--text); margin: 1.4rem 0 0.6rem; font-weight: 700; }
+.postBody p { margin-bottom: 1rem; }
+.postBody ul { margin: 0 0 1rem 1.5rem; }
+.postBody li { margin-bottom: 0.4rem; }
+.postBody a { color: var(--accent); }
+.postBody a:hover { text-decoration: underline; }
+.postBody strong { color: var(--text); }
+.postBody pre {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 480px) {
+  .title { font-size: 1.6rem; }
+  .postH1 { font-size: 1.5rem; }
+}
+
+/* ===== 목록 썸네일 (대표 이미지 자동) ===== */
+.postCardThumb { overflow: hidden; }
+.postCardThumb .postLink {
+  display: flex;
+  gap: 0;
+  padding: 0;
+  align-items: stretch;
+}
+.postCardBody { padding: 1.2rem 1.4rem; min-width: 0; flex: 1 1 auto; }
+.thumb {
+  flex: 0 0 200px;
+  overflow: hidden;
+  background: var(--bg-elev);
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  min-height: 130px;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 640px) {
+  .postCardThumb .postLink { flex-direction: column; }
+  .thumb { flex-basis: auto; width: 100%; }
+  .thumb img { height: 160px; min-height: 160px; }
+}
+
+/* 상세 히어로 이미지는 components/BlogHero(블러 배경 + contain)로 분리 */
+
+/* ===== 관련 글 ===== */
+.related {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.relatedTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.relatedList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.8rem;
+}
+.relatedCard {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.relatedCard:hover { border-color: var(--accent); transform: translateY(-2px); }
+.relatedLink { display: flex; gap: 0; color: inherit; text-decoration: none; align-items: stretch; }
+.relatedThumb { flex: 0 0 96px; overflow: hidden; background: var(--bg-elev); }
+.relatedThumb img { width: 100%; height: 100%; min-height: 72px; object-fit: cover; display: block; }
+.relatedBody { padding: 0.7rem 0.9rem; min-width: 0; }
+.relatedDate { color: var(--accent); font-size: 0.72rem; font-weight: 600; display: block; margin-bottom: 0.25rem; }
+.relatedName { font-size: 0.95rem; font-weight: 600; color: var(--text); line-height: 1.35; }

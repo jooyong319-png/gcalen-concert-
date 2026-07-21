@@ -1,0 +1,174 @@
+/* 게임 1행 — 리스트 뷰 + 캘린더 상세 패널 공용 (ListView 행 디자인 기준) */
+.row {
+  display: grid;
+  grid-template-columns: 58px 54px minmax(0, 1fr) auto;
+  grid-template-areas: "date thumb main actions";
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.8rem 0.95rem;
+  border-bottom: 1px solid var(--border);
+  border-left: 3px solid var(--cat);
+  transition: background 0.15s;
+  cursor: pointer;
+}
+
+/* 왼쪽 이미지 썸네일 (비율 다양 → 블러 배경 + contain, 없으면 아이콘) */
+.thumb {
+  grid-area: thumb;
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg);
+  align-self: center;
+}
+.thumbBg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: blur(10px) brightness(0.85);
+  transform: scale(1.2);
+}
+.thumbFg {
+  position: relative; z-index: 1;
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
+/* 이미지 없을 때: 중립 배경 + 아이콘 + '이미지 없음' */
+.thumbPh {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.15rem;
+  background: linear-gradient(135deg, var(--bg-elev), var(--bg));
+  color: var(--text-faint);
+}
+.thumbPhIcon {
+  width: 34%; height: 34%; max-width: 20px;
+  fill: none; stroke: currentColor;
+  stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+  opacity: 0.55;
+}
+.thumbPhText { font-size: 0.5rem; font-weight: 600; opacity: 0.8; line-height: 1; letter-spacing: -0.02em; }
+.row:last-child { border-bottom: none; }
+.row:hover { background: var(--bg); }
+.row:hover .title { color: var(--accent); }
+.rowImminent { background: rgba(245, 166, 35, 0.06); }
+.rowReleased { opacity: 0.58; }
+.rowReleased:hover { opacity: 1; }
+
+/* 날짜 칼럼 */
+.dateCol { grid-area: date; display: flex; flex-direction: column; gap: 0.08rem; line-height: 1.2; }
+.dMmdd { font-size: 0.92rem; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
+.dWeek { font-size: 0.7rem; color: var(--text-faint); }
+.dDday { font-size: 0.72rem; font-weight: 700; color: var(--text-faint); font-variant-numeric: tabular-nums; }
+.ddaySoon, .ddayToday { color: var(--accent-warm); }
+
+/* 본문 */
+.main { grid-area: main; min-width: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+.titleRow { display: flex; align-items: center; gap: 0.5rem; min-width: 0; }
+.badge {
+  flex: 0 0 auto;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.12rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid currentColor;
+  line-height: 1.4;
+}
+.preBadge {
+  flex: 0 0 auto;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--accent-warm);
+  border: 1px solid currentColor;
+  border-radius: 5px;
+  padding: 0.06rem 0.4rem;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.title {
+  flex: 1 1 auto;
+  min-width: 3.5em;
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.title:hover { color: var(--accent); }
+.nameEn {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 40%;
+  font-size: 0.73rem;
+  color: var(--text-faint);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.desc {
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  line-height: 1.45;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.tag {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0.08rem 0.45rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* 액션 */
+.actions { grid-area: actions; display: flex; align-items: center; gap: 0.4rem; flex: 0 0 auto; }
+.actBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.35rem 0.6rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-faint);
+  font-size: 0.77rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+.actBtn:hover { color: var(--text); border-color: var(--accent); }
+.wishOn { color: var(--accent-warm); border-color: var(--accent-warm); }
+
+@media (max-width: 900px) {
+  .actLabel { display: none; }
+  .actBtn { padding: 0.4rem 0.5rem; }
+}
+@media (max-width: 560px) {
+  .row {
+    grid-template-columns: 44px 46px minmax(0, 1fr);
+    grid-template-areas:
+      "date thumb main"
+      "date thumb actions";
+    gap: 0.5rem 0.6rem;
+    align-items: start;
+  }
+  .thumb { width: 46px; height: 46px; align-self: start; }
+  .actions { justify-content: flex-start; margin-top: 0.2rem; }
+  .actLabel { display: inline; }
+  .nameEn { display: none; } /* 모바일: 영어 원제 숨김 */
+}
+@media (display-mode: standalone) {
+  .row { transition: background 0.15s, transform 0.1s ease; }
+  .row:active { background: var(--bg); transform: scale(0.994); }
+  .title:active, .actBtn:active { transform: scale(0.94); }
+}

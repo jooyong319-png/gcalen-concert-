@@ -1,0 +1,22 @@
+.langBar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+.langBtn {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-faint);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.langBtn:hover { color: var(--text); border-color: var(--accent); }
+.langActive { color: var(--text); border-color: var(--accent); background: rgba(91, 157, 255, 0.08); }
+.langBtn:disabled { opacity: 0.6; cursor: default; }
+.status { font-size: 0.78rem; color: var(--text-faint); }
+.error { font-size: 0.82rem; color: var(--accent-warm); margin: 0 0 0.6rem; }

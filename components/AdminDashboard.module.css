@@ -1,0 +1,72 @@
+.wrap { max-width: 1000px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+.title { font-size: var(--fs-title); font-weight: 800; letter-spacing: -0.01em; margin-bottom: 1.2rem; }
+.h2 { font-size: var(--fs-h3); font-weight: 700; margin: 2rem 0 0.8rem; }
+.muted { color: var(--text-faint); }
+.err { color: var(--danger); }
+
+/* 게이트 */
+.gate { max-width: 320px; margin: 4rem auto; display: flex; flex-direction: column; gap: 0.7rem; text-align: center; }
+.gate h1 { font-size: 1.4rem; font-weight: 800; }
+.gateInput { padding: 0.6rem 0.8rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-elev); color: var(--text); font-size: 0.95rem; }
+.gateBtn { padding: 0.6rem; border: none; border-radius: var(--radius-sm); background: var(--accent); color: #fff; font-weight: 700; cursor: pointer; }
+
+/* 요약 카드 */
+.cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; }
+.card { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; display: flex; flex-direction: column; gap: 0.3rem; }
+.cardLabel { font-size: 0.8rem; color: var(--text-faint); }
+.cardNum { font-size: 1.6rem; font-weight: 800; color: var(--text); font-variant-numeric: tabular-nums; }
+
+/* 일별 막대 차트 */
+.chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 200px;
+  padding: 1rem;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow-x: auto;
+}
+.barWrap {
+  flex: 1 0 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  gap: 3px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.barCount { font-size: 0.62rem; color: var(--text-faint); font-variant-numeric: tabular-nums; min-height: 0.8em; }
+.bar { width: 100%; max-width: 26px; min-height: 2px; background: var(--accent-grad); border-radius: 3px 3px 0 0; transition: height 0.2s ease; }
+.barDate { font-size: 0.58rem; color: var(--text-faint); white-space: nowrap; transform: rotate(-45deg); transform-origin: center; margin-top: 0.3rem; }
+.barWrap:hover .bar { opacity: 0.8; }
+.barActive .bar { background: var(--accent-warm); }
+.barActive .barDate { color: var(--accent-warm); font-weight: 700; }
+.barActive .barCount { color: var(--accent-warm); font-weight: 700; }
+
+.hint { font-size: 0.72rem; font-weight: 400; color: var(--text-faint); }
+/* 날짜별 상세 행 */
+.detailMain { display: flex; align-items: center; gap: 0.5rem; min-width: 0; }
+.kind { flex: 0 0 auto; font-size: 0.66rem; font-weight: 700; padding: 0.08rem 0.4rem; border-radius: 5px; }
+.kindGame { color: #5f86b8; background: rgba(95,134,184,0.14); }
+.kindGuide { color: var(--accent); background: rgba(4,120,87,0.12); }
+
+/* 인기 게임 */
+.topList { list-style: none; padding: 0; margin: 0; background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.topRow { display: grid; grid-template-columns: 2rem 1fr auto; align-items: center; gap: 0.8rem; padding: 0.6rem 1rem; border-bottom: 1px solid var(--border); }
+.topRow:last-child { border-bottom: none; }
+.rank { font-weight: 800; color: var(--text-faint); font-variant-numeric: tabular-nums; text-align: center; }
+.topName { color: var(--text); font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.topName:hover { color: var(--accent); }
+.topNum { font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+
+@media (max-width: 560px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}

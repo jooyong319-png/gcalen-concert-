@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.gcalen.app",
+      "sha256_cert_fingerprints": [
+        "8F:ED:AF:77:D4:1F:08:87:1A:18:C8:AC:ED:EC:57:F8:A4:B7:29:3B:5F:3C:D6:99:76:74:2D:CC:26:25:64:A2",
+        "C8:DB:BD:82:93:AE:40:3F:D1:D2:71:47:41:F5:E8:12:8B:6A:B8:7B:49:6C:8F:6A:0E:5D:3A:6F:75:A0:60:3F"
+      ]
+    }
+  }
+]
