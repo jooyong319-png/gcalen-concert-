@@ -7,12 +7,13 @@ import styles from './NextByCategory.module.css';
 interface Props {
   games: Game[];
   now: Date;
+  lang?: string;
 }
 
 const ORDER: Category[] = ['concert_tour', 'music_release', 'festival', 'fanmeeting'];
 
 // 우측 레일 위젯 — 카테고리별로 '오늘 이후 가장 가까운 출시' 1건씩. 링크 기반(상세로 이동).
-export function NextByCategory({ games, now }: Props) {
+export function NextByCategory({ games, now, lang = 'ko' }: Props) {
   // 카테고리별 '오늘 이후 가장 가까운 출시' 1건. 미래 예정이 없는 카테고리(예: 신서버)는 제외.
   const picks = ORDER.map(c => {
     const next = games
@@ -33,7 +34,7 @@ export function NextByCategory({ games, now }: Props) {
         {picks.map(({ c, g, diff }) => {
           const dd = diff === 0 ? 'D-DAY' : `D-${diff}`;
           return (
-            <Link key={c} href={`/game/${g.id}`} className={styles.row}>
+            <Link key={c} href={`/${lang}/concert/${g.id}`} className={styles.row}>
               <span className={styles.dot} style={{ background: CATEGORY_META[c].color }} aria-hidden="true" />
               <span className={styles.cat}>{CATEGORY_META[c].short}</span>
               <span className={styles.name}>{g.name}</span>

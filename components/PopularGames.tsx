@@ -7,7 +7,7 @@ import styles from './PopularGames.module.css';
 interface Meta { name: string; category: Category; }
 
 // 최근 14일 조회수로 '지금 인기' TOP을 집계해 보여줌(추가 데이터 불필요).
-export function PopularGames({ meta }: { meta: Record<string, Meta> }) {
+export function PopularGames({ meta, lang = 'ko' }: { meta: Record<string, Meta>; lang?: string }) {
   const [rows, setRows] = useState<{ game_id: string }[] | null>(null);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export function PopularGames({ meta }: { meta: Record<string, Meta> }) {
             <li key={id} className={styles.row}>
               <span className={styles.rank}>{i + 1}</span>
               <span className={styles.dot} style={{ background: CATEGORY_META[m.category]?.color }} aria-hidden="true" />
-              <a className={styles.name} href={`/game/${id}`}>{m.name}</a>
+              <a className={styles.name} href={`/${lang}/concert/${id}`}>{m.name}</a>
             </li>
           );
         })}

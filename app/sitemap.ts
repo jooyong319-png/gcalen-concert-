@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { getAllGames, getLastUpdated } from '@/lib/games';
 import { getAllPosts, getPostTranslation } from '@/lib/blog';
-import { getAllNews, getNewsTranslation } from '@/lib/news';
+import { getAllNews } from '@/lib/news';
 import { hasActiveTicketing, type Game } from '@/lib/types';
 import { LOCALES, type Locale } from '@/lib/i18nLabels';
 
@@ -98,18 +98,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (jaT) blogUrls.push({ url: `${BASE}/ja/blog/${p.slug}`, lastModified, changeFrequency: 'monthly', priority: 0.65, alternates: { languages } });
   }
 
-  // 뉴스 — 블로그와 동일한 번역 존재 여부 기반 패턴
-  const news = await getAllNews();
+  // 뉴스 — 콘서트와 동일하게 로케일별로 완전히 독립된 콘텐츠(번역 아님) → hreflang alternate 없음
   const newsUrls: MetadataRoute.Sitemap = [];
-  for (const it of news) {
-    const [enT, jaT] = await Promise.all([getNewsTranslation(it.slug, 'en'), getNewsTranslation(it.slug, 'ja')]);
-    const languages: Record<string, string> = { ko: `${BASE}/ko/news/${it.slug}` };
-    if (enT) languages.en = `${BASE}/en/news/${it.slug}`;
-    if (jaT) languages.ja = `${BASE}/ja/news/${it.slug}`;
-    const lastModified = new Date(it.date);
-    newsUrls.push({ url: `${BASE}/ko/news/${it.slug}`, lastModified, changeFrequency: 'weekly', priority: 0.7, alternates: { languages } });
-    if (enT) newsUrls.push({ url: `${BASE}/en/news/${it.slug}`, lastModified, changeFrequency: 'weekly', priority: 0.6, alternates: { languages } });
-    if (jaT) newsUrls.push({ url: `${BASE}/ja/news/${it.slug}`, lastModified, changeFrequency: 'weekly', priority: 0.6, alternates: { languages } });
+  for (const lang of LOCALES) {
+    const news = await getAllNews(lang);
+    for (const it of news) {
+      newsUrls.push({
+        url: `${BASE}/${lang}/news/${it.slug}`,
+        lastModified: new Date(it.date),
+        changeFrequency: 'weekly',
+        priority: lang === 'ko' ? 0.7 : 0.6,
+      });
+    }
   }
 
   return [...staticUrls, ...gameUrls, ...blogUrls, ...newsUrls];
