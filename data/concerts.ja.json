@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "last_updated": "2026-07-21",
-  "last_researched_by": "scaffold-placeholder",
+  "last_researched_by": "ja-researcher",
   "categories": {
     "concert_tour": "コンサート・来日公演",
     "music_release": "音源発売(カムバック)",
@@ -10,80 +10,240 @@
   },
   "games": [
     {
-      "id": "sample-ja-concert-tour-20260905",
-      "name": "[サンプル] アーティストA 来日公演 - 東京",
-      "release_date": "2026-09-05",
+      "id": "ja-summer-sonic-2026-20260814",
+      "name": "SUMMER SONIC 2026（東京）",
+      "release_date": "2026-08-14",
+      "release_time": "11:00",
+      "release_date_approx": false,
+      "timezone": "Asia/Tokyo",
+      "category": "festival",
+      "platforms": [
+        "ZOZOマリンスタジアム",
+        "幕張メッセ"
+      ],
+      "developer": null,
+      "publisher": "クリエイティブマンプロダクション",
+      "description": "2000年に始まった都市型音楽フェスティバルの25周年エディション。2026年は東京(ZOZOマリンスタジアム＆幕張メッセ)と大阪(万博記念公園)で8月14日から16日までの3日間開催される。東京会場にはTHE STROKES、DAVID BYRNE、L'Arc-en-Ciel、JAMIROQUAI、BABYMETALら国内外の豪華アーティストが日替わりで登場。3日間通し券はすでに完売しており、各日券の一般発売が進行中となっている。",
+      "genres": [
+        "フェスティバル",
+        "複数アーティスト",
+        "ロック",
+        "ポップ"
+      ],
+      "image_url": "https://cdn.l-tike.com/concert/summersonic/img2026/ogp01.jpg",
+      "source_url": "https://www.summersonic.com/news/2026-03-13-19870/",
+      "general_sale": true,
+      "general_sale_datetime": "2026-05-30T10:00:00+09:00",
+      "general_sale_end_datetime": null,
+      "general_sale_url": "https://l-tike.com/concert/summersonic/",
+      "festival_days": [
+        {
+          "date": "2026-08-14",
+          "lineup": [
+            "THE STROKES",
+            "BUMP OF CHICKEN",
+            "FKA TWIGS",
+            "KASABIAN",
+            "KESHI"
+          ]
+        },
+        {
+          "date": "2026-08-15",
+          "lineup": [
+            "DAVID BYRNE",
+            "サカナクション",
+            "ALEX WARREN",
+            "STEVE LACY",
+            "SUEDE"
+          ]
+        },
+        {
+          "date": "2026-08-16",
+          "lineup": [
+            "L'Arc-en-Ciel",
+            "JAMIROQUAI",
+            "BABYMETAL",
+            "LE SSERAFIM",
+            "mgk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ja-rock-in-japan-2026-20260912",
+      "name": "ROCK IN JAPAN FESTIVAL 2026",
+      "release_date": "2026-09-12",
+      "release_time": "11:45",
+      "release_date_approx": false,
+      "timezone": "Asia/Tokyo",
+      "category": "festival",
+      "platforms": [
+        "蘇我スポーツ公園"
+      ],
+      "developer": null,
+      "publisher": "ロッキング・オン",
+      "description": "ロッキング・オンが主催する日本最大級の邦楽ロックフェスティバル。2026年は千葉市の蘇我スポーツ公園を舞台に、9月12日・13日・19日・20日・21日の5日間で計115組が出演する。BUMP OF CHICKEN、Vaundy、Ado、Number_i、Creepy Nuts、UVERworldら人気アーティストが集結する大型フェス。一部の日程はすでにソールドアウトとなっている。",
+      "genres": [
+        "フェスティバル",
+        "邦ロック",
+        "複数アーティスト"
+      ],
+      "image_url": null,
+      "source_url": "https://rijfes.jp/2026/artist/",
+      "festival_days": null
+    },
+    {
+      "id": "ja-ultra-japan-2026-20260919",
+      "name": "ULTRA JAPAN 2026",
+      "release_date": "2026-09-19",
+      "release_time": "11:00",
+      "release_date_approx": false,
+      "timezone": "Asia/Tokyo",
+      "category": "festival",
+      "platforms": [
+        "お台場 ULTRA PARK特設会場"
+      ],
+      "developer": null,
+      "publisher": null,
+      "description": "世界的ダンスミュージックフェス「ULTRA」の日本版。2026年は9月19日・20日の2日間、東京・お台場の特設会場ULTRA PARKで開催される。第1弾ラインナップにはZedd B2B Knock2、Alesso、Peggy Gou、The Martinez Brothersら国内外のトップDJ・アーティストが名を連ねる。ULTRA MAIN STAGEやRESISTANCEなど複数ステージで一日中パフォーマンスが繰り広げられる。",
+      "genres": [
+        "フェスティバル",
+        "EDM",
+        "ダンスミュージック"
+      ],
+      "image_url": null,
+      "source_url": "https://ultrajapan.com/",
+      "festival_days": null
+    },
+    {
+      "id": "ja-the-weeknd-2026-20260919",
+      "name": "The Weeknd「After Hours Til Dawn Tour」来日公演",
+      "release_date": "2026-09-19",
+      "release_time": "17:00",
+      "release_date_approx": false,
+      "timezone": "Asia/Tokyo",
+      "category": "concert_tour",
+      "platforms": [
+        "ベルーナドーム"
+      ],
+      "developer": "The Weeknd",
+      "publisher": "ライブネーション・ジャパン",
+      "description": "世界的R&B/ポップ・スターThe Weekndによる久々の来日公演。スタジアム・ツアー「After Hours Til Dawn Tour」の一環として、2026年9月19日・20日に埼玉のベルーナドームで行われる。スペシャルゲストにCreepy Nutsと¥ØU$UK€ ¥UK1MAT$Uが出演。9月20日公演は完売し、追加された9月19日公演のチケットが一般発売中となっている。",
+      "genres": [
+        "来日",
+        "R&B",
+        "ポップ"
+      ],
+      "image_url": null,
+      "source_url": "https://www.universal-music.co.jp/the-weeknd/news/2026-05-13/",
+      "general_sale": true,
+      "general_sale_datetime": null,
+      "general_sale_end_datetime": null,
+      "general_sale_url": "https://l-tike.com/the-weeknd"
+    },
+    {
+      "id": "ja-post-malone-2026-20261006",
+      "name": "Post Malone「The BIG ASS Stadium World Tour」来日公演",
+      "release_date": "2026-10-06",
+      "release_time": "18:30",
+      "release_date_approx": false,
+      "timezone": "Asia/Tokyo",
+      "category": "concert_tour",
+      "platforms": [
+        "Kアリーナ横浜"
+      ],
+      "developer": "Post Malone",
+      "publisher": "ライブネーション・ジャパン",
+      "description": "ヒップホップとポップを軸に幅広いジャンルを横断するPost Maloneの3年ぶりの来日公演。スタジアム規模のワールドツアー「The BIG ASS Stadium World Tour」として、2026年10月6日にKアリーナ横浜で開催される。最新作『F-1 Trillion』の楽曲を中心に、これまでのヒット曲も披露する見込み。スペシャルゲストとしてDon Toliverが出演する。",
+      "genres": [
+        "来日",
+        "ヒップホップ",
+        "ポップ"
+      ],
+      "image_url": null,
+      "source_url": "https://www.universal-music.co.jp/post-malone/news/2026-04-01/"
+    },
+    {
+      "id": "ja-journey-2026-20260901",
+      "name": "JOURNEY「FINAL FRONTIER TOUR」来日公演",
+      "release_date": "2026-09-01",
       "release_time": "19:00",
       "release_date_approx": false,
       "timezone": "Asia/Tokyo",
       "category": "concert_tour",
-      "platforms": ["東京ドーム"],
-      "developer": "アーティストA",
-      "publisher": "サンプル企画",
-      "description": "実データに差し替え予定のサンプル項目です。確認済みの公演のみ登録してください。一般発売のみ設定した例です。",
-      "genres": ["ポップ", "来日公演"],
+      "platforms": [
+        "有明アリーナ"
+      ],
+      "developer": "JOURNEY",
+      "publisher": "ウドー音楽事務所",
+      "description": "「Don't Stop Believin'」などで知られるアメリカのロックバンドJOURNEYの単独来日公演。「FINAL FRONTIER TOUR」の日本公演として、2026年9月1日に東京・有明アリーナで開催される。今回は東京公演のみの予定で、バンドの日本での歩みの集大成となるフル・コンサートが期待される。チケットは7月25日10時から一般発売が始まる。",
+      "genres": [
+        "来日",
+        "ロック"
+      ],
       "image_url": null,
-      "source_url": null,
+      "source_url": "https://www.udo.jp/shows/Journey26",
       "general_sale": true,
-      "general_sale_datetime": "2026-08-05T10:00:00+09:00",
+      "general_sale_datetime": "2026-07-25T10:00:00+09:00",
       "general_sale_end_datetime": null,
-      "general_sale_url": null
+      "general_sale_url": "https://www.udo.jp/shows/Journey26"
     },
     {
-      "id": "sample-ja-music-release-20260822",
-      "name": "[サンプル] アーティストB ニューシングル",
-      "release_date": "2026-08-22",
+      "id": "ja-charlie-puth-2026-20261016",
+      "name": "Charlie Puth「Whatever's Clever! World Tour」来日公演",
+      "release_date": "2026-10-16",
+      "release_time": "19:00",
+      "release_date_approx": false,
+      "timezone": "Asia/Tokyo",
+      "category": "concert_tour",
+      "platforms": [
+        "ぴあアリーナMM"
+      ],
+      "developer": "Charlie Puth",
+      "publisher": "ライブネーション・ジャパン",
+      "description": "「Attention」「See You Again」などのヒットで知られるシンガーソングライターCharlie Puthの一夜限りの来日公演。ワールドツアー「Whatever's Clever! World Tour」として、2026年10月16日に横浜のぴあアリーナMMで開催される。最新アルバム『Whatever's Clever!』の楽曲やヒット曲を披露する予定。同作には宇多田ヒカルが参加した「Home」も収録されている。",
+      "genres": [
+        "来日",
+        "ポップ"
+      ],
+      "image_url": null,
+      "source_url": "https://skream.jp/news/2026/04/charlie_puth_whatevers_clever_world_tour.php"
+    },
+    {
+      "id": "ja-kimura-takuya-checkpoint-20260812",
+      "name": "木村拓哉『Checkpoint』",
+      "release_date": "2026-08-12",
       "release_time": null,
       "release_date_approx": false,
       "timezone": "Asia/Tokyo",
       "category": "music_release",
       "platforms": [],
-      "developer": "アーティストB",
-      "publisher": "サンプルレーベル",
-      "description": "実データに差し替え予定のサンプル項目です。発売のみでチケット関連フィールドはありません。",
-      "genres": ["J-POP"],
+      "developer": "木村拓哉",
+      "publisher": "C&C STAGE",
+      "description": "木村拓哉が新レーベルC&C STAGEへ移籍して初めてリリースする、4枚目のオリジナルアルバム。2026年8月12日発売。タイトルには第一線を走り続けてきた自身の「現在地」を見つめ直す意味が込められている。明石家さんま、奥田民生、Taka(ONE OK ROCK)、Rei、山崎まさよしといったジャンルや世代を超えた豪華アーティストが楽曲提供・共演で参加している。",
+      "genres": [
+        "J-POP"
+      ],
       "image_url": null,
-      "source_url": null
+      "source_url": "https://candcstage.com/news/detail.php?id=1134178"
     },
     {
-      "id": "sample-ja-festival-20260927",
-      "name": "[サンプル] 2026 サンプルミュージックフェスティバル",
-      "release_date": "2026-09-27",
-      "release_time": "11:00",
+      "id": "ja-sixtones-dance-forever-20260909",
+      "name": "SixTONES『Dance Forever/マイオンリー』",
+      "release_date": "2026-09-09",
+      "release_time": null,
       "release_date_approx": false,
       "timezone": "Asia/Tokyo",
-      "category": "festival",
-      "platforms": ["幕張メッセ"],
-      "developer": null,
-      "publisher": "サンプルフェス実行委員会",
-      "description": "実データに差し替え予定のサンプル項目です。公式ラインナップ発表後に登録してください。日別ラインナップ(festival_days)の例です。",
-      "genres": ["フェスティバル", "複数アーティスト"],
+      "category": "music_release",
+      "platforms": [],
+      "developer": "SixTONES",
+      "publisher": null,
+      "description": "6人組グループSixTONESの18枚目シングル。2026年9月9日発売の両A面作品で、表題曲は前向きな気持ちを歌う「Dance Forever」と、松村北斗が主演する日本テレビ土曜ドラマ「告白─25年目の秘密」の主題歌「マイオンリー」の2曲。初回盤・通常盤で収録内容が異なり、新曲やダンスパフォーマンス映像なども収められる。",
+      "genres": [
+        "J-POP"
+      ],
       "image_url": null,
-      "source_url": null,
-      "presale": true,
-      "presale_datetime": "2026-08-15T10:00:00+09:00",
-      "presale_end_datetime": "2026-08-17T23:59:00+09:00",
-      "presale_url": null,
-      "festival_days": [
-        { "date": "2026-09-27", "lineup": ["ヘッドライナーA", "ヘッドライナーB"] },
-        { "date": "2026-09-28", "lineup": ["ヘッドライナーC", "ヘッドライナーD"] }
-      ]
-    },
-    {
-      "id": "sample-ja-fanmeeting-20260913",
-      "name": "[サンプル] アーティストC ファンミーティング",
-      "release_date": "2026-09-13",
-      "release_time": "18:00",
-      "release_date_approx": false,
-      "timezone": "Asia/Tokyo",
-      "category": "fanmeeting",
-      "platforms": ["有明アリーナ"],
-      "developer": "アーティストC",
-      "publisher": "サンプル事務所",
-      "description": "実データに差し替え予定のサンプル項目です。チケット関連フィールド未設定(未定)の例です。",
-      "genres": ["ファンミーティング"],
-      "image_url": null,
-      "source_url": null
+      "source_url": "https://www.sixtones.jp/news/471/"
     }
   ]
 }
