@@ -49,7 +49,7 @@
         "Rock",
         "Tour"
       ],
-      "image_url": null,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Glasto2023.jpg/330px-Glasto2023.jpg",
       "source_url": "https://www.ticketmaster.com/foo-fighters-tickets/artist/776005",
       "general_sale": true,
       "general_sale_datetime": null,
@@ -144,7 +144,7 @@
         "Concert",
         "World Tour"
       ],
-      "image_url": null,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Enhypen_at_Golden_disc_awards.png/330px-Enhypen_at_Golden_disc_awards.png",
       "source_url": "https://www.theoaklandarena.com/events/detail/enhypen-1",
       "general_sale": true,
       "general_sale_datetime": null,
@@ -193,7 +193,7 @@
         "Pop",
         "Tour"
       ],
-      "image_url": null,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Charli_xcx_at_Berlinale_2026-1.jpg/250px-Charli_xcx_at_Berlinale_2026-1.jpg",
       "source_url": "https://www.xfinitymobilearena.com/news/detail/charli-xcx-announces-the-music-fashion-film-tour",
       "presale": true,
       "presale_datetime": "2026-06-12T09:00:00-04:00",

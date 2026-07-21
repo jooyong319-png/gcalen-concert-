@@ -160,7 +160,7 @@
         "ヒップホップ",
         "ポップ"
       ],
-      "image_url": null,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Post_Malone_July_2021_%28cropped%29.jpg/250px-Post_Malone_July_2021_%28cropped%29.jpg",
       "source_url": "https://www.universal-music.co.jp/post-malone/news/2026-04-01/"
     },
     {
@@ -246,7 +246,7 @@
       "genres": [
         "J-POP"
       ],
-      "image_url": null,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/SixTONES.png/330px-SixTONES.png",
       "source_url": "https://www.sixtones.jp/news/471/"
     },
     {
@@ -353,7 +353,7 @@
         "来日",
         "シンフォニックメタル"
       ],
-      "image_url": null,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Epica%2C_3-Maj%C3%B3wka_2022_96.jpg/330px-Epica%2C_3-Maj%C3%B3wka_2022_96.jpg",
       "source_url": "https://www.epica.nl/tour/",
       "general_sale": true,
       "general_sale_datetime": "2025-12-06T10:00:00+09:00",
