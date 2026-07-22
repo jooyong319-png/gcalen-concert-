@@ -251,10 +251,34 @@
       "general_sale_datetime": null,
       "general_sale_url": "https://www.lollapalooza.com/",
       "festival_days": [
-        { "date": "2026-07-30", "lineup": ["Lorde", "John Summit"] },
-        { "date": "2026-07-31", "lineup": ["Charli xcx", "The Smashing Pumpkins"] },
-        { "date": "2026-08-01", "lineup": ["Olivia Dean", "JENNIE"] },
-        { "date": "2026-08-02", "lineup": ["Tate McRae", "The xx"] }
+        {
+          "date": "2026-07-30",
+          "lineup": [
+            "Lorde",
+            "John Summit"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "lineup": [
+            "Charli xcx",
+            "The Smashing Pumpkins"
+          ]
+        },
+        {
+          "date": "2026-08-01",
+          "lineup": [
+            "Olivia Dean",
+            "JENNIE"
+          ]
+        },
+        {
+          "date": "2026-08-02",
+          "lineup": [
+            "Tate McRae",
+            "The xx"
+          ]
+        }
       ]
     },
     {
@@ -281,6 +305,105 @@
       ],
       "image_url": null,
       "source_url": "https://en.wikipedia.org/wiki/Music,_Fashion,_Film"
+    },
+    {
+      "id": "en-avenged-sevenfold-good-charlotte-belmont-park-20260810",
+      "name": "Avenged Sevenfold & Good Charlotte - Belmont Park, NY",
+      "release_date": "2026-08-10",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "concert_tour",
+      "platforms": [
+        "UBS Arena, Belmont Park, NY"
+      ],
+      "developer": "Avenged Sevenfold, Good Charlotte",
+      "publisher": null,
+      "description": "Avenged Sevenfold and Good Charlotte co-headline a 16-date North American summer run, stopping at UBS Arena in Belmont Park, New York on August 10, 2026. The tour opened July 25 in Ridgedale, Missouri and closes August 27 in Phoenix, pairing the Orange County metal band with the pop-punk veterans. Tickets went on general sale December 12, 2025 through the two acts' official websites, following a Deathbats Club and early-access presale.",
+      "genres": [
+        "Rock",
+        "Metal",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://loudwire.com/avenged-sevenfold-good-charlotte-2026-north-american-tour-dates/",
+      "general_sale": true,
+      "general_sale_datetime": "2025-12-12T10:00:00-05:00",
+      "general_sale_url": null
+    },
+    {
+      "id": "en-ringo-starr-all-starr-band-queens-20261001",
+      "name": "Ringo Starr & His All Starr Band - Forest Hills, NY",
+      "release_date": "2026-10-01",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "concert_tour",
+      "platforms": [
+        "Forest Hills Stadium, Queens, NY"
+      ],
+      "developer": "Ringo Starr & His All Starr Band",
+      "publisher": null,
+      "description": "Ringo Starr and His All Starr Band bring their fall 2026 North American run to Forest Hills Stadium in Queens, New York on October 1, 2026. The ten-date trek opens September 24 in Easton, Pennsylvania and wraps October 7 in Albany. The 2026 lineup features Steve Lukather, Colin Hay, Warren Ham, Hamish Stuart, Gregg Bissonette and Buck Johnson. General tickets went on sale July 10, 2026 at 10 a.m. local time through Ticketmaster.",
+      "genres": [
+        "Rock",
+        "Classic Rock",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://news.pollstar.com/2026/07/06/ringo-starr-and-his-all-starr-band-announce-fall-dates/",
+      "general_sale": true,
+      "general_sale_datetime": "2026-07-10T10:00:00-04:00",
+      "general_sale_url": "https://www.ticketmaster.com/ringo-starr-and-his-all-starr-tickets/artist/863651"
+    },
+    {
+      "id": "en-brandon-flowers-thrasher-20260821",
+      "name": "Brandon Flowers - Thrasher",
+      "release_date": "2026-08-21",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "music_release",
+      "platforms": [
+        "Streaming",
+        "Digital",
+        "CD",
+        "Vinyl"
+      ],
+      "developer": "Brandon Flowers",
+      "publisher": "Island Records",
+      "description": "The Killers frontman Brandon Flowers releases Thrasher, his third solo album and first in over a decade, on August 21, 2026 via Island Records. Recorded in Nashville at Historic RCA Studio A with producers Shawn Everett and Jonathan Rado, the record leans toward country and features guitarist David Rawlings, pedal-steel player Bruce Bouton and 85-year-old harmonica veteran Charlie McCoy. It follows 2010's Flamingo and 2015's The Desired Effect.",
+      "genres": [
+        "Country",
+        "Rock",
+        "Album"
+      ],
+      "image_url": null,
+      "source_url": "https://www.billboard.com/music/country/brandon-flowers-thrasher-solo-album-release-date-1236279531/"
+    },
+    {
+      "id": "en-kasabian-act-iii-20260904",
+      "name": "Kasabian - ACT III",
+      "release_date": "2026-09-04",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "Europe/London",
+      "category": "music_release",
+      "platforms": [
+        "Streaming",
+        "Digital",
+        "CD",
+        "Vinyl"
+      ],
+      "developer": "Kasabian",
+      "publisher": null,
+      "description": "Leicester rock band Kasabian release their ninth studio album, ACT III, on September 4, 2026. The record was pushed back from its original July 17 date after the band chose to make final adjustments, saying they couldn't send it out 'without getting everything just right.' It follows 2024's Happenings, with Serge Pizzorno again handling lead vocals since Tom Meighan's 2020 departure.",
+      "genres": [
+        "Rock",
+        "Album"
+      ],
+      "image_url": null,
+      "source_url": "https://en.wikipedia.org/wiki/Act_III_(Kasabian_album)"
     }
   ]
 }

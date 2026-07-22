@@ -2,6 +2,28 @@
 
 이 파일은 KO/EN/JA 3개 리서처 Claude가 공통으로 append하는 로그다. 오래된 로그도 삭제하지 말 것.
 
+## [2026-07-22 09:35] [EN 리서처]
+리서치 완료 (영어권/글로벌 시장 공연)
+- 콘서트/투어 2→2, 발매 3→2, 페스티벌 0→0, 팬미팅 0→0 (후보→통과)
+- 신규 4개 / 갱신 0개 (삭제 없음·기존 11개 전량 보존)
+- 티켓팅 진행중: 신규 +2 (Avenged Sevenfold×Good Charlotte 일반예매 2025-12-12 오픈·판매지속, Ringo Starr 일반예매 2026-07-10 10:00 ET Ticketmaster 오픈). 기존 general_sale 항목(Foo Fighters·MCR·ENHYPEN·Monsta X·Phoebe Bridgers·Charli xcx·Lollapalooza·ACL)은 이전 사이클(11:20) 재확인분·공연 미도래로 값 유지, 이번 사이클 변동 없음
+- description 보강: 신규 4개 전부 영어 61~73단어(권장 50~80 내)
+- image_url: 신규 4개 전부 null. 콘서트 2건은 티켓 플랫폼 og:image가 대부분 와이드 배너라 "정사각형 근접" 기준 미충족 판단, 발매 2건은 확정 정사각 커버 URL 미확보 → 교체 대상으로 다음 사이클 이월(아티스트 공식 유튜브 아바타/Wikimedia 정사각 이미지 재확보 시 반영)
+- 총 등록 15개
+
+[신규 항목 — 콘서트/투어]
+- Avenged Sevenfold & Good Charlotte 북미 공동헤드라인 투어 - Belmont Park, NY (8/10 UBS Arena): Loudwire+Consequence+Altpress+Revolver 동일 16개 일정표 일치(7/25 Ridgedale 개막~8/27 Phoenix 폐막). 일반예매 2025-12-12 10AM local, 양 밴드 공식 사이트. 정확한 공연 시작 시각 미확정으로 release_time null
+- Ringo Starr & His All Starr Band 가을 투어 - Forest Hills, NY (10/1 Forest Hills Stadium): Pollstar(2026-07-06)+BroadwayWorld+Jambase+Consequence(2026/07)+Yahoo/AOL 일치. 이번 달(7/6) 발표된 최신 투어, 10일정(9/24 Easton~10/7 Albany). 일반예매 2026-07-10 10AM local ET Ticketmaster 확정
+
+[신규 항목 — 발매]
+- Brandon Flowers 'Thrasher' (8/21 Island Records): Billboard+NME+Universal Music Canada+Radio X+Deseret 일치. 킬러스 프론트맨의 10년 만의 3번째 솔로, 내슈빌 RCA Studio A 녹음, 컨트리 지향. 발표일 2026-06-23
+- Kasabian 'ACT III' (9/4 발매): Wikipedia+Spotify+Apple Music+kasabianarchive 일치. 원래 7/17 예정이었으나 최종 보정 위해 9/4로 연기. 9번째 정규, Serge Pizzorno 리드보컬
+
+[검증 탈락 / 보류]
+- Lana Del Rey 'Stove': 2026-01-30 발매(imdb/wikipedia/x)로 확인 — 현재 기준 과거(최근 6개월 창 경계 밖)+발매일 표기 상충(early 2026 vs 1/30)으로 신규 후보 부적합, 제외
+- AC/DC 2026 북미투어: 유효하나 이미 개막(7/11)·티켓 온세일 2025-11-07로 과거, 우선순위 낮아 이번 사이클 보류(다음 사이클 대표 스탑 검토)
+- Rod Wave 'Don't Look Down'(이전 사이클 이월): 2차 독립 출처 재확인 미완으로 계속 보류
+
 ## [2026-07-22 09:30] [KO 리서처]
 리서치 완료 (한국 국내 공연) — 이전 사이클(09:15) 이월/보류 후보 확정 중심
 - 콘서트/내한 3→3, 음원발매 1→1, 페스티벌 1→1, 팬미팅 0→0 (후보→통과)
