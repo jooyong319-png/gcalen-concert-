@@ -234,11 +234,16 @@
       "release_date_approx": false,
       "timezone": "Asia/Seoul",
       "category": "concert_tour",
-      "platforms": ["고척스카이돔"],
+      "platforms": [
+        "고척스카이돔"
+      ],
       "developer": "에스파(aespa)",
       "publisher": "SM엔터테인먼트",
       "description": "에스파(aespa)가 2026-27 월드투어 'SYNK : COMPLaeXITY'의 출발점으로 서울 고척스카이돔에 입성한다. 8월 7일과 8일 이틀간 열리는 이번 공연은 그룹의 첫 돔 규모 단독 콘서트로, 'CRACK'을 핵심 키워드로 한 새로운 무대 연출을 예고했다. 6월 팬클럽 선예매와 일반예매가 모두 마무리됐으며, 이후 전 세계 25개 지역을 도는 대규모 투어로 이어진다.",
-      "genres": ["K-POP", "콘서트"],
+      "genres": [
+        "K-POP",
+        "콘서트"
+      ],
       "image_url": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/06/202606112111474b29f4a6-276a-45a5-9d96-0af16312c9fd.jpg",
       "source_url": "https://www.jnilbo.com/news/articleView.html?idxno=90000042555",
       "presale": true,
@@ -258,11 +263,16 @@
       "release_date_approx": false,
       "timezone": "Asia/Seoul",
       "category": "concert_tour",
-      "platforms": ["예스24 라이브홀"],
+      "platforms": [
+        "예스24 라이브홀"
+      ],
       "developer": "잭 화이트(Jack White)",
       "publisher": "라이브네이션코리아",
       "description": "그래미상 12회 수상에 빛나는 록 뮤지션 잭 화이트(Jack White)가 8월 17일 서울 예스24 라이브홀에서 단독 내한공연을 연다. 화이트 스트라이프스 시절부터 이어온 개러지 록 특유의 원초적인 사운드와 즉흥성 강한 라이브로 유명한 아티스트로, 이번 공연은 라이브네이션코리아 주최로 성사됐다. 티켓은 5월 아티스트 선예매와 일반예매를 거쳐 현재도 판매 중이다.",
-      "genres": ["록", "내한"],
+      "genres": [
+        "록",
+        "내한"
+      ],
       "image_url": "https://dynamicmedia.livenationinternational.com/x/e/r/5dc71eb3-4447-442d-8447-7fc4f2744b60.jpg",
       "source_url": "https://www.livenation.kr/event/jack-white-live-2026-in-seoul-seoul-tickets-edp1672337",
       "presale": false,
@@ -282,11 +292,16 @@
       "release_date_approx": false,
       "timezone": "Asia/Seoul",
       "category": "concert_tour",
-      "platforms": ["블루스퀘어 우리WON뱅킹홀"],
+      "platforms": [
+        "블루스퀘어 우리WON뱅킹홀"
+      ],
       "developer": "김종국",
       "publisher": null,
       "description": "터보 출신 가수 김종국이 데뷔 30주년을 기념해 지난해 진행한 단독 콘서트 'The Originals'의 앵콜 공연을 8월 15일과 16일 서울 블루스퀘어 우리WON뱅킹홀에서 연다. 팬들의 뜨거운 요청으로 마련된 이번 무대에서는 터보 시절 히트곡부터 솔로 대표곡까지 30년 음악 인생을 아우르는 라인업이 펼쳐질 예정이다. 티켓은 6월 2일 오후 7시 NOL티켓을 통해 예매가 시작됐다.",
-      "genres": ["콘서트", "솔로"],
+      "genres": [
+        "콘서트",
+        "솔로"
+      ],
       "image_url": null,
       "source_url": "https://sports.khan.co.kr/article/202605272130003",
       "general_sale": true,
@@ -302,11 +317,16 @@
       "release_date_approx": false,
       "timezone": "Asia/Seoul",
       "category": "festival",
-      "platforms": ["킨텍스(KINTEX)"],
+      "platforms": [
+        "킨텍스(KINTEX)"
+      ],
       "developer": null,
       "publisher": null,
       "description": "K-POP 종합 페스티벌 'OKF 2026(ORJET K-POP FESTA)'이 9월 26일과 27일 이틀간 경기 고양시 킨텍스에서 열린다. 1차 라인업으로 리센느, QWER, 이민우, 청하, 크래비티, 피프티피프티, 빌리, 하이키, 나우즈, 비투비, 아이콘 등이 공개돼 4세대 신인부터 1990년대 후반부터 활동해 온 베테랑까지 세대를 아우르는 무대가 예고됐다. 양일간 총 24개 팀이 출연하며 2차 라인업과 티켓 오픈 일정은 추후 공식 채널을 통해 공개될 예정이다.",
-      "genres": ["페스티벌", "K-POP"],
+      "genres": [
+        "페스티벌",
+        "K-POP"
+      ],
       "image_url": null,
       "source_url": "https://www.etnews.com/20260623000157"
     },
@@ -318,11 +338,16 @@
       "release_date_approx": false,
       "timezone": "Asia/Seoul",
       "category": "fanmeeting",
-      "platforms": ["인스파이어 아레나(인천)"],
+      "platforms": [
+        "인스파이어 아레나(인천)"
+      ],
       "developer": "라이즈(RIIZE)",
       "publisher": "SM엔터테인먼트",
       "description": "라이즈(RIIZE)가 데뷔 3주년을 맞아 9월 12일과 13일 인천 인스파이어 아레나에서 팬미팅 '채널 라이즈 : 온 에어(Ch. RIIZE : ON AIR)'를 연다. 공식 팬클럽 브리즈(BRIIZE)를 위한 방송 채널 콘셉트로 꾸며지며 360도 개방형 무대로 진행돼 현장감을 극대화한다. 비욘드 라이브와 위버스를 통한 온라인 생중계도 함께 이뤄지며, 국내 선예매는 7월 27일, 일반예매는 7월 29일부터 시작된다.",
-      "genres": ["K-POP", "팬미팅"],
+      "genres": [
+        "K-POP",
+        "팬미팅"
+      ],
       "image_url": null,
       "source_url": "https://www.etoday.co.kr/news/view/2605229",
       "presale": true,
@@ -333,6 +358,157 @@
       "general_sale_datetime": null,
       "general_sale_end_datetime": null,
       "general_sale_url": null
+    },
+    {
+      "id": "ko-psy-heumppuck-show-2026-20260801",
+      "name": "싸이 흠뻑쇼 SUMMER SWAG 2026",
+      "release_date": "2026-08-01",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "Asia/Seoul",
+      "category": "concert_tour",
+      "platforms": [
+        "수원종합운동장 등 전국 9개 도시"
+      ],
+      "developer": "싸이(PSY)",
+      "publisher": "피네이션(P NATION)",
+      "description": "싸이의 대표 여름 콘서트 '흠뻑쇼'가 2026년에도 전국 투어로 돌아온다. 6월 27일 의정부를 시작으로 대구·인천·서울을 거쳐 이어지며, 현재 기준 남은 일정은 원주(7/25), 수원(8/1~2), 광주(8/8), 부산(8/15~16), 대전(8/22~23)이다. 총 9개 도시 14회 규모로, 무대 위로 물을 뿌리는 특유의 연출과 대규모 라이브가 특징이다. 선예매와 일반예매는 6월 4일 NOL 티켓(인터파크)에서 시작됐다.",
+      "genres": [
+        "K-POP",
+        "콘서트",
+        "여름"
+      ],
+      "image_url": null,
+      "source_url": "https://www.wikitree.co.kr/articles/1138931",
+      "presale": false,
+      "presale_datetime": "2026-06-04T12:00:00+09:00",
+      "presale_end_datetime": null,
+      "presale_url": "https://tickets.interpark.com/",
+      "general_sale": true,
+      "general_sale_datetime": "2026-06-04T20:00:00+09:00",
+      "general_sale_end_datetime": null,
+      "general_sale_url": "https://tickets.interpark.com/"
+    },
+    {
+      "id": "ko-bigbang-worldtour-goyang-20260821",
+      "name": "BIGBANG 2026 WORLD TOUR IN GOYANG",
+      "release_date": "2026-08-21",
+      "release_time": "19:30",
+      "release_date_approx": false,
+      "timezone": "Asia/Seoul",
+      "category": "concert_tour",
+      "platforms": [
+        "고양종합운동장"
+      ],
+      "developer": "빅뱅(BIGBANG)",
+      "publisher": "쿠팡플레이",
+      "description": "빅뱅이 데뷔 20주년을 맞아 여는 월드투어의 출발점으로 고양종합운동장 무대에 오른다. 8월 21일·22일 오후 7시 30분, 23일 오후 7시까지 사흘간 열리며, 완전체 무대로는 약 9년 만이다. 국내 티켓 예매는 부정 예매 차단을 위해 쿠팡플레이 모바일 앱에서 단독으로 진행됐고, 팬클럽 선예매는 6월 24일, 일반예매는 6월 25일 오후 7시에 열렸다. 잔여석은 회차별 공연 전일까지 앱에서 구매할 수 있다.",
+      "genres": [
+        "K-POP",
+        "콘서트",
+        "20주년"
+      ],
+      "image_url": "https://web.coupangstreaming.com/images/bigbang-concert-2026/preview-image.jpg",
+      "source_url": "https://www.coupangplay.com/promotion/BIGBANG-2026-WORLD-TOUR",
+      "presale": false,
+      "presale_datetime": "2026-06-24T19:00:00+09:00",
+      "presale_end_datetime": null,
+      "presale_url": "https://www.coupangplay.com/promotion/BIGBANG-2026-WORLD-TOUR",
+      "general_sale": true,
+      "general_sale_datetime": "2026-06-25T19:00:00+09:00",
+      "general_sale_end_datetime": null,
+      "general_sale_url": "https://www.coupangplay.com/promotion/BIGBANG-2026-WORLD-TOUR"
+    },
+    {
+      "id": "ko-higedandism-asiatour-seoul-20260808",
+      "name": "오피셜히게단디즘 아시아 투어 2026 in SEOUL",
+      "release_date": "2026-08-08",
+      "release_time": "19:00",
+      "release_date_approx": false,
+      "timezone": "Asia/Seoul",
+      "category": "concert_tour",
+      "platforms": [
+        "KSPO DOME(올림픽공원 체조경기장)"
+      ],
+      "developer": "Official髭男dism(오피셜히게단디즘)",
+      "publisher": null,
+      "description": "일본 대표 밴드 오피셜히게단디즘(히게단)이 2년 만에 내한해 서울 공연을 연다. 8월 8일과 9일 이틀간 오후 7시 올림픽공원 KSPO DOME(체조경기장)에서 아시아 투어 서울 스탑을 진행한다. 'Pretender', 'Subtitle' 등으로 국내에서도 두꺼운 팬층을 확보한 팀으로, 2024년 내한에 이은 두 번째 대규모 단독 공연이다. 팬클럽 선예매는 3월 31일부터, 일반예매는 4월 16일 오후 7시 NOL 티켓에서 열렸다.",
+      "genres": [
+        "J-POP",
+        "밴드",
+        "내한"
+      ],
+      "image_url": null,
+      "source_url": "https://www.newsis.com/view/NISX20260331_0003570696",
+      "presale": false,
+      "presale_datetime": "2026-03-31T12:00:00+09:00",
+      "presale_end_datetime": null,
+      "presale_url": null,
+      "general_sale": true,
+      "general_sale_datetime": "2026-04-16T19:00:00+09:00",
+      "general_sale_end_datetime": null,
+      "general_sale_url": "https://tickets.interpark.com/contents/notice/detail/13341"
+    },
+    {
+      "id": "ko-and-team-mark-on-me-20260908",
+      "name": "앤팀(&TEAM) 한국 미니 2집 'Mark on Me'",
+      "release_date": "2026-09-08",
+      "release_time": "18:00",
+      "release_date_approx": false,
+      "timezone": "Asia/Seoul",
+      "category": "music_release",
+      "platforms": [
+        "음원 사이트 및 음반"
+      ],
+      "developer": "앤팀(&TEAM)",
+      "publisher": "하이브(HYBE)",
+      "description": "하이브 소속 글로벌 그룹 앤팀(&TEAM)이 첫 한국 미니 2집 'Mark on Me'로 컴백한다. 9월 8일 오후 6시 각 음원 사이트를 통해 정식 발매되며, 예약 판매는 7월 6일부터 시작됐다. 그동안 일본을 중심으로 활동해 온 앤팀이 본격적으로 한국 시장을 겨냥한 정규 한국어 음반을 선보이는 첫 사례라는 점에서 주목받는다. 컴백 트레일러 공개와 함께 발매 일정이 확정됐다.",
+      "genres": [
+        "K-POP",
+        "컴백"
+      ],
+      "image_url": null,
+      "source_url": "https://www.soompi.com/article/1852382wpp/watch-team-announces-1st-ever-korean-comeback-with-trailer-for-mark-on-me",
+      "presale": false,
+      "general_sale": false
+    },
+    {
+      "id": "ko-gmf-2026-20261017",
+      "name": "그랜드 민트 페스티벌 2026 (GMF 2026)",
+      "release_date": "2026-10-17",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "Asia/Seoul",
+      "category": "festival",
+      "platforms": [
+        "올림픽공원"
+      ],
+      "developer": null,
+      "publisher": "민트페이퍼(Mint Paper)",
+      "description": "국내 대표 가을 음악 페스티벌 그랜드 민트 페스티벌(GMF)이 2026년 10월 17일과 18일 이틀간 올림픽공원에서 열린다. 1차 라인업으로 윤하, 장기하, 로이킴, 쏜애플, CNBLUE, N.Flying, 이승윤, 터치드 등 18개 팀이 공개됐으며, 4개의 멀티 스테이지를 통해 감성적인 라인업을 선보인다. 예년과 마찬가지로 최종 라인업과 타임테이블은 개최에 앞서 순차 공개될 예정이다. 티켓 오픈 일정은 추후 공식 발표된다.",
+      "genres": [
+        "페스티벌",
+        "인디",
+        "가을"
+      ],
+      "image_url": null,
+      "source_url": "https://sports.khan.co.kr/en/article/202607161910007/",
+      "festival_days": [
+        {
+          "date": "2026-10-18",
+          "lineup": [
+            "윤하",
+            "로이킴",
+            "CNBLUE",
+            "N.Flying",
+            "쏜애플",
+            "ONEWE",
+            "극동아시아타이거즈",
+            "까치산",
+            "드래곤포니"
+          ]
+        }
+      ]
     }
   ]
 }
