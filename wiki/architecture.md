@@ -36,7 +36,7 @@ app/[lang]/
 ├── artist/, artist/[slug]   아티스트 목록/상세 (developer 필드 정규화 그룹핑)
 ├── venue/, venue/[slug]     공연장 목록/상세 (platforms 필드 정규화 그룹핑)
 ├── news/, news/[slug]       뉴스(로케일별 완전 독립)
-├── blog/, blog/[slug]       모아보기(KO 원본 + 선택적 EN/JA 번역)
+├── blog/, blog/[slug]       모아보기(로케일별 완전 독립, 2026-07-22부터)
 ├── guide/, guide/glossary   이용 가이드 FAQ + 용어 사전
 ├── about/, contact/, privacy/, terms/, wishlist/
 ```
@@ -50,7 +50,7 @@ app/[lang]/
 | `prompts/RESEARCHER_KO/EN/JA.md` | `data/concerts.<locale>.json` | 완전 독립(번역 아님) |
 | `prompts/NEWS_RESEARCHER_KO/EN/JA.md` | `content/news/*.<locale>.md` | 완전 독립(번역 아님) |
 | `prompts/ARTIST_PROFILE.md` | `data/artist-images.json`, `artist-bios.json` | 이미지는 공용, 소개글은 로케일별 독립 |
-| `prompts/BLOG_RESEARCHER.md` | `content/blog/*.md` | KO 원본 + 선택적 번역(예외적으로 번역 구조) |
+| `prompts/BLOG_RESEARCHER_KO/EN/JA.md` | `content/blog/*.<locale>.md` | 완전 독립(번역 아님, 2026-07-22부터) |
 | `prompts/PLANNER.md` | 위 콘텐츠 신호 점검 + 실행, 코드는 제안만 | — |
 | `prompts/PRODUCT_PLANNER.md` / `prompts/PRODUCT_DEVELOPER.md` | 코드/기능/디자인, 콘텐츠는 안 건드림 | — |
 

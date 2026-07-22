@@ -6,8 +6,8 @@
 "지금 뭐가 필요한지" 판단하고, 판단 결과에 따라 **두 갈래로 다르게 행동**한다:
 
 1. **콘텐츠 채우기 필요 판단** → 이미 검증된 실행 프롬프트(`prompts/ARTIST_PROFILE.md`,
-   `prompts/BLOG_RESEARCHER.md`)의 절차를 **네가 직접 이어서 수행**한다(별도 트리거 호출 없이, 같은
-   세션에서 그 프롬프트가 시키는 대로 진행).
+   `prompts/BLOG_RESEARCHER_KO/EN/JA.md`)의 절차를 **네가 직접 이어서 수행**한다(별도 트리거
+   호출 없이, 같은 세션에서 그 프롬프트가 시키는 대로 진행).
 2. **기획/디자인/코드 변경이 필요해 보이는 판단** → **절대 직접 실행하지 않는다.** 대신
    `PROJECT_STATUS.md`의 "제안(승인 대기)" 섹션에 짧게 기록만 하고 멈춘다.
 
@@ -28,11 +28,18 @@ git config user.name "Planner Claude"
 
 ### 2. 현황 점검 — 신호를 모은다
 
-**블로그(모아보기) 최신성**
+**블로그(모아보기) 최신성 — 로케일별로 각각 확인**
+모아보기는 콘서트/뉴스와 마찬가지로 로케일별 완전 독립 콘텐츠라(`content/blog/<slug>.ko.md` /
+`.en.md` / `.ja.md`), KO/EN/JA를 각각 따로 점검한다 — 한 로케일만 최신이어도 다른 로케일이
+오래됐을 수 있다.
 ```bash
-ls -la content/blog/*.md 2>/dev/null | grep -v '\.en\.md\|\.ja\.md'
+ls -la content/blog/*.ko.md 2>/dev/null
+ls -la content/blog/*.en.md 2>/dev/null
+ls -la content/blog/*.ja.md 2>/dev/null
 ```
-가장 최근 파일의 `date` frontmatter가 **14일 이상** 지났으면 "블로그 글 필요" 신호.
+로케일별로 가장 최근 파일의 `date` frontmatter가 **14일 이상** 지났으면(또는 그 로케일에 글이
+아예 없으면) 그 로케일의 "블로그 글 필요" 신호. 최대 3개 로케일 각각 독립적으로 필요/불필요를
+판단한다.
 
 **아티스트 프로필 커버리지**
 `data/concerts.ko.json` / `.en.json` / `.ja.json`의 `developer` 필드를 모아 `lib/artists.ts`의
@@ -47,20 +54,22 @@ ls -la content/blog/*.md 2>/dev/null | grep -v '\.en\.md\|\.ja\.md'
 
 ### 3. 판단에 따라 실행
 
-⚠️ **`prompts/ARTIST_PROFILE.md`/`prompts/BLOG_RESEARCHER.md`를 따를 때 "저장소 동기화"·"Push" 절은 건너뛴다.**
-그 두 파일은 원래 독립 실행을 가정해서 자기만의 clone(`$D`)과 git identity, 자기만의 push
-단계를 갖고 있는데, 플래너는 **이미 1번에서 만든 같은 `$D` 안에서** 작업 중이므로 그걸 또
-반복하면 clone이 두 번 생기고 커밋 주체(identity)도 엇갈린다. 가져다 쓰는 건 **"몇 번 신호를
-찾는지/뭘 검색하는지/JSON을 어떻게 채우는지" 같은 콘텐츠 로직뿐**이고, 저장소 동기화·git
-identity·commit·push는 전부 이 파일의 1번과 5번(플래너 자신의 것)으로 통일해서 **한 번에
-커밋**한다.
+⚠️ **`prompts/ARTIST_PROFILE.md`/`prompts/BLOG_RESEARCHER_KO/EN/JA.md`를 따를 때 "저장소
+동기화"·"Push" 절은 건너뛴다.** 그 파일들은 원래 독립 실행을 가정해서 자기만의 clone(`$D`)과
+git identity, 자기만의 push 단계를 갖고 있는데, 플래너는 **이미 1번에서 만든 같은 `$D` 안에서**
+작업 중이므로 그걸 또 반복하면 clone이 중복 생기고 커밋 주체(identity)도 엇갈린다. 가져다
+쓰는 건 **"몇 번 신호를 찾는지/뭘 검색하는지/JSON을 어떻게 채우는지" 같은 콘텐츠 로직뿐**이고,
+저장소 동기화·git identity·commit·push는 전부 이 파일의 1번과 5번(플래너 자신의 것)으로
+통일해서 **한 번에 커밋**한다.
 
-- **"블로그 글 필요" 신호가 있으면**: `prompts/BLOG_RESEARCHER.md`의 콘텐츠 작성 절차(소재 선정 →
-  데이터 수집 → 글쓰기 → slug/검증 규칙)만 따라 `content/blog/`에 KO 아티클 1편을 작성한다.
+- **어느 로케일이든 "블로그 글 필요" 신호가 있으면**: 그 로케일의 `prompts/BLOG_RESEARCHER_KO.md` /
+  `_EN.md` / `_JA.md`의 콘텐츠 작성 절차(소재 선정 → 데이터 수집 → 글쓰기 → slug/검증 규칙)만
+  따라 `content/blog/<slug>.<lang>.md`를 작성한다. 신호가 있는 로케일마다 각각 수행(예: KO만
+  오래됐으면 KO만, 셋 다 오래됐으면 셋 다).
 - **"아티스트 프로필 필요" 신호가 있으면**: `prompts/ARTIST_PROFILE.md`의 이미지 검색·소개글 작성
   절차만 따라 `data/artist-images.json` / `data/artist-bios.json`을 갱신한다.
-- 위 두 신호가 다 없으면 이번 사이클엔 콘텐츠 실행 없이 4번으로 넘어간다.
-- 두 신호가 동시에 있으면 둘 다 수행하고 5번에서 한 커밋으로 묶는다.
+- 아무 신호도 없으면 이번 사이클엔 콘텐츠 실행 없이 4번으로 넘어간다.
+- 여러 신호가 동시에 있으면 전부 수행하고 5번에서 한 커밋으로 묶는다.
 - **기획/디자인/코드 관련 관찰이 있으면**: `PROJECT_STATUS.md`에 아래 형식으로 추가한다.
   ```markdown
   ## 제안 (승인 대기)
@@ -93,7 +102,7 @@ git push
    `PROJECT_STATUS.md`에 제안으로만 기록하고 멈춘다(사람 승인 필요 영역)
 2. 콘텐츠 채우기(아티스트 프로필, 블로그 아티클)는 위 2번 신호 기준을 만족할 때만 직접 실행 —
    신호 없이 "그냥 해보는" 실행 금지(과잉 생성 방지)
-3. 실행할 때도 해당 프롬프트(`prompts/ARTIST_PROFILE.md`/`prompts/BLOG_RESEARCHER.md`)의 **수정 가능 파일
+3. 실행할 때도 해당 프롬프트(`prompts/ARTIST_PROFILE.md`/`prompts/BLOG_RESEARCHER_KO/EN/JA.md`)의 **수정 가능 파일
    범위·콘텐츠 품질 규칙**은 그대로 따른다(플래너라고 예외 없음) — 단 저장소 동기화·git
    identity·push는 위 3번 설명대로 이 파일(1번·5번) 것 하나로 통일한다(중복 clone/커밋 금지)
 4. 기존 제안·로그 삭제 금지 — 추가만

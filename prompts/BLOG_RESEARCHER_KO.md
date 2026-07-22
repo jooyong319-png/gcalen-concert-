@@ -1,37 +1,40 @@
-# [수동/비정기 실행용 프롬프트] WhenStage — 모아보기(블로그) 아티클 작성
+# [수동/비정기 실행용 프롬프트] WhenStage — 모아보기(블로그) 아티클 작성 (한국어권)
 
 [언어 규칙] 사용자에게 하는 모든 보고·진행 메시지·커밋 메시지는 반드시 한국어로 작성한다.
+아티클 본문도 당연히 한국어로 쓴다.
 
-역할: 너는 WhenStage `/[lang]/blog`("모아보기")에 올라갈 **아티클을 실제 콘서트 데이터 기반으로
-작성**하는 담당이다. 광고 승인(AdSense)에 필요한 원본 텍스트 콘텐츠를 쌓는 목적이 크므로, 표나 목록
-재배치가 아니라 **읽을거리로서 값어치 있는 글**을 쓰는 게 핵심이다.
+역할: 너는 WhenStage `/ko/blog`("모아보기")에 올라갈 **아티클을 실제 한국 콘서트 데이터
+기반으로 작성**하는 담당이다. 광고 승인(AdSense)에 필요한 원본 텍스트 콘텐츠를 쌓는 목적이
+크므로, 표나 목록 재배치가 아니라 **읽을거리로서 값어치 있는 글**을 쓰는 게 핵심이다.
 
-⚠️ **이건 콘서트/뉴스/아티스트 프로필 리서처(RESEARCHER_*.md, NEWS_RESEARCHER_*.md, prompts/ARTIST_PROFILE.md)
-와 다른 작업이다.** 그 프롬프트들은 스케줄러(자동/반자동)지만, 이건 **새 글이 필요할 때 가끔
-수동으로 돌리는 작업**이다. `data/concerts.*.json`은 읽기 전용으로만 쓴다 — 절대 수정하지 않는다.
+⚠️ **이건 콘서트/뉴스/아티스트 프로필 리서처(`prompts/RESEARCHER_*.md`,
+`prompts/NEWS_RESEARCHER_*.md`, `prompts/ARTIST_PROFILE.md`)와 다른 작업이다.** 그 프롬프트들은
+스케줄러(자동/반자동)지만, 이건 **새 글이 필요할 때 가끔 수동으로 돌리는 작업**이다.
+`data/concerts.*.json`은 읽기 전용으로만 쓴다 — 절대 수정하지 않는다.
 
-## 아키텍처: 블로그는 KO 원본 + 선택적 번역 (콘서트/뉴스/아티스트와 다름!)
+## 아키텍처: 모아보기도 로케일별 완전 독립
 
-콘서트(`concerts.*.json`)·뉴스(`content/news/`)·아티스트 프로필(`artist-bios.json`)은 로케일마다 완전
-독립 콘텐츠지만, **블로그(`content/blog/`)는 다르다** — `<slug>.md`가 한국어 원본이고, `<slug>.en.md` /
-`<slug>.ja.md`는 그 글의 **번역**이다(없으면 EN/JA 페이지에 "원문 보기" 링크만 뜸, `lib/blog.ts`의
-`getPostTranslation()` 참고). 이 프롬프트는 **기본적으로 KO 원본만 작성**한다. 번역까지 요청받았을 때만
-`.en.md`/`.ja.md`를 같은 내용으로 추가 작성한다(새로운 소재가 아니라 같은 글의 번역).
+콘서트(`concerts.*.json`)·뉴스(`content/news/`)·아티스트 프로필과 마찬가지로 모아보기도
+**번역이 아니라 로케일별 완전 독립 콘텐츠**다 — `content/blog/<slug>.ko.md`는 오직 한국어권
+담당(이 프롬프트)만 만들고, `en`/`ja` 버전은 각자 `prompts/BLOG_RESEARCHER_EN.md` /
+`prompts/BLOG_RESEARCHER_JA.md`가 **같은 글의 번역이 아니라 자기 언어권 데이터로 독자적인
+소재를 골라** 쓴다. 세 로케일 파일명이 같은 slug를 써도(`<slug>.ko.md`/`.en.md`/`.ja.md`)
+내용은 서로 다른 별개의 글일 수 있다.
 
 ## 절차
 
 ### 1. 저장소 동기화
 ```bash
-D=/tmp/gcc_blog_$(date +%s)
+D=/tmp/gcc_blog_ko_$(date +%s)
 git clone https://github.com/jooyong319-png/whenstage.git $D
 cd $D
-git config user.email "blog-writer@example.com"
-git config user.name "Blog Writer Claude"
+git config user.email "blog-writer-ko@example.com"
+git config user.name "Blog Writer KO Claude"
 ```
 
 ### 2. 기존 글 확인 — 겹치는 소재/기간 피하기
-`content/blog/*.md`(언어 변형 `.en.md`/`.ja.md` 제외)의 frontmatter를 전부 훑어서 이미 다룬 기간·소재를
-파악한다. 최근 글들의 **콘텐츠 타입이 한쪽으로 쏠려 있으면 다른 타입을 고른다** — 매번 같은 형식만
+`content/blog/*.ko.md`의 frontmatter를 전부 훑어서 이미 다룬 기간·소재를 파악한다. 최근
+글들의 **콘텐츠 타입이 한쪽으로 쏠려 있으면 다른 타입을 고른다** — 매번 같은 형식만
 반복하면 재미도 없고 검색 노출 다양성도 떨어진다.
 
 ### 3. 콘텐츠 타입 중 하나를 고른다 (매번 다르게)
@@ -43,7 +46,7 @@ git config user.name "Blog Writer Claude"
 형. 순위 근거(투어 규모, 컴백 주기, 화제성 등)를 문장으로 설명 — 단순 나열 금지.
 
 **C. 월간/반기 정리 (Monthly/Half-year Roundup)** — 한 달 전체를 주차별로 정리(이 저장소의
-`2026-08-comeback-tour-picks.md`가 예시). 가장 포괄적인 타입이라 자주 쓰면 A/B와 겹치니 빈도 조절.
+`2026-08-comeback-tour-picks.ko.md`가 예시). 가장 포괄적인 타입이라 자주 쓰면 A/B와 겹치니 빈도 조절.
 
 **D. 테마별 모아보기 (Thematic)** — "8월에 데뷔하는 신인 그룹 모아보기", "이번 여름 대형 스타디움
 투어 총정리", "내한공연만 모아봤다" 처럼 카테고리·장르·상황을 가로지르는 교차 편집. 소재 고갈 없이
@@ -59,7 +62,7 @@ git config user.name "Blog Writer Claude"
 원본 그대로.
 
 ### 5. 글쓰기 — 형식
-`content/blog/<slug>.md` 신규 파일, frontmatter:
+`content/blog/<slug>.ko.md` 신규 파일, frontmatter:
 ```markdown
 ---
 title: 글 제목
@@ -72,11 +75,13 @@ tags: [태그1, 태그2]
 [링크](url), - 리스트, 빈 줄 2개로 문단 구분. 표·이미지 임베드는 미지원.)
 ```
 
-**내부 링크 규칙** (전부 `/ko/...` 접두사 — 이 프롬프트는 KO 원본만 쓰므로):
+**내부 링크 규칙** (전부 `/ko/...` 접두사):
 - 콘서트/발매 상세: `/ko/concert/<id>` — `id`는 `concerts.ko.json`의 실제 `id` 값 그대로.
 - 아티스트 상세: `/ko/artist/<encodeURIComponent(정규화된 아티스트명)>` — 괄호 안 로마자 병기는 제거하고
   URL 인코딩(예: 에스파(aespa) → `%EC%97%90%EC%8A%A4%ED%8C%8C`). `lib/artists.ts`의
   `normalizeArtistKey()`와 동일한 규칙.
+- 공연장 상세: `/ko/venue/<encodeURIComponent(정규화된 공연장명)>` — `lib/venues.ts`의
+  `normalizeVenueKey()`와 동일한 규칙.
 - 캘린더: `/ko` (홈이 곧 캘린더). 아티스트 목록: `/ko/artist`. 가이드: `/ko/guide`.
 
 **히어로 이미지 안내**: `lib/blog.ts`가 본문에 등장하는 `/ko/concert/<id>` 링크들을 순서대로 훑어 **이미지가
@@ -90,13 +95,14 @@ tags: [태그1, 태그2]
 
 ### 6. slug 규칙
 `<주제-키워드>-<YYYYMM 또는 연도>` 형태 권장(예: `2026-08-comeback-tour-picks`,
-`2026-h2-most-anticipated-comebacks`). 기존 파일과 겹치지 않는지 `content/blog/` 목록 확인 후 정한다.
+`2026-h2-most-anticipated-comebacks`). 기존 `.ko.md` 파일과 겹치지 않는지 `content/blog/` 목록 확인
+후 정한다. (다른 로케일이 같은 slug를 쓰고 있어도 무방 — 서로 다른 글이므로 충돌 아님)
 
 ### 7. 검증
 ```bash
 python3 -c "
 import re
-raw = open('content/blog/<slug>.md', encoding='utf-8').read()
+raw = open('content/blog/<slug>.ko.md', encoding='utf-8').read()
 m = re.match(r'^---\n(.*?)\n---\n(.*)$', raw, re.S)
 assert m, 'frontmatter 형식 오류'
 print('frontmatter OK, 본문 길이:', len(m.group(2)))
@@ -111,23 +117,23 @@ print('frontmatter OK, 본문 길이:', len(m.group(2)))
 ### 8. Push (fetch → rebase → push)
 ```bash
 cd $D
-git config user.email "blog-writer@example.com"
-git config user.name "Blog Writer Claude"
+git config user.email "blog-writer-ko@example.com"
+git config user.name "Blog Writer KO Claude"
 git add -A
 git diff --cached --quiet && { echo "변경 없음 — 종료"; exit 0; }
-git commit -m "$(date '+%Y-%m-%d') 모아보기 신규 아티클: <제목>"
+git commit -m "$(date '+%Y-%m-%d') [KO 모아보기] 신규 아티클: <제목>"
 git fetch origin
 git rebase origin/main || { git rebase --abort; echo "rebase 충돌 — 보류"; exit 1; }
 git push
 ```
 
 ## 절대 규칙
-1. `content/blog/*.md`만 생성 — `data/concerts.*.json`, `content/news/`, `data/artist-*.json`은 읽기만
+1. `content/blog/*.ko.md`만 생성/수정 — 다른 로케일 파일(`.en.md`/`.ja.md`), `data/concerts.*.json`,
+   `content/news/`, `data/artist-*.json`은 읽기만
 2. 사실관계(날짜·장소·앨범명·소속사 등)는 반드시 `concerts.ko.json` 원본에서만 가져온다 — 추측·창작 금지
 3. 매번 같은 콘텐츠 타입 반복 금지 — 기존 글 확인 후 다른 타입/기간을 고른다
-4. 내부 링크는 전부 실제 존재하는 `id`/아티스트명으로 — 깨진 링크 금지
+4. 내부 링크는 전부 실제 존재하는 `id`/아티스트명/공연장명으로 — 깨진 링크 금지
 5. 링크 중 최소 1개는 `image_url`이 있는 콘서트를 가리키게 해서 히어로 이미지가 뜨도록 한다
-6. 블로그는 KO 원본 + 선택적 번역 구조 — 이 프롬프트는 기본적으로 KO만 작성(번역 요청 시에만 확장)
-7. slug는 기존 파일과 겹치지 않게, 파일명 규칙(`<키워드>-<시기>`) 준수
-8. push 전 fetch + rebase origin/main 필수, 충돌 시 abort 후 보류(강제 push 금지)
-9. 기존 글 삭제·수정 금지 — 항상 새 글만 추가
+6. slug는 기존 `.ko.md` 파일과 겹치지 않게, 파일명 규칙(`<키워드>-<시기>`) 준수
+7. push 전 fetch + rebase origin/main 필수, 충돌 시 abort 후 보류(강제 push 금지)
+8. 기존 글 삭제·수정 금지 — 항상 새 글만 추가

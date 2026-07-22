@@ -2,6 +2,7 @@
 import path from 'path';
 import { promises as fs } from 'fs';
 import { getAllGames } from './games';
+import type { Locale } from './i18nLabels';
 
 export interface BlogPost {
   slug: string;
@@ -10,20 +11,11 @@ export interface BlogPost {
   date: string;             // 'YYYY-MM-DD'
   tags: string[];
   content: string;          // markdown 본문 (frontmatter 제외)
-  heroGameId: string | null;   // 본문 첫 /game/<id> 링크의 게임 id
-  heroImage: string | null;    // 위 게임의 대표 이미지 (없으면 null)
+  heroGameId: string | null;   // 본문 첫 콘서트 링크의 id
+  heroImage: string | null;    // 위 콘서트의 대표 이미지 (없으면 null)
 }
 
-// 다국어 번역 — content/blog/<slug>.en.md · <slug>.ja.md (원본과 별도 파일, 없으면 미번역)
-export type ContentLang = 'en' | 'ja';
-
-export interface ContentTranslation {
-  title: string;
-  description: string;
-  content: string; // markdown 본문
-}
-
-// 단순 frontmatter 파서 (gray-matter 없이)
+// 단순 frontmatter 파서 (gray-matter 없이) — news.ts와 동일 규칙
 function parseFrontmatter(raw: string): { meta: Record<string, string | string[]>; body: string } {
   const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
   if (!match) return { meta: {}, body: raw };
@@ -56,16 +48,21 @@ export function firstGameId(content: string): string | null {
   return allGameIds(content)[0] ?? null;
 }
 
-async function readAllPosts(): Promise<BlogPost[]> {
+// 로케일별로 완전히 독립된 모아보기 글 세트 — content/blog/<slug>.<lang>.md.
+// (콘서트/뉴스와 동일한 원칙: 번역이 아니라 그 언어권 담당이 직접 소재를 골라 쓰는 별도 콘텐츠)
+async function readPosts(lang: Locale): Promise<BlogPost[]> {
   const dir = path.join(process.cwd(), 'content', 'blog');
+  const suffix = `.${lang}.md`;
   try {
     const files = await fs.readdir(dir);
     const posts: BlogPost[] = [];
     for (const file of files) {
-      if (!file.endsWith('.md')) continue;
-      if (/\.(en|ja)\.md$/.test(file)) continue; // 언어 변형 파일은 목록에서 제외(별도 조회)
-      const slug = file.replace(/\.md$/, '');
-      const raw = await fs.readFile(path.join(dir, file), 'utf-8');
+      if (!file.endsWith(suffix)) continue;
+      if (file.startsWith('_') || file.startsWith('.')) continue; // 템플릿/숨김 파일 제외
+      // 슬러그는 항상 NFC로 정규화 — 한글 파일명이 파일시스템/URL 간 NFD로 어긋나 매칭 실패하는 것 방지
+      const slug = file.slice(0, -suffix.length).normalize('NFC');
+      // CRLF 정규화 — Windows 체크아웃 시 frontmatter 파서(^---\n)가 깨지는 것 방지
+      const raw = (await fs.readFile(path.join(dir, file), 'utf-8')).replace(/\r\n/g, '\n');
       const { meta, body } = parseFrontmatter(raw);
       posts.push({
         slug,
@@ -82,7 +79,7 @@ async function readAllPosts(): Promise<BlogPost[]> {
     // 본문에 링크된 콘서트 중 대표 이미지가 있는 첫 항목을 히어로로 사용(순서상 첫 링크가
     // 이미지 없는 항목일 수 있어, 등장 순서대로 훑어 이미지 있는 첫 링크를 고른다).
     try {
-      const games = await getAllGames();
+      const games = await getAllGames(lang);
       const imgById = new Map(games.map(g => [g.id, g.image_url]));
       for (const p of posts) {
         const ids = allGameIds(p.content);
@@ -97,59 +94,31 @@ async function readAllPosts(): Promise<BlogPost[]> {
 
     // 날짜 내림차순 (최신 먼저)
     return posts.sort((a, b) => b.date.localeCompare(a.date));
-  } catch (e) {
+  } catch {
     // 폴더 없거나 파일 없으면 빈 배열
     return [];
   }
 }
 
-let cached: Promise<BlogPost[]> | null = null;
-export function getAllPosts(): Promise<BlogPost[]> {
-  if (!cached) cached = readAllPosts();
-  return cached;
+const cache = new Map<Locale, Promise<BlogPost[]>>();
+export function getAllPosts(lang: Locale): Promise<BlogPost[]> {
+  if (!cache.has(lang)) cache.set(lang, readPosts(lang));
+  return cache.get(lang)!;
 }
 
-export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
-  const all = await getAllPosts();
-  return all.find(p => p.slug === slug) ?? null;
+function safeDecode(s: string): string {
+  try { return decodeURIComponent(s); } catch { return s; }
 }
 
-// 번역본 조회 — content/blog/<slug>.<lang>.md. 없으면 null(그 언어 페이지 미생성).
-export async function getPostTranslation(slug: string, lang: ContentLang): Promise<ContentTranslation | null> {
-  const file = path.join(process.cwd(), 'content', 'blog', `${slug}.${lang}.md`);
-  try {
-    const raw = await fs.readFile(file, 'utf-8');
-    const { meta, body } = parseFrontmatter(raw);
-    return {
-      title: String(meta.title ?? slug),
-      description: String(meta.description ?? ''),
-      content: body,
-    };
-  } catch {
-    return null;
-  }
+export async function getPostBySlug(slug: string, lang: Locale): Promise<BlogPost | null> {
+  const all = await getAllPosts(lang);
+  const candidates = new Set([slug, safeDecode(slug)].map(s => s.normalize('NFC')));
+  return all.find(p => candidates.has(p.slug)) ?? null;
 }
 
-// 특정 언어로 번역된 글들의 slug 목록(generateStaticParams용) — 원본 있는 것만.
-export async function getTranslatedSlugs(lang: ContentLang): Promise<string[]> {
-  const dir = path.join(process.cwd(), 'content', 'blog');
-  try {
-    const files = await fs.readdir(dir);
-    const suffix = `.${lang}.md`;
-    const all = await getAllPosts();
-    const known = new Set(all.map(p => p.slug));
-    return files
-      .filter(f => f.endsWith(suffix))
-      .map(f => f.slice(0, -suffix.length))
-      .filter(slug => known.has(slug));
-  } catch {
-    return [];
-  }
-}
-
-// 관련 글 추천: 태그 겹침 수 desc → 최신 desc. 자기 자신 제외.
-export async function getRelatedPosts(slug: string, limit = 3): Promise<BlogPost[]> {
-  const all = await getAllPosts();
+// 관련 글 추천: 태그 겹침 수 desc → 최신 desc. 자기 자신 제외. 같은 로케일 안에서만.
+export async function getRelatedPosts(slug: string, lang: Locale, limit = 3): Promise<BlogPost[]> {
+  const all = await getAllPosts(lang);
   const current = all.find(p => p.slug === slug);
   if (!current) return [];
   const tagSet = new Set(current.tags);

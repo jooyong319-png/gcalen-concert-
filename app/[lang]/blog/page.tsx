@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getAllPosts, getPostTranslation, formatPostDate } from '@/lib/blog';
+import { getAllPosts, formatPostDate } from '@/lib/blog';
 import { PageShell } from '@/components/PageShell';
 import { BlogImg } from '@/components/BlogImg';
 import { LOCALES, type Locale } from '@/lib/i18nLabels';
@@ -43,26 +43,11 @@ const SUBTITLE: Record<Locale, string> = {
   ja: '新作おすすめ、期待作TOPリスト、月間・下半期発売まとめ。',
 };
 const EMPTY: Record<Locale, string> = { ko: '아직 글이 없습니다. 곧 채워질 예정이에요!', en: 'No posts yet — check back soon!', ja: 'まだ記事がありません。近日公開予定です!' };
-const UNTRANSLATED_TAG: Record<Locale, string> = { ko: '', en: '(Korean only)', ja: '(韓国語のみ)' };
 
 export default async function Page({ params }: Props) {
   if (!isLocale(params.lang)) notFound();
   const lang = params.lang;
-  const posts = await getAllPosts();
-
-  const rows = await Promise.all(posts.map(async p => {
-    const t = lang === 'ko' ? null : await getPostTranslation(p.slug, lang);
-    const translated = lang === 'ko' || !!t;
-    return {
-      slug: p.slug,
-      href: translated ? `/${lang}/blog/${p.slug}` : `/ko/blog/${p.slug}`,
-      title: t ? t.title : p.title,
-      description: t ? t.description : p.description,
-      translated,
-      date: p.date,
-      heroImage: p.heroImage,
-    };
-  }));
+  const posts = await getAllPosts(lang);
 
   return (
     <PageShell lang={lang}>
@@ -72,20 +57,17 @@ export default async function Page({ params }: Props) {
           <p className={styles.subtitle}>{SUBTITLE[lang]}</p>
         </header>
 
-        {rows.length === 0 ? (
+        {posts.length === 0 ? (
           <p className={styles.empty}>{EMPTY[lang]}</p>
         ) : (
           <ul className={styles.postList}>
-            {rows.map(p => (
+            {posts.map(p => (
               <li key={p.slug} className={p.heroImage ? `${styles.postCard} ${styles.postCardThumb}` : styles.postCard}>
-                <a href={p.href} className={styles.postLink}>
+                <a href={`/${lang}/blog/${p.slug}`} className={styles.postLink}>
                   {p.heroImage && <BlogImg src={p.heroImage} containerClassName={styles.thumb} />}
                   <div className={styles.postCardBody}>
                     <time className={styles.postDate}>{formatPostDate(p.date)}</time>
-                    <h3 className={styles.postTitle}>
-                      {p.title}
-                      {!p.translated && <span style={{ fontSize: '0.75rem', color: 'var(--text-faint)', fontWeight: 400 }}> {UNTRANSLATED_TAG[lang]}</span>}
-                    </h3>
+                    <h3 className={styles.postTitle}>{p.title}</h3>
                     {p.description && <p className={styles.postDesc}>{p.description}</p>}
                   </div>
                 </a>

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getAllGames, getLastUpdated } from '@/lib/games';
-import { getAllPosts, getPostTranslation } from '@/lib/blog';
+import { getAllPosts } from '@/lib/blog';
 import { getAllNews } from '@/lib/news';
 import { getAllArtists } from '@/lib/artists';
 import { getAllVenues } from '@/lib/venues';
@@ -89,18 +89,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // 블로그 — ko 원본은 항상 존재, en/ja는 번역 파일(.en.md/.ja.md)이 있는 것만 URL 생성
-  const posts = await getAllPosts();
+  // 모아보기(블로그) — 콘서트/뉴스와 동일하게 로케일별로 완전히 독립된 콘텐츠(번역 아님) → hreflang alternate 없음
   const blogUrls: MetadataRoute.Sitemap = [];
-  for (const p of posts) {
-    const [enT, jaT] = await Promise.all([getPostTranslation(p.slug, 'en'), getPostTranslation(p.slug, 'ja')]);
-    const languages: Record<string, string> = { ko: `${BASE}/ko/blog/${p.slug}` };
-    if (enT) languages.en = `${BASE}/en/blog/${p.slug}`;
-    if (jaT) languages.ja = `${BASE}/ja/blog/${p.slug}`;
-    const lastModified = new Date(p.date);
-    blogUrls.push({ url: `${BASE}/ko/blog/${p.slug}`, lastModified, changeFrequency: 'monthly', priority: 0.75, alternates: { languages } });
-    if (enT) blogUrls.push({ url: `${BASE}/en/blog/${p.slug}`, lastModified, changeFrequency: 'monthly', priority: 0.65, alternates: { languages } });
-    if (jaT) blogUrls.push({ url: `${BASE}/ja/blog/${p.slug}`, lastModified, changeFrequency: 'monthly', priority: 0.65, alternates: { languages } });
+  for (const lang of LOCALES) {
+    const posts = await getAllPosts(lang);
+    for (const p of posts) {
+      blogUrls.push({
+        url: `${BASE}/${lang}/blog/${p.slug}`,
+        lastModified: new Date(p.date),
+        changeFrequency: 'monthly',
+        priority: lang === 'ko' ? 0.75 : 0.65,
+      });
+    }
   }
 
   // 뉴스 — 콘서트와 동일하게 로케일별로 완전히 독립된 콘텐츠(번역 아님) → hreflang alternate 없음
