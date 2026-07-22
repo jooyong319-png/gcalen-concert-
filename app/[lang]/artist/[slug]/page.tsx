@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { getAllArtists, getArtistBySlug } from '@/lib/artists';
 import { PageShell } from '@/components/PageShell';
 import { ArtistEventList } from '@/components/ArtistEventList';
+import { ArtistAvatar } from '@/components/ArtistAvatar';
 import { UI, LOCALES, type Locale } from '@/lib/i18nLabels';
 import styles from '@/app/blog/blog.module.css';
 import artistStyles from '../artist.module.css';
@@ -46,11 +47,16 @@ export default async function ArtistDetailPage({ params }: Props) {
       <article className={styles.post}>
         <a href={`/${lang}/artist`} className={styles.backLink}>{ui.backToList}</a>
         <header className={styles.postHeader}>
-          <h1 className={styles.postH1}>{artist.name}</h1>
-          <p className={styles.postLead}>
-            {artist.events.length}{lang === 'ko' ? '개 일정' : lang === 'ja' ? '件' : ' events'}
-            {artist.upcomingCount > 0 ? ` · ${artist.upcomingCount}${ui.artistUpcomingCount}` : ''}
-          </p>
+          <div className={artistStyles.headerRow}>
+            <ArtistAvatar src={artist.image} name={artist.name} />
+            <div className={artistStyles.headerText}>
+              <h1 className={styles.postH1}>{artist.name}</h1>
+              <p className={styles.postLead}>
+                {artist.events.length}{lang === 'ko' ? '개 일정' : lang === 'ja' ? '件' : ' events'}
+                {artist.upcomingCount > 0 ? ` · ${artist.upcomingCount}${ui.artistUpcomingCount}` : ''}
+              </p>
+            </div>
+          </div>
         </header>
 
         {artist.bio && (

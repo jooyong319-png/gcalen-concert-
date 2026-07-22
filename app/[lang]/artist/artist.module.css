@@ -10,6 +10,15 @@
   .grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+.headerRow {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+.headerText {
+  min-width: 0;
+}
+
 .bioSection {
   display: flex;
   gap: 1.75rem;
