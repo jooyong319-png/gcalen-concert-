@@ -2,6 +2,26 @@
 
 이 파일은 KO/EN/JA 3개 리서처 Claude가 공통으로 append하는 로그다. 오래된 로그도 삭제하지 말 것.
 
+## [2026-07-22 09:50] [JA 리서처]
+리서치 완료 (일본 국내 공연)
+- 콘서트/来日 1→1, 발매 2→2, 페스티벌 0→0, 팬미팅 0→0 (후보→통과)
+- 신규 3개 / 갱신 0개 (삭제 없음·기존 18개 전량 보존)
+- 티켓팅 진행중: 신규 +1 (THE CRIBS 一般発売 8/8 10:00 eplus 예정 + 오피셜先行(抽選) 7/27까지). 기존 티켓팅 항목(EPICA·SUPER JUNIOR-RYEOWOOK·福山雅治·FLO·JOURNEY·The Weeknd·チソン팬미팅)은 이번 사이클 재확인 결과 최이른 공연이 8/5(福山)로 전부 미도래 → 값 유지, 해제 없음
+- description 보강: 신규 3개 전부 일본어 233~259자
+- image_url: 신규 3개 전부 null. THE CRIBS는 skream 기사 og:image가 와이드 아티스트 사진이라 "정사각 근접" 기준 미충족 판단, 발매 2건은 확정 정사각 커버 URL 미확보 → 교체 대상으로 이월(ぴあ/イープラス 상세·공식 커버 재확보 시 반영)
+- 총 등록 21개
+
+[신규 항목]
+- THE CRIBS「Selling A Vibe」来日公演 (concert_tour, 10/2 東京 duo MUSIC EXCHANGE 19:00): Skream!(2026.07.14 11:25)+Billboard JAPAN+Guitar Magazine WEB+CDJournal 4개 매체 2026년 기사 일치. 2026년 1월 발매 신작 『Selling A Vibe』 투어. 一般発売 8/8 10:00 eplus/ぴあ/ローチケ, 오피셜先行(抽選) ~7/27 확정. ⚠️정기 来日 밴드 연도혼동 함정 점검: 소스 전부 2026-07 게시·본문 2026년 명기로 재확인
+- milet『Made of Glass』 (music_release, 8/19): 소니뮤직 공식(sonymusic.co.jp/584236)+Tower Records+lisani+Sony Music Artists 일치. 약 3년만 4th 오리지널 앨범, 「葬送のフリーレン」ED 등 타이업곡 다수+신곡, 초회한정반에 라이브 영상 수록
+- いきものがかり「さよならララ」 (music_release, 8/26): 공식(ikimonogakari.com/20260417-1)+Real Sound+Billboard JAPAN+lisani 일치. 오리지널 TV애니메이션『さよならララ』(7/5 방영개시) OP테마, 7/15 선행배신, CD 8/26. 초회한정반/통상반 2형태
+
+[검증 탈락 / 보류]
+- Janet Jackson Japan 2026(6월 神戸·横浜·名古屋): 검증은 되나 오늘(7/22) 기준 이미 종료 공연 → 과거 아카이브 추가는 우선순위 낮아 이번 사이클도 보류(이전 사이클과 동일 판단)
+- SixTONES『Dance Forever/マイオンリー』(9/9): 이미 등록된 기존 항목이라 신규 아님(중복 방지 확인)
+- J-POP 발매 후보군(King Gnu·Ado·YOASOBI·RADWIMPS 등 다수): Skream! 릴리스 리스트에서 후보로 포착됐으나 이번 사이클은 독립 2출처+상세 확정된 milet·いきものがかり 우선 처리, 나머지는 다음 사이클 개별 확정 대상으로 이월
+
+
 ## [2026-07-22 09:35] [EN 리서처]
 리서치 완료 (영어권/글로벌 시장 공연)
 - 콘서트/투어 2→2, 발매 3→2, 페스티벌 0→0, 팬미팅 0→0 (후보→통과)

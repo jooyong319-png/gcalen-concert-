@@ -461,6 +461,71 @@
       "general_sale_datetime": "2026-07-18T10:00:00+09:00",
       "general_sale_end_datetime": null,
       "general_sale_url": "https://eplus.jp/flo/"
+    },
+    {
+      "id": "ja-the-cribs-selling-a-vibe-20261002",
+      "name": "THE CRIBS「Selling A Vibe」来日公演",
+      "release_date": "2026-10-02",
+      "release_time": "19:00",
+      "release_date_approx": false,
+      "timezone": "Asia/Tokyo",
+      "category": "concert_tour",
+      "platforms": [
+        "duo MUSIC EXCHANGE（東京）"
+      ],
+      "developer": "THE CRIBS",
+      "publisher": "SMASH",
+      "description": "英国ウェイクフィールド出身のジャーマン3兄弟によるロックバンドTHE CRIBSが、約5年ぶりの新作『Selling A Vibe』を携えて来日する。公演は2026年10月2日、東京・duo MUSIC EXCHANGEでの一夜限りの開催。2004年のデビュー以来、全英トップ10入り作を重ねUKロック・シーンで確固たる地位を築いてきたバンドの現在地を体感できるステージとなる。オフィシャル先行(抽選制)の受付を経て、一般発売は8月8日午前10時にイープラス・チケットぴあ・ローソンチケットで開始される。",
+      "genres": [
+        "来日",
+        "ロック"
+      ],
+      "image_url": null,
+      "source_url": "https://skream.jp/news/2026/07/the_cribs_duo_music_exchange.php",
+      "general_sale": true,
+      "general_sale_datetime": "2026-08-08T10:00:00+09:00",
+      "general_sale_end_datetime": null,
+      "general_sale_url": "https://eplus.jp/thecribs/",
+      "presale": true,
+      "presale_datetime": null,
+      "presale_end_datetime": "2026-07-27T23:59:00+09:00",
+      "presale_url": "https://eplus.jp/thecribs/"
+    },
+    {
+      "id": "ja-milet-made-of-glass-20260819",
+      "name": "milet『Made of Glass』",
+      "release_date": "2026-08-19",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "Asia/Tokyo",
+      "category": "music_release",
+      "platforms": [],
+      "developer": "milet",
+      "publisher": null,
+      "description": "シンガーソングライターmiletが、約3年ぶりとなる4枚目のオリジナルアルバム『Made of Glass』を2026年8月19日にリリースする。TVアニメ「葬送のフリーレン」エンディングテーマ「Anytime Anywhere」「The Story of Us」や、映画・ドラマの主題歌といった数々のタイアップ曲に加え、新曲も多数収録される。初回生産限定盤には「milet Asia Tour 2024 in Taipei」やファンクラブ向けライブの映像が付属。ソニーミュージック公式サイトで予約受付が始まっている。",
+      "genres": [
+        "J-POP"
+      ],
+      "image_url": null,
+      "source_url": "https://www.sonymusic.co.jp/artist/milet_music/info/584236"
+    },
+    {
+      "id": "ja-ikimonogakari-sayonara-lara-20260826",
+      "name": "いきものがかり「さよならララ」",
+      "release_date": "2026-08-26",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "Asia/Tokyo",
+      "category": "music_release",
+      "platforms": [],
+      "developer": "いきものがかり",
+      "publisher": null,
+      "description": "3人組ポップグループいきものがかりが、ニューシングル「さよならララ」を2026年8月26日にCDリリースする。表題曲は7月5日に放送を開始したオリジナルTVアニメ『さよならララ』のオープニングテーマとして書き下ろされ、7月15日に先行配信された。吉岡聖恵の伸びやかな歌声と水野良樹のメロディ、亀田誠治の編曲が、人魚姫ララと人間たちの物語を彩る一曲。初回生産限定盤と通常盤の2形態で、限定盤のBlu-rayにはMVやノンクレジットオープニング映像などが収録される予定。",
+      "genres": [
+        "J-POP"
+      ],
+      "image_url": null,
+      "source_url": "https://ikimonogakari.com/news/media/20260417-1"
     }
   ]
 }
