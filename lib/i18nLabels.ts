@@ -74,6 +74,8 @@ interface UiStrings {
   terms: string;
   footerDisclaimer: string;
   siteDescription: string;
+  heroTitle: string;
+  heroSubtitle: string;
 }
 
 export const UI: Record<Locale, UiStrings> = {
@@ -115,6 +117,8 @@ export const UI: Record<Locale, UiStrings> = {
     terms: '이용약관',
     footerDisclaimer: '아티스트명·이미지·상표 등은 각 권리자의 자산이며, 본 사이트는 공연·발매 일정 정보 제공을 목적으로 합니다. 권리자의 요청 시 해당 콘텐츠를 수정·삭제합니다.',
     siteDescription: '콘서트·내한 공연, 음원 발매(컴백), 페스티벌, 팬미팅 일정을 한눈에. 매일 업데이트되는 공연·발매 캘린더.',
+    heroTitle: '콘서트·컴백·페스티벌, 한눈에',
+    heroSubtitle: '매일 업데이트되는 내한·투어·발매 캘린더',
   },
   en: {
     siteName: 'WhenStage — Tours, Comebacks & Festivals',
@@ -154,6 +158,8 @@ export const UI: Record<Locale, UiStrings> = {
     terms: 'Terms of Service',
     footerDisclaimer: 'Artist names, images, and trademarks are property of their respective rights holders. This site exists to provide schedule information and will edit or remove content upon a rights holder’s request.',
     siteDescription: 'Concerts, world tours, music releases (comebacks), festivals, and fan meetings — all in one calendar, updated daily.',
+    heroTitle: 'Every Show, Right On Time',
+    heroSubtitle: 'A daily-updated calendar for tours, comebacks & festivals',
   },
   ja: {
     siteName: 'WhenStage — 来日公演・カムバック・フェス',
@@ -193,6 +199,8 @@ export const UI: Record<Locale, UiStrings> = {
     terms: '利用規約',
     footerDisclaimer: 'アーティスト名・画像・商標等は各権利者の資産であり、本サイトは日程情報の提供を目的としています。権利者の要請があれば該当コンテンツを速やかに修正・削除します。',
     siteDescription: 'コンサート・来日公演、音源発売(カムバック)、フェスティバル、ファンミーティングの日程を一つのカレンダーに。毎日更新中。',
+    heroTitle: 'コンサート・カムバック・フェスを一目で',
+    heroSubtitle: '毎日更新される来日公演・カムバック・フェスカレンダー',
   },
 };
 

@@ -2,6 +2,7 @@
   display: block;
   border: 1px solid var(--accent);
   border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
   padding: 0.55rem 0.7rem;
   background: var(--bg-elev);
   color: var(--text);

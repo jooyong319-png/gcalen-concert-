@@ -4,8 +4,8 @@
 .header { margin-bottom: 2rem; }
 .title {
   font-size: var(--fs-title);
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   color: var(--text);
   margin-bottom: 0.4rem;
 }
@@ -20,12 +20,14 @@
 .postCard {
   background: var(--bg-elev);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
   transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
 }
 .postCard:hover {
   transform: translateY(-2px);
   border-color: var(--accent);
+  box-shadow: var(--shadow-md);
 }
 .postLink {
   display: block;
@@ -82,10 +84,10 @@
 }
 .postH1 {
   font-size: var(--fs-title);
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   color: var(--text);
-  line-height: 1.3;
+  line-height: 1.25;
   margin: 0.5rem 0 0.8rem;
 }
 .postLead {

@@ -2,16 +2,17 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  background: var(--bg);
+  background: var(--bg-elev);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1rem 1.1rem;
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.2rem;
   cursor: pointer;
+  box-shadow: var(--shadow-sm);
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 /* 위치 이동(translateY)은 이제 ScheduleCard.tsx의 Motion whileHover가 담당(MotionConfig가
    reduced-motion 사용자에겐 자동으로 꺼줌) — 여기선 색·그림자만 */
-.card:hover { border-color: var(--accent); box-shadow: 0 8px 20px -12px rgba(0, 0, 0, 0.25); }
+.card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); }
 
 .head { display: flex; align-items: flex-start; gap: 0.6rem; }
 .thumb {

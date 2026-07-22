@@ -1,6 +1,6 @@
 'use client';
 import { useState, useMemo, useEffect, useCallback } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import type { Game, FilterState, CalEvent } from '@/lib/types';
 import { EVENT_TYPE_META } from '@/lib/types';
 import { formatShortDate, kstDateOnly } from '@/lib/utils';
@@ -153,9 +153,21 @@ export function Home({ initialGames, lastUpdated, serverNow, initialCalEvents = 
 
   const openGame = openGameId ? initialGames.find(g => g.id === openGameId) ?? null : null;
 
+  const ui = UI[lang];
+
   return (
     <div className={styles.home}>
-      <h1 className="sr-only">{UI[lang].siteName}</h1>
+      <motion.section
+        className={styles.hero}
+        initial={{ opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+      >
+        <span className={styles.heroBlob1} aria-hidden="true" />
+        <span className={styles.heroBlob2} aria-hidden="true" />
+        <h1 className={styles.heroTitle}>{ui.heroTitle}</h1>
+        <p className={styles.heroSubtitle}>{ui.heroSubtitle}</p>
+      </motion.section>
       <div className={styles.layout}>
         <div className={styles.main}>
           <motion.div
@@ -231,7 +243,9 @@ export function Home({ initialGames, lastUpdated, serverNow, initialCalEvents = 
         ──────────────────────────────────────────────────────── */}
       </div>
 
-      {openGame && <GameModal game={openGame} onClose={() => closeModal()} wishlist={wishlist} />}
+      <AnimatePresence>
+        {openGame && <GameModal game={openGame} onClose={() => closeModal()} wishlist={wishlist} />}
+      </AnimatePresence>
     </div>
   );
 }

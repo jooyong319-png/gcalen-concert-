@@ -6,6 +6,16 @@
   font-display: swap;
   src: url('/fonts/PretendardVariable.woff2') format('woff2-variations');
 }
+/* 디스플레이 폰트(라틴 전용, 워드마크·숫자 등 한글/일본어 안 섞이는 곳에만 사용) —
+   Latin 서브셋만 받아 용량 최소화(전체 다국어 커버 불필요). */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/SpaceGrotesk-Bold.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122;
+}
 
 /* 화면엔 안 보이지만 스크린리더·검색엔진은 읽는 텍스트 — 페이지당 h1 1개 원칙 지키면서
    시각적 히어로 없는 페이지(홈 등)에 의미상 제목을 부여할 때 씀. */
@@ -53,19 +63,29 @@ textarea:focus-visible,
   --accent: #ff3d78;
   --accent-2: #7c3aed;
   --accent-grad: linear-gradient(92deg, #ff3d78, #7c3aed);
+  --accent-grad-135: linear-gradient(135deg, #ff3d78, #7c3aed);
   --accent-warm: #ff8a00;
   --danger: #e74c3c;
   --radius: 12px;
   --radius-sm: 8px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
   --font-sans: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
-  /* 타입 스케일 — 전 페이지 공통 */
-  --fs-title: 1.8rem;   /* 페이지 대표 제목 */
-  --fs-h2: 1.35rem;     /* 섹션 제목 */
-  --fs-h3: 1.15rem;
+  --font-display: 'Space Grotesk', var(--font-sans);
+  /* 타입 스케일 — 전 페이지 공통(볼드/에너제틱 톤으로 전반 상향) */
+  --fs-hero: clamp(2.2rem, 5vw, 3.4rem); /* 홈 히어로 대표 문구 */
+  --fs-title: 2rem;     /* 페이지 대표 제목 */
+  --fs-h2: 1.45rem;     /* 섹션 제목 */
+  --fs-h3: 1.2rem;
   --fs-lg: 1.05rem;
   --fs-base: 0.95rem;
   --fs-sm: 0.85rem;
   --fs-xs: 0.75rem;
+  /* 그림자 스케일 — "Vibrant & Block" 방향(뚜렷한 카드 부상감) */
+  --shadow-sm: 0 2px 8px -2px rgba(20, 20, 30, 0.10);
+  --shadow-md: 0 10px 28px -10px rgba(20, 20, 30, 0.20);
+  --shadow-lg: 0 20px 48px -14px rgba(20, 20, 30, 0.26);
+  --shadow-glow: 0 12px 32px -8px rgba(255, 61, 120, 0.35);
 }
 /* 다크 테마(선택 토글) — 기존 다크 정체성 값 보존 */
 [data-theme="dark"] {
@@ -78,7 +98,12 @@ textarea:focus-visible,
   --accent: #ff5c8f;
   --accent-2: #a78bfa;
   --accent-grad: linear-gradient(92deg, #ff5c8f, #a78bfa);
+  --accent-grad-135: linear-gradient(135deg, #ff5c8f, #a78bfa);
   --accent-warm: #ffa733;
+  --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 28px -10px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 48px -14px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 12px 36px -6px rgba(255, 92, 143, 0.4);
 }
 
 /* ─── 헤더 (내비 포함형 단일행 §E) / 푸터 ─── */
@@ -92,15 +117,16 @@ textarea:focus-visible,
   padding: 0.7rem 1.2rem;
   background: var(--bg);
 }
-/* 하단 라인 — 워드마크와 같은 그라데이션(마퀴 헤더 시그니처) */
+/* 하단 라인 — 워드마크와 같은 그라데이션(마퀴 헤더 시그니처), 살짝 두껍고 은은한 글로우 */
 .site-header::after {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 2px;
+  height: 3px;
   background: var(--accent-grad);
+  box-shadow: 0 1px 12px -2px rgba(255, 61, 120, 0.55);
 }
 /* 마퀴 레이아웃 — 워드마크를 헤더 중앙에 절대배치, 좌우 유틸/내비는 그 아래 flex로 양끝 정렬 */
 .site-header .site-wordmark {
@@ -108,9 +134,10 @@ textarea:focus-visible,
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   white-space: nowrap;
 }
 .site-header a { color: inherit; }
@@ -208,8 +235,9 @@ textarea:focus-visible,
 .header-guide-link.header-guide-active,
 .header-news-link.header-news-active,
 .header-artist-link.header-artist-active {
-  color: var(--bg);
-  background: var(--text);
+  color: #fff;
+  background: var(--accent-grad);
+  box-shadow: 0 4px 14px -4px rgba(255, 61, 120, 0.5);
 }
 .header-cal-link .ic, .header-guide-link .ic, .header-news-link .ic, .header-artist-link .ic { width: 17px; height: 17px; }
 /* 드롭다운 메뉴 — 링크는 항상 DOM에 있고 열림만 토글(크롤 가능) */
@@ -466,26 +494,26 @@ textarea:focus-visible,
 .cat-bg-festival { background: rgba(22, 163, 74, 0.15); color: #16a34a; }
 .cat-bg-fanmeeting { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
 
-/* ─── 카테고리 태그 (중립 글래스 칩 1언어 + 좌측 정보색 점) ─── */
+/* ─── 카테고리 태그 (채움 칩 — 카테고리색 배경 + 흰 글자, "Vibrant" 톤) ─── */
 .category-tag {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border);
-  color: var(--text-faint);
-  font-size: 0.7rem;
-  padding: 0.1rem 0.5rem;
+  background: var(--cat-dot, var(--text-faint));
+  border: 1px solid transparent;
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 0.22rem 0.65rem;
   border-radius: 999px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.02em;
 }
 .category-tag::before {
   content: '';
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--cat-dot, var(--text-faint));
+  background: #fff;
   flex: 0 0 auto;
 }
 .category-tag.cat-bg-concert_tour     { --cat-dot: #2f6fed; }
@@ -519,8 +547,9 @@ textarea:focus-visible,
   margin: 0 0 1rem;
   background: var(--bg-elev);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem 1.8rem 2rem;
+  border-radius: var(--radius-xl);
+  padding: 1.7rem 2rem 2.2rem;
+  box-shadow: var(--shadow-sm);
 }
 /* 가로 헤더: 정사각 썸네일(좌) + 카테고리·제목·정보(우) — 이미지 없으면 썸네일 생략 */
 .game-detail .detail-header {
@@ -590,7 +619,7 @@ textarea:focus-visible,
 .game-detail .detail-release-row { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; margin: 0.4rem 0 0; }
 .game-detail .detail-release-row .release-date { margin: 0; }
 .game-detail .release-date { color: var(--accent); font-size: 1rem; font-weight: 600; margin: 0.5rem 0 1rem; }
-.game-detail .dday-badge { display: inline-block; padding: 3px 11px; border-radius: 999px; font-size: 1rem; font-weight: 800; vertical-align: middle; }
+.game-detail .dday-badge { display: inline-block; padding: 3px 12px; border-radius: 999px; font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; vertical-align: middle; }
 .game-detail .dday-badge.dday-soon,
 .game-detail .dday-badge.dday-today { color: #fff; background: var(--accent-warm); }
 .game-detail .dday-badge.dday-far { color: var(--text-faint); background: var(--border); }
@@ -628,17 +657,20 @@ textarea:focus-visible,
   font-size: 0.92rem;
 }
 .prereg-info .ic { color: var(--accent-warm); flex: 0 0 auto; }
-/* 사전예약 CTA(상세 액션) — 채움 강조 */
+/* 사전예약/일반예매 CTA(상세 액션) — 그라데이션 채움으로 강한 강조(가장 중요한 액션) */
 .detail-actions .prereg-cta {
-  background: var(--accent-warm);
+  background: var(--accent-grad);
   color: #fff;
-  border-color: var(--accent-warm);
+  border-color: transparent;
+  box-shadow: var(--shadow-glow);
 }
 .detail-actions .prereg-cta:hover,
 .detail-actions .prereg-cta:focus-visible {
   filter: brightness(1.08);
-  background: var(--accent-warm);
-  border-color: var(--accent-warm);
+  background: var(--accent-grad);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 /* 마지막 업데이트(신선도) */
 .detail-updated {
@@ -708,21 +740,26 @@ textarea:focus-visible,
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.5rem 0.95rem;
+  padding: 0.6rem 1.05rem;
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--bg);
+  border-radius: 999px;
+  background: var(--bg-elev);
   color: var(--accent);
   font-size: 0.88rem;
-  font-weight: 600;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  font-weight: 700;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 .detail-actions .gcal-link:hover,
 .detail-actions .detail-link:hover,
 .detail-actions .gcal-link:focus-visible,
 .detail-actions .detail-link:focus-visible {
   border-color: var(--accent);
-  background: var(--bg-elev);
+  background: var(--bg);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+@media (prefers-reduced-motion: reduce) {
+  .detail-actions .gcal-link:hover, .detail-actions .detail-link:hover { transform: none; }
 }
 /* 즐겨찾기 토글 버튼(상세) — button 요소라 커서 보정 + 찜 상태 강조 */
 .detail-actions button.detail-link { cursor: pointer; }

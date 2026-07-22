@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import { motion } from 'motion/react';
 import type { Game } from '@/lib/types';
 import { CATEGORY_META } from '@/lib/types';
 import { calcDayDiff } from '@/lib/utils';
@@ -51,8 +52,26 @@ export function GameModal({ game, onClose, wishlist }: Props) {
   const displayDesc = game.description;
 
   return (
-    <div className={styles.overlay} onClick={onClose} role="presentation">
-      <div className={styles.modal} role="dialog" aria-modal="true" aria-labelledby="modal-title" onClick={e => e.stopPropagation()}>
+    <motion.div
+      className={styles.overlay}
+      onClick={onClose}
+      role="presentation"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+    >
+      <motion.div
+        className={styles.modal}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        onClick={e => e.stopPropagation()}
+        initial={{ opacity: 0, scale: 0.94, y: 16 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.96, y: 10 }}
+        transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+      >
         <button type="button" className={styles.close} onClick={onClose} aria-label={t ? t.close : '닫기'}>×</button>
 
         <div className={styles.header}>
@@ -140,7 +159,7 @@ export function GameModal({ game, onClose, wishlist }: Props) {
           </a>
           <ShareButton url={`/${lang}/concert/${game.id}`} title={displayName} className={styles.share} />
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

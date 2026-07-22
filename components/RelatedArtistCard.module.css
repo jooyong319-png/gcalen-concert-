@@ -4,6 +4,7 @@
   align-items: center;
   border: 1px solid var(--accent);
   border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
   padding: 0.5rem 0.6rem;
   background: var(--bg-elev);
   color: var(--text);

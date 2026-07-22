@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { AnimatePresence } from 'motion/react';
 import type { Game } from '@/lib/types';
 import { GameRow } from './GameRow';
 import { GameModal } from './GameModal';
@@ -22,7 +23,9 @@ export function EventList({ events }: Props) {
           <GameRow key={g.id} game={g} now={now} wishlist={wishlist} onPick={setOpenId} />
         ))}
       </ul>
-      {openGame && <GameModal game={openGame} onClose={() => setOpenId(null)} wishlist={wishlist} />}
+      <AnimatePresence>
+        {openGame && <GameModal game={openGame} onClose={() => setOpenId(null)} wishlist={wishlist} />}
+      </AnimatePresence>
     </>
   );
 }
