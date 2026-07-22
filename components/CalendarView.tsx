@@ -228,7 +228,18 @@ export function CalendarView({ cursor, onCursorChange, games, events = [], wishl
                   title={has ? cell.entries.map(e => e.game.name).join(', ') : undefined}
                 >
                   <div className={`${styles.cellDate} ${cell.date.getDay() === 0 ? styles.sun : cell.date.getDay() === 6 ? styles.sat : ''}`.trim()}>
-                    <span className={cell.isToday || isSelected ? styles.cellDateNum : undefined}>{cell.date.getDate()}</span>
+                    {isSelected && (
+                      <motion.span
+                        layoutId="cal-selected-day"
+                        className={styles.cellSelectedRing}
+                        transition={{ type: 'spring', stiffness: 480, damping: 34 }}
+                      />
+                    )}
+                    <span className={
+                      isSelected ? styles.cellDateNumOnRing
+                        : cell.isToday ? styles.cellDateNum
+                        : styles.cellDateNumPlain
+                    }>{cell.date.getDate()}</span>
                   </div>
 
                   {has && (

@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { motion } from 'motion/react';
 import type { Game } from '@/lib/types';
 import { CATEGORY_META } from '@/lib/types';
 import { calcDayDiff, getKoreanWeekday } from '@/lib/utils';
@@ -45,13 +46,15 @@ export function GameRow({ game: g, now, wishlist, onPick, preBadge }: Props) {
   const displayDesc = g.description;
 
   return (
-    <li
+    <motion.li
       className={`${styles.row} ${imminent ? styles.rowImminent : ''} ${released ? styles.rowReleased : ''}`}
       style={{ '--cat': cat.color } as CSSProperties}
       role="button"
       tabIndex={0}
       onClick={() => onPick(g.id)}
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onPick(g.id); } }}
+      whileHover={{ y: -3, transition: { type: 'spring', stiffness: 400, damping: 24 } }}
+      whileTap={{ scale: 0.985 }}
     >
       <div className={styles.thumb}>
         {showImg ? (
@@ -119,6 +122,6 @@ export function GameRow({ game: g, now, wishlist, onPick, preBadge }: Props) {
           <span className={styles.actLabel}>{t ? t.wishlist : '찜'}</span>
         </button>
       </div>
-    </li>
+    </motion.li>
   );
 }

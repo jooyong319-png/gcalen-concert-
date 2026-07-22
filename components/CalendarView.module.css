@@ -99,6 +99,7 @@
 .cellSelected { background: var(--bg-elev); }
 
 .cellDate {
+  position: relative;
   font-size: 0.85rem;
   color: var(--text);
   font-weight: 700;
@@ -108,17 +109,33 @@
   width: 30px;
   height: 30px;
 }
-.cellDateNum {
+/* 선택된 날짜의 배경 필 — layoutId 공유 애니메이션으로 날짜 클릭 시 부드럽게 이동(CalendarView.tsx) */
+.cellSelectedRing {
+  position: absolute;
+  z-index: 0;
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: var(--text);
-  color: var(--bg-elev);
+  background: var(--accent-grad);
+  box-shadow: var(--shadow-glow);
+}
+.cellDateNum,
+.cellDateNumOnRing,
+.cellDateNumPlain {
+  position: relative;
+  z-index: 1;
+  width: 28px;
+  height: 28px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
-.cellSelected .cellDateNum { background: var(--accent); color: #fff; }
+.cellDateNum {
+  border-radius: 50%;
+  background: var(--text);
+  color: var(--bg-elev);
+}
+.cellDateNumOnRing { color: #fff; }
 
 .cellDots {
   display: flex;
