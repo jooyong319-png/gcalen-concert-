@@ -159,7 +159,7 @@ export function CalendarView({ cursor, onCursorChange, games, events = [], wishl
   }, [selectedISO, games]);
 
   // 선택된 날짜에 일정이 없을 때 보여줄 "다음 일정" 미리보기 — 전체 games 대상으로
-  // selectedISO 이후 가장 가까운 날짜의 항목들만 뽑는다(연/월 무관).
+  // selectedISO 이후 가장 가까운 항목부터 날짜순으로 최대 4개까지 뽑는다(단일 날짜에 안 묶임).
   const nextEntries = useMemo<CalEntry[]>(() => {
     if (panelEntries.length > 0) return [];
     type Dated = CalEntry & { date: string };
@@ -171,9 +171,9 @@ export function CalendarView({ cursor, onCursorChange, games, events = [], wishl
       const gsD = dateOnly(g.general_sale_datetime);
       if (gsD && gsD > selectedISO) all.push({ game: g, kind: 'general_sale', date: gsD });
     }
-    if (all.length === 0) return [];
-    const nearestDate = all.reduce((min, e) => (e.date < min ? e.date : min), all[0].date);
-    return all.filter(e => e.date === nearestDate).sort((a, b) => a.game.name.localeCompare(b.game.name));
+    return all
+      .sort((a, b) => a.date.localeCompare(b.date) || a.game.name.localeCompare(b.game.name))
+      .slice(0, 4);
   }, [panelEntries, games, selectedISO]);
 
   const isToday = selectedISO === toISO(now);
