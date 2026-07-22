@@ -1,4 +1,5 @@
 'use client';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { Game } from '@/lib/types';
 import { CATEGORY_META } from '@/lib/types';
 import { formatShortDate, formatEventDateTime } from '@/lib/utils';
@@ -19,6 +20,14 @@ export function ScheduleCard({ game, kind, onPick }: Props) {
   const lang = useLocale();
   const t = CAL[lang];
   const cat = CATEGORY_META[game.category];
+  const [imgError, setImgError] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+  // 하이드레이션 전에 이미 로드 실패한 이미지는 onError가 안 잡히므로 마운트 시 직접 확인.
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth === 0) setImgError(true);
+  }, [game.image_url]);
+  const showImg = !!game.image_url && !imgError;
 
   const dateLabel = (() => {
     if (kind === 'release') {
@@ -53,10 +62,27 @@ export function ScheduleCard({ game, kind, onPick }: Props) {
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onPick(game.id); } }}
     >
       <div className={styles.head}>
-        <span className={styles.icon} style={{ color: cat.color }}>
-          <svg className="ic" aria-hidden="true"><use href={`#${cat.icon}`} /></svg>
-        </span>
-        <span className={styles.title}>{game.name}</span>
+        {showImg && (
+          <div className={styles.thumb} style={{ '--cat': cat.color } as CSSProperties}>
+            <img src={game.image_url!} alt="" aria-hidden="true" className={styles.thumbBg} loading="lazy" />
+            <img
+              ref={imgRef}
+              src={game.image_url!}
+              alt=""
+              className={styles.thumbFg}
+              loading="lazy"
+              onError={() => setImgError(true)}
+            />
+          </div>
+        )}
+        <div className={styles.headText}>
+          <div className={styles.titleRow}>
+            <span className={styles.icon} style={{ color: cat.color }}>
+              <svg className="ic" aria-hidden="true"><use href={`#${cat.icon}`} /></svg>
+            </span>
+            <span className={styles.title}>{game.name}</span>
+          </div>
+        </div>
       </div>
       <div className={styles.meta}>
         {kindTag && <span className={styles.kindTag} style={{ background: cat.color }}>{kindTag}</span>}
