@@ -155,19 +155,10 @@ function FeaturedCard({ data }: { data: CardData }) {
     : <Link href={data.href} className={styles.card} style={cardStyle}>{inner}</Link>;
 }
 
-// 서브페이지 사이드바 — 풀에서 중복 없이 랜덤 count개(진입 시 셔플, 고정)
+// 서브페이지 사이드바 — 풀에서 중복 없이 최대 count개. 마운트 후 셔플은 SSR 결과와 달라서 진입 직후
+// 카드가 눈에 띄게 바뀌는 깜빡임을 유발했던 원인이라 제거 — 항상 서버가 내려준 순서 그대로 렌더.
 function ListCards({ pool, count }: { pool: CardData[]; count: number }) {
-  const [order, setOrder] = useState<number[]>(() => pool.map((_, i) => i).slice(0, count));
-  useEffect(() => {
-    const arr = pool.map((_, i) => i);
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    setOrder(arr.slice(0, count));
-  }, [pool.length, count]);
-
-  const picked = order.map(i => pool[i]).filter((c): c is CardData => Boolean(c));
+  const picked = pool.slice(0, count);
   if (picked.length === 0) return null;
   return (
     <div className={styles.cards}>
