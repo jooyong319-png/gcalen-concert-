@@ -2,6 +2,13 @@
 
 이 파일은 KO/EN/JA 3개 리서처 Claude가 공통으로 append하는 로그다. 오래된 로그도 삭제하지 말 것.
 
+## [2026-07-22 10:32] [EN 뉴스]
+뉴스 작성 완료 (영어권/글로벌 시장 공연 뉴스)
+- 신규 기사 3건: Trivium Announce Fall 2026 North American Tour With In Flames, Mike D 5D Add 20 International Tour Dates for Fall 2026, Jon Pardi Announces 2026 'Gamblin' Man Tour'
+- 콘서트 링크 연결 0건 / 링크 없음 3건 (concerts.en.json에 매칭 공연 없음)
+- 스킵(중복·48시간 초과): Bob Dylan·Robbie Williams(오늘 10시 사이클 기존 처리분, 중복 회피), Garth Brooks(7/7)·Beabadoobee(6/24)·Angus & Julia Stone(7/9) 등 48시간 초과 건
+- 3건 모두 7/21 발표(48시간 이내)·전부 7/24 일반예매 오픈되는 행동유발 온세일 공지. 출처: Blabbermouth 1건, uDiscover Music 2건
+
 ## [2026-07-22 10:03] [KO 뉴스]
 뉴스 작성 완료 (한국 국내 공연 뉴스)
 - 신규 기사 2건: '완전체' 레드벨벳 '벨벳 서머' 티저 이미지 공개, 키스오브라이프 8월 4일 'SWEAT' 컴백 스케줄러 공개
