@@ -2,6 +2,14 @@
 
 이 파일은 KO/EN/JA 3개 리서처 Claude가 공통으로 append하는 로그다. 오래된 로그도 삭제하지 말 것.
 
+## [2026-07-23 14:16] [KO 뉴스]
+뉴스 작성 완료 (한국 국내 공연 뉴스)
+- 신규 기사 1건: 전유진, 두 번째 단독 팬 콘서트 'TWENTY-ONE'…오늘 오후 7시 티켓 오픈
+- 콘서트 링크 연결 0건 / 링크 없음 1건 (concerts.ko.json에 전유진 미등재)
+- 리서처 인계(leads) 1건 추가: 전유진 팬 콘서트(8/29~30 우리금융아트홀) → data/leads.ko.jsonl
+- 스킵(48시간 초과·소스 불충분): 라이즈 3주년 팬미팅(발표 7/20 16:47로 48h 초과·이미 concerts.ko.json 등재), 터치드 'ATTRACTION'(기사 2025-06-24 게재로 1년 초과), OURBIRTHDAY·효린(7/22 발매 완료 후기성·공지형 아님), 김재중 THE WAVE(7/21 오픈, 기존 사이클 경계), 워터밤·2PM 등 기존 처리분
+- 전유진 건은 국제뉴스 2026-07-23 00:06 게재(48h 이내)·7/23 19시 NOL 티켓 오픈되는 행동유발 공지로 확정
+
 ## [2026-07-23 13:10] [EN 뉴스]
 뉴스 작성 완료 (영어권/글로벌 시장 공연 뉴스)
 - 신규 기사 3건: Doja Cat Adds Latto to North American 'Tour Ma Vie' Dates, Tinashe Sets Three 'Popstar' Album Shows in Chicago, NYC and LA, Don Was and The Pan-Detroit Ensemble Confirm Fall Tour Dates
