@@ -273,6 +273,7 @@ interface CalUiStrings {
   ticketingClosedText: string;
   ticketingDeadlineTba: string;
   ticketingInfo: string;
+  ticketingLinkPending: string;
   totalItems: (count: number) => string;
   noSearchResults: string;
   myWishlist: string;
@@ -359,6 +360,7 @@ export const CAL: Record<Locale, CalUiStrings> = {
     ticketingClosedText: '판매 마감됨',
     ticketingDeadlineTba: '마감일 미정',
     ticketingInfo: '티켓팅 안내',
+    ticketingLinkPending: '예매 링크를 아직 못 찾았어요 — 아래 출처나 공식 채널에서 확인해 주세요.',
     totalItems: (count) => `총 ${count}개`,
     noSearchResults: '검색 결과가 없어요.',
     myWishlist: '내 찜',
@@ -443,6 +445,7 @@ export const CAL: Record<Locale, CalUiStrings> = {
     ticketingClosedText: 'Sale closed',
     ticketingDeadlineTba: 'Deadline TBA',
     ticketingInfo: 'Ticketing info',
+    ticketingLinkPending: "We haven't found a direct ticketing link yet — please check the source below or the official channel.",
     totalItems: (count) => `${count} total`,
     noSearchResults: 'No results found.',
     myWishlist: 'My Wishlist',
@@ -527,6 +530,7 @@ export const CAL: Record<Locale, CalUiStrings> = {
     ticketingClosedText: '発売終了',
     ticketingDeadlineTba: '締切日は未定',
     ticketingInfo: 'チケット情報',
+    ticketingLinkPending: 'チケットリンクがまだ見つかっていません — 下記の出典または公式チャンネルでご確認ください。',
     totalItems: (count) => `合計${count}件`,
     noSearchResults: '検索結果がありません。',
     myWishlist: 'マイお気に入り',

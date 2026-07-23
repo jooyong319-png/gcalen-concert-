@@ -106,10 +106,26 @@ export function GameModal({ game, onClose, wishlist }: Props) {
             : <>{dateStr}{weekday} · <span className={styles.dday}>{dd}</span></>}
         </div>
         {game.presale && (
-          <TicketingPhase label={t.presaleTag} startDateTime={game.presale_datetime} endDateTime={effectivePresaleEnd(game)} timezone={game.timezone} />
+          <>
+            <TicketingPhase label={t.presaleTag} startDateTime={game.presale_datetime} endDateTime={effectivePresaleEnd(game)} timezone={game.timezone} />
+            {!game.presale_url && (
+              <p className="prereg-info">
+                <svg className="ic" aria-hidden="true"><use href="#ic-bell" /></svg>
+                {t.ticketingLinkPending}
+              </p>
+            )}
+          </>
         )}
         {game.general_sale && (
-          <TicketingPhase label={t.generalSaleTag} startDateTime={game.general_sale_datetime} endDateTime={game.general_sale_end_datetime} timezone={game.timezone} />
+          <>
+            <TicketingPhase label={t.generalSaleTag} startDateTime={game.general_sale_datetime} endDateTime={game.general_sale_end_datetime} timezone={game.timezone} />
+            {!game.general_sale_url && (
+              <p className="prereg-info">
+                <svg className="ic" aria-hidden="true"><use href="#ic-bell" /></svg>
+                {t.ticketingLinkPending}
+              </p>
+            )}
+          </>
         )}
         {game.platforms.length > 0 && <div className={styles.row}><strong>{ui ? ui.platforms : '플랫폼'}</strong>{game.platforms.join(', ')}</div>}
         {game.genres.length > 0 && <div className={styles.row}><strong>{ui ? ui.genres : '장르'}</strong>{game.genres.join(', ')}</div>}
