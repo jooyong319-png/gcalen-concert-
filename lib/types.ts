@@ -60,6 +60,25 @@ export function hasActiveTicketing(g: Pick<Game, 'presale' | 'general_sale'>): b
   return g.presale === true || g.general_sale === true;
 }
 
+// 지금 이 순간이 실제로 예매 판매 구간(선예매 또는 일반예매) 안인지 — hasActiveTicketing과 달리
+// 날짜/시각까지 따진다(리서처가 채운 presale/general_sale 불리언은 "예정 있음"일 뿐 지금
+// 열려있다는 보장이 아님). 검색 결과 등에서 "예매중" 배지를 띄울 때 씀.
+export function isTicketingLiveNow(
+  g: Pick<Game, 'presale_datetime' | 'presale_end_datetime' | 'general_sale_datetime' | 'general_sale_end_datetime'>,
+  now: Date,
+): boolean {
+  const t = now.getTime();
+  const inWindow = (startIso?: string | null, endIso?: string | null): boolean => {
+    if (!startIso) return false;
+    const start = new Date(startIso).getTime();
+    if (Number.isNaN(start) || t < start) return false;
+    if (!endIso) return true; // 마감 없음 = 매진 시까지 판매 중으로 간주
+    const end = new Date(endIso).getTime();
+    return Number.isNaN(end) || t < end;
+  };
+  return inWindow(g.presale_datetime, g.presale_end_datetime) || inWindow(g.general_sale_datetime, g.general_sale_end_datetime);
+}
+
 export interface GamesData {
   schema_version: number;
   last_updated: string;             // ISO 8601

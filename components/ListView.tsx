@@ -1,5 +1,6 @@
 'use client';
 import type { Game, FilterKey } from '@/lib/types';
+import { isTicketingLiveNow } from '@/lib/types';
 import { GameRow } from './GameRow';
 import { CategoryFilterBar } from './CategoryFilterBar';
 import { useLocale } from '@/hooks/useLocale';
@@ -37,7 +38,14 @@ export function ListView({ games, wishlist, onPick, now, category, onCategory }:
       ) : (
         <ul className={styles.rows}>
           {items.map(g => (
-            <GameRow key={g.id} game={g} now={now} wishlist={wishlist} onPick={onPick} />
+            <GameRow
+              key={g.id}
+              game={g}
+              now={now}
+              wishlist={wishlist}
+              onPick={onPick}
+              preBadge={isTicketingLiveNow(g, now) ? (t ? t.onSaleNowBadge : '예매중') : undefined}
+            />
           ))}
         </ul>
       )}
