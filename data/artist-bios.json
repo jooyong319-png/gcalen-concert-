@@ -85,6 +85,24 @@
         "agency": "YG엔터테인먼트",
         "members": "3인조",
         "debut": "2006.08.19"
+      },
+      "에이엔": {
+        "text": "에이엔(AEN)은 스타쉽엔터테인먼트와 일본 아뮤즈가 협업해 선보인 한일 합작 보이그룹으로, 한국인 멤버 4명과 일본인 멤버 3명 등 총 7인조로 구성됐다. 지난해 진행된 글로벌 프로젝트 '데뷔스 플랜'을 통해 얼굴을 알린 멤버들과 새롭게 합류한 일본인 멤버가 함께하며, 그룹명은 '지금 이 순간을 새롭게 정의한다'는 뜻의 'A New Era of Now'와 일본어로 '영원'을 뜻하는 발음을 동시에 담았다. 2026년 8월 데뷔 EP 'A NEW ERA OF NOW'로 정식 데뷔했다.",
+        "agency": "스타쉽엔터테인먼트",
+        "members": "7인조(한국인 4인+일본인 3인)",
+        "debut": "2026.08.05"
+      },
+      "Official髭男dism": {
+        "text": "오피셜히게단디즘(약칭 히게단)은 2012년 시마네현에서 결성된 일본의 4인조 밴드로, 보컬 겸 피아노 후지와라 사토시, 기타 오자사 다이스케, 베이스 겸 색소폰 나라자키 마코토, 드럼 마츠우라 마사키로 구성됐다. 흑인음악에 뿌리를 둔 세련된 밴드 사운드로 세대를 아우르는 인기를 얻었으며, 2018년 메이저 데뷔 이후 'Pretender' 등 다수의 히트곡을 냈다. NHK '홍백가합전' 출연 등을 거치며 일본 대중음악계를 대표하는 밴드로 자리잡았다.",
+        "agency": "라스트럼뮤직 엔터테인먼트",
+        "members": "4인조",
+        "debut": "2018.04.11"
+      },
+      "잭 화이트": {
+        "text": "잭 화이트는 밴드 더 화이트 스트라입스의 기타·보컬로 2000년대 개러지 록 리바이벌을 이끈 미국의 싱어송라이터다. 화이트 스트라입스 해체 이후 더 라컨티어스, 더 데드 웨더 등 다양한 프로젝트를 거쳐 솔로 활동을 이어오고 있으며, 자신의 레이블 서드 맨 레코드를 통해 아날로그 사운드와 실험적인 프로듀싱을 고집하는 뮤지션으로 알려져 있다.",
+        "agency": "Third Man Records",
+        "members": "솔로",
+        "debut": "1997 (더 화이트 스트라입스)"
       }
     },
     "en": {
@@ -129,6 +147,36 @@
         "agency": "Reprise Records",
         "members": "4-piece",
         "debut": "2001"
+      },
+      "Charli xcx": {
+        "text": "Charli xcx is a British singer, songwriter and producer known for pushing pop music toward the edges of hyperpop and club culture through her long-running collaboration with producer A. G. Cook and the PC Music scene. Her 2024 album Brat became a cultural phenomenon that defined a whole aesthetic and vocabulary for a generation, and she followed it in 2026 with her seventh studio album, Music, Fashion, Film. She continues to headline arenas worldwide behind the new record.",
+        "agency": "Atlantic Records",
+        "members": "Solo",
+        "debut": "2008"
+      },
+      "Avenged Sevenfold, Good Charlotte": {
+        "text": "This listing covers a co-headlining tour pairing two acts who defined 2000s rock radio. Avenged Sevenfold, formed in Huntington Beach, California in 1999, built a devoted following with theatrical heavy metal anthems such as \"Bat Country\" and \"Nightmare.\" Good Charlotte, the pop-punk band fronted by twin brothers Joel and Benji Madden, broke through in the early 2000s with hits like \"The Anthem\" and returned in 2025 with Motel Du Cap, their first new album in seven years.",
+        "agency": null,
+        "members": null,
+        "debut": null
+      },
+      "Ringo Starr & His All Starr Band": {
+        "text": "Ringo Starr is the former drummer of The Beatles, whose steady rhythm and warm lead vocal turns on songs like \"With a Little Help from My Friends\" helped define the band's sound. Since 1989 he has toured with Ringo Starr & His All-Starr Band, a rotating lineup of veteran musicians who each perform hits from their own careers alongside Beatles classics. The band remains the centerpiece of his ongoing solo touring career.",
+        "agency": null,
+        "members": null,
+        "debut": "1989 (All-Starr Band)"
+      },
+      "Brandon Flowers": {
+        "text": "Brandon Flowers is the lead vocalist and keyboardist of The Killers, the Las Vegas band behind hits like \"Mr. Brightside\" and \"Somebody Told Me.\" Alongside the band, he has released solo albums including Flamingo (2010) and The Desired Effect (2015), exploring a more personal, synth-driven sound rooted in his Nevada upbringing.",
+        "agency": null,
+        "members": "Solo",
+        "debut": "2010 (solo)"
+      },
+      "Kasabian": {
+        "text": "Kasabian are an English rock band formed in Leicester in 1997, known for blending indie rock with electronic and psychedelic influences on songs like \"Club Foot\" and \"Fire.\" The band has headlined major festivals including Glastonbury, and guitarist Serge Pizzorno took over as lead vocalist after Tom Meighan's departure in 2020.",
+        "agency": null,
+        "members": null,
+        "debut": "2004"
       }
     },
     "ja": {
@@ -173,6 +221,72 @@
         "agency": "Nomota / Roman Records",
         "members": "5人組",
         "debut": "1973"
+      },
+      "milet": {
+        "text": "miletは東京都出身、10代をカナダで過ごしたシンガーソングライター。2019年3月にONE OK ROCKのTORUがプロデュースした「inside you」でメジャーデビューし、アニメやドラマとのタイアップ曲を数多く手がけてきた。「葬送のフリーレン」エンディングテーマ「Anytime Anywhere」「The Story of Us」などで知られ、2026年8月には約3年ぶりとなる4作目のオリジナルアルバム『Made of Glass』をリリースする。",
+        "agency": "ソニー・ミュージックレーベルズ",
+        "members": "ソロ",
+        "debut": "2019.03.06"
+      },
+      "KO1KEYZ": {
+        "text": "KO1KEYZ（コイキーズ）は、サバイバルオーディション番組『PRODUCE 101 JAPAN 新世界』から誕生した12人組ボーイズグループ。2026年6月のファイナルで加藤大樹ら12人のデビューメンバーが決定し、同年10月7日に日韓同時デビューを果たす。LAPONE ENTERTAINMENT所属で、デビュー直後からKCON LAへの出演やファンミーティングツアーを行うなどグローバル展開を進めている。",
+        "agency": "LAPONE ENTERTAINMENT",
+        "members": "12人組",
+        "debut": "2026.10.07"
+      },
+      "いきものがかり": {
+        "text": "いきものがかりは神奈川県海老名市出身、水野良樹と吉岡聖恵による2人組ポップユニット。高校時代の路上ライブから活動を始め2006年にメジャーデビューし、当初は山下穂尊を含む3人組だったが、2021年に山下が脱退して以降は現在の2人体制で活動している。水野の書くメロディーと吉岡の伸びやかな歌声を軸に、幅広い世代に親しまれるヒット曲を数多く生み出してきた。",
+        "agency": "MOAIコーポレーション",
+        "members": "2人組",
+        "debut": "2006 (メジャーデビュー)"
+      },
+      "The Weeknd": {
+        "text": "ザ・ウィークエンドはカナダ・トロント出身のシンガーソングライター、エイベル・テスファイのソロ名義。ダークで退廃的な世界観のR&Bサウンドで一躍注目を集め、「Blinding Lights」などのヒット曲でグローバルなポップスターへと成長した。アルバム『After Hours』『Dawn FM』など、映画的なコンセプトを軸にした作品作りでも知られる。",
+        "agency": "XO / Republic Records",
+        "members": "ソロ",
+        "debut": "2010"
+      },
+      "Post Malone": {
+        "text": "ポスト・マローンはヒップホップ、ポップ、カントリーなどジャンルを横断するサウンドで人気を集めるアメリカのシンガーソングライター。「Circles」「Sunflower」といった大ヒット曲で知られ、近年はカントリー色を強めたアルバムも発表するなど、既存のジャンルにとらわれない音楽性で幅広い層のリスナーを獲得している。",
+        "agency": "Republic Records",
+        "members": "ソロ",
+        "debut": "2015"
+      },
+      "Charlie Puth": {
+        "text": "チャーリー・プースはアメリカ出身のシンガーソングライター・プロデューサー。ポール・ウォーカーへの追悼曲「See You Again」の世界的ヒットで一躍脚光を浴び、「Attention」など自身名義の楽曲でも高いソングライティング能力を発揮している。緻密なボーカルアレンジとプロダクションで知られ、他アーティストへの楽曲提供も数多く手がけている。",
+        "agency": "Atlantic Records",
+        "members": "ソロ",
+        "debut": "2015"
+      },
+      "チソン": {
+        "text": "チソン（池城）は韓国の俳優で、「Dr.JIN」「キル・ミー、ヒール・ミー」などのドラマ出演で知られる。2000年代からドラマ・映画で活躍し、日本でも高い人気を誇る。女優イ・ボヨンとの夫婦としても知られ、俳優業の傍らファンミーティングなどで日本のファンとの交流も積極的に行っている。",
+        "agency": null,
+        "members": "ソロ",
+        "debut": null
+      },
+      "SUPER JUNIOR-RYEOWOOK": {
+        "text": "リョウクは韓国のグループSUPER JUNIOR、およびユニットSUPER JUNIOR-K.R.Y.のメンバーで、透明感のある高音ボーカルを持つメインボーカリストとして知られる。2016年にミニアルバム『The Little Prince』でソロデビューし、グループ活動と並行してソロコンサートやミュージカルなど活動の幅を広げている。",
+        "agency": "レーベルSJ（SMエンターテインメント）",
+        "members": "ソロ",
+        "debut": "2016.02 (ソロ)"
+      },
+      "JAURIM": {
+        "text": "JAURIM（自雨林）は1997年にデビューした韓国の混成ロックバンドで、ボーカル キム・ユナを中心に文学的な歌詞と多彩な音楽性で高い評価を得てきた。「Hey Hey Hey」などのヒット曲を持ち、結成から四半世紀を超えてなお精力的に音楽活動を続ける韓国を代表するロックバンドの一つ。",
+        "agency": "インターパークエンターテインメント",
+        "members": "混成バンド",
+        "debut": "1997"
+      },
+      "FLO": {
+        "text": "FLOはロンドン出身の3人組R&Bガールグループで、メンバーはルネイ・ダウナー、ステラ・クアレズマ、ジョルジャ・ダグラス。2019年に結成され、2000年代のR&Bやガールグループサウンドを現代的に再解釈したスタイルでデビュー曲「Cardboard Box」が話題となり、デビュー間もない時期から数々の新人賞を受賞するなど国際的な評価を高めている。",
+        "agency": "Island Records",
+        "members": "3人組",
+        "debut": "2022"
+      },
+      "THE CRIBS": {
+        "text": "THE CRIBSはイギリス・ウェイクフィールド出身のインディーロックバンドで、双子の兄弟ゲイリー、ライアンと弟のロスによるジャーマン三兄弟が2001年に結成した。生々しいギターサウンドとDIY精神を貫くライブパフォーマンスで、英国インディーシーンを代表するバンドの一つとして支持を集めている。",
+        "agency": null,
+        "members": "3人組",
+        "debut": "2001"
       }
     }
   }
