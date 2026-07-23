@@ -43,11 +43,6 @@ export function allGameIds(content: string): string[] {
   return [...content.matchAll(/\]\(\/(?:ko|en|ja)\/concert\/([^)\s#?]+)\)/g)].map(m => m[1]);
 }
 
-// 본문에서 첫 번째 내부 콘서트 링크의 id를 추출(하위 호환용)
-export function firstGameId(content: string): string | null {
-  return allGameIds(content)[0] ?? null;
-}
-
 // 로케일별로 완전히 독립된 모아보기 글 세트 — content/blog/<slug>.<lang>.md.
 // (콘서트/뉴스와 동일한 원칙: 번역이 아니라 그 언어권 담당이 직접 소재를 골라 쓰는 별도 콘텐츠)
 async function readPosts(lang: Locale): Promise<BlogPost[]> {

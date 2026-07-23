@@ -1,7 +1,7 @@
 // server-only: 이 파일은 fs를 쓰므로 서버 컴포넌트에서만 import 가능
 import path from 'path';
 import { promises as fs } from 'fs';
-import { hasActiveTicketing, type Game, type GamesData, type Category } from './types';
+import { type Game, type GamesData, type Category } from './types';
 import { kstDateOnly } from './utils';
 
 // ko/en/ja는 서로 번역이 아니라 완전히 독립된 콘텐츠(국가/지역별 실제 공연) —
@@ -56,21 +56,6 @@ export async function getUpcomingGames(locale: GameLocale = 'ko'): Promise<Game[
 export async function getUpcomingGamesByCategory(category: Category, locale: GameLocale = 'ko'): Promise<Game[]> {
   const today = todayKstStr();
   return (await getGamesByCategory(category, locale)).filter(g => g.release_date_approx || g.release_date >= today);
-}
-
-// 티켓팅(선예매/일반예매) 표면용: presale 또는 general_sale이 true인 출시예정 공연(전 카테고리).
-// 리서처가 아직 안 채웠으면(0건) 출시예정 전체로 폴백(빈 페이지 방지).
-export async function getTicketingGames(locale: GameLocale = 'ko'): Promise<Game[]> {
-  const upcoming = await getUpcomingGames(locale);
-  const flagged = upcoming.filter(hasActiveTicketing);
-  const list = flagged.length > 0 ? flagged : upcoming;
-  return list.sort((a, b) => a.release_date.localeCompare(b.release_date));
-}
-
-// 메타
-export async function getCategoriesMap(locale: GameLocale = 'ko'): Promise<Record<Category, string>> {
-  const data = await getGamesData(locale);
-  return data.categories;
 }
 
 // 데이터 갱신 시각
