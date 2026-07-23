@@ -42,6 +42,19 @@ export async function getCurrentSubscription(): Promise<PushSubscription | null>
   return reg.pushManager.getSubscription();
 }
 
+// DB(push_subscriptions)에 이 endpoint가 실제로 등록돼 있는지 — 브라우저 레벨 구독 객체가
+// 남아있어도(unsubscribe()가 브라우저 쪽에서만 조용히 실패한 경우 등) 서버가 실제로 알림을
+// 보낼지는 이 테이블 기준이므로, ON/OFF 표시는 브라우저 상태만으로 판단하면 안 된다.
+export async function isEndpointRegistered(endpoint: string): Promise<boolean> {
+  if (!isSupabaseReady() || !supabase) return false;
+  const { data, error } = await supabase
+    .from('push_subscriptions')
+    .select('endpoint')
+    .eq('endpoint', endpoint)
+    .maybeSingle();
+  return !error && !!data;
+}
+
 async function saveSubscription(sub: PushSubscription, gameIds: string[]): Promise<void> {
   if (!isSupabaseReady() || !supabase) throw new Error('Supabase 미설정');
   const json = sub.toJSON();
@@ -96,7 +109,13 @@ export async function unsubscribePush(): Promise<void> {
   const sub = await getCurrentSubscription();
   if (!sub) return;
   const endpoint = sub.endpoint;
-  try { await sub.unsubscribe(); } catch { /* ignore */ }
+  // unsubscribe()는 실패해도 던지지 않고 false를 반환할 수 있어(브라우저 레벨 구독이 그대로
+  // 남는 경우) — DB 삭제는 결과와 무관하게 항상 시도한다(서버가 보낼지 말지의 기준이 DB이므로
+  // 이것만 지워지면 실사용상 "꺼짐"은 보장됨). 브라우저 쪽 구독은 정리 목적으로 한 번 더 시도.
+  try {
+    const ok = await sub.unsubscribe();
+    if (!ok) { await sub.unsubscribe().catch(() => {}); }
+  } catch { /* ignore — DB 삭제로 실사용상 꺼짐은 보장 */ }
   if (isSupabaseReady() && supabase) {
     await supabase.from('push_subscriptions').delete().eq('endpoint', endpoint);
   }

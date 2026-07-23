@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { useWishlist } from '@/hooks/useWishlist';
-import { pushConfigured, pushSupported, getCurrentSubscription, subscribePush, unsubscribePush, getLastPushError } from '@/lib/push';
+import { pushConfigured, pushSupported, getCurrentSubscription, subscribePush, unsubscribePush, isEndpointRegistered, getLastPushError } from '@/lib/push';
 import { showToast } from '@/lib/toast';
 import { useLocale } from '@/hooks/useLocale';
 import { CAL } from '@/lib/i18nLabels';
@@ -23,7 +23,15 @@ export function NotifyToggle() {
     (async () => {
       try {
         const sub = await getCurrentSubscription();
-        if (sub) { setState('on'); return; }
+        if (sub) {
+          // 브라우저에 구독 객체가 남아있어도, 서버(DB)에 실제로 등록돼 있어야 알림이 실제로
+          // 온다 — 예전에 끄기를 눌렀는데 브라우저 쪽 unsubscribe()가 조용히 실패해서 DB만
+          // 지워지고 브라우저 구독은 남아있던 경우, 여기서 걸러서 진짜로 정리한다.
+          if (await isEndpointRegistered(sub.endpoint)) { setState('on'); return; }
+          await sub.unsubscribe().catch(() => {});
+          setState('off');
+          return;
+        }
         // 권한은 허용돼 있는데 구독이 유실됨(TWA 재시작 등) → 조용히 재구독해 ON 유지 + 410 방지
         if (Notification.permission === 'granted') {
           const r = await subscribePush([...idsRef.current]);
