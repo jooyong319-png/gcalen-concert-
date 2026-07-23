@@ -404,6 +404,122 @@
       ],
       "image_url": null,
       "source_url": "https://en.wikipedia.org/wiki/Act_III_(Kasabian_album)"
+    },
+    {
+      "id": "en-rebecca-black-exhibitionism-tour-boston-20260923",
+      "name": "Rebecca Black: Exhibitionism on Tour - Boston",
+      "release_date": "2026-09-23",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "concert_tour",
+      "platforms": [
+        "Royale, Boston, MA"
+      ],
+      "developer": "Rebecca Black",
+      "publisher": "Live Nation",
+      "description": "Rebecca Black launches Exhibitionism on Tour, a 27-date North American headlining run supporting her sophomore album Age of the Exhibitionist, due September 4, 2026. The trek opens September 23 at the Royale in Boston and works through clubs, theaters and ballrooms in Atlanta, Nashville, Dallas, Toronto, Chicago and Denver before the headline portion closes November 5 at the Fonda Theatre in Los Angeles. An artist and fan-club presale began July 22, with general on-sale July 24 via Ticketmaster.",
+      "genres": [
+        "Pop",
+        "Concert",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://news.pollstar.com/2026/07/20/rebecca-black-announces-headlining-north-america-tour/",
+      "presale": true,
+      "presale_datetime": "2026-07-22T10:00:00-04:00",
+      "presale_url": null,
+      "general_sale": true,
+      "general_sale_datetime": "2026-07-24T10:00:00-04:00",
+      "general_sale_url": "https://www.livenation.com/artist/K8vZ9178Z_7/rebecca-black-events",
+      "last_updated": "2026-07-23",
+      "last_researched_by": "en-researcher"
+    },
+    {
+      "id": "en-silvana-estrada-suaves-lluvias-portland-20260903",
+      "name": "Silvana Estrada: Vendran Suaves Lluvias Tour - North America",
+      "release_date": "2026-09-03",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/Los_Angeles",
+      "category": "concert_tour",
+      "platforms": [
+        "Portland, OR (tour opener)"
+      ],
+      "developer": "Silvana Estrada",
+      "publisher": null,
+      "description": "Mexican singer-songwriter and Latin Grammy winner Silvana Estrada brings her Vendran Suaves Lluvias tour to North America in 2026. After select US festival appearances and Mon Laferte support dates in August, her headlining run opens September 3 in Portland, Oregon, crosses into Canada at Vancouver's Chan Centre for the Performing Arts on September 6, and continues through Los Angeles, Miami, Nashville and other cities. Presales began July 22 in select cities, with general on-sale opening July 24.",
+      "genres": [
+        "Latin",
+        "Folk",
+        "Singer-songwriter",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://news.pollstar.com/2026/07/21/latin-grammy-winner-silvana-estrada-embarking-on-north-american-tour/",
+      "presale": true,
+      "presale_datetime": "2026-07-22T10:00:00-07:00",
+      "presale_url": null,
+      "general_sale": true,
+      "general_sale_datetime": "2026-07-24T10:00:00-07:00",
+      "general_sale_url": null,
+      "last_updated": "2026-07-23",
+      "last_researched_by": "en-researcher"
+    },
+    {
+      "id": "en-lucinda-williams-worlds-gone-wrong-atlanta-20260924",
+      "name": "Lucinda Williams: World's Gone Wrong Tour - Atlanta",
+      "release_date": "2026-09-24",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "concert_tour",
+      "platforms": [
+        "Variety Playhouse, Atlanta, GA"
+      ],
+      "developer": "Lucinda Williams",
+      "publisher": null,
+      "description": "Roots and Americana icon Lucinda Williams announces World's Gone Wrong, an extensive 31-date North American headlining tour behind her new album of the same name. The fall run opens with two nights at Variety Playhouse in Atlanta on September 24 and 25, then moves through the Carolinas, Washington D.C. and a sweep of the Northeast. An artist presale ran July 15 to 17, with tickets going on general sale July 17 via Ticketmaster.",
+      "genres": [
+        "Americana",
+        "Rock",
+        "Singer-songwriter",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://news.pollstar.com/2026/07/14/lucinda-williams-announces-worlds-gone-wrong-fall-tour-of-north-america/",
+      "general_sale": true,
+      "general_sale_datetime": "2026-07-17T10:00:00-04:00",
+      "general_sale_url": null,
+      "last_updated": "2026-07-23",
+      "last_researched_by": "en-researcher"
+    },
+    {
+      "id": "en-michelle-branch-everywhere-back-again-seattle-20260927",
+      "name": "Michelle Branch: Everywhere and Back Again Tour - Seattle",
+      "release_date": "2026-09-27",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/Los_Angeles",
+      "category": "concert_tour",
+      "platforms": [
+        "The Showbox, Seattle, WA"
+      ],
+      "developer": "Michelle Branch",
+      "publisher": null,
+      "description": "Michelle Branch returns to the road with the Everywhere and Back Again Tour, an 18-date US headlining run supporting a forthcoming EP of newly recorded versions of career-spanning songs, due November 6, 2026 via BMG. The tour opens September 27 at The Showbox in Seattle and runs through November 13 at Manchester Music Hall in Lexington, Kentucky. Tickets went on sale in July, and several shows sold out rapidly after the announcement.",
+      "genres": [
+        "Pop",
+        "Rock",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://news.pollstar.com/2026/07/15/michelle-branch-announces-everywhere-and-back-again-tour-releases-new-version-of-the-game-of-love/",
+      "general_sale": true,
+      "general_sale_datetime": null,
+      "general_sale_url": null,
+      "last_updated": "2026-07-23",
+      "last_researched_by": "en-researcher"
     }
   ]
 }
