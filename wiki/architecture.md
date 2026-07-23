@@ -11,7 +11,7 @@
 
 ## gcalen에서 제거한 것
 - 쿠폰/게임 허브: `lib/coupons.ts`, `lib/game-hub.ts`, `CouponList`,
-  `/coupons`, `/games/[key]` — 회사와 마찰의 원인이라 의도적으로 배제(`decisions.md` 참고,
+  `/coupons`, `/games/[key]` — 회사와 마찰의 원인이라 의도적으로 배제([[decisions]] 참고,
   **절대 되살리지 말 것**)
 - 이벤트 오버레이(게임쇼/할인/시즌/무료배포): `lib/events.ts`, `/events`,
   `data/events.json` — 콘서트 도메인에 맞는 개념이 없어서 제거(카테고리
@@ -22,7 +22,7 @@
   (2026-07-23)에서 전체 제거, `FilterKey`를 `Category`로 단순화
 - Supabase `game_reactions`(좋아요/싫어요), `news_translations`(DeepL 온디맨드 번역 캐시)
   테이블 + 이를 참조하던 `GameReactions.tsx` — 2026-07-23 전량 제거(코드 어디서도 안 쓰던
-  gcalen/구 번역-캐시 시절 잔재였음, 자세한 배경은 `decisions.md`)
+  gcalen/구 번역-캐시 시절 잔재였음, 자세한 배경은 [[decisions]])
 
 ## 이름은 같지만 의미가 바뀐 것
 - `data/concerts.{ko,en,ja}.json` — 콘서트/발매/페스티벌/팬미팅 항목을 담는 파일

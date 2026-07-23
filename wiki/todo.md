@@ -11,7 +11,7 @@
 - [x] Vercel 배포 연결 확인, Supabase 프로젝트를 이 프로젝트 전용으로 완전히 새로 구성
       (gcalen과 분리 완료 — 예전엔 "미확인"이었으나 2026-07-23에 실제 env 설정하며 확인됨)
 - [x] 1차+2차 비주얼 오버홀(Motion 도입 → "무대 조명 + 티켓 스텁" 컨셉으로 전면 재작업),
-      gcalen 죽은 코드/CSS/컴포넌트 대청소(`decisions.md`/`design-audit.md` 참고)
+      gcalen 죽은 코드/CSS/컴포넌트 대청소([[decisions]]/[[design-audit]] 참고)
 - [x] 에드센스 승인용 콘텐츠 볼륨 확보(블로그/뉴스/아티스트 소개글 대량 보강)
 - [x] SEO 감사·수정 — `<html lang>` 서버 렌더링(멀티 루트 레이아웃), OG 태그, JSON-LD
       4종(Event/MusicGroup/MusicVenue/Article/NewsArticle), hreflang, Google Search Console

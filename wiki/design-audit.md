@@ -215,7 +215,7 @@ gap은 모든 컴포넌트가 각자 `0.4rem`/`0.6rem`/`0.85rem`/`1.2rem` 같은
   `lib/i18nLabels.ts:11-16`의 `EVENT_TYPE_LABELS`(한국어 라벨이 문자 그대로 `'게임쇼'`) —
   콘서트 도메인에 없는 "게임쇼/할인/새 시즌" 이벤트 타입이 타입 정의·라벨·
   `EventRow.tsx`·`CalendarView.tsx`·`Home.tsx`의 필터링 로직까지 전부 살아있다. 실제로는
-  `events.json`이 삭제돼 데이터가 항상 빈 배열이라 화면엔 안 보이지만(`decisions.md`가
+  `events.json`이 삭제돼 데이터가 항상 빈 배열이라 화면엔 안 보이지만([[decisions]]가
   이 기능 자체를 명시적으로 제거 대상이라 기록), 타입/문자열/분기 로직은 그대로 남아 있다.
 - `components/Comments.tsx:101`("이 게임에 대한 댓글"), `components/GameReactions.tsx:54`
   ("이 게임 기대되나요?"), `components/PromoBanner.tsx:15`("게임 상세에서 출시일을..."),
@@ -227,17 +227,17 @@ gap은 모든 컴포넌트가 각자 `0.4rem`/`0.6rem`/`0.85rem`/`1.2rem` 같은
   버전은 이미 콘서트 도메인 문구로 바뀌어 있어 일본어만 놓친 것으로 보인다.
 - `app/[lang]/privacy/page.tsx:157`(일본어) "ゲーム/ニュースへのコメント投稿時" —
   마찬가지로 일본어 개인정보처리방침에 "게임/뉴스 댓글" 문구가 남아 있다(한국어 버전
-  45행은 이미 "일정/뉴스 댓글"로 수정돼 있음). `architecture.md`는 이 문구 정리를 "완료"로
+  45행은 이미 "일정/뉴스 댓글"로 수정돼 있음). [[architecture]]는 이 문구 정리를 "완료"로
   기록하고 있으나 실제로는 일본어 법적 문서 2곳에 누락이 있다.
 - `components/FloatingMonthStats.tsx` 주석·문자열에도 "게임"이 여러 번 등장(사용은 안
   되는 고아 컴포넌트이긴 하다).
 
 ### 죽은 CSS (orphaned styles)
 - `app/globals.css:785-887` 구간의 `.seo-landing`/`.seo-intro`/`.events-page`/
-  `.events-intro`/`.events-group`/`.seo-list`/`.seo-nav` 등 — `decisions.md`가 명시한
+  `.events-intro`/`.events-group`/`.seo-list`/`.seo-nav` 등 — [[decisions]]가 명시한
   제거 대상(SEO 카테고리 랜딩, `/events` 페이지)의 CSS가 100줄 넘게 그대로 남아 있고,
   현재 어떤 `.tsx`에서도 참조되지 않는다.
-- `app/globals.css:685-716`의 `.detail-coupons*`(쿠폰 관련 이름) — `decisions.md`가
+- `app/globals.css:685-716`의 `.detail-coupons*`(쿠폰 관련 이름) — [[decisions]]가
   "쿠폰 패턴은 절대 되살리지 않는다"고 명시적으로 못박은 기능인데, 그 이름을 그대로 쓴
   CSS 클래스가 orphan 상태로 남아 있다. 실사용처 없음.
 - `app/globals.css:717-739`의 `.detail-faq`/`.faq-list`/`.faq-item` — 주석은 "FAQPage
