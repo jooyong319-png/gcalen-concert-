@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "last_updated": "2026-07-22",
+  "last_updated": "2026-07-23",
   "last_researched_by": "ja-researcher",
   "categories": {
     "concert_tour": "コンサート・来日公演",
@@ -526,6 +526,67 @@
       ],
       "image_url": null,
       "source_url": "https://ikimonogakari.com/news/media/20260417-1"
+    },
+    {
+      "id": "ja-number-i-rebon-20260923",
+      "name": "Number_i『REBON / BUGS LIFE / DIGITAL GIRL』",
+      "release_date": "2026-09-23",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "Asia/Tokyo",
+      "category": "music_release",
+      "platforms": [],
+      "developer": "Number_i",
+      "publisher": "Atlantic Records",
+      "description": "Number_iが、米アトランティック・レコード移籍第1弾となる4thシングル『REBON / BUGS LIFE / DIGITAL GIRL』を2026年9月23日にリリースする。代表曲「BON」の続編にあたる「REBON」、神宮寺勇太プロデュースの「BUGS LIFE」、春の渡米中にロサンゼルスで制作された「DIGITAL GIRL」の3曲をそろえたトリプルAサイド作品。通常盤・初回限定盤A・初回限定盤Bそれぞれにメンバープロデュースの楽曲を収録する。7月21日の初ファンミーティングでタイトルと収録内容が発表された。",
+      "genres": [
+        "J-POP"
+      ],
+      "image_url": null,
+      "source_url": "https://mikiki.tokyo.jp/articles/-/45580"
+    },
+    {
+      "id": "ja-kuwata-keisuke-natsumatsuri-2026-add-20261216",
+      "name": "桑田佳祐「夏祭りツアー 2026」追加公演",
+      "release_date": "2026-12-16",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "Asia/Tokyo",
+      "category": "concert_tour",
+      "platforms": [
+        "日本ガイシホール（愛知）",
+        "大阪城ホール",
+        "横浜アリーナ"
+      ],
+      "developer": "桑田佳祐",
+      "publisher": null,
+      "description": "桑田佳祐が、7月に開幕した「夏祭りツアー 2026」の年末追加公演を2026年12月に開催する。夏に実現できなかった大都市会場での公演として、12月16日・17日の愛知・日本ガイシホール、12月22日・23日の大阪城ホール、12月28日・30日・31日の横浜アリーナの3会場・計7公演を追加した。追加分を含めると全国13カ所29公演となり、ソロとしては自身最大規模のアリーナツアーとなる。公演およびチケット受付の詳細は2026年秋頃に発表予定。",
+      "genres": [
+        "J-POP"
+      ],
+      "image_url": null,
+      "source_url": "https://southernallstars.jp/news/detail/4028"
+    },
+    {
+      "id": "ja-number-i-numbers-ur26-20260825",
+      "name": "Number_i「Numbers Ur'26」ファンミーティング（東京公演）",
+      "release_date": "2026-08-25",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "Asia/Tokyo",
+      "category": "fanmeeting",
+      "platforms": [
+        "TOYOTA ARENA TOKYO"
+      ],
+      "developer": "Number_i",
+      "publisher": null,
+      "description": "Number_iが、グループ初のファンミーティング「Numbers Ur'26」の東京公演を、東京・TOYOTA ARENA TOKYOで開催する。東京公演は8月25日・26日・27日の3日間で計5回。7月21日・22日の大阪城ホール公演に続く日程で、ファンクラブ「iLYs」会員限定、顔認証入場のため来場者全員の事前の顔写真登録が必要となる。移籍第1弾シングルのリリースを控えた夏の重要イベントとして注目を集めている。",
+      "genres": [
+        "J-POP",
+        "ファンミーティング"
+      ],
+      "image_url": null,
+      "source_url": "https://natalie.mu/music/news/670380"
     }
   ]
 }
