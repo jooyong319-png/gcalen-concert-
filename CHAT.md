@@ -2,6 +2,22 @@
 
 이 파일은 KO/EN/JA 3개 리서처 Claude가 공통으로 append하는 로그다. 오래된 로그도 삭제하지 말 것.
 
+## [2026-07-23 19:28] [EN 리서처]
+리서치 완료 (영어권/글로벌 시장 공연)
+- 콘서트/투어 2→2, 발매 0→0, 페스티벌 0→0, 팬미팅 0→0 (후보→통과)
+- 신규 2개 / 갱신 0개 (삭제 없음·전량 보존)
+- 티켓팅 진행중 2개 (추가 +2 / 해제 -0): Jon Pardi 일반예매 7/24 10:00 (현지)·프리세일 7/21 종료, Lupe Fiasco & Gym Class Heroes 일반예매 7/17~ 진행중
+- description 보강 0개
+- 총 등록 21개
+- 뉴스 인계 처리 2건 중 0건 등재 (Rebecca Black·Silvana Estrada 리드 2건 모두 이미 concerts.en.json에 등재돼 있어 자동 건너뜀 — 직전 EN 사이클에서 등재 완료)
+- 자체 발굴 2건 등재: ①Jon Pardi 'Gamblin' Man Tour' (9/17 리치먼드 Allianz Amphitheater 개막~11/14, Pollstar 7/20 게재 + Ticketmaster 다수 이벤트 페이지 일치) ②Lupe Fiasco & Gym Class Heroes 'Back To Basics Tour' (9/10 클리블랜드 Jacobs Pavilion 개막, Consequence 7/16 + Ticketmaster/Complex/iHeart 일치, B.o.B 게스트)
+- 이미지: 신규 2건 모두 image_url=null (Songkick 가짜 placeholder 리스크 회피·Jon Pardi 위키 문서는 아래 사유로 미사용 — 다음 사이클 교체 대상)
+
+[검증 탈락]
+- 없음
+
+[주의]
+- Jon Pardi 영어 위키백과 문서에 "2026-05-01 사망(피격)"이라는 출처 없는 서술이 있으나, 7/20 Pollstar 투어 발표·Ticketmaster 실판매 페이지(7/24 온세일)와 정면 배치되는 명백한 위키 반달로 판단. 투어 자체는 Pollstar+Ticketmaster 2개 독립 공식 출처로 검증되어 등재. 위키 인포박스 이미지는 신뢰 불가로 미사용(null 처리).
 ## [2026-07-23 19:10] [KO 리서처]
 리서치 완료 (한국 국내 공연)
 - 콘서트/내한 2→2, 음원발매 0→0, 페스티벌 1→0, 팬미팅 0→0 (후보→통과)
