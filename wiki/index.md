@@ -13,7 +13,14 @@
 `git clone`만 하면 그대로 읽을 수 있다.** (로컬 `d:/Gcalen/wiki-concert`에 있던 원본은
 로컬 전용이라 원격 세션이 못 읽었음 — 그래서 이쪽으로 옮겨 유지보수함)
 
-## 문서 목록
+## 상위: 통합 개발 위키 (기술 지식)
+이 프로젝트 위키는 **WhenStage 전용 맥락**만 담는다. Next.js·Vercel·Supabase·SEO 같은
+**어느 프로젝트든 재사용되는 기술 지식**은 상위 통합 위키(`../../wiki/`, 즉 `d:/Gcalen/wiki/`)에
+있다 — 로컬에서 작업할 땐 그쪽을 먼저 참고하면 이미 검증된 함정·패턴을 알고 출발할 수 있다.
+⚠️ 단, 통합 위키는 이 저장소 **바깥의 로컬 폴더**라 `git clone`만 하는 원격/클라우드 세션은
+못 읽는다(로컬 세션 전용). 원격에서도 필요해지면 통합 위키를 별도 저장소로 만들어야 한다.
+
+## 문서 목록 (WhenStage 전용)
 - [decisions.md](decisions.md) — 왜 이렇게 만들었는지(결정 기록, 시간순 추가)
 - [architecture.md](architecture.md) — 아키텍처 현황과 지난 결정들
 - [todo.md](todo.md) — 남은 작업 목록
@@ -21,7 +28,7 @@
 
 ## 이 위키를 읽어야 하는 프롬프트
 `prompts/PRODUCT_PLANNER.md`, `prompts/PRODUCT_DEVELOPER.md`(기획/개발 자동화)는 실행 시작 시 **반드시**
-이 위키 3개 문서를 먼저 읽는다 — 과거에 왜 이렇게 결정했는지 모르고 움직이면 이미 폐기된
+이 위키 문서들을 먼저 읽는다 — 과거에 왜 이렇게 결정했는지 모르고 움직이면 이미 폐기된
 패턴(쿠폰/게임 허브 등)을 되살리거나 이미 검증된 아키텍처 원칙을 어길 위험이 있다.
 콘텐츠 리서처(`RESEARCHER_*`, `NEWS_RESEARCHER_*`, `prompts/ARTIST_PROFILE.md`, `prompts/BLOG_RESEARCHER_KO/EN/JA.md`)와
 콘텐츠 신호 점검용 `prompts/PLANNER.md`는 이 위키를 읽을 필요 없음(코드/기획 판단을 안 하므로).
