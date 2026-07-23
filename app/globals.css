@@ -374,6 +374,15 @@ textarea:focus-visible,
 .menu-link-primary { font-weight: 700; }
 .menu-divider { height: 1px; background: var(--border); margin: 0.35rem 0; }
 
+/* ─── 태블릿 폭: 마퀴 중앙 워드마크 + 우측 accent 링크 묶음이 겹치던 버그 수정(2026-07-23) ───
+   640px 미만에서만 accent 링크를 ☰로 옮기던 걸로는 640~900px 사이(내비 4개+유틸+워드마크가
+   한 줄에 다 안 들어가는 폭)가 안 커버돼서 "WhenStageCalendar"처럼 겹쳐 보였음. 워드마크는
+   그대로 중앙 절대배치 유지하고, 이 구간부터 accent 링크만 먼저 ☰ 메뉴로 옮겨 공간 확보. */
+@media (max-width: 900px) {
+  .header-primary-nav { display: none; }
+  .site-menu .menu-primary { display: flex; }
+}
+
 /* ─── 모바일 웹: 설치 앱과 동일한 크롬(하단 탭바 + accent 링크는 ☰ 메뉴로) ───
    base .bottom-tabbar(display:none)·standalone 블록 뒤에 둬서 순서상 이김.
    ⚠️ 푸터는 유지(standalone과 다름 → 법적 링크 보호). */

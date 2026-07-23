@@ -83,7 +83,7 @@ export function InstallPrompt() {
   return (
     <div className={styles.banner} role="dialog" aria-label="앱 설치 안내">
       <span className={styles.icon} aria-hidden="true">
-        <svg className="ic"><use href="#ic-calendar" /></svg>
+        <svg className="ic"><use href="#ic-logo-ticket" /></svg>
       </span>
       <div className={styles.text}>
         <strong className={styles.title}>앱으로 설치하기</strong>

@@ -21,7 +21,12 @@
   white-space: nowrap;
   transition: border-color 0.15s, color 0.15s;
 }
-.item .ic { position: relative; z-index: 1; width: 15px; height: 15px; }
+/* 아이콘 래퍼(span) — CSS 모듈이라 .icon만 로컬 스코프로 매칭됨. 안의 svg.ic는 전역 클래스라
+   :global()로 별도 타겟팅해야 함(예전엔 ".item .ic"로 썼는데, 그 .ic가 모듈 해시를 타면서
+   실제 엘리먼트(전역 .ic)와 안 맞아 죽은 규칙이었음 — active 필 오버레이 뒤로 아이콘이
+   가려지던 버그의 원인, 2026-07-23 수정). */
+.icon { position: relative; z-index: 1; display: inline-flex; }
+.item :global(.ic) { width: 15px; height: 15px; }
 .item:hover { border-color: var(--cat, var(--accent)); color: var(--cat, var(--accent)); }
 .label { position: relative; z-index: 1; line-height: 1; }
 /* 활성 필 배경 — CategoryFilterBar.tsx에서 layoutId="cat-active-pill"로 버튼 간 이동을 애니메이션 */
