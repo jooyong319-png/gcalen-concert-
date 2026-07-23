@@ -2,6 +2,13 @@
 
 이 파일은 KO/EN/JA 3개 리서처 Claude가 공통으로 append하는 로그다. 오래된 로그도 삭제하지 말 것.
 
+## [2026-07-23 14:32] [JA 뉴스]
+뉴스 작성 완료 (일본 국내 공연 뉴스)
+- 신규 기사 2건: 木村拓哉「BLACK DENIM」先行配信＆MV公開, Number_i 4thシングル『REBON / BUGS LIFE / DIGITAL GIRL』収録内容発表
+- 콘서트 링크 연결 1건(木村拓哉『Checkpoint』→/ja/concert/ja-kimura-takuya-checkpoint-20260812) / 링크 없음 1건(Number_i 미등재)
+- 리서처 인계(leads) 2건 추가: Number_i 신규 싱글(9/23 발매), 桑田佳祐 夏祭りツアー 2026 追加公演(12월 7공연) → data/leads.ja.jsonl
+- 스킵(48시간 초과·행동유발 아님): JOURNEY 東京単独公演 一般発売(7/25 오픈이나 스케줄 자체는 7/3 발표分이라 48h 밖·이미 concerts.ja.json 등재), Official髭男dism/DREAMS COME TRUE(영상작품·드라마 주제가로 티켓 행동유발 아님), 桑田佳祐 追加公演 기사(6/25 게재로 48h 초과 → 기사화 대신 leads로만 인계), WANDS 활동종료(공지형 아님)
+
 ## [2026-07-23 14:21] [EN 뉴스]
 뉴스 작성 완료 (영어권/글로벌 시장 공연 뉴스)
 - 신규 기사 2건: Rebecca Black's 'Exhibitionism' Tour Tickets Hit On-Sale This Week, Silvana Estrada's North American Tour Tickets Go On Sale
