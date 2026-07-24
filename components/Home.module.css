@@ -22,10 +22,45 @@
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: 3px;
-  z-index: 1;
+  z-index: 3;
   background: linear-gradient(90deg, transparent, var(--accent) 30%, #df3d78 50%, #1f9d52 70%, transparent);
-  opacity: 0.55;
+  opacity: 0.7;
 }
+
+/* ─── 시네마틱 스포트라이트 히어로 — 다가오는 대형 공연 이미지를 배경으로 깔고 그 위에 정보 ───
+   featured 이미지가 있을 때만 .heroCine 적용. 사진 위 텍스트라 테마 무관 항상 밝은 글자(무비 포스터 컨셉). */
+.heroCine {
+  min-height: 360px;
+  display: flex;
+  align-items: stretch;
+  padding: 0;
+  background: #0a0c14;
+}
+.heroBackdrop { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.heroBackdropImg {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  transform: scale(1.06);
+  filter: saturate(1.12) brightness(0.92);
+}
+/* 좌측(텍스트)을 강하게 어둡게 + 하단 페이드 → 어떤 사진이 와도 글자 가독성 확보 */
+.heroBackdropVeil {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(100deg, rgba(8,10,18,0.94) 0%, rgba(8,10,18,0.74) 46%, rgba(8,10,18,0.42) 100%),
+    linear-gradient(to top, rgba(8,10,18,0.92) 0%, rgba(8,10,18,0) 46%);
+}
+.heroInner { position: relative; z-index: 2; width: 100%; }
+.heroCine .heroInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.4rem 2.4rem 2rem;
+  gap: 0;
+}
+.heroCine .heroTitle { color: #e8ecf5; opacity: 0.92; }
+
 .heroTitle {
   position: relative;
   z-index: 1;
@@ -37,6 +72,79 @@
   line-height: 1.12;
   color: var(--text);
   text-wrap: balance;
+}
+/* 시네마틱 모드에선 타이틀은 작은 킥커(가치 제안 + SEO h1 유지), 주인공은 스포트라이트 */
+.heroCine .heroTitle {
+  margin: 0 0 1.1rem;
+  padding: 0;
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* ─── 스포트라이트 블록 ─── */
+.spotlight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin-bottom: 1.6rem;
+  color: inherit;
+  max-width: 62%;
+}
+.spotlightEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  /* 히어로는 두 테마 모두 어두우므로 accent 토큰(라이트=먹색) 대신 고정 밝은 시안 */
+  color: #35d0e3;
+}
+.spotlightEyebrow .ic { width: 0.9em; height: 0.9em; }
+.spotlightName {
+  font-size: clamp(1.7rem, 3.6vw, 3rem);
+  font-weight: 900;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: #fff;
+  text-wrap: balance;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.15s;
+}
+.spotlight:hover .spotlightName { color: color-mix(in srgb, #fff 78%, var(--accent)); }
+.spotlightMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  font-size: 0.92rem;
+}
+.spotlightDday {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 1.05rem;
+  font-variant-numeric: tabular-nums;
+}
+.spotlightSep { color: rgba(255,255,255,0.4); }
+.spotlightDate {
+  font-family: var(--font-mono);
+  color: rgba(255,255,255,0.82);
+  font-variant-numeric: tabular-nums;
+}
+.spotlightBadge {
+  margin-left: 0.2rem;
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.01em;
 }
 /* 무대 조명 블롭 5개 — 액센트 + 카테고리 4색(콘서트/발매/페스티벌/팬미팅), 각자 다른 리듬으로 표류.
    콘텐츠(z-index:1) 뒤. 라이트=모노 정체성이라 accent 대신 카테고리색이 "무대 조명" 역할 →
@@ -53,6 +161,13 @@
 .heroBlobC { width: 260px; height: 260px; left: 50%; bottom: -100px; background: #df3d78; opacity: 0.34; }
 .heroBlobD { width: 230px; height: 230px; right: 6%; bottom: -80px; background: #1f9d52; opacity: 0.3; }
 .heroBlobE { width: 190px; height: 190px; right: 20%; top: -60px; background: var(--accent-warm); opacity: 0.36; }
+
+/* 시네마틱 모드: 사진 위 색 조명은 은은하게(사진이 읽히도록), 티커 텍스트는 밝게 */
+.heroCine .heroBlob { opacity: 0.22; }
+.heroCine .tickerTrack { padding: 0; }
+.heroCine .tickerName { color: #fff; }
+.heroCine .tickerDate { color: rgba(255,255,255,0.7); }
+.heroCine .heroSubtitle { color: rgba(255,255,255,0.75); padding: 0; }
 
 /* 마퀴 티커 — 다가오는 일정이 극장 전광판처럼 옆으로 계속 흐름(실제 데이터, CSS 무한 스크롤) */
 .tickerWrap { position: relative; z-index: 1; overflow: hidden; }
@@ -93,6 +208,14 @@
   .heroTitle { font-size: 1.5rem; padding: 0 1.2rem; }
   .tickerTrack { padding: 0 1.2rem; gap: 1.8rem; }
   .heroBlobB, .heroBlobE { display: none; }
+
+  /* 시네마틱 히어로 모바일 — 세로 여백 줄이고 텍스트 폭 전체 사용 */
+  .heroCine { min-height: 0; padding: 0; }
+  .heroCine .heroInner { padding: 1.5rem 1.2rem 1.3rem; }
+  .heroCine .heroTitle { font-size: 1rem; padding: 0; margin-bottom: 0.9rem; }
+  .heroCine .tickerTrack { padding: 0; }
+  .spotlight { max-width: 100%; margin-bottom: 1.2rem; }
+  .spotlightName { font-size: clamp(1.5rem, 7vw, 2rem); }
 }
 .lastUpdated {
   text-align: center;
