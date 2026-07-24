@@ -132,8 +132,9 @@
     범위 아님(2026-07-23 SEO 작업의 핵심 목적이므로 유지).
 
 ## [20260724-01] 쉼표로 여러 아티스트를 한 `developer`에 담은 항목이 "합쳐진 유령 아티스트"로 묶이는 문제
-- 상태: 대기
+- 상태: 보류 (2026-07-24 — 구현·타입체크·단위테스트 완료, 고위험 변경이라 전체 빌드 검증 필요한데 샌드박스 빌드 완주 불가 → 브랜치에 올리고 로컬/Vercel 프리뷰 검증에 위임)
 - 등록일: 2026-07-24
+- 처리 기록(2026-07-24, 개발 담당): 스펙대로 구현 완료 후 §5-B에 따라 main 직접 push 보류. 구현 내용 = (1) `lib/types.ts`에 `splitArtists(developer): string[]` 신설 — 괄호(반각/전각) 깊이를 존중해 최상위 쉼표에서만 분리, 알려진 단일-아티스트 예외 목록(`Tyler, the Creator`/`Earth, Wind & Fire`/`Crosby, Stills & Nash` 등)과 "쉼표 뒤 소문자 조각은 앞과 재병합"(관사·접속사) 이중 가드로 false split 방지("확신 없으면 안 쪼갠다" 원칙). (2) `lib/artists.ts` `getAllArtists()` 그룹핑을 splitArtists 기반으로 교체 — 한 콘서트가 여러 아티스트 그룹에 동시 소속 가능, 대표 표시명은 developer 원문이 아니라 분리된 개별 아티스트명 중 최장 표기(합쳐진 유령 카드 제거). (3) `concert/[id]/page.tsx` 아티스트 칩을 아티스트별 개별 링크로 렌더(합쳐진 슬러그 링크 0건), 사이드바 '다른 일정'은 대표(첫) 아티스트 기준. **검증**: `npx tsc --noEmit` ✅ 오류 0 + splitArtists 단위테스트 9케이스 ✅(실데이터 `Avenged Sevenfold, Good Charlotte`/`Lupe Fiasco, Gym Class Heroes, B.o.B`/`ZZ Top, Cheap Trick`/`Djo (Joe Keery), Pond` 4건 정상 분리, `Tyler, the Creator`·`Earth, Wind & Fire`·`Crosby, Stills, Nash & Young`·`에스파(aespa)` 미분할). 코드 리뷰 = 합쳐진 슬러그로 가는 아티스트 **링크** 잔존 0건(남은 `normalizeArtistKey(g.developer)` 3곳은 이미지 폴백/검색 별칭 조회라 링크 아님, 범위 밖). **미완**: 완료 조건의 `npm run build`(고위험 §5-B 필수)가 이 클라우드 샌드박스에서 완주 못 함(webpack 컴파일 단계에서 7분+ 무진행, 정적 생성 도달 못 함 — 알려진 환경 제약). 규칙 1에 따라 검증 안 된 고위험 코드를 main에 push하지 않음. 대신 코드는 브랜치 **`feature/20260724-01-split-artists`**(원격 푸시 완료)에 보존 — main으로 배포 안 됨. **다음 단계(사람)**: 로컬(`d:/Gcalen/whenstage`) 또는 Vercel 프리뷰에서 `npm run build` 통과 + `/en/artist`에서 합쳐진 유령 카드 사라짐/개별 분리, 콘서트 상세 칩 개별 링크, KO 회귀 없음을 확인한 뒤 main 병합하고 이 항목을 `완료`로 처리.
 - 우선순위: P1(잘못된 아티스트 페이지가 실제로 노출·색인 + 콘텐츠 파이프라인 오탐을 매 사이클 유발)
 - 근거: 라이브 `https://whenstage.com/en` 확인 + 코드/데이터 대조로 확정. `lib/artists.ts`
   `getAllArtists()`가 `normalizeArtistKey(g.developer)` 하나를 그룹 키로 쓰는데,
