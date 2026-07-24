@@ -787,11 +787,26 @@ textarea:focus-visible,
 /* ─── 상세 "같은 시기 출시" 관련 게임 그리드 ─── */
 .detail-related { margin: 1.5rem 0 0; }
 .detail-related h3 { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.8rem; color: var(--text); }
-.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
-.related-card { display: flex; flex-direction: column; gap: 0.3rem; background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.8rem 1rem; transition: border-color 0.15s ease, transform 0.15s ease; }
-.related-card:hover { border-color: var(--accent); transform: translateY(-2px); text-decoration: none; }
-.related-name { font-weight: 700; color: var(--text); font-size: 0.95rem; line-height: 1.35; }
-.related-date { font-size: 0.8rem; color: var(--text-faint); }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+/* 관련 일정 카드 — 썸네일(이미지 or 카테고리 플레이스홀더) + 본문. 텍스트 박스보다 시각적으로 살아남. */
+.related-card {
+  display: flex; flex-direction: column;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.related-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: var(--shadow-glow); text-decoration: none; }
+.related-thumb { position: relative; display: block; width: 100%; aspect-ratio: 16 / 10; background: var(--bg-sunken); overflow: hidden; }
+.related-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.related-thumb-ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--cat) 22%, var(--bg-sunken)), var(--bg-sunken)); }
+.related-thumb-ph .ic { width: 30px; height: 30px; color: var(--cat); opacity: 0.85; }
+.related-body { display: flex; flex-direction: column; gap: 0.25rem; padding: 0.6rem 0.75rem 0.75rem; min-width: 0; }
+.related-badge { align-self: flex-start; color: #fff; font-size: 0.6rem; font-weight: 800; padding: 0.1rem 0.4rem; border-radius: var(--radius-xs); white-space: nowrap; }
+.related-name { font-weight: 700; color: var(--text); font-size: 0.9rem; line-height: 1.35;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.related-date { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-faint); }
 .related-dday { font-size: 0.85rem; font-weight: 700; color: var(--text-faint); }
 .related-dday.dday-today { color: var(--accent-warm); }
 .related-dday.dday-soon { color: var(--accent-warm); }

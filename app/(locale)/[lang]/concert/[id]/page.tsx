@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAllGames, getGameById, getUpcomingGamesByCategory, getLastUpdated } from '@/lib/games';
-import { getArtistBySlug, normalizeArtistKey } from '@/lib/artists';
+import { getArtistBySlug, normalizeArtistKey, getArtistImageMap } from '@/lib/artists';
+import { CATEGORY_META } from '@/lib/types';
 import { getVenueBySlug, normalizeVenueKey, VENUE_CATEGORIES } from '@/lib/venues';
 import { formatShortDate, calcDayDiff } from '@/lib/utils';
 import { CATEGORY_LABELS, UI, CAL, LOCALES, OG_LOCALE, type Locale } from '@/lib/i18nLabels';
@@ -76,6 +77,11 @@ export default async function LocaleGamePage({ params }: Props) {
     .filter(g => g.id !== game.id)
     .sort((a, b) => a.release_date.localeCompare(b.release_date))
     .slice(0, 6);
+
+  // 관련 카드 이미지 맵: 콘서트 image_url 우선, 없으면 developer로 아티스트 큐레이션 이미지 폴백.
+  const artistImgs = await getArtistImageMap();
+  const relImg = (g: Game): string | null =>
+    g.image_url || (g.developer ? artistImgs[normalizeArtistKey(g.developer)] ?? null : null);
 
   const isUpcoming = (g: Game) => g.release_date_approx || calcDayDiff(g.release_date) >= 0;
 
@@ -247,11 +253,28 @@ export default async function LocaleGamePage({ params }: Props) {
         {related.length > 0 && (
           <section className="detail-related">
             <div className="related-grid">
-              {related.map(r => (
-                <a key={r.id} href={`/${lang}/concert/${r.id}`} className="related-card">
-                  <span className="related-name">{r.name}</span>
-                </a>
-              ))}
+              {related.map(r => {
+                const img = relImg(r);
+                const cat = CATEGORY_META[r.category];
+                return (
+                  <a key={r.id} href={`/${lang}/concert/${r.id}`} className="related-card" style={{ ['--cat' as string]: cat.color }}>
+                    <span className="related-thumb">
+                      {img ? (
+                        <img src={img} alt="" aria-hidden="true" loading="lazy" />
+                      ) : (
+                        <span className="related-thumb-ph" aria-hidden="true">
+                          <svg className="ic"><use href={`#${cat.icon}`} /></svg>
+                        </span>
+                      )}
+                    </span>
+                    <span className="related-body">
+                      <span className="related-badge" style={{ background: cat.color }}>{cat.short}</span>
+                      <span className="related-name">{r.name}</span>
+                      <span className="related-date">{formatShortDate(r.release_date)}</span>
+                    </span>
+                  </a>
+                );
+              })}
             </div>
           </section>
         )}
