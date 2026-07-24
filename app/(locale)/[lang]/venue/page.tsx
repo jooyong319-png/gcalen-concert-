@@ -6,6 +6,7 @@ import { PageShell } from '@/components/PageShell';
 import { PageHeader } from '@/components/PageHeader';
 import { RevealGroup, RevealItem } from '@/components/motion/Reveal';
 import styles from '@/app/blog/blog.module.css';
+import vs from './venue.module.css';
 
 interface Props { params: { lang: string }; }
 function isLocale(v: string): v is Locale { return (LOCALES as string[]).includes(v); }
@@ -46,15 +47,18 @@ export default async function VenueListPage({ params }: Props) {
         {venues.length === 0 ? (
           <p className={styles.empty}>{ui.artistNoEvents}</p>
         ) : (
-          <RevealGroup as="ul" className={styles.postList}>
+          <RevealGroup as="ul" className={vs.grid}>
             {venues.map(v => {
               const eventsLabel = `${v.events.length}${lang === 'ko' ? '개 일정' : lang === 'ja' ? '件' : ' events'}`;
               const upcomingLabel = v.upcomingCount > 0 ? ` · ${v.upcomingCount}${ui.artistUpcomingCount}` : '';
               return (
-                <RevealItem key={v.slug} as="li" className={styles.postCard}>
-                  <a href={`/${lang}/venue/${encodeURIComponent(v.slug)}`} className={styles.postLink}>
-                    <div className={styles.postTitle}>{v.name}</div>
-                    <p className={styles.postDesc}>{eventsLabel}{upcomingLabel}</p>
+                <RevealItem key={v.slug} as="li" className={vs.card}>
+                  <a href={`/${lang}/venue/${encodeURIComponent(v.slug)}`} className={vs.link}>
+                    <span className={vs.pin} aria-hidden="true"><svg className="ic"><use href="#ic-pin" /></svg></span>
+                    <span className={vs.body}>
+                      <span className={vs.name}>{v.name}</span>
+                      <span className={vs.count}>{eventsLabel}{upcomingLabel}</span>
+                    </span>
                   </a>
                 </RevealItem>
               );
