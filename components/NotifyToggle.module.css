@@ -8,6 +8,12 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
+/* 아래 세분화 패널이 붙을 때: 하단 여백/라운드 제거해 한 카드처럼 연결 */
+.boxAttached {
+  margin-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
 .icon {
   flex: 0 0 auto;
   display: flex;

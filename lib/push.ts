@@ -1,6 +1,7 @@
 'use client';
-// 웹 푸시 구독 클라이언트 헬퍼 — Supabase에 구독정보 + 찜 game_ids 저장.
+// 웹 푸시 구독 클라이언트 헬퍼 — Supabase에 구독정보 + 찜 game_ids + 알림 설정(prefs) 저장.
 import { supabase, isSupabaseReady } from './supabase';
+import { type NotifyPrefs, DEFAULT_NOTIFY_PREFS, normalizePrefs } from './notifyPrefs';
 
 // env에 붙여넣을 때 따라온 공백/줄바꿈/따옴표 제거(있으면 subscribe 실패 원인)
 const VAPID_PUBLIC = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY?.trim().replace(/^["']|["']$/g, '');
@@ -23,6 +24,23 @@ export function clearNotifyOptedOut(): void {
 }
 export function isNotifyOptedOut(): boolean {
   try { return localStorage.getItem(OPT_OUT_KEY) === '1'; } catch { return false; }
+}
+
+// ─── 알림 세분화 설정(localStorage 우선, 구독 시 DB에도 동기화) ───
+const PREFS_KEY = 'whenstage.notify.prefs';
+export function getNotifyPrefs(): NotifyPrefs {
+  try { return normalizePrefs(JSON.parse(localStorage.getItem(PREFS_KEY) || '{}')); }
+  catch { return DEFAULT_NOTIFY_PREFS; }
+}
+// 설정 저장 — 로컬에 기록하고, 구독 중이면 DB(prefs 컬럼)도 갱신. 구독 없으면 로컬만.
+export async function setNotifyPrefs(prefs: NotifyPrefs): Promise<void> {
+  try { localStorage.setItem(PREFS_KEY, JSON.stringify(prefs)); } catch { /* ignore */ }
+  const sub = await getCurrentSubscription();
+  if (!sub || !isSupabaseReady() || !supabase) return;
+  await supabase
+    .from('push_subscriptions')
+    .update({ prefs, updated_at: new Date().toISOString() })
+    .eq('endpoint', sub.endpoint);
 }
 
 export function pushConfigured(): boolean {
@@ -85,6 +103,11 @@ async function saveSubscription(sub: PushSubscription, gameIds: string[]): Promi
     { onConflict: 'endpoint' },
   );
   if (error) throw new Error('DB ' + error.message);
+  // prefs는 별도 best-effort — prefs 컬럼 마이그레이션 전이라도 구독 자체는 성공하게(구독 깨짐 방지).
+  await supabase
+    .from('push_subscriptions')
+    .update({ prefs: getNotifyPrefs() })
+    .eq('endpoint', sub.endpoint);
 }
 
 export type SubscribeResult = 'ok' | 'denied' | 'unsupported' | 'error';

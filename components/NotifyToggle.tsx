@@ -5,6 +5,7 @@ import { pushConfigured, pushSupported, getCurrentSubscription, subscribePush, u
 import { showToast } from '@/lib/toast';
 import { useLocale } from '@/hooks/useLocale';
 import { CAL } from '@/lib/i18nLabels';
+import { NotifyPrefs } from './NotifyPrefs';
 import styles from './NotifyToggle.module.css';
 
 type State = 'loading' | 'on' | 'off' | 'denied' | 'hidden';
@@ -73,28 +74,31 @@ export function NotifyToggle() {
   const disabled = state === 'loading' || state === 'denied';
 
   return (
-    <div className={styles.box}>
-      <span className={styles.icon} aria-hidden="true">
-        <svg className="ic"><use href="#ic-bell" /></svg>
-      </span>
-      <div className={styles.text}>
-        <strong>{t ? t.notifyTitle : '출시 알림'}</strong>
-        <span className={styles.sub}>
-          {state === 'denied'
-            ? (t ? t.notifyDeniedSub : '브라우저 설정에서 알림을 허용해 주세요.')
-            : (t ? t.notifyNormalSub : '찜한 일정 하루 전·당일에 알려드려요.')}
+    <>
+      <div className={`${styles.box} ${state === 'on' ? styles.boxAttached : ''}`}>
+        <span className={styles.icon} aria-hidden="true">
+          <svg className="ic"><use href="#ic-bell" /></svg>
         </span>
+        <div className={styles.text}>
+          <strong>{t ? t.notifyTitle : '출시 알림'}</strong>
+          <span className={styles.sub}>
+            {state === 'denied'
+              ? (t ? t.notifyDeniedSub : '브라우저 설정에서 알림을 허용해 주세요.')
+              : (t ? t.notifyNormalSub : '찜한 일정 하루 전·당일에 알려드려요.')}
+          </span>
+        </div>
+        <button
+          type="button"
+          className={`${styles.switch} ${state === 'on' ? styles.on : ''}`}
+          onClick={onToggle}
+          disabled={disabled}
+          aria-pressed={state === 'on'}
+          aria-label={t ? t.notifyToggleAria : '출시 알림 토글'}
+        >
+          <span className={styles.knob} />
+        </button>
       </div>
-      <button
-        type="button"
-        className={`${styles.switch} ${state === 'on' ? styles.on : ''}`}
-        onClick={onToggle}
-        disabled={disabled}
-        aria-pressed={state === 'on'}
-        aria-label={t ? t.notifyToggleAria : '출시 알림 토글'}
-      >
-        <span className={styles.knob} />
-      </button>
-    </div>
+      {state === 'on' && <NotifyPrefs />}
+    </>
   );
 }

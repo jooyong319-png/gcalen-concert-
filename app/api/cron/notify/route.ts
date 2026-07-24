@@ -5,6 +5,7 @@ import gamesKo from '@/data/concerts.ko.json';
 import gamesEn from '@/data/concerts.en.json';
 import gamesJa from '@/data/concerts.ja.json';
 import type { Category, LocaleCode } from '@/lib/types';
+import { normalizePrefs } from '@/lib/notifyPrefs';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -15,6 +16,22 @@ interface GameLite {
   category: Category;
   release_date: string;
   release_date_approx?: boolean;
+  presale_datetime?: string | null;
+  general_sale_datetime?: string | null;
+}
+
+// 알림 종류 — 사전 타이밍(dday/d1/d3/d7) + 예매 오픈(presale/general)
+type NotifyKind = 'dday' | 'd1' | 'd3' | 'd7' | 'presale_open' | 'general_open';
+// 사전 타이밍 kind ↔ 오프셋(일)
+const OFFSET_KIND: Record<number, NotifyKind> = { 0: 'dday', 1: 'd1', 3: 'd3', 7: 'd7' };
+function offsetOfKind(kind: NotifyKind): number | null {
+  switch (kind) {
+    case 'dday': return 0;
+    case 'd1': return 1;
+    case 'd3': return 3;
+    case 'd7': return 7;
+    default: return null; // 예매 오픈 kind
+  }
 }
 
 const CATEGORY_LABEL: Record<LocaleCode, Record<Category, string>> = {
@@ -45,16 +62,43 @@ function localeOfId(id: string): LocaleCode | null {
   return p === 'ko' || p === 'en' || p === 'ja' ? p : null;
 }
 
-function buildPayload(lang: LocaleCode, kind: 'dday' | 'd1', g: GameLite): string {
+// 알림 제목 접두(사전 타이밍) — 로케일별
+function whenPrefix(lang: LocaleCode, kind: NotifyKind): string {
+  const off = offsetOfKind(kind);
+  if (kind === 'presale_open') return lang === 'ko' ? '선예매 오픈' : lang === 'ja' ? '先行販売開始' : 'Presale open';
+  if (kind === 'general_open') return lang === 'ko' ? '예매 오픈' : lang === 'ja' ? '一般販売開始' : 'On sale now';
+  if (off === 0) return lang === 'ko' ? '오늘이에요' : lang === 'ja' ? '本日' : 'Today';
+  if (off === 1) return lang === 'ko' ? '내일이에요' : lang === 'ja' ? '明日' : 'Tomorrow';
+  return lang === 'ko' ? `${off}일 뒤` : lang === 'ja' ? `${off}日後` : `In ${off} days`;
+}
+
+function timeOf(iso: string | null | undefined): string {
+  return iso ? iso.slice(11, 16) : '';
+}
+// ISO(오프셋 포함)에서 날짜만(YYYY-MM-DD) — 앞 10자가 곧 그 공연 타임존 기준 로컬 날짜
+function dateOnly(iso: string | null | undefined): string | null {
+  return iso ? iso.slice(0, 10) : null;
+}
+
+function buildPayload(lang: LocaleCode, kind: NotifyKind, g: GameLite): string {
   const cat = CATEGORY_LABEL[lang][g.category];
+  const prefix = whenPrefix(lang, kind);
   const title =
-    lang === 'ko' ? `${kind === 'dday' ? '오늘이에요' : '내일이에요'}! ${g.name}`
-    : lang === 'ja' ? `${kind === 'dday' ? '本日' : '明日'}: ${g.name}`
-    : `${kind === 'dday' ? 'Today' : 'Tomorrow'}: ${g.name}`;
-  const body =
-    lang === 'ko' ? `${cat} · 지금 확인해보세요.`
-    : lang === 'ja' ? `${cat} · 今すぐチェック！`
-    : `${cat} — check it out now.`;
+    lang === 'ja' ? `${prefix}: ${g.name}` : `${prefix}! ${g.name}`;
+
+  let body: string;
+  if (kind === 'presale_open' || kind === 'general_open') {
+    const time = timeOf(kind === 'presale_open' ? g.presale_datetime : g.general_sale_datetime);
+    body =
+      lang === 'ko' ? `${cat} · 오늘 ${time} 예매 시작`
+      : lang === 'ja' ? `${cat} · 本日 ${time} 販売開始`
+      : `${cat} · Opens today at ${time}`;
+  } else {
+    body =
+      lang === 'ko' ? `${cat} · 지금 확인해보세요.`
+      : lang === 'ja' ? `${cat} · 今すぐチェック！`
+      : `${cat} — check it out now.`;
+  }
   return JSON.stringify({ title, body, url: `/${lang}/concert/${g.id}`, tag: `${g.id}-${kind}` });
 }
 
@@ -63,6 +107,10 @@ function kstDateStr(offsetDays = 0): string {
   const kst = new Date(Date.now() + 9 * 3600 * 1000);
   kst.setUTCDate(kst.getUTCDate() + offsetDays);
   return kst.toISOString().slice(0, 10);
+}
+// 현재 KST 시각(0~23)
+function kstHour(): number {
+  return new Date(Date.now() + 9 * 3600 * 1000).getUTCHours();
 }
 
 export async function GET(req: Request) {
@@ -111,7 +159,11 @@ export async function GET(req: Request) {
   }
 
   const today = kstDateStr(0);
-  const tomorrow = kstDateStr(1);
+  const hourNow = kstHour();
+  // 발송 시각(prefs.hour) 게이팅은 매시간 크론일 때만(CRON_HOURLY=1). 그 외(하루 1회 크론)엔
+  // 시각을 무시하고 그때 발송 — Vercel Hobby처럼 크론이 하루 1회만 돌 때도 알림이 정상 발송되게.
+  const hourlyMode = process.env.CRON_HOURLY === '1';
+
   // ko/en/ja는 서로 번역이 아니라 완전히 독립된 콘텐츠라(id도 로케일별로 다름) 셋 다 훑어야
   // 함 — 하나로 합친 맵의 키는 id 자체가 이미 로케일 접두사로 전역 유일하다.
   const allGames: GameLite[] = [
@@ -119,57 +171,84 @@ export async function GET(req: Request) {
     ...(gamesEn as { games: GameLite[] }).games,
     ...(gamesJa as { games: GameLite[] }).games,
   ];
-  const byId = new Map(allGames.map(g => [g.id, g]));
 
-  // 대상: 오늘 공연·발매 등(dday) / 내일(d1) — 날짜 미확정(approx)은 제외
-  const targets: { id: string; kind: 'dday' | 'd1' }[] = [];
+  // 오프셋 날짜(당일/D-1/D-3/D-7)
+  const offsetDate: Record<number, string> = { 0: today, 1: kstDateStr(1), 3: kstDateStr(3), 7: kstDateStr(7) };
+
+  // "오늘 발송 후보"를 gid별로 모아둔다(모든 오프셋 + 예매 오픈). 실제 발송 여부는 구독자별
+  // prefs(오프셋/예매/카테고리)로 필터. 날짜 미확정(approx)은 사전 타이밍에서 제외.
+  const dueByGid = new Map<string, NotifyKind[]>();
+  const addDue = (id: string, kind: NotifyKind) => {
+    if (!dueByGid.has(id)) dueByGid.set(id, []);
+    dueByGid.get(id)!.push(kind);
+  };
   for (const g of allGames) {
-    if (g.release_date_approx) continue;
-    if (g.release_date === today) targets.push({ id: g.id, kind: 'dday' });
-    else if (g.release_date === tomorrow) targets.push({ id: g.id, kind: 'd1' });
+    if (!g.release_date_approx) {
+      for (const o of [0, 1, 3, 7]) {
+        if (g.release_date === offsetDate[o]) addDue(g.id, OFFSET_KIND[o]);
+      }
+    }
+    if (dateOnly(g.presale_datetime) === today) addDue(g.id, 'presale_open');
+    if (dateOnly(g.general_sale_datetime) === today) addDue(g.id, 'general_open');
   }
-  if (targets.length === 0) {
+  if (dueByGid.size === 0) {
     return NextResponse.json({ ok: true, sent: 0, note: 'no targets today' });
   }
+  const byId = new Map(allGames.map(g => [g.id, g]));
 
-  const targetIds = targets.map(t => t.id);
   const { data: subs, error } = await supabase
     .from('push_subscriptions')
-    .select('endpoint, p256dh, auth, game_ids')
-    .overlaps('game_ids', targetIds);
+    .select('endpoint, p256dh, auth, game_ids, prefs');
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
   let sent = 0;
   let pruned = 0;
+  let skippedHour = 0;
   for (const s of subs ?? []) {
+    const prefs = normalizePrefs(s.prefs);
+    // 발송 시각 게이팅(매시간 모드에서만)
+    if (hourlyMode && prefs.hour !== hourNow) { skippedHour++; continue; }
+
     const ids: string[] = s.game_ids ?? [];
-    for (const t of targets) {
-      if (!ids.includes(t.id)) continue;
-      const lang = localeOfId(t.id);
-      const g = byId.get(t.id);
-      if (!lang || !g) continue; // 접두사가 깨진 id는 스킵(있을 수 없지만 방어)
+    for (const id of ids) {
+      const kinds = dueByGid.get(id);
+      if (!kinds) continue;
+      const g = byId.get(id);
+      const lang = localeOfId(id);
+      if (!g || !lang) continue;
+      if (!prefs.categories.includes(g.category)) continue; // 카테고리 필터
 
-      // 중복 발송 방지: (endpoint, game_id, kind) unique. 충돌하면 이미 보낸 것.
-      const { error: logErr } = await supabase
-        .from('push_sent_log')
-        .insert({ endpoint: s.endpoint, game_id: t.id, kind: t.kind });
-      if (logErr) continue;
+      for (const kind of kinds) {
+        const off = offsetOfKind(kind);
+        // prefs로 이 kind가 켜져 있는지 확인
+        if (off === null) {
+          if (!prefs.ticketing) continue;              // 예매 오픈 알림 off
+        } else if (!prefs.offsets.includes(off)) {
+          continue;                                     // 이 사전 타이밍 미선택
+        }
 
-      try {
-        await webpush.sendNotification(
-          { endpoint: s.endpoint, keys: { p256dh: s.p256dh, auth: s.auth } },
-          buildPayload(lang, t.kind, g),
-        );
-        sent++;
-      } catch (err: unknown) {
-        const code = (err as { statusCode?: number })?.statusCode;
-        if (code === 404 || code === 410) {
-          await supabase.from('push_subscriptions').delete().eq('endpoint', s.endpoint);
-          pruned++;
+        // 중복 발송 방지: (endpoint, game_id, kind) unique. 충돌하면 이미 보낸 것.
+        const { error: logErr } = await supabase
+          .from('push_sent_log')
+          .insert({ endpoint: s.endpoint, game_id: id, kind });
+        if (logErr) continue;
+
+        try {
+          await webpush.sendNotification(
+            { endpoint: s.endpoint, keys: { p256dh: s.p256dh, auth: s.auth } },
+            buildPayload(lang, kind, g),
+          );
+          sent++;
+        } catch (err: unknown) {
+          const code = (err as { statusCode?: number })?.statusCode;
+          if (code === 404 || code === 410) {
+            await supabase.from('push_subscriptions').delete().eq('endpoint', s.endpoint);
+            pruned++;
+          }
         }
       }
     }
   }
 
-  return NextResponse.json({ ok: true, sent, pruned, targets: targets.length, subs: subs?.length ?? 0 });
+  return NextResponse.json({ ok: true, sent, pruned, skippedHour, dueGames: dueByGid.size, subs: subs?.length ?? 0 });
 }
