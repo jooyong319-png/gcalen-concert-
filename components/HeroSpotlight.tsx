@@ -70,18 +70,29 @@ export function HeroSpotlight({ slides, cardImages, tickerItems, now, lang, hero
     >
       {cine && (
         <div className={styles.heroBackdrop} aria-hidden="true">
-          {/* 모든 슬라이드 이미지를 겹쳐 두고 opacity로 크로스페이드 → 전환 시 로딩 깜빡임 없음 */}
+          {/* ① 앰비언트: 같은 이미지를 크게 흐려 배너 전체를 채움(색/분위기용, 잘림 무관) */}
           {slides.map((g, i) => (
             <img
-              key={g.id}
+              key={`bg-${g.id}`}
               src={cardImages[g.id]}
               alt=""
-              className={styles.heroBackdropImg}
+              className={styles.heroBackdropBlur}
               style={{ opacity: i === active ? 1 : 0 }}
               loading={i === 0 ? 'eager' : 'lazy'}
             />
           ))}
           <span className={styles.heroBackdropVeil} />
+          {/* ② 선명한 인물: 우측에 contain(전체가 다 보이게, 잘리지 않음), 왼쪽 가장자리는 마스크로 앰비언트에 녹임 */}
+          {slides.map((g, i) => (
+            <img
+              key={`fg-${g.id}`}
+              src={cardImages[g.id]}
+              alt=""
+              className={styles.heroBackdropFg}
+              style={{ opacity: i === active ? 1 : 0 }}
+              loading={i === 0 ? 'eager' : 'lazy'}
+            />
+          ))}
         </div>
       )}
 
