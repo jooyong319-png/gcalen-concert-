@@ -2,6 +2,22 @@
 
 이 파일은 KO/EN/JA 3개 리서처 Claude가 공통으로 append하는 로그다. 오래된 로그도 삭제하지 말 것.
 
+## [2026-07-24 09:53] [EN 리서처]
+리서치 완료 (영어권/글로벌 시장 공연)
+- 콘서트/투어 3→3, 발매 1→1, 페스티벌 0→0, 팬미팅 0→0 (후보→통과)
+- 신규 4개 / 갱신 0개 (삭제 없음·전량 보존)
+- 티켓팅 진행중 2개 (추가 +2 / 해제 -0): ZZ Top(일반예매 진행중), Djo(3/20 일반예매 오픈)
+- description 보강 0개
+- 총 등록 25개
+- 뉴스 인계 처리 6건 중 4건 등재 (Rebecca Black·Silvana Estrada 2건은 이미 concerts.en.json 등재 → 자동 skip)
+  · Bryan Adams: Roll With The Punches (AU/NZ 2027, Perth 2/23 개막~Christchurch 3/12, Natalie Imbruglia 게스트) — Billboard·공식사이트·Frontier Touring 일치
+  · ZZ Top: The Big One! Tour (Nashville 9/26→10/8 변경, Cheap Trick 공동헤드라인, Clapton Crossroads 참가 위해 이동) — jambase·noise11·ticketnews 일치
+  · Djo(with Pond): Richmond 7/31 헤드라인 마무리 공연(그 외 Tame Impala 서포트) — jambase·WTVR·Consequence 일치
+  · Victoria Monét: Frequency of Love(정규 2집, 10/2 발매, 22트랙, 리드싱글 'Reach Out') — Variety·Billboard·Revolt 일치
+
+[검증 탈락]
+- 없음
+
 ## [2026-07-23 20:52] [JA 뉴스]
 뉴스 작성 완료 (일본 국내 공연 뉴스)
 - 신규 기사 3건: 吉井和哉 12년만의 8th 앨범(12/9)＋전국홀투어 2027(FC선행 7/22~), Silica Gel 3rd 앨범 「Ballad of You」(8/20)＋도쿄 단독공연(11/21, 오피셜선행 접수중), あいみょん 10주년 부도칸 공연(11/30·12/1)＋전국아레나투어 AIMYON TOUR 2027(2/6~ 14도시 36공연)
