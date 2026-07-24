@@ -82,7 +82,7 @@ export function HeroSpotlight({ slides, cardImages, tickerItems, now, lang, hero
             />
           ))}
           <span className={styles.heroBackdropVeil} />
-          {/* ② 선명한 인물: 우측에 contain(전체가 다 보이게, 잘리지 않음), 왼쪽 가장자리는 마스크로 앰비언트에 녹임 */}
+          {/* ② 선명한 인물: 우측 컬럼을 cover로 채움(잘림 최소화하는 폭) */}
           {slides.map((g, i) => (
             <img
               key={`fg-${g.id}`}
@@ -93,6 +93,8 @@ export function HeroSpotlight({ slides, cardImages, tickerItems, now, lang, hero
               loading={i === 0 ? 'eager' : 'lazy'}
             />
           ))}
+          {/* ③ 인물 사진 위 비네트 오버레이 — mask 없이(모든 브라우저 렌더) 사방 가장자리를 어둠에 녹인다 */}
+          <span className={styles.heroBackdropFgVeil} />
         </div>
       )}
 
