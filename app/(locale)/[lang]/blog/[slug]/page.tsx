@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const url = `https://whenstage.com/${lang}/blog/${params.slug}`;
   return {
-    title: `${post.title} | ${UI[lang].siteName}`,
+    title: post.title,
     description: post.description.slice(0, 158),
     alternates: { canonical: url },
     openGraph: {

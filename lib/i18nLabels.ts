@@ -77,7 +77,7 @@ interface UiStrings {
 
 export const UI: Record<Locale, UiStrings> = {
   ko: {
-    siteName: 'WhenStage — 내한·컴백·페스티벌',
+    siteName: 'WhenStage — 콘서트·컴백·페스티벌 일정',
     siteNameShort: 'WhenStage',
     home: '홈',
     calendar: '캘린더',

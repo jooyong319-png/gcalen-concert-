@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const url = `https://whenstage.com/${lang}/news/${item.slug}`;
   return {
-    title: `${item.title} | ${UI[lang].siteName}`,
+    title: item.title,
     description: item.description.slice(0, 158),
     alternates: { canonical: url },
     openGraph: {

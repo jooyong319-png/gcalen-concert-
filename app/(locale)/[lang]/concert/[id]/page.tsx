@@ -45,7 +45,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const url = `https://whenstage.com/${params.lang}/concert/${params.id}`;
   const ogImage = game.image_url || 'https://whenstage.com/og-image.png';
-  const title = `${game.name} — ${UI[params.lang].siteName}`;
+  // 상세 페이지 제목은 공연명만 — 레이아웃 title 템플릿('%s | WhenStage')이 브랜드를 붙인다.
+  // (og/twitter title은 템플릿 미적용이라 공연명 그대로 쓰되 브랜드는 도메인으로 노출)
+  const title = game.name;
   const desc = (game.description ?? '').slice(0, 158);
 
   return {

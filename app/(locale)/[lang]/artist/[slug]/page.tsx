@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const countTxt = `${artist.name} · ${artist.events.length}${params.lang === 'ko' ? '개 일정' : params.lang === 'ja' ? '件' : ' events'}`;
   const desc = artist.bio ? `${artist.bio.text} (${countTxt})` : countTxt;
   return {
-    title: `${artist.name} | ${UI[params.lang].siteName}`,
+    title: artist.name,
     description: desc,
     alternates: { canonical: url },
     openGraph: { title: artist.name, description: desc, url, locale: OG_LOCALE[params.lang], images: artist.image ? [{ url: artist.image }] : undefined },

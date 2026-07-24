@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `https://whenstage.com/${params.lang}/venue/${encodeURIComponent(venue.slug)}`;
   const desc = `${venue.name} · ${venue.events.length}${params.lang === 'ko' ? '개 일정' : params.lang === 'ja' ? '件' : ' events'}`;
   return {
-    title: `${venue.name} | ${UI[params.lang].siteName}`,
+    title: venue.name,
     description: desc,
     alternates: { canonical: url },
     openGraph: { title: venue.name, description: desc, url, locale: OG_LOCALE[params.lang] },
