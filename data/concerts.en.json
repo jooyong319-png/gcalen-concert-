@@ -1,576 +1,671 @@
 {
- "schema_version": 2,
- "last_updated": "2026-07-23",
- "last_researched_by": "en-researcher",
- "categories": {
-  "concert_tour": "Concerts & Tours",
-  "music_release": "Music Release (Comeback)",
-  "festival": "Festival",
-  "fanmeeting": "Fan Meeting"
- },
- "games": [
-  {
-   "id": "en-bts-world-tour-arirang-arlington-20260815",
-   "name": "BTS World Tour 'ARIRANG' - Arlington",
-   "release_date": "2026-08-15",
-   "release_time": "20:00",
-   "release_date_approx": false,
-   "timezone": "America/Chicago",
-   "category": "concert_tour",
-   "platforms": [
-    "AT&T Stadium, Arlington, TX"
-   ],
-   "developer": "BTS",
-   "publisher": "BIGHIT MUSIC / HYBE",
-   "description": "BTS return to the road with their 'ARIRANG' world tour, the group's first outing with all seven members since their military service. The Arlington run brings two stadium shows to AT&T Stadium on August 15 and 16, 2026, both starting at 8:00 PM. These Texas dates are part of a sprawling 2026-2027 tour of roughly 79 shows across 34 regions. Both nights sold out during the initial January on-sale, so seats are now only available through resale.",
-   "genres": [
-    "K-pop",
-    "Concert",
-    "World Tour"
-   ],
-   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/BTS_during_a_White_House_press_conference_May_31%2C_2022_%28cropped%29.jpg/330px-BTS_during_a_White_House_press_conference_May_31%2C_2022_%28cropped%29.jpg",
-   "source_url": "https://attstadium.com/events/bts-world-tour-2/"
+  "schema_version": 2,
+  "last_updated": "2026-07-24",
+  "last_researched_by": "en-researcher",
+  "categories": {
+    "concert_tour": "Concerts & Tours",
+    "music_release": "Music Release (Comeback)",
+    "festival": "Festival",
+    "fanmeeting": "Fan Meeting"
   },
-  {
-   "id": "en-foo-fighters-take-cover-detroit-20260806",
-   "name": "Foo Fighters: Take Cover Tour - Detroit",
-   "release_date": "2026-08-06",
-   "release_time": null,
-   "release_date_approx": false,
-   "timezone": "America/Detroit",
-   "category": "concert_tour",
-   "platforms": [
-    "Ford Field, Detroit, MI"
-   ],
-   "developer": "Foo Fighters",
-   "publisher": "Live Nation",
-   "description": "Foo Fighters open their 2026 Take Cover Tour on August 6 at Ford Field in Detroit, kicking off a stadium run that stretches to September 26 at Allegiant Stadium in Las Vegas. Queens of the Stone Age serve as direct support across the trek, which stops at NFL stadiums and ballparks including Soldier Field, Lincoln Financial Field and Nissan Stadium. Tickets for the Detroit opener and other dates are on sale through Ticketmaster.",
-   "genres": [
-    "Rock",
-    "Tour"
-   ],
-   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Glasto2023.jpg/330px-Glasto2023.jpg",
-   "source_url": "https://www.ticketmaster.com/foo-fighters-tickets/artist/776005",
-   "general_sale": true,
-   "general_sale_datetime": null,
-   "general_sale_url": "https://www.ticketmaster.com/foo-fighters-tickets/artist/776005"
-  },
-  {
-   "id": "en-mcr-black-parade-2026-new-york-20260809",
-   "name": "My Chemical Romance: The Black Parade 2026 - New York",
-   "release_date": "2026-08-09",
-   "release_time": null,
-   "release_date_approx": false,
-   "timezone": "America/New_York",
-   "category": "concert_tour",
-   "platforms": [
-    "Citi Field, New York, NY"
-   ],
-   "developer": "My Chemical Romance",
-   "publisher": "Live Nation",
-   "description": "My Chemical Romance mark the 20th anniversary of their album The Black Parade with an expanded 2026 stadium tour. The North American leg resumes on August 9 at Citi Field in New York and wraps on October 24 with a three-night stand at the Hollywood Bowl in Los Angeles. Rotating support across the dates includes Iggy Pop, Babymetal, Pierce the Veil, The Mars Volta, Franz Ferdinand and Jimmy Eat World. Tickets went on general sale September 26, 2025.",
-   "genres": [
-    "Rock",
-    "Emo",
-    "Tour"
-   ],
-   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/MCR820_%28cropped%29.jpg/330px-MCR820_%28cropped%29.jpg",
-   "source_url": "https://variety.com/2025/music/news/my-chemical-romance-black-parade-2026-tour-dates-1236526059/",
-   "general_sale": true,
-   "general_sale_datetime": "2025-09-26T12:00:00-04:00",
-   "general_sale_url": "https://www.ticketmaster.com/my-chemical-romance-tickets/artist/859324"
-  },
-  {
-   "id": "en-ariana-grande-eternal-sunshine-london-20260815",
-   "name": "Ariana Grande: The Eternal Sunshine Tour - London (The O2 Residency)",
-   "release_date": "2026-08-15",
-   "release_time": null,
-   "release_date_approx": false,
-   "timezone": "Europe/London",
-   "category": "concert_tour",
-   "platforms": [
-    "The O2 Arena, London"
-   ],
-   "developer": "Ariana Grande",
-   "publisher": "AEG Presents",
-   "description": "Ariana Grande caps her 2026 Eternal Sunshine Tour with a European-exclusive residency at The O2 in London. The run spans 10 nights between August 15 and September 1, 2026, the longest single-venue stretch of her career and her first UK performances since 2019. The shows support her album Eternal Sunshine and its deluxe follow-up, Brighter Days Ahead. All 10 London dates sold out, leaving resale as the only remaining option.",
-   "genres": [
-    "Pop",
-    "Tour"
-   ],
-   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Ariana_Grande_promoting_Wicked_%282024%29.jpg/250px-Ariana_Grande_promoting_Wicked_%282024%29.jpg",
-   "source_url": "https://www.theo2.co.uk/events/detail/ariana-grande-2026"
-  },
-  {
-   "id": "en-austin-city-limits-festival-20261002",
-   "name": "Austin City Limits Music Festival 2026",
-   "release_date": "2026-10-02",
-   "release_time": null,
-   "release_date_approx": false,
-   "timezone": "America/Chicago",
-   "category": "festival",
-   "platforms": [
-    "Zilker Park, Austin, TX"
-   ],
-   "developer": null,
-   "publisher": "C3 Presents",
-   "description": "Austin City Limits returns for its 25th anniversary across two weekends, October 2-4 and October 9-11, 2026, at Zilker Park in Austin. The lineup is headlined by Charli XCX, Rufus Du Sol, Twenty One Pilots, Lorde and The XX, with Skrillex topping Weekend 1 and Kings of Leon topping Weekend 2. Other acts include Turnstile, Labrinth, The Chainsmokers, Young Miko and Bleachers. Three-day passes and premium packages are on sale now.",
-   "genres": [
-    "Festival",
-    "Multi-artist"
-   ],
-   "image_url": null,
-   "source_url": "https://www.aclfestival.com/",
-   "general_sale": true,
-   "general_sale_datetime": null,
-   "general_sale_url": "https://www.aclfestival.com/passes"
-  },
-  {
-   "id": "en-enhypen-blood-saga-oakland-20260728",
-   "name": "ENHYPEN: Blood Saga World Tour - Oakland",
-   "release_date": "2026-07-28",
-   "release_time": "19:30",
-   "release_date_approx": false,
-   "timezone": "America/Los_Angeles",
-   "category": "concert_tour",
-   "platforms": [
-    "Oakland Arena, Oakland, CA"
-   ],
-   "developer": "ENHYPEN",
-   "publisher": "Live Nation",
-   "description": "ENHYPEN bring their fourth world tour, Blood Saga, to Oakland Arena for two nights on July 28 and 29, 2026, both starting at 7:30 PM with doors at 6:00 PM. The North American leg follows the seven-member group's 2025 WALK THE LINE tour, which sold out its US and European legs, and continues on to Las Vegas after Oakland. ENGENE membership presale ran April 22-23, with general on-sale opening April 24 via Ticketmaster and AXS.",
-   "genres": [
-    "K-pop",
-    "Concert",
-    "World Tour"
-   ],
-   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Enhypen_at_Golden_disc_awards.png/330px-Enhypen_at_Golden_disc_awards.png",
-   "source_url": "https://www.theoaklandarena.com/events/detail/enhypen-1",
-   "general_sale": true,
-   "general_sale_datetime": null,
-   "general_sale_url": "https://www.axs.com/events/1380740/enhypen-tickets"
-  },
-  {
-   "id": "en-monsta-x-nexus-newyork-20261006",
-   "name": "Monsta X: THE X : NEXUS World Tour - New York",
-   "release_date": "2026-10-06",
-   "release_time": "20:00",
-   "release_date_approx": false,
-   "timezone": "America/New_York",
-   "category": "concert_tour",
-   "platforms": [
-    "Infosys Theater at Madison Square Garden, New York, NY"
-   ],
-   "developer": "Monsta X",
-   "publisher": "Live Nation",
-   "description": "Monsta X bring THE X : NEXUS, their 2026 world tour, to the Infosys Theater at Madison Square Garden on October 6, with doors at 7:00 PM and the show starting at 8:00 PM. The North American leg runs October 3-24 across ten cities including Fairfax, Boston, Toronto and Los Angeles, following the tour's launch with three sold-out nights at Seoul's KSPO Dome and stops across Asia and Latin America. Tickets have been on sale since April 14 through Ticketmaster.",
-   "genres": [
-    "K-pop",
-    "Concert",
-    "World Tour"
-   ],
-   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/MonstaX_in_Golden_Disc_Awards_2019.jpg/330px-MonstaX_in_Golden_Disc_Awards_2019.jpg",
-   "source_url": "https://www.msg.com/events-tickets/monsta-x-infosys-theater-at-madison-square-garden-october-2026/3B00647BF0495307",
-   "general_sale": true,
-   "general_sale_datetime": null,
-   "general_sale_url": "https://www.ticketmaster.com/monsta-x-tickets/artist/2371302"
-  },
-  {
-   "id": "en-charli-xcx-music-fashion-film-philadelphia-20260911",
-   "name": "Charli xcx: Music, Fashion, Film Tour - Philadelphia",
-   "release_date": "2026-09-11",
-   "release_time": "20:00",
-   "release_date_approx": false,
-   "timezone": "America/New_York",
-   "category": "concert_tour",
-   "platforms": [
-    "Xfinity Mobile Arena, Philadelphia, PA"
-   ],
-   "developer": "Charli xcx",
-   "publisher": "Live Nation",
-   "description": "Charli xcx opens her Music, Fashion, Film Tour at Xfinity Mobile Arena in Philadelphia on September 11, 2026, at 8:00 PM, in support of her seventh studio album of the same name. The arena run continues across North America into late October, including two-night stands in Brooklyn and Los Angeles, with underscores as support on every date. An artist presale ran June 12 at 9:00 AM, followed by general on-sale the same day at 1:00 PM through Ticketmaster, including $20 'Angel Tickets.'",
-   "genres": [
-    "Pop",
-    "Tour"
-   ],
-   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Charli_xcx_at_Berlinale_2026-1.jpg/250px-Charli_xcx_at_Berlinale_2026-1.jpg",
-   "source_url": "https://www.xfinitymobilearena.com/news/detail/charli-xcx-announces-the-music-fashion-film-tour",
-   "presale": true,
-   "presale_datetime": "2026-06-12T09:00:00-04:00",
-   "presale_url": "https://www.ticketmaster.com/event/300064C5A4647126",
-   "general_sale": true,
-   "general_sale_datetime": "2026-06-12T13:00:00-04:00",
-   "general_sale_url": "https://www.ticketmaster.com/event/300064C5A4647126"
-  },
-  {
-   "id": "en-phoebe-bridgers-lost-tour-indianapolis-20260914",
-   "name": "Phoebe Bridgers: The Lost Tour - Indianapolis",
-   "release_date": "2026-09-14",
-   "release_time": "19:30",
-   "release_date_approx": false,
-   "timezone": "America/Indiana/Indianapolis",
-   "category": "concert_tour",
-   "platforms": [
-    "Gainbridge Fieldhouse, Indianapolis, IN"
-   ],
-   "developer": "Phoebe Bridgers",
-   "publisher": "Live Nation",
-   "description": "Phoebe Bridgers brings The Lost Tour to Indianapolis for two nights, September 14 and 15, 2026, at Gainbridge Fieldhouse, with both shows starting at 7:30 PM. The completely phone-free arena tour supports her third studio album, Lost Weekend, and runs through North America before continuing to the UK and Europe in November. Alex G opens the North American dates, and all phones and smartwatches are secured in Yondr pouches for the duration of each show. Tickets went on sale June 12 at 10:00 AM ET.",
-   "genres": [
-    "Indie",
-    "Rock",
-    "Tour"
-   ],
-   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Phoebe_Bridgers_%2841599189180%29_%28cropped%29.jpg/250px-Phoebe_Bridgers_%2841599189180%29_%28cropped%29.jpg",
-   "source_url": "https://www.gainbridgefieldhouse.com/events/detail/phoebe-bridgers",
-   "general_sale": true,
-   "general_sale_datetime": "2026-06-12T10:00:00-04:00",
-   "general_sale_url": "https://www.ticketmaster.com/phoebe-bridgers-tickets/artist/2133305?venueId=41417&brand=fieldhouse&camefrom=CFC_FIELDHOUSE_SITE_EVENT"
-  },
-  {
-   "id": "en-lollapalooza-2026-20260730",
-   "name": "Lollapalooza 2026",
-   "release_date": "2026-07-30",
-   "release_time": null,
-   "release_date_approx": false,
-   "timezone": "America/Chicago",
-   "category": "festival",
-   "platforms": [
-    "Grant Park, Chicago, IL"
-   ],
-   "developer": null,
-   "publisher": "C3 Presents",
-   "description": "Lollapalooza returns to Grant Park in Chicago for four days, July 30 to August 2, 2026, with more than 150 acts across seven stages under a 10-year city contract extension. Daily headliners are Lorde and John Summit on Thursday, Charli xcx and The Smashing Pumpkins on Friday, Olivia Dean and Jennie of Blackpink on Saturday, and Tate McRae and The xx on Sunday. The bill also features Turnstile, Aespa, Clipse, YOASOBI and Yungblud. Four-day passes are waitlisted, but single-day tickets remain on sale.",
-   "genres": [
-    "Festival",
-    "Multi-artist"
-   ],
-   "image_url": null,
-   "source_url": "https://www.lollapalooza.com/lineup",
-   "general_sale": true,
-   "general_sale_datetime": null,
-   "general_sale_url": "https://www.lollapalooza.com/",
-   "festival_days": [
+  "games": [
     {
-     "date": "2026-07-30",
-     "lineup": [
-      "Lorde",
-      "John Summit"
-     ]
+      "id": "en-bts-world-tour-arirang-arlington-20260815",
+      "name": "BTS World Tour 'ARIRANG' - Arlington",
+      "release_date": "2026-08-15",
+      "release_time": "20:00",
+      "release_date_approx": false,
+      "timezone": "America/Chicago",
+      "category": "concert_tour",
+      "platforms": [
+        "AT&T Stadium, Arlington, TX"
+      ],
+      "developer": "BTS",
+      "publisher": "BIGHIT MUSIC / HYBE",
+      "description": "BTS return to the road with their 'ARIRANG' world tour, the group's first outing with all seven members since their military service. The Arlington run brings two stadium shows to AT&T Stadium on August 15 and 16, 2026, both starting at 8:00 PM. These Texas dates are part of a sprawling 2026-2027 tour of roughly 79 shows across 34 regions. Both nights sold out during the initial January on-sale, so seats are now only available through resale.",
+      "genres": [
+        "K-pop",
+        "Concert",
+        "World Tour"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/BTS_during_a_White_House_press_conference_May_31%2C_2022_%28cropped%29.jpg/330px-BTS_during_a_White_House_press_conference_May_31%2C_2022_%28cropped%29.jpg",
+      "source_url": "https://attstadium.com/events/bts-world-tour-2/"
     },
     {
-     "date": "2026-07-31",
-     "lineup": [
-      "Charli xcx",
-      "The Smashing Pumpkins"
-     ]
+      "id": "en-foo-fighters-take-cover-detroit-20260806",
+      "name": "Foo Fighters: Take Cover Tour - Detroit",
+      "release_date": "2026-08-06",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/Detroit",
+      "category": "concert_tour",
+      "platforms": [
+        "Ford Field, Detroit, MI"
+      ],
+      "developer": "Foo Fighters",
+      "publisher": "Live Nation",
+      "description": "Foo Fighters open their 2026 Take Cover Tour on August 6 at Ford Field in Detroit, kicking off a stadium run that stretches to September 26 at Allegiant Stadium in Las Vegas. Queens of the Stone Age serve as direct support across the trek, which stops at NFL stadiums and ballparks including Soldier Field, Lincoln Financial Field and Nissan Stadium. Tickets for the Detroit opener and other dates are on sale through Ticketmaster.",
+      "genres": [
+        "Rock",
+        "Tour"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Glasto2023.jpg/330px-Glasto2023.jpg",
+      "source_url": "https://www.ticketmaster.com/foo-fighters-tickets/artist/776005",
+      "general_sale": true,
+      "general_sale_datetime": null,
+      "general_sale_url": "https://www.ticketmaster.com/foo-fighters-tickets/artist/776005"
     },
     {
-     "date": "2026-08-01",
-     "lineup": [
-      "Olivia Dean",
-      "JENNIE"
-     ]
+      "id": "en-mcr-black-parade-2026-new-york-20260809",
+      "name": "My Chemical Romance: The Black Parade 2026 - New York",
+      "release_date": "2026-08-09",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "concert_tour",
+      "platforms": [
+        "Citi Field, New York, NY"
+      ],
+      "developer": "My Chemical Romance",
+      "publisher": "Live Nation",
+      "description": "My Chemical Romance mark the 20th anniversary of their album The Black Parade with an expanded 2026 stadium tour. The North American leg resumes on August 9 at Citi Field in New York and wraps on October 24 with a three-night stand at the Hollywood Bowl in Los Angeles. Rotating support across the dates includes Iggy Pop, Babymetal, Pierce the Veil, The Mars Volta, Franz Ferdinand and Jimmy Eat World. Tickets went on general sale September 26, 2025.",
+      "genres": [
+        "Rock",
+        "Emo",
+        "Tour"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/MCR820_%28cropped%29.jpg/330px-MCR820_%28cropped%29.jpg",
+      "source_url": "https://variety.com/2025/music/news/my-chemical-romance-black-parade-2026-tour-dates-1236526059/",
+      "general_sale": true,
+      "general_sale_datetime": "2025-09-26T12:00:00-04:00",
+      "general_sale_url": "https://www.ticketmaster.com/my-chemical-romance-tickets/artist/859324"
     },
     {
-     "date": "2026-08-02",
-     "lineup": [
-      "Tate McRae",
-      "The xx"
-     ]
+      "id": "en-ariana-grande-eternal-sunshine-london-20260815",
+      "name": "Ariana Grande: The Eternal Sunshine Tour - London (The O2 Residency)",
+      "release_date": "2026-08-15",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "Europe/London",
+      "category": "concert_tour",
+      "platforms": [
+        "The O2 Arena, London"
+      ],
+      "developer": "Ariana Grande",
+      "publisher": "AEG Presents",
+      "description": "Ariana Grande caps her 2026 Eternal Sunshine Tour with a European-exclusive residency at The O2 in London. The run spans 10 nights between August 15 and September 1, 2026, the longest single-venue stretch of her career and her first UK performances since 2019. The shows support her album Eternal Sunshine and its deluxe follow-up, Brighter Days Ahead. All 10 London dates sold out, leaving resale as the only remaining option.",
+      "genres": [
+        "Pop",
+        "Tour"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Ariana_Grande_promoting_Wicked_%282024%29.jpg/250px-Ariana_Grande_promoting_Wicked_%282024%29.jpg",
+      "source_url": "https://www.theo2.co.uk/events/detail/ariana-grande-2026"
+    },
+    {
+      "id": "en-austin-city-limits-festival-20261002",
+      "name": "Austin City Limits Music Festival 2026",
+      "release_date": "2026-10-02",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/Chicago",
+      "category": "festival",
+      "platforms": [
+        "Zilker Park, Austin, TX"
+      ],
+      "developer": null,
+      "publisher": "C3 Presents",
+      "description": "Austin City Limits returns for its 25th anniversary across two weekends, October 2-4 and October 9-11, 2026, at Zilker Park in Austin. The lineup is headlined by Charli XCX, Rufus Du Sol, Twenty One Pilots, Lorde and The XX, with Skrillex topping Weekend 1 and Kings of Leon topping Weekend 2. Other acts include Turnstile, Labrinth, The Chainsmokers, Young Miko and Bleachers. Three-day passes and premium packages are on sale now.",
+      "genres": [
+        "Festival",
+        "Multi-artist"
+      ],
+      "image_url": null,
+      "source_url": "https://www.aclfestival.com/",
+      "general_sale": true,
+      "general_sale_datetime": null,
+      "general_sale_url": "https://www.aclfestival.com/passes"
+    },
+    {
+      "id": "en-enhypen-blood-saga-oakland-20260728",
+      "name": "ENHYPEN: Blood Saga World Tour - Oakland",
+      "release_date": "2026-07-28",
+      "release_time": "19:30",
+      "release_date_approx": false,
+      "timezone": "America/Los_Angeles",
+      "category": "concert_tour",
+      "platforms": [
+        "Oakland Arena, Oakland, CA"
+      ],
+      "developer": "ENHYPEN",
+      "publisher": "Live Nation",
+      "description": "ENHYPEN bring their fourth world tour, Blood Saga, to Oakland Arena for two nights on July 28 and 29, 2026, both starting at 7:30 PM with doors at 6:00 PM. The North American leg follows the seven-member group's 2025 WALK THE LINE tour, which sold out its US and European legs, and continues on to Las Vegas after Oakland. ENGENE membership presale ran April 22-23, with general on-sale opening April 24 via Ticketmaster and AXS.",
+      "genres": [
+        "K-pop",
+        "Concert",
+        "World Tour"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Enhypen_at_Golden_disc_awards.png/330px-Enhypen_at_Golden_disc_awards.png",
+      "source_url": "https://www.theoaklandarena.com/events/detail/enhypen-1",
+      "general_sale": true,
+      "general_sale_datetime": null,
+      "general_sale_url": "https://www.axs.com/events/1380740/enhypen-tickets"
+    },
+    {
+      "id": "en-monsta-x-nexus-newyork-20261006",
+      "name": "Monsta X: THE X : NEXUS World Tour - New York",
+      "release_date": "2026-10-06",
+      "release_time": "20:00",
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "concert_tour",
+      "platforms": [
+        "Infosys Theater at Madison Square Garden, New York, NY"
+      ],
+      "developer": "Monsta X",
+      "publisher": "Live Nation",
+      "description": "Monsta X bring THE X : NEXUS, their 2026 world tour, to the Infosys Theater at Madison Square Garden on October 6, with doors at 7:00 PM and the show starting at 8:00 PM. The North American leg runs October 3-24 across ten cities including Fairfax, Boston, Toronto and Los Angeles, following the tour's launch with three sold-out nights at Seoul's KSPO Dome and stops across Asia and Latin America. Tickets have been on sale since April 14 through Ticketmaster.",
+      "genres": [
+        "K-pop",
+        "Concert",
+        "World Tour"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/MonstaX_in_Golden_Disc_Awards_2019.jpg/330px-MonstaX_in_Golden_Disc_Awards_2019.jpg",
+      "source_url": "https://www.msg.com/events-tickets/monsta-x-infosys-theater-at-madison-square-garden-october-2026/3B00647BF0495307",
+      "general_sale": true,
+      "general_sale_datetime": null,
+      "general_sale_url": "https://www.ticketmaster.com/monsta-x-tickets/artist/2371302"
+    },
+    {
+      "id": "en-charli-xcx-music-fashion-film-philadelphia-20260911",
+      "name": "Charli xcx: Music, Fashion, Film Tour - Philadelphia",
+      "release_date": "2026-09-11",
+      "release_time": "20:00",
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "concert_tour",
+      "platforms": [
+        "Xfinity Mobile Arena, Philadelphia, PA"
+      ],
+      "developer": "Charli xcx",
+      "publisher": "Live Nation",
+      "description": "Charli xcx opens her Music, Fashion, Film Tour at Xfinity Mobile Arena in Philadelphia on September 11, 2026, at 8:00 PM, in support of her seventh studio album of the same name. The arena run continues across North America into late October, including two-night stands in Brooklyn and Los Angeles, with underscores as support on every date. An artist presale ran June 12 at 9:00 AM, followed by general on-sale the same day at 1:00 PM through Ticketmaster, including $20 'Angel Tickets.'",
+      "genres": [
+        "Pop",
+        "Tour"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Charli_xcx_at_Berlinale_2026-1.jpg/250px-Charli_xcx_at_Berlinale_2026-1.jpg",
+      "source_url": "https://www.xfinitymobilearena.com/news/detail/charli-xcx-announces-the-music-fashion-film-tour",
+      "presale": true,
+      "presale_datetime": "2026-06-12T09:00:00-04:00",
+      "presale_url": "https://www.ticketmaster.com/event/300064C5A4647126",
+      "general_sale": true,
+      "general_sale_datetime": "2026-06-12T13:00:00-04:00",
+      "general_sale_url": "https://www.ticketmaster.com/event/300064C5A4647126"
+    },
+    {
+      "id": "en-phoebe-bridgers-lost-tour-indianapolis-20260914",
+      "name": "Phoebe Bridgers: The Lost Tour - Indianapolis",
+      "release_date": "2026-09-14",
+      "release_time": "19:30",
+      "release_date_approx": false,
+      "timezone": "America/Indiana/Indianapolis",
+      "category": "concert_tour",
+      "platforms": [
+        "Gainbridge Fieldhouse, Indianapolis, IN"
+      ],
+      "developer": "Phoebe Bridgers",
+      "publisher": "Live Nation",
+      "description": "Phoebe Bridgers brings The Lost Tour to Indianapolis for two nights, September 14 and 15, 2026, at Gainbridge Fieldhouse, with both shows starting at 7:30 PM. The completely phone-free arena tour supports her third studio album, Lost Weekend, and runs through North America before continuing to the UK and Europe in November. Alex G opens the North American dates, and all phones and smartwatches are secured in Yondr pouches for the duration of each show. Tickets went on sale June 12 at 10:00 AM ET.",
+      "genres": [
+        "Indie",
+        "Rock",
+        "Tour"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Phoebe_Bridgers_%2841599189180%29_%28cropped%29.jpg/250px-Phoebe_Bridgers_%2841599189180%29_%28cropped%29.jpg",
+      "source_url": "https://www.gainbridgefieldhouse.com/events/detail/phoebe-bridgers",
+      "general_sale": true,
+      "general_sale_datetime": "2026-06-12T10:00:00-04:00",
+      "general_sale_url": "https://www.ticketmaster.com/phoebe-bridgers-tickets/artist/2133305?venueId=41417&brand=fieldhouse&camefrom=CFC_FIELDHOUSE_SITE_EVENT"
+    },
+    {
+      "id": "en-lollapalooza-2026-20260730",
+      "name": "Lollapalooza 2026",
+      "release_date": "2026-07-30",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/Chicago",
+      "category": "festival",
+      "platforms": [
+        "Grant Park, Chicago, IL"
+      ],
+      "developer": null,
+      "publisher": "C3 Presents",
+      "description": "Lollapalooza returns to Grant Park in Chicago for four days, July 30 to August 2, 2026, with more than 150 acts across seven stages under a 10-year city contract extension. Daily headliners are Lorde and John Summit on Thursday, Charli xcx and The Smashing Pumpkins on Friday, Olivia Dean and Jennie of Blackpink on Saturday, and Tate McRae and The xx on Sunday. The bill also features Turnstile, Aespa, Clipse, YOASOBI and Yungblud. Four-day passes are waitlisted, but single-day tickets remain on sale.",
+      "genres": [
+        "Festival",
+        "Multi-artist"
+      ],
+      "image_url": null,
+      "source_url": "https://www.lollapalooza.com/lineup",
+      "general_sale": true,
+      "general_sale_datetime": null,
+      "general_sale_url": "https://www.lollapalooza.com/",
+      "festival_days": [
+        {
+          "date": "2026-07-30",
+          "lineup": [
+            "Lorde",
+            "John Summit"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "lineup": [
+            "Charli xcx",
+            "The Smashing Pumpkins"
+          ]
+        },
+        {
+          "date": "2026-08-01",
+          "lineup": [
+            "Olivia Dean",
+            "JENNIE"
+          ]
+        },
+        {
+          "date": "2026-08-02",
+          "lineup": [
+            "Tate McRae",
+            "The xx"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-charli-xcx-music-fashion-film-20260724",
+      "name": "Charli xcx - Music, Fashion, Film",
+      "release_date": "2026-07-24",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "music_release",
+      "platforms": [
+        "Streaming",
+        "Digital",
+        "CD",
+        "Vinyl"
+      ],
+      "developer": "Charli xcx",
+      "publisher": "Atlantic Records",
+      "description": "Charli xcx releases her seventh studio album, Music, Fashion, Film, on July 24, 2026, via Atlantic Records, produced with longtime collaborators A. G. Cook and Finn Keane. The album was preceded by three singles: lead track 'Rock Music,' followed by 'SS26' and 'Wink Wink.' Its black-and-white cover features John Cale, Marc Jacobs and Martin Scorsese as emblems of the title's three disciplines. Charli supports the release with an eponymous North American arena tour running September and October.",
+      "genres": [
+        "Pop",
+        "Album",
+        "Comeback"
+      ],
+      "image_url": null,
+      "source_url": "https://en.wikipedia.org/wiki/Music,_Fashion,_Film"
+    },
+    {
+      "id": "en-avenged-sevenfold-good-charlotte-belmont-park-20260810",
+      "name": "Avenged Sevenfold & Good Charlotte - Belmont Park, NY",
+      "release_date": "2026-08-10",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "concert_tour",
+      "platforms": [
+        "UBS Arena, Belmont Park, NY"
+      ],
+      "developer": "Avenged Sevenfold, Good Charlotte",
+      "publisher": null,
+      "description": "Avenged Sevenfold and Good Charlotte co-headline a 16-date North American summer run, stopping at UBS Arena in Belmont Park, New York on August 10, 2026. The tour opened July 25 in Ridgedale, Missouri and closes August 27 in Phoenix, pairing the Orange County metal band with the pop-punk veterans. Tickets went on general sale December 12, 2025 through the two acts' official websites, following a Deathbats Club and early-access presale.",
+      "genres": [
+        "Rock",
+        "Metal",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://loudwire.com/avenged-sevenfold-good-charlotte-2026-north-american-tour-dates/",
+      "general_sale": true,
+      "general_sale_datetime": "2025-12-12T10:00:00-05:00",
+      "general_sale_url": null
+    },
+    {
+      "id": "en-ringo-starr-all-starr-band-queens-20261001",
+      "name": "Ringo Starr & His All Starr Band - Forest Hills, NY",
+      "release_date": "2026-10-01",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "concert_tour",
+      "platforms": [
+        "Forest Hills Stadium, Queens, NY"
+      ],
+      "developer": "Ringo Starr & His All Starr Band",
+      "publisher": null,
+      "description": "Ringo Starr and His All Starr Band bring their fall 2026 North American run to Forest Hills Stadium in Queens, New York on October 1, 2026. The ten-date trek opens September 24 in Easton, Pennsylvania and wraps October 7 in Albany. The 2026 lineup features Steve Lukather, Colin Hay, Warren Ham, Hamish Stuart, Gregg Bissonette and Buck Johnson. General tickets went on sale July 10, 2026 at 10 a.m. local time through Ticketmaster.",
+      "genres": [
+        "Rock",
+        "Classic Rock",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://news.pollstar.com/2026/07/06/ringo-starr-and-his-all-starr-band-announce-fall-dates/",
+      "general_sale": true,
+      "general_sale_datetime": "2026-07-10T10:00:00-04:00",
+      "general_sale_url": "https://www.ticketmaster.com/ringo-starr-and-his-all-starr-tickets/artist/863651"
+    },
+    {
+      "id": "en-brandon-flowers-thrasher-20260821",
+      "name": "Brandon Flowers - Thrasher",
+      "release_date": "2026-08-21",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "music_release",
+      "platforms": [
+        "Streaming",
+        "Digital",
+        "CD",
+        "Vinyl"
+      ],
+      "developer": "Brandon Flowers",
+      "publisher": "Island Records",
+      "description": "The Killers frontman Brandon Flowers releases Thrasher, his third solo album and first in over a decade, on August 21, 2026 via Island Records. Recorded in Nashville at Historic RCA Studio A with producers Shawn Everett and Jonathan Rado, the record leans toward country and features guitarist David Rawlings, pedal-steel player Bruce Bouton and 85-year-old harmonica veteran Charlie McCoy. It follows 2010's Flamingo and 2015's The Desired Effect.",
+      "genres": [
+        "Country",
+        "Rock",
+        "Album"
+      ],
+      "image_url": null,
+      "source_url": "https://www.billboard.com/music/country/brandon-flowers-thrasher-solo-album-release-date-1236279531/"
+    },
+    {
+      "id": "en-kasabian-act-iii-20260904",
+      "name": "Kasabian - ACT III",
+      "release_date": "2026-09-04",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "Europe/London",
+      "category": "music_release",
+      "platforms": [
+        "Streaming",
+        "Digital",
+        "CD",
+        "Vinyl"
+      ],
+      "developer": "Kasabian",
+      "publisher": null,
+      "description": "Leicester rock band Kasabian release their ninth studio album, ACT III, on September 4, 2026. The record was pushed back from its original July 17 date after the band chose to make final adjustments, saying they couldn't send it out 'without getting everything just right.' It follows 2024's Happenings, with Serge Pizzorno again handling lead vocals since Tom Meighan's 2020 departure.",
+      "genres": [
+        "Rock",
+        "Album"
+      ],
+      "image_url": null,
+      "source_url": "https://en.wikipedia.org/wiki/Act_III_(Kasabian_album)"
+    },
+    {
+      "id": "en-rebecca-black-exhibitionism-tour-boston-20260923",
+      "name": "Rebecca Black: Exhibitionism on Tour - Boston",
+      "release_date": "2026-09-23",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "concert_tour",
+      "platforms": [
+        "Royale, Boston, MA"
+      ],
+      "developer": "Rebecca Black",
+      "publisher": "Live Nation",
+      "description": "Rebecca Black launches Exhibitionism on Tour, a 27-date North American headlining run supporting her sophomore album Age of the Exhibitionist, due September 4, 2026. The trek opens September 23 at the Royale in Boston and works through clubs, theaters and ballrooms in Atlanta, Nashville, Dallas, Toronto, Chicago and Denver before the headline portion closes November 5 at the Fonda Theatre in Los Angeles. An artist and fan-club presale began July 22, with general on-sale July 24 via Ticketmaster.",
+      "genres": [
+        "Pop",
+        "Concert",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://news.pollstar.com/2026/07/20/rebecca-black-announces-headlining-north-america-tour/",
+      "presale": true,
+      "presale_datetime": "2026-07-22T10:00:00-04:00",
+      "presale_url": null,
+      "general_sale": true,
+      "general_sale_datetime": "2026-07-24T10:00:00-04:00",
+      "general_sale_url": "https://www.livenation.com/artist/K8vZ9178Z_7/rebecca-black-events",
+      "last_updated": "2026-07-23",
+      "last_researched_by": "en-researcher"
+    },
+    {
+      "id": "en-silvana-estrada-suaves-lluvias-portland-20260903",
+      "name": "Silvana Estrada: Vendran Suaves Lluvias Tour - North America",
+      "release_date": "2026-09-03",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/Los_Angeles",
+      "category": "concert_tour",
+      "platforms": [
+        "Portland, OR (tour opener)"
+      ],
+      "developer": "Silvana Estrada",
+      "publisher": null,
+      "description": "Mexican singer-songwriter and Latin Grammy winner Silvana Estrada brings her Vendran Suaves Lluvias tour to North America in 2026. After select US festival appearances and Mon Laferte support dates in August, her headlining run opens September 3 in Portland, Oregon, crosses into Canada at Vancouver's Chan Centre for the Performing Arts on September 6, and continues through Los Angeles, Miami, Nashville and other cities. Presales began July 22 in select cities, with general on-sale opening July 24.",
+      "genres": [
+        "Latin",
+        "Folk",
+        "Singer-songwriter",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://news.pollstar.com/2026/07/21/latin-grammy-winner-silvana-estrada-embarking-on-north-american-tour/",
+      "presale": true,
+      "presale_datetime": "2026-07-22T10:00:00-07:00",
+      "presale_url": null,
+      "general_sale": true,
+      "general_sale_datetime": "2026-07-24T10:00:00-07:00",
+      "general_sale_url": null,
+      "last_updated": "2026-07-23",
+      "last_researched_by": "en-researcher"
+    },
+    {
+      "id": "en-lucinda-williams-worlds-gone-wrong-atlanta-20260924",
+      "name": "Lucinda Williams: World's Gone Wrong Tour - Atlanta",
+      "release_date": "2026-09-24",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "concert_tour",
+      "platforms": [
+        "Variety Playhouse, Atlanta, GA"
+      ],
+      "developer": "Lucinda Williams",
+      "publisher": null,
+      "description": "Roots and Americana icon Lucinda Williams announces World's Gone Wrong, an extensive 31-date North American headlining tour behind her new album of the same name. The fall run opens with two nights at Variety Playhouse in Atlanta on September 24 and 25, then moves through the Carolinas, Washington D.C. and a sweep of the Northeast. An artist presale ran July 15 to 17, with tickets going on general sale July 17 via Ticketmaster.",
+      "genres": [
+        "Americana",
+        "Rock",
+        "Singer-songwriter",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://news.pollstar.com/2026/07/14/lucinda-williams-announces-worlds-gone-wrong-fall-tour-of-north-america/",
+      "general_sale": true,
+      "general_sale_datetime": "2026-07-17T10:00:00-04:00",
+      "general_sale_url": null,
+      "last_updated": "2026-07-23",
+      "last_researched_by": "en-researcher"
+    },
+    {
+      "id": "en-michelle-branch-everywhere-back-again-seattle-20260927",
+      "name": "Michelle Branch: Everywhere and Back Again Tour - Seattle",
+      "release_date": "2026-09-27",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/Los_Angeles",
+      "category": "concert_tour",
+      "platforms": [
+        "The Showbox, Seattle, WA"
+      ],
+      "developer": "Michelle Branch",
+      "publisher": null,
+      "description": "Michelle Branch returns to the road with the Everywhere and Back Again Tour, an 18-date US headlining run supporting a forthcoming EP of newly recorded versions of career-spanning songs, due November 6, 2026 via BMG. The tour opens September 27 at The Showbox in Seattle and runs through November 13 at Manchester Music Hall in Lexington, Kentucky. Tickets went on sale in July, and several shows sold out rapidly after the announcement.",
+      "genres": [
+        "Pop",
+        "Rock",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://news.pollstar.com/2026/07/15/michelle-branch-announces-everywhere-and-back-again-tour-releases-new-version-of-the-game-of-love/",
+      "general_sale": true,
+      "general_sale_datetime": null,
+      "general_sale_url": null,
+      "last_updated": "2026-07-23",
+      "last_researched_by": "en-researcher"
+    },
+    {
+      "id": "en-jon-pardi-gamblin-man-richmond-20260917",
+      "name": "Jon Pardi: Gamblin' Man Tour - Richmond",
+      "release_date": "2026-09-17",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "concert_tour",
+      "platforms": [
+        "Allianz Amphitheater at Riverfront, Richmond, VA"
+      ],
+      "developer": "Jon Pardi",
+      "publisher": null,
+      "description": "Country hitmaker Jon Pardi launches his 19-date Gamblin' Man Tour, named after a track from his 2025 album Honkytonk Hollywood, at Richmond's Allianz Amphitheater at Riverfront on September 17, 2026. The neo-traditional run visits arenas and amphitheaters across the South, Midwest and West before wrapping November 14 in Independence, Missouri. Alexandra Kay and Sadie Bass open on the tour.",
+      "genres": [
+        "Country",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://news.pollstar.com/2026/07/20/jon-pardis-gamblin-man-tour-rolls-out-this-fall/",
+      "presale": false,
+      "presale_datetime": "2026-07-21T10:00:00-04:00",
+      "general_sale": true,
+      "general_sale_datetime": "2026-07-24T10:00:00-04:00",
+      "general_sale_url": "https://www.ticketmaster.com/jon-pardi-gamblin-man-tour-2026-richmond-virginia-09-17-2026/event/010064EAC17D6E90"
+    },
+    {
+      "id": "en-lupe-fiasco-back-to-basics-cleveland-20260910",
+      "name": "Lupe Fiasco & Gym Class Heroes: Back To Basics Tour - Cleveland",
+      "release_date": "2026-09-10",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "concert_tour",
+      "platforms": [
+        "Jacobs Pavilion, Cleveland, OH"
+      ],
+      "developer": "Lupe Fiasco, Gym Class Heroes, B.o.B",
+      "publisher": "Live Nation",
+      "description": "Hip-hop veterans Lupe Fiasco and Gym Class Heroes co-headline the 19-date Back To Basics Tour, with B.o.B along as special guest on most stops. The fall trek opens September 10, 2026 at Cleveland's Jacobs Pavilion and runs through late October, hitting Pittsburgh, Denver, Minneapolis, Detroit, San Antonio and Boston among other cities. Tickets went on general sale July 17 via Ticketmaster and Live Nation.",
+      "genres": [
+        "Hip-Hop",
+        "Rap",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://consequence.net/2026/07/lupe-fiasco-gymclassheroes-2026-us-tour/",
+      "general_sale": true,
+      "general_sale_datetime": "2026-07-17T10:00:00-04:00",
+      "general_sale_url": "https://www.ticketmaster.com/lupe-fiasco-tickets/artist/1036994"
+    },
+    {
+      "id": "en-bryan-adams-roll-with-the-punches-perth-20270223",
+      "name": "Bryan Adams: Roll With The Punches Tour - Australia & New Zealand",
+      "release_date": "2027-02-23",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "Australia/Perth",
+      "category": "concert_tour",
+      "platforms": [
+        "RAC Arena, Perth",
+        "Rod Laver Arena, Melbourne",
+        "Wolfbrook Arena, Christchurch"
+      ],
+      "developer": "Bryan Adams",
+      "publisher": "Frontier Touring",
+      "description": "Canadian rock icon Bryan Adams brings his Roll With The Punches Tour to Australia and New Zealand in early 2027, opening February 23 at Perth's RAC Arena and closing March 12 at Christchurch's Wolfbrook Arena. The arena run, produced by Frontier Touring, supports his sixteenth studio album released in 2025 and features Natalie Imbruglia as special guest. A sold-out Melbourne date at Rod Laver Arena prompted a second show to be added.",
+      "genres": [
+        "Rock",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://www.billboard.com/music/concerts/bryan-adams-roll-with-the-punches-2027-australasia-tour-1236294428/"
+    },
+    {
+      "id": "en-zz-top-the-big-one-nashville-20261008",
+      "name": "ZZ Top: The Big One! Tour - Nashville",
+      "release_date": "2026-10-08",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/Chicago",
+      "category": "concert_tour",
+      "platforms": [
+        "Ascend Amphitheater, Nashville, TN"
+      ],
+      "developer": "ZZ Top, Cheap Trick",
+      "publisher": null,
+      "description": "Texas blues-rock legends ZZ Top continue The Big One! Tour through fall 2026, with several North American dates co-headlined by fellow Rock and Roll Hall of Famers Cheap Trick. The band's Nashville stop was moved from September 26 to October 8 at Ascend Amphitheater, freeing guitarist Billy Gibbons to appear at Eric Clapton's Crossroads Guitar Festival in Austin. The trek later extends to Mexico and South America in November.",
+      "genres": [
+        "Rock",
+        "Blues Rock",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://www.jambase.com/article/zz-top-tour-dates-fall-2026",
+      "general_sale": true,
+      "general_sale_datetime": null,
+      "general_sale_url": null
+    },
+    {
+      "id": "en-djo-summer-tour-richmond-20260731",
+      "name": "Djo (with Pond) - Richmond",
+      "release_date": "2026-07-31",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "concert_tour",
+      "platforms": [
+        "Allianz Amphitheater, Richmond, VA"
+      ],
+      "developer": "Djo (Joe Keery), Pond",
+      "publisher": null,
+      "description": "Djo, the psychedelic pop-rock project of actor and musician Joe Keery, wraps his summer 2026 headline run on July 31 at Allianz Amphitheater in Richmond, Virginia, with Australian band Pond as support. The show closes a short string of headline dates slotted between Keery's summer stint opening for Tame Impala. Tickets went on general sale March 20 through Ticketmaster.",
+      "genres": [
+        "Indie Rock",
+        "Psychedelic Pop",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://www.jambase.com/article/djo-headline-tour-dates-summer-2026",
+      "general_sale": true,
+      "general_sale_datetime": "2026-03-20T10:00:00-04:00",
+      "general_sale_url": null
+    },
+    {
+      "id": "en-victoria-monet-frequency-of-love-20261002",
+      "name": "Victoria Monét - Frequency of Love",
+      "release_date": "2026-10-02",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "music_release",
+      "platforms": [
+        "Lovett Music / RCA Records"
+      ],
+      "developer": "Victoria Monét",
+      "publisher": "Lovett Music / RCA Records",
+      "description": "Grammy-winning R&B singer-songwriter Victoria Monét releases her sophomore studio album Frequency of Love on October 2, 2026 via Lovett Music and RCA Records. The 22-track project follows her breakthrough Jaguar II and is led by the KAYTRANADA- and D'Mile-produced single Reach Out, with Camper serving as executive producer. It marks Monét's first full-length since her 2024 Best New Artist Grammy win.",
+      "genres": [
+        "R&B",
+        "Soul",
+        "Album"
+      ],
+      "image_url": null,
+      "source_url": "https://variety.com/2026/music/news/victoria-monet-new-album-frequency-of-love-reach-out-1236818236/"
     }
-   ]
-  },
-  {
-   "id": "en-charli-xcx-music-fashion-film-20260724",
-   "name": "Charli xcx - Music, Fashion, Film",
-   "release_date": "2026-07-24",
-   "release_time": null,
-   "release_date_approx": false,
-   "timezone": "America/New_York",
-   "category": "music_release",
-   "platforms": [
-    "Streaming",
-    "Digital",
-    "CD",
-    "Vinyl"
-   ],
-   "developer": "Charli xcx",
-   "publisher": "Atlantic Records",
-   "description": "Charli xcx releases her seventh studio album, Music, Fashion, Film, on July 24, 2026, via Atlantic Records, produced with longtime collaborators A. G. Cook and Finn Keane. The album was preceded by three singles: lead track 'Rock Music,' followed by 'SS26' and 'Wink Wink.' Its black-and-white cover features John Cale, Marc Jacobs and Martin Scorsese as emblems of the title's three disciplines. Charli supports the release with an eponymous North American arena tour running September and October.",
-   "genres": [
-    "Pop",
-    "Album",
-    "Comeback"
-   ],
-   "image_url": null,
-   "source_url": "https://en.wikipedia.org/wiki/Music,_Fashion,_Film"
-  },
-  {
-   "id": "en-avenged-sevenfold-good-charlotte-belmont-park-20260810",
-   "name": "Avenged Sevenfold & Good Charlotte - Belmont Park, NY",
-   "release_date": "2026-08-10",
-   "release_time": null,
-   "release_date_approx": false,
-   "timezone": "America/New_York",
-   "category": "concert_tour",
-   "platforms": [
-    "UBS Arena, Belmont Park, NY"
-   ],
-   "developer": "Avenged Sevenfold, Good Charlotte",
-   "publisher": null,
-   "description": "Avenged Sevenfold and Good Charlotte co-headline a 16-date North American summer run, stopping at UBS Arena in Belmont Park, New York on August 10, 2026. The tour opened July 25 in Ridgedale, Missouri and closes August 27 in Phoenix, pairing the Orange County metal band with the pop-punk veterans. Tickets went on general sale December 12, 2025 through the two acts' official websites, following a Deathbats Club and early-access presale.",
-   "genres": [
-    "Rock",
-    "Metal",
-    "Tour"
-   ],
-   "image_url": null,
-   "source_url": "https://loudwire.com/avenged-sevenfold-good-charlotte-2026-north-american-tour-dates/",
-   "general_sale": true,
-   "general_sale_datetime": "2025-12-12T10:00:00-05:00",
-   "general_sale_url": null
-  },
-  {
-   "id": "en-ringo-starr-all-starr-band-queens-20261001",
-   "name": "Ringo Starr & His All Starr Band - Forest Hills, NY",
-   "release_date": "2026-10-01",
-   "release_time": null,
-   "release_date_approx": false,
-   "timezone": "America/New_York",
-   "category": "concert_tour",
-   "platforms": [
-    "Forest Hills Stadium, Queens, NY"
-   ],
-   "developer": "Ringo Starr & His All Starr Band",
-   "publisher": null,
-   "description": "Ringo Starr and His All Starr Band bring their fall 2026 North American run to Forest Hills Stadium in Queens, New York on October 1, 2026. The ten-date trek opens September 24 in Easton, Pennsylvania and wraps October 7 in Albany. The 2026 lineup features Steve Lukather, Colin Hay, Warren Ham, Hamish Stuart, Gregg Bissonette and Buck Johnson. General tickets went on sale July 10, 2026 at 10 a.m. local time through Ticketmaster.",
-   "genres": [
-    "Rock",
-    "Classic Rock",
-    "Tour"
-   ],
-   "image_url": null,
-   "source_url": "https://news.pollstar.com/2026/07/06/ringo-starr-and-his-all-starr-band-announce-fall-dates/",
-   "general_sale": true,
-   "general_sale_datetime": "2026-07-10T10:00:00-04:00",
-   "general_sale_url": "https://www.ticketmaster.com/ringo-starr-and-his-all-starr-tickets/artist/863651"
-  },
-  {
-   "id": "en-brandon-flowers-thrasher-20260821",
-   "name": "Brandon Flowers - Thrasher",
-   "release_date": "2026-08-21",
-   "release_time": null,
-   "release_date_approx": false,
-   "timezone": "America/New_York",
-   "category": "music_release",
-   "platforms": [
-    "Streaming",
-    "Digital",
-    "CD",
-    "Vinyl"
-   ],
-   "developer": "Brandon Flowers",
-   "publisher": "Island Records",
-   "description": "The Killers frontman Brandon Flowers releases Thrasher, his third solo album and first in over a decade, on August 21, 2026 via Island Records. Recorded in Nashville at Historic RCA Studio A with producers Shawn Everett and Jonathan Rado, the record leans toward country and features guitarist David Rawlings, pedal-steel player Bruce Bouton and 85-year-old harmonica veteran Charlie McCoy. It follows 2010's Flamingo and 2015's The Desired Effect.",
-   "genres": [
-    "Country",
-    "Rock",
-    "Album"
-   ],
-   "image_url": null,
-   "source_url": "https://www.billboard.com/music/country/brandon-flowers-thrasher-solo-album-release-date-1236279531/"
-  },
-  {
-   "id": "en-kasabian-act-iii-20260904",
-   "name": "Kasabian - ACT III",
-   "release_date": "2026-09-04",
-   "release_time": null,
-   "release_date_approx": false,
-   "timezone": "Europe/London",
-   "category": "music_release",
-   "platforms": [
-    "Streaming",
-    "Digital",
-    "CD",
-    "Vinyl"
-   ],
-   "developer": "Kasabian",
-   "publisher": null,
-   "description": "Leicester rock band Kasabian release their ninth studio album, ACT III, on September 4, 2026. The record was pushed back from its original July 17 date after the band chose to make final adjustments, saying they couldn't send it out 'without getting everything just right.' It follows 2024's Happenings, with Serge Pizzorno again handling lead vocals since Tom Meighan's 2020 departure.",
-   "genres": [
-    "Rock",
-    "Album"
-   ],
-   "image_url": null,
-   "source_url": "https://en.wikipedia.org/wiki/Act_III_(Kasabian_album)"
-  },
-  {
-   "id": "en-rebecca-black-exhibitionism-tour-boston-20260923",
-   "name": "Rebecca Black: Exhibitionism on Tour - Boston",
-   "release_date": "2026-09-23",
-   "release_time": null,
-   "release_date_approx": false,
-   "timezone": "America/New_York",
-   "category": "concert_tour",
-   "platforms": [
-    "Royale, Boston, MA"
-   ],
-   "developer": "Rebecca Black",
-   "publisher": "Live Nation",
-   "description": "Rebecca Black launches Exhibitionism on Tour, a 27-date North American headlining run supporting her sophomore album Age of the Exhibitionist, due September 4, 2026. The trek opens September 23 at the Royale in Boston and works through clubs, theaters and ballrooms in Atlanta, Nashville, Dallas, Toronto, Chicago and Denver before the headline portion closes November 5 at the Fonda Theatre in Los Angeles. An artist and fan-club presale began July 22, with general on-sale July 24 via Ticketmaster.",
-   "genres": [
-    "Pop",
-    "Concert",
-    "Tour"
-   ],
-   "image_url": null,
-   "source_url": "https://news.pollstar.com/2026/07/20/rebecca-black-announces-headlining-north-america-tour/",
-   "presale": true,
-   "presale_datetime": "2026-07-22T10:00:00-04:00",
-   "presale_url": null,
-   "general_sale": true,
-   "general_sale_datetime": "2026-07-24T10:00:00-04:00",
-   "general_sale_url": "https://www.livenation.com/artist/K8vZ9178Z_7/rebecca-black-events",
-   "last_updated": "2026-07-23",
-   "last_researched_by": "en-researcher"
-  },
-  {
-   "id": "en-silvana-estrada-suaves-lluvias-portland-20260903",
-   "name": "Silvana Estrada: Vendran Suaves Lluvias Tour - North America",
-   "release_date": "2026-09-03",
-   "release_time": null,
-   "release_date_approx": false,
-   "timezone": "America/Los_Angeles",
-   "category": "concert_tour",
-   "platforms": [
-    "Portland, OR (tour opener)"
-   ],
-   "developer": "Silvana Estrada",
-   "publisher": null,
-   "description": "Mexican singer-songwriter and Latin Grammy winner Silvana Estrada brings her Vendran Suaves Lluvias tour to North America in 2026. After select US festival appearances and Mon Laferte support dates in August, her headlining run opens September 3 in Portland, Oregon, crosses into Canada at Vancouver's Chan Centre for the Performing Arts on September 6, and continues through Los Angeles, Miami, Nashville and other cities. Presales began July 22 in select cities, with general on-sale opening July 24.",
-   "genres": [
-    "Latin",
-    "Folk",
-    "Singer-songwriter",
-    "Tour"
-   ],
-   "image_url": null,
-   "source_url": "https://news.pollstar.com/2026/07/21/latin-grammy-winner-silvana-estrada-embarking-on-north-american-tour/",
-   "presale": true,
-   "presale_datetime": "2026-07-22T10:00:00-07:00",
-   "presale_url": null,
-   "general_sale": true,
-   "general_sale_datetime": "2026-07-24T10:00:00-07:00",
-   "general_sale_url": null,
-   "last_updated": "2026-07-23",
-   "last_researched_by": "en-researcher"
-  },
-  {
-   "id": "en-lucinda-williams-worlds-gone-wrong-atlanta-20260924",
-   "name": "Lucinda Williams: World's Gone Wrong Tour - Atlanta",
-   "release_date": "2026-09-24",
-   "release_time": null,
-   "release_date_approx": false,
-   "timezone": "America/New_York",
-   "category": "concert_tour",
-   "platforms": [
-    "Variety Playhouse, Atlanta, GA"
-   ],
-   "developer": "Lucinda Williams",
-   "publisher": null,
-   "description": "Roots and Americana icon Lucinda Williams announces World's Gone Wrong, an extensive 31-date North American headlining tour behind her new album of the same name. The fall run opens with two nights at Variety Playhouse in Atlanta on September 24 and 25, then moves through the Carolinas, Washington D.C. and a sweep of the Northeast. An artist presale ran July 15 to 17, with tickets going on general sale July 17 via Ticketmaster.",
-   "genres": [
-    "Americana",
-    "Rock",
-    "Singer-songwriter",
-    "Tour"
-   ],
-   "image_url": null,
-   "source_url": "https://news.pollstar.com/2026/07/14/lucinda-williams-announces-worlds-gone-wrong-fall-tour-of-north-america/",
-   "general_sale": true,
-   "general_sale_datetime": "2026-07-17T10:00:00-04:00",
-   "general_sale_url": null,
-   "last_updated": "2026-07-23",
-   "last_researched_by": "en-researcher"
-  },
-  {
-   "id": "en-michelle-branch-everywhere-back-again-seattle-20260927",
-   "name": "Michelle Branch: Everywhere and Back Again Tour - Seattle",
-   "release_date": "2026-09-27",
-   "release_time": null,
-   "release_date_approx": false,
-   "timezone": "America/Los_Angeles",
-   "category": "concert_tour",
-   "platforms": [
-    "The Showbox, Seattle, WA"
-   ],
-   "developer": "Michelle Branch",
-   "publisher": null,
-   "description": "Michelle Branch returns to the road with the Everywhere and Back Again Tour, an 18-date US headlining run supporting a forthcoming EP of newly recorded versions of career-spanning songs, due November 6, 2026 via BMG. The tour opens September 27 at The Showbox in Seattle and runs through November 13 at Manchester Music Hall in Lexington, Kentucky. Tickets went on sale in July, and several shows sold out rapidly after the announcement.",
-   "genres": [
-    "Pop",
-    "Rock",
-    "Tour"
-   ],
-   "image_url": null,
-   "source_url": "https://news.pollstar.com/2026/07/15/michelle-branch-announces-everywhere-and-back-again-tour-releases-new-version-of-the-game-of-love/",
-   "general_sale": true,
-   "general_sale_datetime": null,
-   "general_sale_url": null,
-   "last_updated": "2026-07-23",
-   "last_researched_by": "en-researcher"
-  },
-  {
-   "id": "en-jon-pardi-gamblin-man-richmond-20260917",
-   "name": "Jon Pardi: Gamblin' Man Tour - Richmond",
-   "release_date": "2026-09-17",
-   "release_time": null,
-   "release_date_approx": false,
-   "timezone": "America/New_York",
-   "category": "concert_tour",
-   "platforms": [
-    "Allianz Amphitheater at Riverfront, Richmond, VA"
-   ],
-   "developer": "Jon Pardi",
-   "publisher": null,
-   "description": "Country hitmaker Jon Pardi launches his 19-date Gamblin' Man Tour, named after a track from his 2025 album Honkytonk Hollywood, at Richmond's Allianz Amphitheater at Riverfront on September 17, 2026. The neo-traditional run visits arenas and amphitheaters across the South, Midwest and West before wrapping November 14 in Independence, Missouri. Alexandra Kay and Sadie Bass open on the tour.",
-   "genres": [
-    "Country",
-    "Tour"
-   ],
-   "image_url": null,
-   "source_url": "https://news.pollstar.com/2026/07/20/jon-pardis-gamblin-man-tour-rolls-out-this-fall/",
-   "presale": false,
-   "presale_datetime": "2026-07-21T10:00:00-04:00",
-   "general_sale": true,
-   "general_sale_datetime": "2026-07-24T10:00:00-04:00",
-   "general_sale_url": "https://www.ticketmaster.com/jon-pardi-gamblin-man-tour-2026-richmond-virginia-09-17-2026/event/010064EAC17D6E90"
-  },
-  {
-   "id": "en-lupe-fiasco-back-to-basics-cleveland-20260910",
-   "name": "Lupe Fiasco & Gym Class Heroes: Back To Basics Tour - Cleveland",
-   "release_date": "2026-09-10",
-   "release_time": null,
-   "release_date_approx": false,
-   "timezone": "America/New_York",
-   "category": "concert_tour",
-   "platforms": [
-    "Jacobs Pavilion, Cleveland, OH"
-   ],
-   "developer": "Lupe Fiasco, Gym Class Heroes, B.o.B",
-   "publisher": "Live Nation",
-   "description": "Hip-hop veterans Lupe Fiasco and Gym Class Heroes co-headline the 19-date Back To Basics Tour, with B.o.B along as special guest on most stops. The fall trek opens September 10, 2026 at Cleveland's Jacobs Pavilion and runs through late October, hitting Pittsburgh, Denver, Minneapolis, Detroit, San Antonio and Boston among other cities. Tickets went on general sale July 17 via Ticketmaster and Live Nation.",
-   "genres": [
-    "Hip-Hop",
-    "Rap",
-    "Tour"
-   ],
-   "image_url": null,
-   "source_url": "https://consequence.net/2026/07/lupe-fiasco-gymclassheroes-2026-us-tour/",
-   "general_sale": true,
-   "general_sale_datetime": "2026-07-17T10:00:00-04:00",
-   "general_sale_url": "https://www.ticketmaster.com/lupe-fiasco-tickets/artist/1036994"
-  }
- ]
+  ]
 }
