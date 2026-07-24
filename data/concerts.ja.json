@@ -753,6 +753,93 @@
       ],
       "image_url": null,
       "source_url": "https://www.cdjournal.com/news/two-door-cinema-club/126242"
+    },
+    {
+      "id": "ja-nogizaka46-manatsu-tour-2026-20260613",
+      "name": "乃木坂46「真夏の全国ツアー2026」",
+      "release_date": "2026-06-13",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "Asia/Tokyo",
+      "category": "concert_tour",
+      "platforms": [
+        "サンドーム福井",
+        "横浜アリーナ",
+        "真駒内セキスイハイムアイスアリーナ",
+        "広島グリーンアリーナ",
+        "大阪城ホール",
+        "セキスイハイムスーパーアリーナ（宮城）",
+        "マリンメッセ福岡A館",
+        "明治神宮野球場（東京）"
+      ],
+      "developer": "乃木坂46",
+      "publisher": "乃木坂46合同会社",
+      "description": "乃木坂46が夏の恒例企画「真夏の全国ツアー2026」を全国8か所で開催する。昨年より1か所増え、6月13日のサンドーム福井を皮切りに、神奈川・北海道・広島・大阪・宮城・福岡を巡り、8月20日から23日まで恒例の明治神宮野球場でツアーファイナルを迎える。福井は同グループにとって初のライブ開催地となり、全18公演にわたる過去最大規模のツアーとなる。",
+      "genres": [
+        "J-POP",
+        "アイドル"
+      ],
+      "image_url": null,
+      "source_url": "https://www.nogizaka46.com/s/n46/news/detail/101747"
+    },
+    {
+      "id": "ja-sakurazaka46-arena-tour-2026-20260723",
+      "name": "櫻坂46「全国アリーナツアー2026」",
+      "release_date": "2026-07-23",
+      "release_time": "18:30",
+      "release_date_approx": false,
+      "timezone": "Asia/Tokyo",
+      "category": "concert_tour",
+      "platforms": [
+        "エコパアリーナ（静岡）",
+        "神戸ワールド記念ホール",
+        "広島グリーンアリーナ",
+        "LaLa arena TOKYO-BAY（千葉）",
+        "セキスイハイムスーパーアリーナ（宮城）",
+        "あなぶきアリーナ香川"
+      ],
+      "developer": "櫻坂46",
+      "publisher": null,
+      "description": "櫻坂46が「全国アリーナツアー2026」を開催する。7月23日・24日の静岡・エコパアリーナを皮切りに、兵庫・神戸ワールド記念ホール、広島グリーンアリーナ、千葉・LaLa arena TOKYO-BAY、宮城・セキスイハイムスーパーアリーナ、香川・あなぶきアリーナ香川と全国のアリーナ会場を巡る。オフィシャル先行は5月に受付が始まり、グループの成長を示す大規模アリーナツアーとして注目を集めている。",
+      "genres": [
+        "J-POP",
+        "アイドル"
+      ],
+      "image_url": null,
+      "source_url": "https://sakurazaka46.com/s/s46/news/detail/E00619"
+    },
+    {
+      "id": "ja-jo0ji-ikari-tour-2026-20261101",
+      "name": "jo0ji one-man tour 2026「いかり」",
+      "release_date": "2026-11-01",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "Asia/Tokyo",
+      "category": "concert_tour",
+      "platforms": [
+        "KT Zepp Yokohama",
+        "金沢 EIGHT HALL",
+        "Zepp Namba（大阪）",
+        "高松 festhalle",
+        "BLUE LIVE HIROSHIMA",
+        "Zepp Sapporo",
+        "Zepp Fukuoka",
+        "Zepp Nagoya",
+        "Zepp DiverCity（東京）",
+        "SENDAI GIGS"
+      ],
+      "developer": "jo0ji",
+      "publisher": "ソニーミュージック",
+      "description": "シンガーソングライターのjo0jiが、自身最大規模となる全国ツアー「jo0ji one-man tour 2026『いかり』」を開催する。11月1日の神奈川・KT Zepp Yokohamaを皮切りに、金沢・大阪・高松・広島・北海道・福岡・愛知・東京・宮城を巡り、12月19日のSENDAI GIGSまで全10公演を行う。全国6か所のZeppを含む会場で、チケットはスタンディング6,000円、2階指定席7,000円。ファンクラブ「潮風交流センター」での最速先行が実施されている。",
+      "genres": [
+        "J-POP",
+        "ツアー"
+      ],
+      "image_url": null,
+      "source_url": "https://tvfan.kyodo.co.jp/music/news-music/1513392",
+      "presale": true,
+      "presale_datetime": null,
+      "presale_url": "https://smam.jp/s/sma01/ticket/detail/2512_ticket_26052201?ima=2922"
     }
   ]
 }
