@@ -174,8 +174,9 @@
   - 공연장(`platforms`) 그룹핑(`lib/venues.ts`)은 다중-공연장 사례가 관측되지 않아 이번 범위 아님
 
 ## [20260724-02] 비-한국어 로케일(EN/JA)에서 카테고리 배지가 한국어(`cat.short`)로 새는 로케일 누수
-- 상태: 대기
+- 상태: 완료 (2026-07-24, 커밋 dd0e0c6)
 - 등록일: 2026-07-24
+- 처리 기록(2026-07-24, 개발 담당): 스펙대로 6개 컴포넌트의 카테고리 표시 문자열을 검증된 `lang ? CATEGORY_LABELS[lang][category] : cat.short` 패턴(ScheduleCard/CategoryFilterBar과 동일)으로 교체. 변경: `UpcomingStrip.tsx:66`·`GameRow.tsx:90`·`WishlistView.tsx:60`(useLocale로 lang 보유, CATEGORY_LABELS import 추가), `FeaturedCards.tsx:59`(gameToCard의 `lang: Locale|null` 인자 사용, import 추가), `RelatedEventCard.tsx:33`(`lang: string` prop이라 `CATEGORY_LABELS[lang as Locale]?.[category] ?? cat.short`로 캐스팅+폴백, CATEGORY_LABELS·Locale import 추가), `CalendarView.tsx:247`(날짜 셀 title tooltip, 이미 CATEGORY_LABELS import돼 있어 `CATEGORY_LABELS[lang][category]`로 교체). `CATEGORY_META.short` 한국어 값·색/아이콘 메타는 불변, ko 폴백으로만 유지. **검증 = 타입체크 + 코드 리뷰**(저위험 5-A 표시 문자열 변경이라 무거운 `npm run build` 생략): `npx tsc --noEmit` ✅ 통과(오류 0), `grep -rn "\.short" components/` 결과 표시용(로케일 미적용) `cat.short` 잔존 0건 — 6곳 모두 로케일 삼항의 폴백 분기로만 남고, `HeroSpotlight.tsx:181`·`concert/[id]/page.tsx:273`는 **-03 범위라 의도적으로 건드리지 않음**, `LanguageSwitcher.current.short`는 언어명이라 예외. 전체 빌드는 환경 되면 Vercel 프리뷰에서 EN/JA 배지 육안 확인 권장(SSG 완주 못 하는 샌드박스 제약).
 - 우선순위: P1(EN/JA 실사용·색인 페이지에 한국어가 그대로 노출 — 로케일 신뢰도·SEO 직접 영향)
 - 근거: 라이브 `https://whenstage.com/ja` 홈의 "近日の予定"(`UpcomingStrip`) 카드 배지가
   「콘서트 / 음원발매 / 페스티벌 / 팬미팅」로 **한국어 그대로** 뜬다(같은 페이지 상단 필터바와
