@@ -7,6 +7,7 @@ import { formatShortDate, kstDateOnly, calcDayDiff } from '@/lib/utils';
 import { CalendarView } from './CalendarView';
 import { ListView } from './ListView';
 import { UpcomingStrip } from './UpcomingStrip';
+import { LatestNews, type LatestNewsItem } from './LatestNews';
 import { GameModal } from './GameModal';
 import { useWishlist } from '@/hooks/useWishlist';
 import { useWishlistFilter } from '@/hooks/useWishlistFilter';
@@ -20,9 +21,10 @@ interface HomeProps {
   serverNow: string;
   artistAliases: Record<string, string[]>;
   cardImages: Record<string, string>;
+  latestNews: LatestNewsItem[];
 }
 
-export function Home({ initialGames, lastUpdated, serverNow, artistAliases, cardImages }: HomeProps) {
+export function Home({ initialGames, lastUpdated, serverNow, artistAliases, cardImages, latestNews }: HomeProps) {
   const lang = useLocale();
   const t = CAL[lang];
   const [filters, setFilters] = useState<FilterState>({
@@ -334,6 +336,8 @@ export function Home({ initialGames, lastUpdated, serverNow, artistAliases, card
           {!showList && (
             <UpcomingStrip games={upcomingForStrip} cardImages={cardImages} now={now} onPick={openModal} />
           )}
+
+          {!showList && <LatestNews items={latestNews} />}
 
           <p className={styles.lastUpdated}>
             {t.lastUpdated}: {formatShortDate(lastUpdated.slice(0, 10))}

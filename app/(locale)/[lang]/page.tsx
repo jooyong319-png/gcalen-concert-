@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAllGames, getLastUpdated } from '@/lib/games';
 import { getArtistAliases, getArtistImageMap } from '@/lib/artists';
+import { getAllNews } from '@/lib/news';
 import { normalizeArtistKey } from '@/lib/types';
 import { Home } from '@/components/Home';
 import { UI, LOCALES, OG_LOCALE, type Locale } from '@/lib/i18nLabels';
@@ -56,6 +57,17 @@ export default async function LocaleHomePage({ params }: Props) {
   }
   const serverNow = new Date().toISOString();
 
+  // 홈 하단 "최신 소식" — 캘린더 아래 빈 공간을 실콘텐츠로 채우고, 매일 갱신되는 뉴스로
+  // 크로스링크/체류시간을 늘린다. content 본문은 무거우니 카드에 필요한 필드만 추림.
+  const allNews = await getAllNews(lang);
+  const latestNews = allNews.slice(0, 4).map(n => ({
+    slug: n.slug,
+    title: n.title,
+    description: n.description,
+    date: n.date,
+    heroImage: n.heroImage,
+  }));
+
   const websiteJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
@@ -68,7 +80,7 @@ export default async function LocaleHomePage({ params }: Props) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
-      <Home initialGames={games} lastUpdated={lastUpdated} serverNow={serverNow} artistAliases={artistAliases} cardImages={cardImages} />
+      <Home initialGames={games} lastUpdated={lastUpdated} serverNow={serverNow} artistAliases={artistAliases} cardImages={cardImages} latestNews={latestNews} />
     </>
   );
 }
