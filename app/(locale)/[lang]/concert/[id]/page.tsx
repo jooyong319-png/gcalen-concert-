@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAllGames, getGameById, getUpcomingGamesByCategory, getLastUpdated } from '@/lib/games';
-import { getArtistBySlug, normalizeArtistKey, getArtistImageMap } from '@/lib/artists';
+import { getArtistBySlug, normalizeArtistKey, splitArtists, getArtistImageMap } from '@/lib/artists';
 import { CATEGORY_META } from '@/lib/types';
 import { getVenueBySlug, normalizeVenueKey, VENUE_CATEGORIES } from '@/lib/venues';
 import { formatShortDate, calcDayDiff } from '@/lib/utils';
@@ -87,7 +87,10 @@ export default async function LocaleGamePage({ params }: Props) {
 
   const isUpcoming = (g: Game) => g.release_date_approx || calcDayDiff(g.release_date) >= 0;
 
-  const artist = game.developer ? await getArtistBySlug(normalizeArtistKey(game.developer), lang) : null;
+  // 다중 아티스트(공동 헤드라이너) 콘서트는 대표(첫) 아티스트 기준으로 '다른 일정'을 보여준다
+  // — 합쳐진 developer 원문 키는 이제 그룹으로 존재하지 않으므로 그대로 쓰면 null이 된다.
+  const primaryArtistName = game.developer ? splitArtists(game.developer)[0] ?? null : null;
+  const artist = primaryArtistName ? await getArtistBySlug(normalizeArtistKey(primaryArtistName), lang) : null;
   const artistOthers = artist
     ? artist.events.filter(g => g.id !== game.id && isUpcoming(g)).slice(0, 3)
     : [];
@@ -191,9 +194,14 @@ export default async function LocaleGamePage({ params }: Props) {
           {game.developer && (
             <li>
               <strong>{ui.developer}</strong>
-              <a href={`/${lang}/artist/${encodeURIComponent(normalizeArtistKey(game.developer))}`} className="detail-artist-link">
-                {game.developer}
-              </a>
+              {splitArtists(game.developer).map((artistName, i) => (
+                <span key={artistName}>
+                  {i > 0 && ', '}
+                  <a href={`/${lang}/artist/${encodeURIComponent(normalizeArtistKey(artistName))}`} className="detail-artist-link">
+                    {artistName}
+                  </a>
+                </span>
+              ))}
             </li>
           )}
           {game.publisher && <li><strong>{ui.publisher}</strong>{game.publisher}</li>}

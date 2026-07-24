@@ -10,6 +10,58 @@ export function normalizeArtistKey(name: string): string {
   return name.replace(/[（(][^）)]*[）)]/g, '').trim().normalize('NFC');
 }
 
+// 단일 아티스트인데 이름 자체에 쉼표가 든 알려진 예외 — 쉼표로 쪼개면 안 된다(정규화·소문자 비교).
+// 확신 없으면 안 쪼개는 게 원칙이라, 새 예외를 발견하면 여기 추가한다.
+const ARTIST_COMMA_EXCEPTIONS = new Set([
+  'tyler, the creator',
+  'earth, wind & fire',
+  'blood, sweat & tears',
+  'crosby, stills & nash',
+  'crosby, stills, nash & young',
+  'emerson, lake & palmer',
+  'peter, paul and mary',
+]);
+
+// "Avenged Sevenfold, Good Charlotte"처럼 한 developer 필드에 쉼표로 여러 아티스트가 담긴 경우
+// 이를 개별 아티스트명 배열로 분리한다. 오탐(false split) 방지가 최우선 — 확신 없으면 안 쪼갠다
+// ("틀리게 합치는 것보다 틀리게 쪼개는 게 더 나쁨"):
+//  - 쉼표가 없으면 그대로 단일 원소.
+//  - 알려진 예외("Tyler, the Creator" 등)는 통째로 단일 아티스트.
+//  - 괄호(반각/전각) 안의 쉼표는 구분자로 보지 않는다("Djo (Joe Keery), Pond" → Djo / Pond).
+//  - 쉼표 뒤 조각이 소문자로 시작하면(관사·접속사, 예: ", the Creator") 이름의 일부로 보고 앞과 합친다.
+// fs 의존 없는 순수 함수 — 서버/클라이언트 어디서든 import 가능.
+export function splitArtists(developer: string): string[] {
+  const raw = developer.trim();
+  if (!raw) return [];
+  if (!raw.includes(',') && !raw.includes('，')) return [raw];
+  if (ARTIST_COMMA_EXCEPTIONS.has(raw.toLowerCase())) return [raw];
+
+  // 괄호 깊이를 존중하며 최상위(괄호 밖) 쉼표에서만 자른다.
+  const parts: string[] = [];
+  let depth = 0;
+  let buf = '';
+  for (const ch of raw) {
+    if (ch === '(' || ch === '（') { depth++; buf += ch; continue; }
+    if (ch === ')' || ch === '）') { depth = Math.max(0, depth - 1); buf += ch; continue; }
+    if ((ch === ',' || ch === '，') && depth === 0) { parts.push(buf); buf = ''; continue; }
+    buf += ch;
+  }
+  parts.push(buf);
+
+  // 쉼표 뒤 조각이 소문자로 시작하면(", the Creator" 류) 앞 조각의 일부 → 다시 합친다.
+  const merged: string[] = [];
+  for (const part of parts) {
+    const seg = part.trim();
+    if (!seg) continue;
+    if (merged.length > 0 && /^[a-z]/.test(seg)) {
+      merged[merged.length - 1] += ', ' + seg;
+    } else {
+      merged.push(seg);
+    }
+  }
+  return merged.length > 0 ? merged : [raw];
+}
+
 export type Category =
   | 'concert_tour'   // 콘서트·내한 공연
   | 'music_release'  // 음원 발매(컴백)

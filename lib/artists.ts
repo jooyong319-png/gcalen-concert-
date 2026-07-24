@@ -3,7 +3,7 @@ import path from 'path';
 import { promises as fs } from 'fs';
 import { getAllGames, type GameLocale } from './games';
 import type { Game } from './types';
-import { normalizeArtistKey } from './types';
+import { normalizeArtistKey, splitArtists } from './types';
 
 // 아티스트 전용 큐레이션 이미지(공연/발매 리서치와 분리 관리) — data/artist-images.json.
 // 콘서트 엔트리의 image_url을 재활용하면 행사 스냅샷이 섞여 품질이 들쭉날쭉해지므로,
@@ -68,7 +68,7 @@ export interface ArtistSummary {
 
 // normalizeArtistKey는 lib/types.ts로 이동(fs 의존 없는 순수 함수라 클라이언트 컴포넌트에서도
 // import 가능해야 함 — 검색의 별칭 매칭에 씀). 기존 import 경로 호환을 위해 재수출.
-export { normalizeArtistKey };
+export { normalizeArtistKey, splitArtists };
 
 function todayKstStr(now: Date = new Date()): string {
   const kst = new Date(now.getTime() + 9 * 60 * 60 * 1000);
@@ -82,19 +82,27 @@ export async function getAllArtists(locale: GameLocale = 'ko'): Promise<ArtistSu
   const curated = await getCuratedImages();
   const bios = (await getCuratedBios())[locale] ?? {};
 
-  const groups = new Map<string, Game[]>();
+  // 한 developer 필드에 쉼표로 여러 아티스트가 담긴 경우(splitArtists) 각 아티스트를 개별
+  // 그룹에 넣는다 — 한 콘서트가 여러 아티스트 그룹에 동시에 속할 수 있다. 그룹 표시명은
+  // developer 원문이 아니라 분리된 개별 아티스트명 중 가장 긴 표기를 쓴다(합쳐진 유령 카드 방지).
+  const groups = new Map<string, { names: string[]; events: Game[] }>();
   for (const g of games) {
     if (!g.developer) continue;
-    const key = normalizeArtistKey(g.developer);
-    if (!key) continue;
-    (groups.get(key) ?? groups.set(key, []).get(key)!).push(g);
+    for (const artistName of splitArtists(g.developer)) {
+      const key = normalizeArtistKey(artistName);
+      if (!key) continue;
+      let grp = groups.get(key);
+      if (!grp) { grp = { names: [], events: [] }; groups.set(key, grp); }
+      grp.names.push(artistName);
+      if (!grp.events.some(e => e.id === g.id)) grp.events.push(g);
+    }
   }
 
   const artists: ArtistSummary[] = [];
-  for (const [key, events] of groups) {
-    // 그룹 내 가장 긴 표기(보통 로마자 병기 포함) 를 대표 표시명으로.
-    const name = events.reduce((longest, g) => (g.developer!.length > longest.length ? g.developer! : longest), events[0].developer!);
-    const sorted = events.slice().sort((a, b) => a.release_date.localeCompare(b.release_date));
+  for (const [key, grp] of groups) {
+    // 그룹 내 가장 긴 개별 아티스트 표기(보통 로마자 병기 포함)를 대표 표시명으로.
+    const name = grp.names.reduce((longest, n) => (n.length > longest.length ? n : longest), grp.names[0]);
+    const sorted = grp.events.slice().sort((a, b) => a.release_date.localeCompare(b.release_date));
     const upcomingCount = sorted.filter(g => g.release_date_approx || g.release_date >= today).length;
     // 콘서트 엔트리의 image_url로 폴백하지 않는다 — 행사 스냅샷이 섞여 품질이 들쭉날쭉해지는
     // 원인이었음(레드카펫 단체샷 등). 큐레이션 파일에 없으면 깔끔한 플레이스홀더로 노출.
