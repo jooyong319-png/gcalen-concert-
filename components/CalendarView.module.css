@@ -226,13 +226,19 @@
   border-radius: var(--radius);
   font-size: 0.9rem;
 }
+/* "오늘의 일정"(위)과 시각적으로 분리 — 상단 여백 + 구분선 */
+.nextUp {
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+}
 .nextUpLabel {
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--text-faint);
-  margin: 0 0 0.5rem 0.1rem;
+  margin: 0 0 0.7rem 0.1rem;
 }
 
 /* ─── 모바일 ─── */
