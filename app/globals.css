@@ -488,17 +488,39 @@ textarea:focus-visible,
   padding: 0 1rem;
 }
 .toast {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
   background: var(--text);
   color: var(--bg-elev);
   font-size: 0.88rem;
   font-weight: 600;
-  padding: 0.6rem 1.1rem;
+  padding: 0.6rem 0.7rem 0.6rem 1.1rem;
   border-radius: var(--radius);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
   max-width: 90vw;
-  text-align: center;
+  text-align: left;
+  pointer-events: auto; /* 액션 버튼 클릭 가능(wrap은 none) */
   animation: toastIn 0.22s ease;
 }
+.toast-msg { line-height: 1.35; }
+/* 액션 버튼 — 반전 토스트 위 어느 테마에서도 튀도록 고정 밝은 시안 칩 */
+.toast-action {
+  flex: 0 0 auto;
+  border: none;
+  background: #22c9dd;
+  color: #052a33;
+  font-weight: 800;
+  font-size: 0.82rem;
+  padding: 0.34rem 0.72rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: filter 0.15s;
+}
+.toast-action:hover { filter: brightness(1.08); }
+/* 액션 없는 단순 토스트는 가운데 정렬 유지 */
+.toast:not(:has(.toast-action)) { text-align: center; }
 @keyframes toastIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
 /* ─── 라우트 전환 페이드 (template.tsx) — opacity만(고정요소 안전) ─── */

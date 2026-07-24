@@ -1,8 +1,40 @@
 'use client';
 import { useCallback, useSyncExternalStore } from 'react';
 import { showToast } from '@/lib/toast';
+import { pushSupported, pushConfigured, isNotifyOptedOut, subscribePush } from '@/lib/push';
 
 const KEY = 'whenstage.wishlist.v1';
+const NUDGE_KEY = 'whenstage.notify.nudge.v1';
+
+// 첫 찜 후 "알림 켜기" 유도 문구(로케일별) — <html lang>에서 현재 로케일을 읽는다.
+const NUDGE_COPY: Record<string, { msg: string; action: string; ok: string; denied: string; fail: string }> = {
+  ko: { msg: '⭐ 찜했어요! 공연 전에 알려드릴까요?', action: '알림 켜기', ok: '알림을 켰어요 🔔', denied: '알림 권한이 거부됐어요', fail: '알림 설정에 실패했어요' },
+  en: { msg: '⭐ Saved! Want a reminder before the show?', action: 'Turn on', ok: 'Notifications on 🔔', denied: 'Notification permission denied', fail: 'Couldn’t enable notifications' },
+  ja: { msg: '⭐ 保存しました！公演前にお知らせしますか？', action: 'オンにする', ok: '通知をオンにしました 🔔', denied: '通知が拒否されました', fail: '通知の設定に失敗しました' },
+};
+
+// 찜 알림 유도 토스트를 띄울 조건 — 아직 안 봤고, 푸시 지원/설정됐고, 명시적으로 끈 적 없고,
+// 알림 권한이 아직 "미결정"(default)일 때만. 이미 켰거나(granted)/거부(denied)면 안 띄운다.
+function shouldNudgeNotify(): boolean {
+  try { if (localStorage.getItem(NUDGE_KEY)) return false; } catch { return false; }
+  if (!pushSupported() || !pushConfigured()) return false;
+  if (isNotifyOptedOut()) return false;
+  if (typeof Notification === 'undefined' || Notification.permission !== 'default') return false;
+  return true;
+}
+
+function nudgeNotify(ids: string[]): void {
+  try { localStorage.setItem(NUDGE_KEY, '1'); } catch { /* ignore */ }
+  const lang = (typeof document !== 'undefined' && document.documentElement.lang) || 'ko';
+  const c = NUDGE_COPY[lang] ?? NUDGE_COPY.ko;
+  showToast(c.msg, 7000, {
+    label: c.action,
+    onClick: async () => {
+      const r = await subscribePush(ids);
+      showToast(r === 'ok' ? c.ok : r === 'denied' ? c.denied : c.fail, r === 'ok' ? 2200 : 3500);
+    },
+  });
+}
 
 // ── 모듈 레벨 싱글톤 store ──
 // useWishlist를 어디서 몇 번 호출하든 동일 스냅샷을 공유한다(인스턴스별 state 아님).
@@ -71,7 +103,13 @@ function toggleId(id: string): void {
     /* quota 초과 등 무시 */
   }
   emit();
-  showToast(added ? '찜 목록에 추가됨' : '찜 목록에서 제거됨');
+  // 첫 찜 순간이 알림 유도의 최적 타이밍 — 조건 맞으면 "알림 켜기" 액션 토스트(한 번만),
+  // 아니면 기존 확인 토스트.
+  if (added && shouldNudgeNotify()) {
+    nudgeNotify([...next]);
+  } else {
+    showToast(added ? '찜 목록에 추가됨' : '찜 목록에서 제거됨');
+  }
 }
 
 export interface WishlistApi {
