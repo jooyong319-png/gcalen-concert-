@@ -211,3 +211,43 @@
   - `CATEGORY_META`에 로케일별 `short` 필드를 신설하는 스키마 확장(현행 `CATEGORY_LABELS`로 충분, 불필요한 중복)
   - EN/JA 페이지 `meta-keywords`가 한국어로 고정된 별개 이슈 — 검색엔진이 사실상 무시하는 태그라 가치 낮음, 이번 범위 아님(이전 사이클에서도 저가치로 스킵됨)
   - 배지 문구/디자인 변경, `LanguageSwitcher`의 `current.short`(언어 이름이라 카테고리 라벨과 무관, 정상)
+
+## [20260724-03] 홈 히어로·콘서트 상세 "관련 일정" 카테고리 배지 한국어 누수(20260724-02 미포함 잔여 2곳)
+- 상태: 대기
+- 등록일: 2026-07-24
+- 우선순위: P1(EN/JA 최상단·고노출 영역에 한국어 노출 — 특히 홈 히어로는 페이지에서 가장 눈에 띄는 위치)
+- 근거: `20260724-02`가 카테고리 배지 로케일 누수를 다루지만, 그 항목이 명시적으로 열거한 6개
+  컴포넌트에 빠져 있고 완료 조건의 grep 범위가 `components/`로 한정돼 있어 아래 두 곳은 -02를
+  구현·완료해도 그대로 한국어가 샌다(둘 다 -02 등록 커밋 031cc5b **이후**에 추가·잔존):
+  - `components/HeroSpotlight.tsx:181` — 홈 히어로 스포트라이트 배지가 `curCat.short`(로케일 무관
+    한국어)를 그대로 렌더. 이 컴포넌트는 히어로 캐러셀(커밋 b72414b, -02보다 나중)로 신설돼 -02
+    목록에 없음. `lang: Locale`을 **prop으로 이미 보유**하나(16·26행) `CATEGORY_LABELS`는 import하지
+    않고 `CATEGORY_META`만 import 중이라 import 추가가 필요.
+  - `app/(locale)/[lang]/concert/[id]/page.tsx:271` — 콘서트 상세 "관련 일정" 카드의 `related-badge`가
+    `cat.short`(한국어)를 렌더. 이 파일은 `app/` 아래라 -02 완료 조건의 `grep components/`에 애초에
+    안 걸린다. `lang`(`params.lang`)과 `CATEGORY_LABELS`(8행에서 이미 import)를 이미 보유해 배선 추가
+    불필요.
+  라이브 `https://whenstage.com/ja` 홈에서 -02가 지적한 `UpcomingStrip` 한국어 누수(콘서트/음원발매/
+  페스티벌/팬미팅)는 재확인됨 — 같은 근본 원인이 위 2곳에도 존재.
+- 스펙:
+  - 위 두 곳의 카테고리 표시 문자열을 `20260724-02`와 **동일한 검증된 패턴**으로 교체한다:
+    `lang ? CATEGORY_LABELS[lang][category] : CATEGORY_META[category].short`. `CATEGORY_LABELS`는
+    `@/lib/i18nLabels`에서 import(`HeroSpotlight.tsx`는 import 신규 추가, 콘서트 상세는 기존 import 재사용).
+  - `HeroSpotlight`는 `lang` prop, 콘서트 상세는 `params.lang`을 그대로 쓴다 — **새로 lang을 배선할
+    필요 없음**. `CATEGORY_META.short`의 한국어 값 자체는 바꾸지 않는다(색/아이콘 메타·ko 폴백으로 계속 사용).
+  - `20260724-02`가 이미 진행/완료됐다면 겹치는 6개 컴포넌트는 건드리지 말고 이 두 곳만 처리한다
+    (반대로 -02가 아직 대기면, 두 항목을 한 번에 처리해도 무방 — 패턴이 동일).
+- 완료 조건:
+  - [ ] `https://whenstage.com/ja`·`/en` 홈 히어로 스포트라이트 배지가 각 로케일 언어로 표기(한국어 노출 0건)
+  - [ ] EN/JA 콘서트 상세 "관련 일정" 카드 배지가 각 로케일 언어로 표기(한국어 노출 0건)
+  - [ ] KO 페이지는 기존 한국어 라벨 유지(회귀 없음)
+  - [ ] `grep -rn "\.short" components/ "app/(locale)"` 결과에서 표시용(로케일 미적용) `cat.short`
+        사용이 `HeroSpotlight`·콘서트 상세를 포함해 남지 않음(색/아이콘/폴백,
+        `LanguageSwitcher`의 `current.short`, `CalendarView`의 `title` tooltip은 예외로 허용
+        — 후자는 -02 범위)
+  - [ ] `npm run typecheck` 통과(표시 문자열만 바꾸는 저위험 변경 — 전체 빌드는 환경 되면 Vercel 프리뷰로 확인 권장)
+- 범위 아닌 것:
+  - `20260724-02`가 이미 다루는 6개 컴포넌트(UpcomingStrip/FeaturedCards/GameRow/RelatedEventCard/
+    WishlistView/CalendarView) 중복 처리
+  - `CATEGORY_META`에 로케일별 `short` 필드 신설(현행 `CATEGORY_LABELS`로 충분)
+  - 배지 문구/디자인/폭 변경(한국어 노출 제거가 최우선), `HeroSpotlight`의 캐러셀 로직·모션
