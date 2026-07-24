@@ -259,6 +259,7 @@ interface CalUiStrings {
   viewSource: string;
   goToPresale: string;
   goToGeneralSale: string;
+  buyTicket: string;
   presaleClosedLabel: string;
   generalSaleClosedLabel: string;
   favorited: string;
@@ -354,6 +355,7 @@ export const CAL: Record<Locale, CalUiStrings> = {
     viewSource: '출처 보기',
     goToPresale: '선예매 하러 가기',
     goToGeneralSale: '일반예매 하러 가기',
+    buyTicket: '예매하기',
     presaleClosedLabel: '선예매 마감',
     generalSaleClosedLabel: '예매 마감',
     favorited: '찜함',
@@ -447,6 +449,7 @@ export const CAL: Record<Locale, CalUiStrings> = {
     viewSource: 'View source',
     goToPresale: 'Go to presale',
     goToGeneralSale: 'Go to general sale',
+    buyTicket: 'Buy tickets',
     presaleClosedLabel: 'Presale closed',
     generalSaleClosedLabel: 'Sales closed',
     favorited: 'Favorited',
@@ -540,6 +543,7 @@ export const CAL: Record<Locale, CalUiStrings> = {
     viewSource: '出典を見る',
     goToPresale: '先行予約はこちら',
     goToGeneralSale: '一般発売はこちら',
+    buyTicket: 'チケット購入',
     presaleClosedLabel: '先行予約終了',
     generalSaleClosedLabel: '販売終了',
     favorited: 'お気に入り済み',

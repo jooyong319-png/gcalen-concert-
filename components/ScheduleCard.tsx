@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { motion } from 'motion/react';
 import type { Game } from '@/lib/types';
-import { CATEGORY_META, effectivePresaleEnd } from '@/lib/types';
+import { CATEGORY_META, effectivePresaleEnd, availableTicketingUrl } from '@/lib/types';
 import { formatShortDate, formatEventDateTime } from '@/lib/utils';
 import { useLocale } from '@/hooks/useLocale';
 import { CAL, CATEGORY_LABELS } from '@/lib/i18nLabels';
@@ -15,10 +15,11 @@ interface Props {
   game: Game;
   kind: ScheduleKind;
   onPick: (id: string) => void;
+  now: Date;
 }
 
 // 캘린더 옆 "오늘의 일정" 패널 카드 — 아이콘+제목, 일시, 아티스트, (선예매/일반예매면) 예매 CTA.
-export function ScheduleCard({ game, kind, onPick }: Props) {
+export function ScheduleCard({ game, kind, onPick, now }: Props) {
   const lang = useLocale();
   const t = CAL[lang];
   const cat = CATEGORY_META[game.category];
@@ -57,6 +58,9 @@ export function ScheduleCard({ game, kind, onPick }: Props) {
   const ctaClosedLabel = kind === 'presale' ? t.presaleClosedLabel : kind === 'general_sale' ? t.generalSaleClosedLabel : null;
   const ctaEndDateTime = kind === 'presale' ? effectivePresaleEnd(game) : kind === 'general_sale' ? game.general_sale_end_datetime : null;
   const ctaEnded = useSaleWindowEnded(ctaEndDateTime);
+  // 공연일(release) 카드용 — 지금 바로 예매 가능하면(상시판매 포함) "예매하기" 버튼. 예매 시작일
+  // 카드(위 kind별 CTA)와 별개로, 시작 datetime이 없어 카드가 안 생기는 상시판매 링크를 노출.
+  const buyCta = kind === 'release' ? availableTicketingUrl(game, now) : null;
 
   return (
     <motion.div
@@ -117,6 +121,17 @@ export function ScheduleCard({ game, kind, onPick }: Props) {
             {ctaLabel}
           </a>
         )
+      )}
+      {buyCta && (
+        <a
+          className={styles.cta}
+          href={buyCta.url}
+          target="_blank"
+          rel="noopener"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {t.buyTicket}
+        </a>
       )}
     </motion.div>
   );

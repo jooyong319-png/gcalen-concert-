@@ -148,6 +148,9 @@
 }
 .actBtn:hover { color: var(--text); border-color: var(--accent); }
 .wishOn { color: var(--accent-warm); border-color: var(--accent-warm); }
+/* 예매 버튼 — 티켓팅 색(accent-warm)으로 채워 1차 액션으로 강조 */
+.buyBtn { background: var(--accent-warm); border-color: var(--accent-warm); color: var(--on-warm); font-weight: 700; }
+.buyBtn:hover { color: var(--on-warm); border-color: var(--accent-warm); filter: brightness(1.06); }
 
 @media (max-width: 900px) {
   .actLabel { display: none; }

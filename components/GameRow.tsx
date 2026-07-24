@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { motion } from 'motion/react';
 import type { Game } from '@/lib/types';
-import { CATEGORY_META } from '@/lib/types';
+import { CATEGORY_META, availableTicketingUrl } from '@/lib/types';
 import { calcDayDiff, getKoreanWeekday } from '@/lib/utils';
 import { useLocale } from '@/hooks/useLocale';
 import { UI, CAL } from '@/lib/i18nLabels';
@@ -38,6 +38,8 @@ export function GameRow({ game: g, now, wishlist, onPick, preBadge }: Props) {
   const dd = g.release_date_approx ? tba : released ? releasedText : isToday ? 'D-DAY' : `D-${diff}`;
   const cat = CATEGORY_META[g.category];
   const isWished = wishlist.has(g.id);
+  // 지금 바로 예매 가능(상시판매 포함)하면 예매 버튼 노출 — 리스트/검색에서도 바로 예매처로.
+  const buyCta = availableTicketingUrl(g, now);
   const mmdd = g.release_date_approx ? tba : g.release_date.slice(5).replace('-', '/');
   const weekdayName = lang ? t!.weekdays[new Date(g.release_date).getDay()] : getKoreanWeekday(g.release_date);
   const weekday = g.release_date_approx ? '' : `(${weekdayName})`;
@@ -98,6 +100,19 @@ export function GameRow({ game: g, now, wishlist, onPick, preBadge }: Props) {
       </div>
 
       <div className={styles.actions}>
+        {buyCta && (
+          <a
+            className={`${styles.actBtn} ${styles.buyBtn}`}
+            href={buyCta.url}
+            target="_blank"
+            rel="noopener"
+            aria-label={t ? t.buyTicket : '예매하기'}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <svg className="ic" aria-hidden="true"><use href="#ic-tag" /></svg>
+            <span className={styles.actLabel}>{t ? t.buyTicket : '예매하기'}</span>
+          </a>
+        )}
         {g.source_url && (
           <a
             className={styles.actBtn}

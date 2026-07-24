@@ -334,7 +334,7 @@ export function CalendarView({ cursor, onCursorChange, games, wishlist: _wishlis
                 transition={{ duration: 0.22, ease: 'easeOut' }}
               >
                 {panelEntries.map(({ game: g, kind }) => (
-                  <ScheduleCard key={`${g.id}-${kind}`} game={g} kind={kind} onPick={onPick} />
+                  <ScheduleCard key={`${g.id}-${kind}`} game={g} kind={kind} onPick={onPick} now={now} />
                 ))}
               </motion.div>
             )}
@@ -346,7 +346,7 @@ export function CalendarView({ cursor, onCursorChange, games, wishlist: _wishlis
               <p className={styles.nextUpLabel}>{t ? t.nextSchedule : '다음 일정'}</p>
               <div className={styles.scheduleGrid}>
                 {upcomingPreview.map(({ game: g, kind }) => (
-                  <ScheduleCard key={`next-${g.id}-${kind}`} game={g} kind={kind} onPick={onPick} />
+                  <ScheduleCard key={`next-${g.id}-${kind}`} game={g} kind={kind} onPick={onPick} now={now} />
                 ))}
               </div>
             </div>

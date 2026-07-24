@@ -106,6 +106,30 @@ export function isTicketingLiveNow(
   return inWindow(g.presale_datetime, g.presale_end_datetime) || inWindow(g.general_sale_datetime, g.general_sale_end_datetime);
 }
 
+// "지금 바로 예매 가능한 링크"를 고른다 — isTicketingLiveNow와 달리 시작 datetime이 없어도
+// (상시판매/이미 오픈된 공연) URL만 있으면 통과시킨다. 마감이 지났으면 제외. 일반예매 우선.
+// 캘린더 공연일 카드·검색 행에 "예매하기" 버튼을 띄우는 판단에 씀(예매 시작일 카드와 별개).
+function saleOpenNow(startIso: string | null | undefined, endIso: string | null | undefined, now: Date): boolean {
+  if (hasSaleWindowEnded(endIso, now)) return false;       // 마감됐으면 X
+  if (startIso) {                                          // 시작일 있으면 시작 후에만
+    const start = new Date(startIso).getTime();
+    if (!Number.isNaN(start) && now.getTime() < start) return false;
+  }
+  return true;                                             // 시작일 없음(상시) 또는 시작 후 & 안 끝남
+}
+export function availableTicketingUrl(
+  g: Pick<Game, 'presale_url' | 'presale_datetime' | 'presale_end_datetime' | 'general_sale_datetime' | 'general_sale_url' | 'general_sale_end_datetime'>,
+  now: Date,
+): { url: string; kind: 'presale' | 'general' } | null {
+  if (g.general_sale_url && saleOpenNow(g.general_sale_datetime, g.general_sale_end_datetime, now)) {
+    return { url: g.general_sale_url, kind: 'general' };
+  }
+  if (g.presale_url && saleOpenNow(g.presale_datetime, effectivePresaleEnd(g), now)) {
+    return { url: g.presale_url, kind: 'presale' };
+  }
+  return null;
+}
+
 export interface GamesData {
   schema_version: number;
   last_updated: string;             // ISO 8601
