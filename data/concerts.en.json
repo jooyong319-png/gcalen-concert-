@@ -666,6 +666,128 @@
       ],
       "image_url": null,
       "source_url": "https://variety.com/2026/music/news/victoria-monet-new-album-frequency-of-love-reach-out-1236818236/"
+    },
+    {
+      "id": "en-ryan-bingham-still-gettin-away-fall-memphis-20261013",
+      "name": "Ryan Bingham & The Texas Gentlemen: Still Gettin' Away With It Tour (Fall Theater Leg)",
+      "release_date": "2026-10-13",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/Chicago",
+      "category": "concert_tour",
+      "platforms": [
+        "Memphis, TN (Satellite Music Hall, fall leg opener)"
+      ],
+      "developer": "Ryan Bingham & The Texas Gentlemen",
+      "publisher": null,
+      "description": "Academy Award and Grammy-winning songwriter Ryan Bingham extends his Still Gettin' Away With It Tour with a fall theater leg backed by The Texas Gentlemen. The run opens October 13 in Memphis and travels through Nashville's Ryman Auditorium, Chicago's Riviera Theatre and St. Louis' The Pageant before a string of Texas dates, wrapping November 14 at Billy Bob's in Fort Worth. Presales began July 22, with general on-sale opening July 24.",
+      "genres": [
+        "Americana",
+        "Country",
+        "Rock",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://themusicuniverse.com/ryan-bingham-expands-2026-tour-dates-with-the-texas-gentlemen/",
+      "presale": true,
+      "presale_datetime": "2026-07-22T10:00:00-05:00",
+      "presale_url": null,
+      "general_sale": true,
+      "general_sale_datetime": "2026-07-24T10:00:00-05:00",
+      "general_sale_url": null,
+      "last_updated": "2026-07-24",
+      "last_researched_by": "en-researcher"
+    },
+    {
+      "id": "en-garth-brooks-blame-it-all-roots-denver-20260904",
+      "name": "Garth Brooks: Blame It All On My Roots Tour - Denver",
+      "release_date": "2026-09-04",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/Denver",
+      "category": "concert_tour",
+      "platforms": [
+        "Ball Arena, Denver, CO"
+      ],
+      "developer": "Garth Brooks",
+      "publisher": null,
+      "description": "Country superstar Garth Brooks brings his retro-styled Blame It All On My Roots arena tour to Denver for back-to-back nights at Ball Arena on September 4 and 5, his first Colorado shows in seven years. Following the tour's opening city of Indianapolis, all seats are a single flat price of $155.25 including fees. There are no presales or advance sales; every ticket goes on sale at the same time on July 31 at 10 a.m. Mountain, with an eight-ticket limit.",
+      "genres": [
+        "Country",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://themusicuniverse.com/garth-brooks-reveals-denver-retro-arena-tour-stop/",
+      "presale": false,
+      "presale_datetime": null,
+      "presale_url": null,
+      "general_sale": true,
+      "general_sale_datetime": "2026-07-31T10:00:00-06:00",
+      "general_sale_url": null,
+      "last_updated": "2026-07-24",
+      "last_researched_by": "en-researcher"
+    },
+    {
+      "id": "en-trombone-shorty-orleans-avenue-fall-chattanooga-20261008",
+      "name": "Trombone Shorty & Orleans Avenue: Fall 2026 Tour",
+      "release_date": "2026-10-08",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/New_York",
+      "category": "concert_tour",
+      "platforms": [
+        "Chattanooga, TN (fall leg opener)"
+      ],
+      "developer": "Trombone Shorty & Orleans Avenue",
+      "publisher": null,
+      "description": "Grammy-winning New Orleans bandleader Trombone Shorty and Orleans Avenue add a run of fall 2026 dates, opening October 8 in Chattanooga and moving through North Carolina, Virginia and a stretch of Northeast shows from October 16 to 24. The October 23 date at Newark's NJPAC features Mavis Staples, while singer-songwriter Abraham Alexander joins as special guest on select nights. An artist presale started July 22, with general on-sale July 24.",
+      "genres": [
+        "Jazz",
+        "Funk",
+        "New Orleans",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://themusicuniverse.com/trombone-shorty-orleans-avenue-announce-new-fall-2026-tour-dates/",
+      "presale": true,
+      "presale_datetime": "2026-07-22T10:00:00-04:00",
+      "presale_url": null,
+      "general_sale": true,
+      "general_sale_datetime": "2026-07-24T10:00:00-04:00",
+      "general_sale_url": null,
+      "last_updated": "2026-07-24",
+      "last_researched_by": "en-researcher"
+    },
+    {
+      "id": "en-fcukers-fall-tour-grand-rapids-20260901",
+      "name": "Fcukers: Fall 2026 North American Tour",
+      "release_date": "2026-09-01",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "America/Detroit",
+      "category": "concert_tour",
+      "platforms": [
+        "Grand Rapids, MI (Acrisure Amphitheater, North American leg opener)"
+      ],
+      "developer": "Fcukers",
+      "publisher": null,
+      "description": "New York dance-punk trio Fcukers, named Spotify's Radar US Artist of 2026 after their acclaimed debut album 'O', return for a North American headlining run following their Together Together support dates with Harry Styles. The leg opens September 1 in Grand Rapids and reaches Toronto, Atlanta's Shaky Knees, San Francisco's Portola and both Austin City Limits weekends through October 11. Support comes from Baby Wave, SEES00000 and Total Wife on select dates. Presales start July 28, general sale July 29.",
+      "genres": [
+        "Dance-punk",
+        "Electronic",
+        "Pop",
+        "Tour"
+      ],
+      "image_url": null,
+      "source_url": "https://themusicuniverse.com/fcukers-announce-fall-2026-north-american-tour-dates/",
+      "presale": true,
+      "presale_datetime": "2026-07-28T10:00:00-04:00",
+      "presale_url": null,
+      "general_sale": true,
+      "general_sale_datetime": "2026-07-29T10:00:00-04:00",
+      "general_sale_url": null,
+      "last_updated": "2026-07-24",
+      "last_researched_by": "en-researcher"
     }
   ]
 }
