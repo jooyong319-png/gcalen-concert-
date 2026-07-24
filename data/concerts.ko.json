@@ -199,7 +199,9 @@
         "콘서트"
       ],
       "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Stray_Kids_at_the_40th_Golden_Disc_Awards%2C_January_10%2C_2026_%281%29.png/330px-Stray_Kids_at_the_40th_Golden_Disc_Awards%2C_January_10%2C_2026_%281%29.png",
-      "source_url": "https://kpopofficial.com/event/stray-kids-concert-seoul-2026/"
+      "source_url": "https://kpopofficial.com/event/stray-kids-concert-seoul-2026/",
+      "general_sale": true,
+      "general_sale_url": "https://tickets.interpark.com/goods/26008422"
     },
     {
       "id": "ko-pentaport-rock-festival-20260731",
@@ -219,12 +221,12 @@
         "페스티벌",
         "록"
       ],
-      "image_url": null,
+      "image_url": "https://ticketimage.interpark.com/Play/image/large/26/26006159_p.gif",
       "source_url": "https://kr.trip.com/events/9109368-2026-south-korea-concerts-collection/",
       "general_sale": true,
       "general_sale_datetime": null,
       "general_sale_end_datetime": null,
-      "general_sale_url": null
+      "general_sale_url": "https://tickets.interpark.com/goods/26006159"
     },
     {
       "id": "ko-aespa-synk-complaexity-seoul-20260807",
@@ -302,7 +304,7 @@
         "콘서트",
         "솔로"
       ],
-      "image_url": null,
+      "image_url": "https://ticketimage.interpark.com/Play/image/large/26/26007869_p.gif",
       "source_url": "https://sports.khan.co.kr/article/202605272130003",
       "general_sale": true,
       "general_sale_datetime": "2026-06-02T19:00:00+09:00",
@@ -353,11 +355,11 @@
       "presale": true,
       "presale_datetime": null,
       "presale_end_datetime": null,
-      "presale_url": null,
+      "presale_url": "https://tickets.interpark.com/goods/26010045",
       "general_sale": true,
       "general_sale_datetime": null,
       "general_sale_end_datetime": null,
-      "general_sale_url": null
+      "general_sale_url": "https://tickets.interpark.com/goods/26010045"
     },
     {
       "id": "ko-psy-heumppuck-show-2026-20260801",
@@ -378,7 +380,7 @@
         "콘서트",
         "여름"
       ],
-      "image_url": null,
+      "image_url": "https://ticketimage.interpark.com/Play/image/large/26/26007849_p.gif",
       "source_url": "https://www.wikitree.co.kr/articles/1138931",
       "presale": false,
       "presale_datetime": "2026-06-04T12:00:00+09:00",
@@ -438,7 +440,7 @@
         "밴드",
         "내한"
       ],
-      "image_url": null,
+      "image_url": "https://ticketimage.interpark.com/Play/image/large/26/26005670_p.gif",
       "source_url": "https://www.newsis.com/view/NISX20260331_0003570696",
       "presale": false,
       "presale_datetime": "2026-03-31T12:00:00+09:00",
@@ -491,7 +493,7 @@
         "인디",
         "가을"
       ],
-      "image_url": null,
+      "image_url": "https://ticketimage.interpark.com/Play/image/large/26/26010721_p.gif",
       "source_url": "https://sports.khan.co.kr/en/article/202607161910007/",
       "festival_days": [
         {
@@ -508,7 +510,9 @@
             "드래곤포니"
           ]
         }
-      ]
+      ],
+      "general_sale": true,
+      "general_sale_url": "https://tickets.interpark.com/goods/26010721"
     },
     {
       "id": "ko-jeonyujin-twenty-one-20260829",
@@ -528,11 +532,11 @@
         "트로트",
         "팬콘서트"
       ],
-      "image_url": null,
+      "image_url": "https://ticketimage.interpark.com/Play/image/large/26/26010675_p.gif",
       "source_url": "https://www.gukjenews.com/news/articleView.html?idxno=3643427",
       "general_sale": true,
       "general_sale_datetime": "2026-07-23T19:00:00+09:00",
-      "general_sale_url": null
+      "general_sale_url": "https://tickets.interpark.com/goods/26010675"
     },
     {
       "id": "ko-sungsikyung-with-friends-20260905",
@@ -552,11 +556,11 @@
         "발라드",
         "콘서트"
       ],
-      "image_url": null,
+      "image_url": "https://ticketimage.interpark.com/Play/image/large/26/26010248_p.gif",
       "source_url": "https://sports.khan.co.kr/article/202607211450003/",
       "general_sale": true,
       "general_sale_datetime": "2026-07-24T20:00:00+09:00",
-      "general_sale_url": null
+      "general_sale_url": "https://tickets.interpark.com/goods/26010248"
     },
     {
       "id": "ko-limyoungwoong-imhero-stadium2-20260904",
@@ -580,7 +584,7 @@
       "source_url": "https://tickets.interpark.com/contents/notice/detail/14497",
       "general_sale": true,
       "general_sale_datetime": "2026-07-16T20:00:00+09:00",
-      "general_sale_url": null
+      "general_sale_url": "https://tickets.interpark.com/goods/26009868"
     },
     {
       "id": "ko-vaundy-horo-seoul-20260919",
@@ -601,7 +605,9 @@
         "내한공연"
       ],
       "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Vaundy_2025.jpg",
-      "source_url": "https://sports.khan.co.kr/en/article/202603111454007"
+      "source_url": "https://sports.khan.co.kr/en/article/202603111454007",
+      "general_sale": true,
+      "general_sale_url": "https://tickets.interpark.com/goods/26003199"
     },
     {
       "id": "ko-backnumber-grateful-yesterdays-seoul-20260912",
