@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Game } from '@/lib/types';
 import { CATEGORY_META } from '@/lib/types';
+import { CATEGORY_LABELS, type Locale } from '@/lib/i18nLabels';
 import styles from './RelatedEventCard.module.css';
 
 interface Props { game: Game; lang: string; dateText: string; }
@@ -30,7 +31,7 @@ export function RelatedEventCard({ game, lang, dateText }: Props) {
         )}
       </div>
       <div className={styles.info}>
-        <span className={styles.badge} style={{ background: cat.color }}>{cat.short}</span>
+        <span className={styles.badge} style={{ background: cat.color }}>{CATEGORY_LABELS[lang as Locale]?.[game.category] ?? cat.short}</span>
         <span className={styles.name}>{game.name}</span>
         <span className={styles.date}>{dateText}</span>
       </div>

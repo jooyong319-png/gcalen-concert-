@@ -244,7 +244,7 @@ export function CalendarView({ cursor, onCursorChange, games, wishlist: _wishlis
                       e.kind === 'presale_end' ? `${t.presaleTag} ${t.deadlineTag}` :
                       e.kind === 'general_sale' ? t.generalSaleTag :
                       e.kind === 'general_sale_end' ? `${t.generalSaleTag} ${t.deadlineTag}` :
-                      CATEGORY_META[e.game.category].short;
+                      CATEGORY_LABELS[lang][e.game.category];
                     return `${e.game.name} (${kindLabel})`;
                   }).join(', ') : undefined}
                 >

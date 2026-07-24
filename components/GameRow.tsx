@@ -5,7 +5,7 @@ import type { Game } from '@/lib/types';
 import { CATEGORY_META, availableTicketingUrl } from '@/lib/types';
 import { calcDayDiff, getKoreanWeekday } from '@/lib/utils';
 import { useLocale } from '@/hooks/useLocale';
-import { UI, CAL } from '@/lib/i18nLabels';
+import { UI, CAL, CATEGORY_LABELS } from '@/lib/i18nLabels';
 import styles from './GameRow.module.css';
 
 interface Props {
@@ -87,7 +87,7 @@ export function GameRow({ game: g, now, wishlist, onPick, preBadge }: Props) {
 
       <div className={styles.main}>
         <div className={styles.titleRow}>
-          <span className={styles.badge} style={{ color: cat.color }}>{cat.short}</span>
+          <span className={styles.badge} style={{ color: cat.color }}>{lang ? CATEGORY_LABELS[lang][g.category] : cat.short}</span>
           <span className={styles.title}>{displayName}</span>
           {preBadge && <span className={styles.preBadge}>{preBadge}</span>}
         </div>

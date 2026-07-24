@@ -5,7 +5,7 @@ import { CATEGORY_META } from '@/lib/types';
 import { calcDayDiff } from '@/lib/utils';
 import { useWishlist } from '@/hooks/useWishlist';
 import { useLocale } from '@/hooks/useLocale';
-import { UI, CAL } from '@/lib/i18nLabels';
+import { UI, CAL, CATEGORY_LABELS } from '@/lib/i18nLabels';
 import { NotifyToggle } from './NotifyToggle';
 import { PageHeader } from './PageHeader';
 import styles from './WishlistView.module.css';
@@ -57,7 +57,7 @@ export function WishlistView({ games }: { games: Game[] }) {
               <li key={g.id} className={styles.row} style={{ '--cat': cat.color } as CSSProperties}>
                 <a className={styles.rowMain} href={`/${lang}/concert/${g.id}`}>
                   <span className={styles.titleRow}>
-                    <span className={styles.badge} style={{ color: cat.color }}>{cat.short}</span>
+                    <span className={styles.badge} style={{ color: cat.color }}>{lang ? CATEGORY_LABELS[lang][g.category] : cat.short}</span>
                     <span className={styles.name}>{displayName}</span>
                   </span>
                   <span className={styles.date}>{date}</span>

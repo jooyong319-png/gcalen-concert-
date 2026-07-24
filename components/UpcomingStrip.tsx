@@ -5,7 +5,7 @@ import type { Game } from '@/lib/types';
 import { CATEGORY_META } from '@/lib/types';
 import { calcDayDiff, formatShortDate } from '@/lib/utils';
 import { useLocale } from '@/hooks/useLocale';
-import { CAL, UI } from '@/lib/i18nLabels';
+import { CAL, UI, CATEGORY_LABELS } from '@/lib/i18nLabels';
 import styles from './UpcomingStrip.module.css';
 
 interface Props {
@@ -63,7 +63,7 @@ export function UpcomingStrip({ games, cardImages, now, onPick }: Props) {
                 <span className={styles.dday}>{dday}</span>
               </div>
               <div className={styles.body}>
-                <span className={styles.badge} style={{ background: cat.color }}>{cat.short}</span>
+                <span className={styles.badge} style={{ background: cat.color }}>{lang ? CATEGORY_LABELS[lang][g.category] : cat.short}</span>
                 <span className={styles.name}>{g.name}</span>
                 <span className={styles.date}>{dateText}</span>
               </div>

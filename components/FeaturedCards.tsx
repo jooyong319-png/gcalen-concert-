@@ -5,7 +5,7 @@ import type { Game, Category } from '@/lib/types';
 import { CATEGORY_META } from '@/lib/types';
 import { calcDayDiff } from '@/lib/utils';
 import { useLocale } from '@/hooks/useLocale';
-import { CAL, UI, type Locale } from '@/lib/i18nLabels';
+import { CAL, UI, CATEGORY_LABELS, type Locale } from '@/lib/i18nLabels';
 import styles from './FeaturedCards.module.css';
 
 interface Props { games: Game[]; now: Date; }
@@ -56,7 +56,7 @@ function gameToCard(game: Game, isPreReg: boolean, lang: Locale | null, now: Dat
   return {
     key: `game-${game.id}`,
     href: `/${lang ?? 'ko'}/concert/${game.id}`,
-    badge: isPreReg ? ticketBadge : cat.short,
+    badge: isPreReg ? ticketBadge : (lang ? CATEGORY_LABELS[lang][game.category] : cat.short),
     badgeColor: isPreReg ? 'var(--accent-warm)' : cat.color,
     badgeTextColor: isPreReg ? 'var(--on-warm)' : '#fff',
     name: game.name,
