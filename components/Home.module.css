@@ -57,9 +57,10 @@
   object-position: right center;
   filter: brightness(0.96);
   transition: opacity 0.8s ease;
-  /* 왼쪽 가장자리를 페이드해 앰비언트/텍스트 영역으로 자연스럽게 녹임 */
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 30%);
-          mask-image: linear-gradient(to right, transparent 0%, #000 30%);
+  /* 사방 가장자리를 부드럽게 페이드(비네트) — 인물(우측 중앙)은 선명, 이미지 끝은 앰비언트에 넓게 녹임.
+     선명한 코어를 작게(28%) + 긴 페이드 구간으로 "끝이 흐려지는" 느낌을 강하게 준다. */
+  -webkit-mask-image: radial-gradient(118% 108% at 82% 45%, #000 28%, rgba(0,0,0,0.35) 58%, rgba(0,0,0,0.08) 82%, transparent 100%);
+          mask-image: radial-gradient(118% 108% at 82% 45%, #000 28%, rgba(0,0,0,0.35) 58%, rgba(0,0,0,0.08) 82%, transparent 100%);
 }
 @media (prefers-reduced-motion: reduce) {
   .heroBackdropBlur, .heroBackdropFg { transition: none; }
