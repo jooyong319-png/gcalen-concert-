@@ -664,6 +664,56 @@
       "general_sale_datetime": "2026-04-07T12:00:00+09:00",
       "general_sale_end_datetime": null,
       "general_sale_url": "https://tickets.interpark.com/goods/26004944"
+    },
+    {
+      "id": "ko-edc-korea-2026-20261003",
+      "name": "2026 EDC 코리아 (EDC KOREA 2026)",
+      "release_date": "2026-10-03",
+      "release_time": "14:00",
+      "release_date_approx": false,
+      "timezone": "Asia/Seoul",
+      "category": "festival",
+      "platforms": [
+        "인천 인스파이어 엔터테인먼트 리조트"
+      ],
+      "developer": null,
+      "publisher": "인섬니악(Insomniac)",
+      "description": "세계 최대 규모의 EDM 페스티벌 EDC(일렉트릭 데이지 카니발) 코리아가 2026년 10월 3일과 4일 이틀간 인천 인스파이어 엔터테인먼트 리조트에서 열린다. 올해는 추석 연휴와 맞물린 가을 시즌으로 일정을 옮겨 개최되며, 오후 2시부터 밤 11시까지 여러 스테이지에서 국내외 정상급 DJ들의 무대가 펼쳐진다. 1차 라인업이 순차 공개되고 있으며, 2일권 티켓은 6월 18일 티켓링크를 통해 예매가 시작됐다.",
+      "genres": [
+        "페스티벌",
+        "EDM"
+      ],
+      "image_url": null,
+      "source_url": "https://v.daum.net/v/20260210165942640",
+      "general_sale": true,
+      "general_sale_datetime": "2026-06-18T10:00:00+09:00",
+      "general_sale_end_datetime": null,
+      "general_sale_url": "https://www.ticketlink.co.kr/product/61609",
+      "last_updated": "2026-07-24",
+      "last_researched_by": "ko-researcher"
+    },
+    {
+      "id": "ko-jarasum-jazz-2026-20261009",
+      "name": "2026 자라섬 국제재즈페스티벌",
+      "release_date": "2026-10-09",
+      "release_time": null,
+      "release_date_approx": false,
+      "timezone": "Asia/Seoul",
+      "category": "festival",
+      "platforms": [
+        "가평 자라섬"
+      ],
+      "developer": null,
+      "publisher": "자라섬재즈페스티벌 조직위원회",
+      "description": "국내를 대표하는 가을 재즈 축제인 자라섬 국제재즈페스티벌이 2026년 10월 9일부터 11일까지 사흘간 경기 가평 자라섬 일대에서 열린다. 올해는 한불 수교 140주년을 맞아 프랑스 재즈 신을 포커스 국가로 선정해 특별 프로그램을 선보일 예정이다. 별빛 아래 자연 속에서 국내외 재즈 뮤지션들의 무대를 즐길 수 있는 야외 페스티벌로, 상세 라인업과 티켓 오픈 일정은 공식 채널을 통해 순차 공개된다.",
+      "genres": [
+        "페스티벌",
+        "재즈"
+      ],
+      "image_url": null,
+      "source_url": "https://kr.ambafrance-culture.org/ko/evenement/%EC%9E%90%EB%9D%BC%EC%84%AC%EC%9E%AC%EC%A6%88%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C-2026-%ED%8F%AC%EC%BB%A4%EC%8A%A4-%ED%94%84%EB%9E%91%EC%8A%A4/",
+      "last_updated": "2026-07-24",
+      "last_researched_by": "ko-researcher"
     }
   ]
 }
