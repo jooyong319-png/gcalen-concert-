@@ -2,6 +2,30 @@
 
 이 파일은 KO/EN/JA 3개 리서처 Claude가 공통으로 append하는 로그다. 오래된 로그도 삭제하지 말 것.
 
+## [2026-07-24 10:00] [JA 리서처]
+리서치 완료 (일본 국내 공연)
+- 콘서트/来日 6→6, 발매 1→1, 페스티벌 0→0, 팬미팅 0→0 (후보→통과)
+- 신규 7개 / 갱신 0개 (삭제 없음·전량 보존)
+- 티켓팅 진행중 3개 추가 (선행 +3: 吉井和哉·Silica Gel·QOTSA / 일반발매 +1: QOTSA 8/1 오픈)
+- description 보강 0개
+- 총 등록 31개
+- 뉴스 인계 처리 6건 중 4건 등재 (Number_i『REBON』·桑田佳祐 追加公演 2건은 이미 concerts.ja.json 등재 → 자동 skip)
+  · あいみょん AIMYON TOUR 2027: 데뷔 10주년, 2027-02-06 ぴあアリーナMM 개막 전국 14도시 36공연(+2026-11-30·12-1 무도관) — 音楽ナタリー·Billboard JAPAN·Skream·공식사이트 일치
+  · 吉井和哉 TOUR 2027 イ・キ・モ・ノ・エ・ネ・ジ・ー: 약 12년 만 8th 앨범(12/9)+2027-02-09 오사카 개막 6도시 7공연, FC선행 수령중 — 音楽ナタリー·공식사이트·PRTIMES 일치
+  · Silica Gel(韓) Asia Tour in Tokyo: 3rd『Ballad of You』(8/20)+2026-11-21 渋谷 O-EAST 단독 来日, 최속선행~7/27 — Billboard JAPAN·spincoaster·SMASH(프로모터)·eplus 일치
+  · QUEENS OF THE STONE AGE 来日2026: 약 2년 만, 11/25 Zepp Haneda·11/26 名古屋·11/28 難波, 선행 7/22·일반 8/1 — CDJournal·激ロック·ギターマガジン·Skream·Creativeman 일치
+
+[검증 탈락]
+- 없음
+
+[추가 리서치(리드 외) 신규]
+- クレイジーケンバンド『何？』(26th 앨범, 2026-09-16) — Universal Music(공식레이블)·HMV·tvfan(공동통신)·USEN 일치
+- 5 SECONDS OF SUMMER 来日2026: 8년 만, 2026-11-21 SGC HALL ARIAKE(11/21 즉일매진→11/22 추가) — TOWER RECORDS·激ロック·Skream·Rolling Stone Japan 일치
+- TWO DOOR CINEMA CLUB 来日2026: 데뷔 15주년, 11/30 도쿄·12/1 名古屋·12/2 大阪 — CDJournal·Skream·TOWER·amass·Creativeman 일치
+
+[이미지] 신규 7건 image_url 전부 null — 티켓 플랫폼 og:image 미제공/미확인, 공식 사진 미확보로 정직하게 null 처리(교체 대상)
+
+
 ## [2026-07-24 09:55] [KO 리서처]
 리서치 완료 (한국 국내 공연)
 - 콘서트/내한 2→2, 음원발매 0→0, 페스티벌 0→0, 팬미팅 0→0 (후보→통과)
