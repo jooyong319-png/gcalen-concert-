@@ -1,3 +1,10 @@
+## [2026-07-24 20:50] [JA 뉴스]
+뉴스 작성 완료 (일본 국내 공연 뉴스)
+- 신규 기사 3건: シャイ・マエストロ 来日公演(コットンクラブ 10/20-21), jo0ji「I-BULL」配信＋9/2 CD発売, KEN THE 390「Big Wave」配信
+- 콘서트 링크 연결 1건(jo0ji「いかり」ツアー) / 링크 없음 2건
+- leads 인계 1건: シャイ・マエストロ 来日公演(concerts.ja.json 미등록)
+- 스킵: 07-22~07-23 소식(あいみょん·吉井·Silica Gel·BABYMONSTER 등)은 기존 기사에 이미 반영돼 중복 제외. 07-24 배치 중 MV공개·TV출연·해외 발매 소식은 '행동 유발 공지' 기준 미달로 제외
+
 ## [2026-07-24 20:29] [EN 뉴스]
 뉴스 작성 완료 (영어권/글로벌 시장 공연 뉴스)
 - 신규 기사 2건: 'Gayle Sets September 18 Release Date for Debut Album Observing Chaos', 'Amon Amarth Announce New Album The Allfather Awakens and UK/EU Tour'
