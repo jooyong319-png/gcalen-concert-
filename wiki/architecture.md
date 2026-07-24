@@ -103,7 +103,12 @@ UI를 추가할 때도 이 원칙을 기억할 것.
   테이블: `page_views`(조회수), `push_subscriptions`/`push_sent_log`(웹푸시), `data_reports`
   (사용자 제보). 스키마는 `supabase/*.sql`이 소스 오브 트루스 — 테이블 추가/변경 시 반드시
   이 폴더에 SQL 파일로 같이 남길 것(실제 DB 반영은 사람이 Supabase SQL Editor에서 수동 실행).
+  - `push_subscriptions.prefs`(jsonb, 2026-07-24 추가): 알림 세분화 설정(사전 타이밍 offsets /
+    예매 오픈 / 카테고리 / 발송 hour). cron이 구독별로 읽어 필터. 정규화는 `lib/notifyPrefs.ts`.
 - **Vercel**: 배포 연결 확인됨, `vercel.json`에 `/api/cron/notify` 매일 1회 cron 등록됨.
+  발송 시각(유저별 hour)은 매시간 트리거가 필요한데 Hobby cron은 하루 1회뿐 → **cron-job.org
+  매시간 GET(+Bearer CRON_SECRET)** 을 외부 트리거로 사용, 크론은 `CRON_HOURLY=1`일 때만 시각
+  게이팅(2026-07-24). Vercel daily cron은 백업으로 병행(dedup으로 중복 안전).
   필요 환경변수(`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`,
   `SUPABASE_SERVICE_ROLE_KEY`, `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`,
   `VAPID_SUBJECT`, `CRON_SECRET`) 전부 등록 완료, 실제 발송 테스트까지 성공 확인.

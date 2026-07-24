@@ -22,7 +22,16 @@
 - [x] 사용자 제보 기능(예매 링크 제보/수정, 아티스트 정보 수정·등록 신청) + 관리자 검토 큐
 
 ## 사용자가 직접 처리해야 하는 것(자동화 프롬프트가 손댈 수 없는 영역)
-- [ ] (해당 없음 — Vercel/Supabase 연결 상태는 전부 확인·설정 완료됨)
+- [ ] **OG 이미지 캐시 갱신** — `public/og-image.png`는 이미 신규(다크 네이비)인데 카카오/SNS가
+      옛 분홍 그라데이션을 캐시 중. 카카오 캐시 초기화 도구 or 공유 URL에 `?v=` 파라미터로 강제.
+- [ ] **알림 발송 시각용 외부 크론 유지** — cron-job.org 매시간 잡 + Vercel env `CRON_HOURLY=1` +
+      Supabase `alter table push_subscriptions add column prefs jsonb`(적용 완료). 이 세 개가
+      살아있어야 유저별 발송 시각이 동작(Hobby 플랜 제약). 자세한 건 [[architecture]].
+
+## 다듬을거리(있으면 좋음, 급하지 않음)
+- [ ] en/ja 홈 타이틀에도 "일정/캘린더" 정체 단어 정렬(ko는 완료) — 선택.
+- [ ] 찜 추가/제거 토스트("찜 목록에 추가됨")가 한국어 고정 — EN/JA 로케일화(첫-찜 넛지는 이미
+      로케일 반영됨). 기존 잔재 i18n 갭.
 
 ## 기획/개발 자동화(`prompts/PRODUCT_PLANNER.md`/`prompts/PRODUCT_DEVELOPER.md`)가 판단해서 진행할 것
 `BACKLOG.md`가 실제 소스 오브 트루스(상태 최신). 2026-07-23 기준 대기 중인 항목:
