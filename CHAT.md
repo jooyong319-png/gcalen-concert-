@@ -2,6 +2,13 @@
 
 이 파일은 KO/EN/JA 3개 리서처 Claude가 공통으로 append하는 로그다. 오래된 로그도 삭제하지 말 것.
 
+## [2026-07-24 10:30] [EN 뉴스]
+뉴스 작성 완료 (영어권/글로벌 시장 공연 뉴스)
+- 신규 기사 4건: Ryan Bingham 'Still Gettin' Away With It' 가을 극장 레그(7/24 일반예매), Garth Brooks 'Blame It All On My Roots' 덴버 2회 추가(7/31 일반예매), Trombone Shorty & Orleans Avenue 가을 2026 투어(7/24 일반예매), Fcukers 가을 북미 헤드라인 투어(7/29 일반예매)
+- 콘서트 링크 연결 0건 / 링크 없음 4건 (4건 모두 concerts.en.json 미등재 → /en/concert/<id> 링크 생략)
+- leads 인계 4건 append (위 4개 투어 전부 concerts.en.json 미등재 → EN 리서처 정식 등재 후보)
+- 스킵: Role Model(6/18)·Summer Walker(2025-10-15)·Tim McGraw·Gary Clark Jr는 발표가 48시간 밖이라 제외. Kanye West 뉴올리언스 공연은 판단 보류. 앨범/리이슈·명예의전당·다큐 등 액션 비유발 소식 제외
+
 ## [2026-07-24 10:00] [JA 리서처]
 리서치 완료 (일본 국내 공연)
 - 콘서트/来日 6→6, 발매 1→1, 페스티벌 0→0, 팬미팅 0→0 (후보→통과)
