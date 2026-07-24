@@ -47,20 +47,20 @@
   filter: blur(28px) saturate(1.2) brightness(0.55);
   transition: opacity 0.8s ease;
 }
-/* ② 선명한 인물: 우측 컬럼에 contain(전체가 다 보임 → 눈만 확대되는 문제 해결) */
+/* ② 선명한 인물: 우측 컬럼을 cover로 꽉 채움(이미지 끝 = 박스 끝) → 사방 radial 마스크가
+   실제 이미지 가장자리를 확실히 페이드. 박스를 좁게(≈1.6:1) 잡아 4:1 배너의 극단 확대는 방지. */
 .heroBackdropFg {
   position: absolute; top: 0; right: 0; bottom: 0;
   z-index: 2;
   height: 100%;
-  width: min(56%, 660px);
-  object-fit: contain;
-  object-position: right center;
+  width: min(50%, 580px);
+  object-fit: cover;
+  object-position: center 32%;
   filter: brightness(0.96);
   transition: opacity 0.8s ease;
-  /* 사방 가장자리를 부드럽게 페이드(비네트) — 인물(우측 중앙)은 선명, 이미지 끝은 앰비언트에 넓게 녹임.
-     선명한 코어를 작게(28%) + 긴 페이드 구간으로 "끝이 흐려지는" 느낌을 강하게 준다. */
-  -webkit-mask-image: radial-gradient(118% 108% at 82% 45%, #000 28%, rgba(0,0,0,0.35) 58%, rgba(0,0,0,0.08) 82%, transparent 100%);
-          mask-image: radial-gradient(118% 108% at 82% 45%, #000 28%, rgba(0,0,0,0.35) 58%, rgba(0,0,0,0.08) 82%, transparent 100%);
+  /* 작은 선명 코어 + 넓은 페이드 → 상하좌우 끝이 모두 앰비언트로 녹아듦("이미지 끝이 흐려지는" 느낌) */
+  -webkit-mask-image: radial-gradient(112% 108% at 58% 44%, #000 20%, rgba(0,0,0,0.42) 50%, rgba(0,0,0,0.08) 82%, transparent 100%);
+          mask-image: radial-gradient(112% 108% at 58% 44%, #000 20%, rgba(0,0,0,0.42) 50%, rgba(0,0,0,0.08) 82%, transparent 100%);
 }
 @media (prefers-reduced-motion: reduce) {
   .heroBackdropBlur, .heroBackdropFg { transition: none; }
