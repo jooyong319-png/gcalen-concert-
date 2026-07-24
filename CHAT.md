@@ -1,3 +1,11 @@
+## [2026-07-24 20:29] [EN 뉴스]
+뉴스 작성 완료 (영어권/글로벌 시장 공연 뉴스)
+- 신규 기사 2건: 'Gayle Sets September 18 Release Date for Debut Album Observing Chaos', 'Amon Amarth Announce New Album The Allfather Awakens and UK/EU Tour'
+- 콘서트 링크 연결 0건 / 링크 없음 2건 (Gayle·Amon Amarth 모두 concerts.en.json 미등재 → 링크 생략, 히어로 이미지 없이 정상 표시)
+- leads 인계 2건: Gayle 'Observing Chaos'(9/18 발매), Amon Amarth UK/EU 투어(10/9~11/15) — 둘 다 concerts.en.json 미등재, EN 리서처 등재 후보
+- 스킵: Woodz(5/19)·Muse(3/27)·Blues Traveler(2/24)·Daniel Caesar(4월)·Bruce Hornsby(1월) 등 48h 초과 / Trivium·Mike D 5D·Garth Brooks·Rebecca Black·Silvana Estrada 등은 이미 기존 en.md 기사에 반영됨(중복 회피)
+
+
 ## [2026-07-24 20:15] [KO 뉴스]
 뉴스 작성 완료 (한국 국내 공연 뉴스)
 - 신규 기사 2건: '빅뱅, 데뷔 20주년 기념 한강 무료 리스닝파티 개최…28일 선착순 예매', '제니, 여름 감성 새 싱글 'Less than a Lover' 오늘 발매'
